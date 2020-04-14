@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+	<resultMap type="product" id="productResult">
+		<result property="pcode" column="pcode"/>
+		<result property="ptitle" column=""/>
+		<result property="pcontent" column=""/>
+		<result property="pimage1" column=""/>
+		<result property="pimage2" column=""/>
+		<result property="pimage3" column=""/>
+		<result property="mid" column=""/>
+		<result property="schitem" column=""/>
+		<result property="schword" column=""/>
+	</resultMap>
+</mapper>
