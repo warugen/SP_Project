@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Customer">
+	<resultMap type="Customer" id="CustomerResult">
+		<result property="cid" 		column="cid"		/>
+		<result property="cpw" 		column="cpw"		/>
+		<result property="cname" 	column="cname"		/>
+		<result property="caddrnum" column="caddrnum"	/>
+		<result property="cemail" 	column="cemail"		/>
+		<result property="ctel" 	column="ctel"		/>
+		<result property="crdate" 	column="crdate"		/>
+		<result property="cbirth" 	column="cbirth"		/>
+		<result property="gcode" 	column="gcode"		/>
+		<result property="grade" 	column="grade"		/>
+		<result property="startrow" column="startrow"	/>
+		<result property="endrow" 	column="endrow"		/>
+		<result property="schitem" 	column="schitem"	/>
+		<result property="schword" 	column="schword"	/>
+	</resultMap>
+	
+ 	<!-- 고객정보 가져오기 -->
+	<select id="getCustomer" parameterType="String" resultMap="CustomerResult">
+		SELECT * FROM CUSTOMER WHERE CID=#{cid}
+	</select>
+	
+</mapper>
+
+

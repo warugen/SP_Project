@@ -8,8 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-	<jsp:forward page="cart.do?method=listcart"/>
+	<c:forEach var="cartno" items="${cartnos }">
+		${cartno }<br>
+	</c:forEach>
 </body>
 </html>

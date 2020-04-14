@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mycoupon">
+	<resultMap type="Mycoupon" id="MycouponResult">
+		<result property="chnum"		column="chnum"	/>
+		<result property="cuid" 		column="cuid"	/>
+		<result property="cid" 			column="cid"	/>
+		<result property="cuname"		column="cuname"	/>
+		<result property="cusail"		column="cusail"	/>
+	</resultMap>
+	
+	<!-- 보유쿠폰 불러오기 -->
+	<select id="listMycoupon" parameterType="String" resultMap="MycouponResult">
+		SELECT C.*, CHNUM, CID FROM COUPON C, COUPON_HOLD H WHERE CID=#{cid}
+	</select>
+	<!-- 할인쿠폰 선택하기 -->
+	<select id="getMycoupon" parameterType="String" resultType="Mycoupon">
+		SELECT C.*, CHNUM, CID FROM COUPON C, COUPON_HOLD H WHERE CHNUM=#{chnum}
+	</select>
+	
+	
+</mapper>
+
+
