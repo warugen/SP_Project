@@ -1,0 +1,75 @@
+------------------------------------------------------------------
+-- 매출관리
+------------------------------------------------------------------
+-- 일별 판매 목록
+
+-- 월별 판매 목록
+
+-- 분기별 판매 목록
+
+-- 상품별 판매 목록
+
+
+
+
+------------------------------------------------------------------
+-- 배송지 관리
+------------------------------------------------------------------
+-- 배송지 목록 가져오기
+SELECT A.*, C.CNAME FROM ADDRLIST A, CUSTOMER C WHERE A.CID = C.CID AND C.CID = 'aaa';
+
+SELECT * FROM CUSTOMER;
+
+-- 기본 배송지 선택 리스트로 가져오기
+SELECT * FROM ADDRLIST WHERE CID = 'aaa' ORDER BY ADDRNUM DESC, ADDRCODE ASC;
+
+-- 기본 배송지로 설정하기
+UPDATE ADDRLIST SET ADDRNUM = 1 WHERE ADDRCODE = 2;
+
+-- 기존에 기본 배송지로 선택한게 있다면 기본배송지에서 삭제하기
+UPDATE ADDRLIST SET ADDRNUM = 0 WHERE ADDRCODE != 2;
+
+-- 배송지 추가
+INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval, 0, '33333', '의정부시', '3-33번지', 'aaa');
+
+-- 배송지 제거
+DELETE FROM ADDRLIST WHERE ADDRCODE = 3;
+
+
+
+WITH T AS (
+    SELECT  '1' IDX, '네이버' COMPANY, '2015' YEAR, '04' MON, '김군' NAME FROM DUAL UNION ALL
+    SELECT  '2', '다음넷', '2015', '04', '철수' FROM DUAL UNION ALL
+    SELECT  '3', '다음넷', '2015', '05', '김군' FROM DUAL UNION ALL
+    SELECT  '4', '다음넷', '2015', '05', '철수' FROM DUAL UNION ALL
+    SELECT  '5', '구글넷', '2015', '05', '수지' FROM DUAL UNION ALL
+    SELECT  '6', '구글넷', '2015', '05', '수지' FROM DUAL UNION ALL
+    SELECT  '7', '구글넷', '2015', '06', '김군' FROM DUAL UNION ALL
+    SELECT  '8', '네이버', '2015', '06', '김군' FROM DUAL UNION ALL
+    SELECT  '9', '네이버', '2015', '06', '수지' FROM DUAL UNION ALL
+    SELECT  '10', '구글넷', '2015', '06', '수지' FROM DUAL UNION ALL
+    SELECT  '11', '네이버', '2015', '07', '철수' FROM DUAL UNION ALL
+    SELECT  '12', '네이버', '2015', '07', '김군' FROM DUAL 
+)
+SELECT  NAME
+        , COMPANY
+        , COUNT(DECODE(MON, '01', 1)) AS "1월"
+        , COUNT(DECODE(MON, '02', 1)) AS "2월"
+        , COUNT(DECODE(MON, '03', 1)) AS "3월"
+        , COUNT(DECODE(MON, '04', 1)) AS "4월"
+        , COUNT(DECODE(MON, '05', 1)) AS "5월"
+        , COUNT(DECODE(MON, '06', 1)) AS "6월"
+        , COUNT(DECODE(MON, '07', 1)) AS "7월"
+        , COUNT(DECODE(MON, '08', 1)) AS "8월"
+        , COUNT(DECODE(MON, '09', 1)) AS "9월"
+        , COUNT(DECODE(MON, '10', 1)) AS "10월"
+        , COUNT(DECODE(MON, '11', 1)) AS "11월"
+        , COUNT(DECODE(MON, '12', 1)) AS "12월"
+        , COUNT(COMPANY) AS "누계"
+FROM    T
+WHERE   NAME='철수'
+GROUP BY NAME, COMPANY;
+
+
+
+
