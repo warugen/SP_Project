@@ -10,7 +10,7 @@ import com.tj.sp.dto.Mycoupon;
 @Service
 public class MycouponServiceImpl implements MycouponService {
 	@Autowired
-	MycouponDao mycoupondao;
+	private MycouponDao mycoupondao;
 	@Override
 	public List<Mycoupon> listMycoupon(String cid) {
 		return mycoupondao.listMycoupon(cid);

@@ -11,7 +11,7 @@ import com.tj.sp.dto.Cart_Product_option;
 @Service
 public class CartServiceImpl implements CartService {
 	@Autowired
-	CartDao cartDao;
+	private CartDao cartDao;
 	@Override
 	public List<Cart_Product_option> listCartByCid(String cid) {
 		return cartDao.listCartByCid(cid);

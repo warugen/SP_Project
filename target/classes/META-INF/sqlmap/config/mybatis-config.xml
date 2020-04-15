@@ -7,13 +7,15 @@
 		<package name="com.tj.sp.dto" />     
 	</typeAliases> -->
 	<typeAliases>
+		<typeAlias type="com.tj.sp.dto.Cart" 				alias="Cart"/>
 		<typeAlias type="com.tj.sp.dto.Cart_Product_option" alias="Cart_Product_option"/>
-		<typeAlias type="com.tj.sp.dto.Cart" alias="Cart"/>
-		<typeAlias type="com.tj.sp.dto.Mycoupon" alias="Mycoupon"/>
+		<typeAlias type="com.tj.sp.dto.Customer" 			alias="Customer"/>
+		<typeAlias type="com.tj.sp.dto.Mycoupon" 			alias="Mycoupon"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="META-INF/sqlmap/mappers/Cart_Product_option.xml"/>
-		<mapper resource="META-INF/sqlmap/mappers/Cart.xml"/>
-		<mapper resource="META-INF/sqlmap/mappers/Mycoupon.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Cart.xml"					/>
+		<mapper resource="META-INF/sqlmap/mappers/Cart_Product_option.xml"	/>
+		<mapper resource="META-INF/sqlmap/mappers/Customer.xml"				/>
+		<mapper resource="META-INF/sqlmap/mappers/Mycoupon.xml"				/>
 	</mappers>
 </configuration>

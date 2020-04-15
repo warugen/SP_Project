@@ -11,6 +11,10 @@
 </head>
 <body>
 	test
+	'aaa' customer's info
+	<p>${customer.cid} / pw: ${customer.cpw }</p>
+	<p>${customer.cname }, ${customer.crdate }, ${customer.cbirth }</p>
+	
 	<form action="${conPath }/cart.do" method="get" >
 	<input type="hidden" name="method" value="listCartByCartno">
       <p>cartnos</p>
