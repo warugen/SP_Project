@@ -8,8 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-	<jsp:forward page="test.do?method=cart"/>
+	<c:forEach var="coupon" items="${list }">
+		${coupon.cuid}/${coupon.cuname}/${coupon.cusail}/ chnum : ${coupon.chnum} <br>
+	</c:forEach>
+	fs
 </body>
 </html>
