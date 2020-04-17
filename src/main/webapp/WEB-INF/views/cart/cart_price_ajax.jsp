@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="cart.do?method=cart"/>
+	
+	<fmt:formatNumber value="${cart.cartcount * cart.poprice }" groupingUsed="true"/>원
 </body>
 </html>

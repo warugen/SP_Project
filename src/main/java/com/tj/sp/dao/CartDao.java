@@ -12,4 +12,5 @@ public interface CartDao {
 	public int updateCart(Cart cart);
 	
 	public List<Cart_Product_option> listCartByCartno(List<String> cartnos);
+	public Cart_Product_option CartPrice(String cartno);
 }

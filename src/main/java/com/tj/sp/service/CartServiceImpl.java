@@ -1,5 +1,6 @@
 package com.tj.sp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,16 @@ public class CartServiceImpl implements CartService {
 		return cartDao.updateCart(cart);
 	}
 	@Override
-	public List<Cart_Product_option> listCartByCartno(List<String> cartnos) {
-		return cartDao.listCartByCartno(cartnos);
+	public List<Cart_Product_option> listCartByCartno(String[] cartno) {
+		List<String> list = new ArrayList<String>();
+		for(int i=0 ; i<cartno.length ; i++) {
+			list.add(cartno[i]);
+		}
+		return cartDao.listCartByCartno(list);
+	}
+	@Override
+	public Cart_Product_option CartPrice(String cartno) {
+		return cartDao.CartPrice(cartno);
 	}
 
 }
