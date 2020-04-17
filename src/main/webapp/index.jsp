@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 </head>
-<body>
-	<jsp:forward page="main.do"></jsp:forward>
+<body>	
+	 <jsp:forward page="main.do"/> 
 </body>
 </html>

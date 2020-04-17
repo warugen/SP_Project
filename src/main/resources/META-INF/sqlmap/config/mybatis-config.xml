@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.tj.sp.dto.Favorite" alias="Favorite"/>
+		<typeAlias type="com.tj.sp.dto.Order_history" alias="Order_history"/>
+		<typeAlias type="com.tj.sp.dto.Product_qna" alias="Product_qna"/>
+		<typeAlias type="com.tj.sp.dto.Notice" alias="Notice"/>
+		<typeAlias type="com.tj.sp.dto.Product" alias="Product"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="META-INF/sqlmap/mappers/Favorite.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Order_history.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Product_qna.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Notice.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Product.xml"/>
+	</mappers>
+</configuration>
