@@ -1,4 +1,4 @@
-package com.tj.sp;
+package com.tj.sp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

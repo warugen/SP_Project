@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.tj.sp.dto.product" alias="product"/>
+		<typeAlias type="com.tj.sp.dto.Product" alias="product"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="META-INF/salmap/mappers/product.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/product.xml"/>
 	</mappers>
 </configuration>

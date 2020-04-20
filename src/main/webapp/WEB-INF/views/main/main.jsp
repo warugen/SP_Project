@@ -85,6 +85,7 @@ li {
 <body>
 	<jsp:include page="header.jsp" />
 	<div id="content">
+	<div><a href="${conPath }/product/productInput.do">상품등록</a></div>
 		<div class="section1">
 			<div class="side_banner">
 				<a href=""><img src="${conPath }/img/NOTHING.JPG"></a>
