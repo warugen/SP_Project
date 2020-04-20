@@ -70,6 +70,25 @@ FROM    T
 WHERE   NAME='철수'
 GROUP BY NAME, COMPANY;
 
+DROP SEQUENCE CTEST_SEQ;
+DROP TABLE CTEST;
+CREATE SEQUENCE CTEST_SEQ MAXVALUE 99999999999999999999 NOCACHE NOCYCLE;
+CREATE TABLE CTEST (
+	CID         VARCHAR2(20) NOT NULL,  /* 고객아이디 */
+	CPW         VARCHAR2(20) NOT NULL,  /* 고객비번 */
+	CNAME       VARCHAR2(20) NOT NULL,  /* 고객이름 */
+    CPROVIDER   VARCHAR2(20),           /* 소셜로그인구분 */
+    CPROVID     VARCHAR2(50),           /* 소셜로그인아이디 */
+	CADDRNUM    VARCHAR2(5)  NOT NULL,  /* 기본주소번호 */
+	CEMAIL      VARCHAR2(30) NOT NULL,  /* 메일 */
+	CTEL        VARCHAR2(20) NOT NULL,  /* 고객전화 */
+	CRDATE      DATE DEFAULT SYSDATE,   /* 가입날짜 */
+	CBIRTH      DATE NOT NULL,          /* 고객생일 */
+    CPOINT      NUMBER(10),             /* 고객포인트 */
+	GCODE       VARCHAR2(1) NOT NULL    /* 등급코드 */
+    
+);
+
 
 
 
