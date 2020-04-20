@@ -7,7 +7,7 @@ a {
 	text-decoration: none;
 	color: black;
 }
-a:hover, .btn1:hover, .btn2:hover{cursor: pointer;}
+a:hover, button:hover, .btn1:hover, .btn2:hover{cursor: pointer;}
 li {
 	list-style: none;
 }

@@ -54,7 +54,7 @@ body{
 	text-align:center;
 	width: 40px;
 }
-.list td img{width: 130px;}
+.list td:nth-child(1) img{width: 130px;}
 .list td img:hover{cursor: pointer;}
 .list td .btn_count_minus, .list td .btn_count_plus{width: 22px;}
 .list td .btn_count_minus, .list td .btn_count_plus:hover{cursor: pointer;}
@@ -82,25 +82,25 @@ table tr th{
 .list .list_right span{
 	color:#969494;
 }
-table tr th #wholecheck{
+form>table>tbody>tr>th #wholecheck{
 	position: relative;
     left: -30.5%;
     color: #8c8b8b;
 }
-table tr th:nth-child(1), table tr td:nth-child(1) {
+form>table>tbody>tr>th:nth-of-type(1), form>table>tbody>tr>td:nth-of-type(1) {
 	width:636px;
 }
-table tr th:nth-child(2), table tr td:nth-child(2) {
+form>table>tbody>tr>th:nth-of-type(2), form>table>tbody>tr>td:nth-of-type(2) {
 	width:60px;
 	border-left: 1px solid #e5e5e5;
 	text-align: center;
 }
-table tr th:nth-child(n+2), table tr td:nth-child(n+2) {
+form>table>tbody>tr>th:nth-of-type(n+2), form>table>tbody>tr>td:nth-of-type(n+2) {
 	width:100px;
 	border-left: 1px solid #e5e5e5;
 	text-align: center;
 }
-.list td:nth-child(5) a{
+.list>td:nth-of-type(5) a{
 	text-align: center;
     display: inline-block;
     border-radius: 5px;
@@ -112,12 +112,12 @@ table tr th:nth-child(n+2), table tr td:nth-child(n+2) {
     line-height: 24px;
     margin: 5px 0 0 -3px;	
 }
-.list td:nth-child(5) a:nth-child(1) {
+.list>td:nth-of-type(5) a:nth-of-type(1) {
 	border: 1px solid #3a5485;
     background-color: #3a5485;
     color: white;
 }
-.list td:nth-child(5) a:nth-child(2) {
+.list>td:nth-of-type(5) a:nth-of-type(2) {
 	border: 1px solid #3a5485;
     background-color: white;
     color: #3a5485;

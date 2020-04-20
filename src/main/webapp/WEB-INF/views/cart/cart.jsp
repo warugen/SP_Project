@@ -45,7 +45,7 @@
 						<td>
 							<div class="list_left">
 								<input type="checkbox" name="cartno" value="${cart.cartno }" id="check${cart.cartno }" class="check" checked="checked">
-								<img src="${conPath }/Product_img/${cart.pimage}">
+								<img src="${conPath }/product_img/${cart.pimage}">
 							</div>
 							<div class="list_right">
 								<a><b>${cart.poname }</b></a>
