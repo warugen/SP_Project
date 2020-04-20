@@ -15,10 +15,10 @@
 	<!-- 상품 리스트 PAGING처리 -->
 	<select id="productList" parameterType="Product" resultMap="ProductResult">
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT * FROM PRODUCT ORDER BY PTITLE DESC) A)
-    		WHERE RN BETWEEN #{startRow} AND #{endRow}
+    		WHERE RN BETWEEN #{startrow} AND #{endrow}
     </select>
     <!-- 페이징 때 쓰려고 등록된 상품 개수 -->
-    <select id="cntProduct" resultType="String">
+    <select id="cntProduct" resultType="int">
     	SELECT COUNT(*) FROM PRODUCT
     </select>
     <!-- 등록번호로 상품가져오기 -->
@@ -34,7 +34,7 @@
     <!-- 마켓 상품 리스트 -->
     <select id="marketList" parameterType="Product" resultMap="ProductResult">
     	SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT * FROM PRODUCT WHERE MID=#{mid} ORDER BY PTITLE DESC) A)
-    		WHERE RN BETWEEN #{startRow} AND #{endRow}
+    		WHERE RN BETWEEN #{startrow} AND #{endrow}
     </select>
     <!-- 상품 수정 -->
     <update id="modifyProduct" parameterType="Product">

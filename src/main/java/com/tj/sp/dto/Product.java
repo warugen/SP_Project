@@ -86,5 +86,4 @@ public class Product {
 				+ ", endrow=" + endrow + ", schitem=" + schitem + ", schword=" + schword + "]";
 	}
 	
-
 }

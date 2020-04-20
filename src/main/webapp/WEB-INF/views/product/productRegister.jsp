@@ -22,7 +22,7 @@
 		<hr width="500" color="green">
 		<h2>상품등록</h2>
 		<hr width="500" color="green">
-		<form action="${conPath }/product/inputTest.do" method="post" enctype="multipart/form-data">
+		<form action="${conPath }/product/productList.do" method="post" enctype="multipart/form-data">
 			<table>
 				<tr><th>상품코드 : </th><td><input type="text" name="pcode"></td></tr>
 				<tr><th>상품명 : </th><td><input type="text" name="ptitle"></td></tr>

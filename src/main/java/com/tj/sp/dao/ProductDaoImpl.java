@@ -15,7 +15,7 @@ public class ProductDaoImpl implements ProductDao {
 	private static final String NAMESPACE = "Product";
 	@Override
 	public List<Product> productList(Product product) {
-		return sessionTemplate.selectList("productList");
+		return sessionTemplate.selectList("productList", product);
 	}
 	@Override
 	public List<Product> marketList(Product product) {

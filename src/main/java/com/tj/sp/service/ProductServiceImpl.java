@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tj.sp.dao.ProductDao;
 import com.tj.sp.dto.Product;
+import com.tj.sp.utill.Paging;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -22,7 +23,11 @@ public class ProductServiceImpl implements ProductService {
 	String backupPath = "D:/sp/SP_Project/src/main/webapp/productUpload/";
 
 	@Override
-	public List<Product> productList(Product product) {
+	public List<Product> productList(String pagenum) {
+		Paging paging = new Paging(productDao.cntProduct(), pagenum, 10, 10);
+		Product product = new Product();
+		product.setStartrow(paging.getStartrow());
+		product.setEndrow(paging.getEndrow());
 		return productDao.productList(product);
 	}
 
