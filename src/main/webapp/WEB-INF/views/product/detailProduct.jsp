@@ -103,13 +103,10 @@ $(document).ready(function() {
 		<div id="content_bottom">
 			<div id="product_qna">
 				<table>
-				<thead>
 					<tr>
 						<th>번호</th><th>답변상태</th><th>제목</th><th>문의자</th><th>등록일</th>
 					</tr>
-				<thead>
-				<tbody>
-					<tr class="qnaReplyTitle">
+					<%-- <tr class="qnaReplyTitle">
 						<td>1</td>
 						<td>검토중</td>
 						<td class="left">이거 왜 안되요</td>
@@ -124,11 +121,15 @@ $(document).ready(function() {
 								</span>
 								ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
 							</div>
+							<div>
+								<span>
+									<img src="${conPath }/img/A.PNG" width="35" height="35">답변
+								</span>
+								ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+							</div>
 						</td>
-					</tr>
-				</tbody>
-				<%-- <c:forEach var="pq" items="${product_qna }">
-				<tbody>
+					</tr> --%>
+				 <c:forEach var="pq" items="${product_qna }">
 					<tr class="qnaReplyTitle">
 						<td>${pq.pqcode }</td>
 						<td>${pq.pqcomplete }</td>
@@ -146,8 +147,7 @@ $(document).ready(function() {
 							</div>
 						</td>
 					</tr>
-				</tbody>
-				</c:forEach> --%>
+				</c:forEach> 
 				</table>
 				<div class="btn_wrap">
 					<button onclick="location.href='${conPath }/product_qna.do?method=writeQna'">답변하기</button>

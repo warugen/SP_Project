@@ -31,8 +31,8 @@
 	</update>
 	<select id="productQnaList" resultMap="Product_qnaResult">
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
-		(SELECT * FROM PRODUCT_QNA WHERE PCODE=#{pcode} ORDER BY PQDATE DESC)A)
-		WHERE RN BETWEEN #{startRow} AND #{endRow}
+		(SELECT * FROM PRODUCT_QNA WHERE PCODE=#{pcode, jdbcType=VARCHAR} ORDER BY PQDATE DESC)A)
+		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
 	<delete id="deleteQna">
 		DELETE FROM PRODUCT_QNA WHERE PCODE=#{pcode} AND CID=#{cid}

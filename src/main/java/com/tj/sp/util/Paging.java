@@ -1,60 +1,60 @@
 package com.tj.sp.util;
 
 public class Paging {
-	private int currentPage =1;
-	private int pageSize;
-	private int blockSize;
-	private int startRow;
-	private int endRow;
+	private int currentpage =1;
+	private int pagesize;
+	private int blocksize;
+	private int startrow;
+	private int endrow;
 	private int total;
-	private int pageCnt;
-	private int startPage;
-	private int endPage;
-	public Paging(int total,String pageNum, int pageSize, int blockSize) {
-		if(pageNum!=null) {
-			currentPage= Integer.parseInt(pageNum);
+	private int pagecnt;
+	private int startpage;
+	private int endpage;
+	public Paging(int total,String pagenum, int pagesize, int blocksize) {
+		if(pagenum!=null) {
+			currentpage= Integer.parseInt(pagenum);
 		}
-		this.pageSize = pageSize;
-		this.blockSize = blockSize;
+		this.pagesize = pagesize;
+		this.blocksize = blocksize;
 		this.total = total;
-		startRow = (currentPage-1)*pageSize +1;
-		endRow = startRow + pageSize -1;
-		pageCnt = (int) Math.ceil((double)total/pageSize);
-		startPage = ((currentPage-1)/blockSize)*blockSize +1;
-		endPage = startPage + blockSize -1;
-		if(endPage>pageCnt) {
-			endPage=pageCnt;
+		startrow = (currentpage-1)*pagesize +1;
+		endrow = startrow + pagesize -1;
+		pagecnt = (int) Math.ceil((double)total/pagesize);
+		startpage = ((currentpage-1)/blocksize)*blocksize +1;
+		endpage = startpage + blocksize -1;
+		if(endpage>pagecnt) {
+			endpage=pagecnt;
 		}
 	}
-	public int getCurrentPage() {
-		return currentPage;
+	public int getCurrentpage() {
+		return currentpage;
 	}
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
+	public void setCurrentpage(int currentpage) {
+		this.currentpage = currentpage;
 	}
-	public int getPageSize() {
-		return pageSize;
+	public int getPagesize() {
+		return pagesize;
 	}
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
+	public void setPagesize(int pagesize) {
+		this.pagesize = pagesize;
 	}
-	public int getBlockSize() {
-		return blockSize;
+	public int getBlocksize() {
+		return blocksize;
 	}
-	public void setBlockSize(int blockSize) {
-		this.blockSize = blockSize;
+	public void setBlocksize(int blocksize) {
+		this.blocksize = blocksize;
 	}
-	public int getStartRow() {
-		return startRow;
+	public int getStartrow() {
+		return startrow;
 	}
-	public void setStartRow(int startRow) {
-		this.startRow = startRow;
+	public void setStartrow(int startrow) {
+		this.startrow = startrow;
 	}
-	public int getEndRow() {
-		return endRow;
+	public int getEndrow() {
+		return endrow;
 	}
-	public void setEndRow(int endRow) {
-		this.endRow = endRow;
+	public void setEndrow(int endrow) {
+		this.endrow = endrow;
 	}
 	public int getTotal() {
 		return total;
@@ -62,30 +62,29 @@ public class Paging {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-	public int getPageCnt() {
-		return pageCnt;
+	public int getPagecnt() {
+		return pagecnt;
 	}
-	public void setPageCnt(int pageCnt) {
-		this.pageCnt = pageCnt;
+	public void setPagecnt(int pagecnt) {
+		this.pagecnt = pagecnt;
 	}
-	public int getStartPage() {
-		return startPage;
+	public int getStartpage() {
+		return startpage;
 	}
-	public void setStartPage(int startPage) {
-		this.startPage = startPage;
+	public void setStartpage(int startpage) {
+		this.startpage = startpage;
 	}
-	public int getEndPage() {
-		return endPage;
+	public int getEndpage() {
+		return endpage;
 	}
-	public void setEndPage(int endPage) {
-		this.endPage = endPage;
+	public void setEndpage(int endpage) {
+		this.endpage = endpage;
 	}
 	@Override
 	public String toString() {
-		return "Paging [currentPage=" + currentPage + ", pageSize=" + pageSize + ", blockSize=" + blockSize
-				+ ", startRow=" + startRow + ", endRow=" + endRow + ", total=" + total + ", pageCnt=" + pageCnt
-				+ ", startPage=" + startPage + ", endPage=" + endPage + "]";
+		return "Paging [currentpage=" + currentpage + ", pagesize=" + pagesize + ", blocksize=" + blocksize
+				+ ", startrow=" + startrow + ", endrow=" + endrow + ", total=" + total + ", pagecnt=" + pagecnt
+				+ ", startpage=" + startpage + ", endpage=" + endpage + "]";
 	}
-	
 	
 }

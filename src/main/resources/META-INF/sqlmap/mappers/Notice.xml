@@ -17,12 +17,11 @@
 	</resultMap>
 	<insert id="addNotice" parameterType="Notice">
 		INSERT INTO NOTICE
-		(NCODE,NTITLE,NCONTENT,NGROUP,NSTEP,NINDENT,NHIT,AID)
-		VALUES
-		(NOTICE_SEQ.NEXTVAL,#{ntitle},#{ncontent},NOTICE_SEQ.CURRVAL,#{nstep},#{nindent},#{nhit},#{aid})
+		(NCODE,NTITLE,NCONTENT,NGROUP,NSTEP,NINDENT,NHIT)
+		VALUES (NOTICE_SEQ.NEXTVAL,#{ntitle},#{ncontent},NOTICE_SEQ.CURRVAL,#{nstep},#{nindent},#{nhit})
 	</insert>
 	<insert id="replyNotice" parameterType="Notice">
-		<if test="aid==null and mid==null">
+		<if test="aid==null and cid!=null">
 			INSERT INTO NOTICE
 			(NCODE,NTITLE,NCONTENT,NGROUP,NSTEP,NINDENT,NHIT,CID)
 			VALUES
@@ -35,7 +34,7 @@
 			(NOTICE_SEQ.NEXTVAL,#{ntitle},#{ncontent},#{ngroup},#{nstep},#{nindent},#{nhit},#{aid})
 		</if>
 	</insert>
-	<update id="noticeHitUp" parameterType="Notice">
+	<update id="noticeHitUp" parameterType="String">
 		UPDATE NOTICE SET
 		NHIT=NHIT+1 WHERE NCODE=#{ncode}
 	</update>
@@ -43,24 +42,29 @@
 		SELECT * FROM NOTICE WHERE NCODE=#{ncode}
 	</select>
 	<update id="indentNotice">
+		<![CDATA[
 		UPDATE NOTICE SET NSTEP=NSTEP+1 WHERE
-		NGROUP=#{ngroup} AND NSTEP>#{nstep}
+		NGROUP=#{ngroup} AND NSTEP>#{nstep}]]>
+		
 	</update>
 	<update id="modifyNotice" parameterType="Notice">
-		UPDATE NOTICE SET NTITLE=#{ntitle},
-				NCONTENT=#{ncontent}
+		UPDATE NOTICE SET
+		NTITLE=#{ntitle},
+		NCONTENT=#{ncontent}
 		WHERE NCODE=#{ncode}
 	</update>
 	<delete id="deleteNotice" parameterType="String">
-		DELETE FROM NOTICE WHERE NCODE=#{ncode}
+		DELETE FROM NOTICE WHERE
+		NCODE=#{ncode}
 	</delete>
-	<select id="noticeList" parameterType="Notice" resultMap="NoticeResult">
-		SELECT * FROM 
-    (SELECT ROWNUM RN, A.* FROM
-        (SELECT * FROM NOTICE ORDER BY NGROUP DESC ,NSTEP)A)
-    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	<select id="noticeList" parameterType="Notice"
+		resultMap="NoticeResult">
+		SELECT * FROM
+		(SELECT ROWNUM RN, A.* FROM
+		(SELECT * FROM NOTICE ORDER BY NGROUP DESC ,NSTEP)A)
+		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
-	<select id="totalNotice">
+	<select id="totalNotice" resultType="int">
 		SELECT COUNT(*) FROM NOTICE
 	</select>
 </mapper>

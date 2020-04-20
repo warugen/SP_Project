@@ -8,16 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/style.css" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-	$(document).ready(function() {
-		
-	})
-</script>
 </head>
 <body>
  	 여기는 메인입니다.
- 	<a href="${conPath }/product_qna.do?method=detailProduct">상세보기</a>
+ 	<a href="${conPath }/product.do?method=detailProduct">상세보기</a>
+ 	<a href="${conPath }/favorit.do?method=favoritList">찜 목록</a>
+ 	<a href="${conPath }/notice.do?method=noticeList">공지사항</a>
 </body>
 </html>

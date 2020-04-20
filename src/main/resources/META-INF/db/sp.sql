@@ -372,10 +372,10 @@ CREATE TABLE NOTICE (
 	NTITLE   VARCHAR2(100)  NOT NULL,        /* 제목 */
 	NCONTENT CLOB           NOT NULL,        /* 내용 */
 	NRDATE   DATE           DEFAULT SYSDATE, /* 작성시간 */
-	NGROUP   NUMBER(7)      NOT NULL,        /* 원글 */
-	NSTEP    NUMBER(7)      NOT NULL,        /* 글순서 */
-	NINDENT  NUMBER(7)      NOT NULL,        /* 들여쓰기 */
-	NHIT     NUMBER(7)      NOT NULL,        /* 조회수 */
+	NGROUP   NUMBER(7)      ,        /* 원글 */
+	NSTEP    NUMBER(7)      ,        /* 글순서 */
+	NINDENT  NUMBER(7)      ,        /* 들여쓰기 */
+	NHIT     NUMBER(7) DEFAULT 0  ,        /* 조회수 */
 	CID      VARCHAR2(20),                   /* 고객아이디 */
 	AID      VARCHAR2(20)                    /* 관리자ID */
 );

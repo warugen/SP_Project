@@ -91,7 +91,7 @@ public class Notice {
 	
 	@Override
 	public String toString() {
-		return "ncode=" + ncode + ", ntitle=" + ntitle + ", ncontent=" + ncontent + ", nrdate=" + nrdate
+		return "★ ★ ★ / ncode=" + ncode + ", ntitle=" + ntitle + ", ncontent=" + ncontent + ", nrdate=" + nrdate
 				+ ", ngroup=" + ngroup + ", nstep=" + nstep + ", nindent=" + nindent + ", nhit=" + nhit + ", cid=" + cid
 				+ ", aid=" + aid + ", startrow=" + startrow + ", endrow=" + endrow;
 	}
