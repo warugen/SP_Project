@@ -86,6 +86,8 @@ CREATE TABLE CUSTOMER (
 	CID         VARCHAR2(20) NOT NULL,  /* 고객아이디 */
 	CPW         VARCHAR2(20) NOT NULL,  /* 고객비번 */
 	CNAME       VARCHAR2(20) NOT NULL,  /* 고객이름 */
+    CSNSID      VARCHAR2(50),           /* SNS로그인ID */
+	CPROVIDER   VARCHAR2(50),           /* SNS로그인종류 */
 	CADDRNUM    VARCHAR2(5)  NOT NULL,  /* 기본주소번호 */
 	CEMAIL      VARCHAR2(30) NOT NULL,  /* 메일 */
 	CTEL        VARCHAR2(20) NOT NULL,  /* 고객전화 */
@@ -307,8 +309,11 @@ ALTER TABLE HELP_HISTORY
 
 /* 등급 테이블17 */
 CREATE TABLE GRADE (
-	GCODE VARCHAR2(1)  NOT NULL, /* 등급코드 */
-	GRADE VARCHAR2(20) NOT NULL /* 고객등급 */
+	GCODE   VARCHAR2(1)  NOT NULL, /* 등급코드 */
+	GRADE   VARCHAR2(20) NOT NULL, /* 고객등급 */
+    GHIGH   NUMBER(10)   NOT NULL, /* 상한선 */
+	GLOW    NUMBER(10)   NOT NULL, /* 하한선 */
+	GPOINT  NUMBER(2)    NOT NULL  /* 적립포인트 */
 );
 
 ALTER TABLE GRADE
@@ -321,7 +326,7 @@ ALTER TABLE GRADE
 /* 고객 주소 테이블 */
 CREATE TABLE ADDRLIST (
 	ADDRCODE VARCHAR2(20) NOT NULL, /* 주소함번호 */
-	ADDRNUM  VARCHAR2(5)  NOT NULL, /* 선택번호 */
+	ADDRNAME VARCHAR2(50) NOT NULL, /* 주소지이름 */
 	CPOST    VARCHAR2(10) NOT NULL, /* 고객우편번호 */
 	CADDR1   VARCHAR2(60) NOT NULL, /* 고객주소1 */
 	CADDR2   VARCHAR2(60) NOT NULL, /* 고객주소2 */
