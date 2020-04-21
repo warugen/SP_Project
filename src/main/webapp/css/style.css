@@ -1,5 +1,4 @@
 @charset "UTF-8";
-<<<<<<< HEAD
 * {
 	padding: 0;
 	margin: 0;
@@ -45,14 +44,3 @@ li {
     padding: 22px 0 19px;
     text-align: center;
 }
-=======
-#content table{ border: pink solid 2px; margin: 10px auto 0;}
-#content tr {background-color: #FFE271; }
-#content tr:HOVER { background-color: orange; cursor: pointer; }
-#content td, #content th { text-align: center; padding: 5px;}
-#content caption { font-size: 1.3em; text-align: center;}
-#content h2 {text-align: center; color:red;}
-#content div { text-align: center; }
-#content .left { text-align: left; }
-#content .curr{color:red;}
->>>>>>> refs/heads/taehun7737

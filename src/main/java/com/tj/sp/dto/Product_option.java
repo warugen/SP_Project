@@ -56,5 +56,5 @@ public class Product_option {
 		return "Product_option [pocode=" + pocode + ", poname=" + poname + ", ponet=" + ponet + ", poprice=" + poprice
 				+ ", typecode=" + typecode + ", pcode=" + pcode + ", postock=" + postock + "]";
 	}
-	
+
 }

@@ -15,8 +15,7 @@ public class Notice {
 	private String aid     	;
 	private int    startrow	;
 	private int    endrow	;
-	private String schitem	;
-	private String schword	;
+	
 	public Notice() {}
 	public String getNcode() {
 		return ncode;
@@ -90,24 +89,12 @@ public class Notice {
 	public void setEndrow(int endrow) {
 		this.endrow = endrow;
 	}
-	public String getSchitem() {
-		return schitem;
-	}
-	public void setSchitem(String schitem) {
-		this.schitem = schitem;
-	}
-	public String getSchword() {
-		return schword;
-	}
-	public void setSchword(String schword) {
-		this.schword = schword;
-	}
+	
 	@Override
 	public String toString() {
-		return "Notice [ncode=" + ncode + ", ntitle=" + ntitle + ", ncontent=" + ncontent + ", nrdate=" + nrdate
+		return "★ ★ ★ / ncode=" + ncode + ", ntitle=" + ntitle + ", ncontent=" + ncontent + ", nrdate=" + nrdate
 				+ ", ngroup=" + ngroup + ", nstep=" + nstep + ", nindent=" + nindent + ", nhit=" + nhit + ", cid=" + cid
-				+ ", aid=" + aid + ", startrow=" + startrow + ", endrow=" + endrow + ", schitem=" + schitem
-				+ ", schword=" + schword + "]";
+				+ ", aid=" + aid + ", startrow=" + startrow + ", endrow=" + endrow;
 	}
 	
 }

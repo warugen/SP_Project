@@ -7,12 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tj.sp.dto.Product;
-
 @Repository
-public class ProductDaoImpl implements ProductDao {
+public class ProductDaoimpl implements ProductDao{
 	@Autowired
 	private SqlSession sessionTemplate;
-	private static final String NAMESPACE = "Product";
+	@Override
+	public List<Product> getProductList(Product product) {
+		return sessionTemplate.selectList("getProductList",product);
+	}
+	@Override
+	public int totalproduct() {
+		return sessionTemplate.selectOne("totalproduct");
+	}
+	
+	@Override
+	public Product detailProduct(String pcode) {
+		return sessionTemplate.selectOne("detailProduct",pcode);
+	}
 	@Override
 	public List<Product> productList(Product product) {
 		return sessionTemplate.selectList("productList", product);

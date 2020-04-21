@@ -116,6 +116,4 @@ public class Sp_order {
 				+ ", ostatus=" + ostatus + ", cid=" + cid + ", startrow=" + startrow + ", endrow=" + endrow
 				+ ", schitem=" + schitem + ", schword=" + schword + "]";
 	}
-	
-
 }
