@@ -7,10 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
-<body>
-	<jsp:forward page="main.do"/>
+<body> 
+	<jsp:forward page="main23.do"/>
 </body>
 
 </html>

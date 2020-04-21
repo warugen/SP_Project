@@ -11,4 +11,8 @@ public class MainController {
 		model.addAttribute("main");
 		return "main/main";
 	}
+	@RequestMapping(value="main23")
+	public String main23() {
+		return "main";
+	}
 }

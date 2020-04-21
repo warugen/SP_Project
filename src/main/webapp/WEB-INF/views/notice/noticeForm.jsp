@@ -17,37 +17,94 @@
 </script>
 <style>
 #content td{
-border-bottom: 1px solid #cccccc;
+ border-collapse: collapse;
+ word-break: break-all;
+	height: 40px;
+ border-bottom: 1px solid #cccccc;
+}
+#content b{
+ color: red;
+}
+#content table{
+	width: 1000px;
+}
+#content .noticeMenu{
+font-size: 12px;
+color: #808080;
+border-collapse: collapse;
+word-break: break-all;
+margin: 0;
+padding: 0;
+background: #fefdf4;
 }
 #content .noticeWrap:hover{
 	cursor: pointer;
 }
+#content .noticeWrap{
+font-size: 12px;
+color: #808080;
+border-collapse: collapse;
+word-break: break-all;
+margin: 0;
+padding: 0;
+}
+#content .noticeWrap .left{
+	width: 500px;
+}
+#content .btnwrite{
+padding: 0;
+text-align: center;
+margin: 10px auto;
+padding-top: 10px;
+}
+
 </style>
 </head>
 <body>
+	<c:if test="${not empty deleteResult }">
+		<script>
+			alert('${deleteResult}');
+		</script>
+	</c:if>
+	<c:if test="${not empty replyResult }">
+		<script>
+			var replyResult = "답변글 등록 완료";
+			alert('${replyResult}');
+		</script>
+	</c:if>
 	<c:if test="${not empty writeResult }">
 		<script>
-		var writeResult = "공지사항 등록 성공";
-		alert(writeResult);
+			var writeResult = "공지사항 등록 성공";
+			alert('${writeResult}'); 
 		</script>
 	</c:if>
 	<c:if test="${not empty modifyResult }">
 		<script>
-		var modifyResult = "공지사항 수정 성공";
-		alert(modifyResult);
+			var modifyResult = "공지사항 수정 성공";
+			alert('${modifyResult}');
 		</script>
 	</c:if>
 	<div id="content">
 		<table>
-			<tr>
+			<tr class="noticeMenu">
 				<th>번호</th><th>제목</th><th>등록일</th><th>조회수</th>
 			</tr>
-			<c:forEach var="notice" items="${notice}">
+			<c:forEach var="notice" items="${noticeList}">
 				<tr class="noticeWrap" onclick="noticeWrap('${notice.ncode}')">
-					<td>${notice.ncode }</td>
-					<td>${notice.ntitle }</td>
-					<td><fmt:formatDate value="${notice.nrdate }" pattern="yyyy/MM/dd"/></td>
-					<td>${notice.nhit}</td>
+					<td class="center">${notice.ncode }</td>
+					<td class="left">
+						<c:forEach var="i" begin="1" end="${notice.nindent }">
+							<c:if test="${i==notice.nindent }">
+								┗─ ⓡ 
+							</c:if>
+							<c:if test="${i!=notice.nindent }">
+								&nbsp; &nbsp;
+							</c:if>
+						</c:forEach>
+						${notice.ntitle }
+					</td>
+					<td class="center"><fmt:formatDate value="${notice.nrdate }" pattern="yyyy/MM/dd"/></td>
+					<td class="center">${notice.nhit}</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -63,13 +120,13 @@ border-bottom: 1px solid #cccccc;
 					[<a href="${conPath }/notice.do?method=noticeList&pagenum=${i}">${i }</a>]
 				</c:if>
 			</c:forEach>
-			<c:if test="${paing.endpage<paging.pagecnt }">
+			<c:if test="${paging.endpage<paging.pagecnt }">
 				[<a href="${conPath }/notice.do?method=noticeList&pagenum=${paging.endpage+1}">다음</a>]
 			</c:if>
 		</div>
 		<div class="btnwrite">
-			<button class="btn" onclick="location.href='${conPath}/notice.do?method=noticeWriteForm'">공지사항 등록</button>
-			<button class="btn" onclick="location.href='${conPath}/notice.do?method=noticeReplyForm'">답변 등록</button>
+			<button class="btn1"  onclick="location.href='${conPath}/notice.do?method=noticeWriteForm'">공지사항 등록</button>
+			<button class="btn2" onclick="location.href='${conPath}/notice.do?method=noticeReplyForm'">답변 등록</button>
 		</div>
 	</div>
 </body>

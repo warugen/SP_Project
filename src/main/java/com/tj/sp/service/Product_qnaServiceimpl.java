@@ -23,7 +23,11 @@ public class Product_qnaServiceimpl implements Product_qnaService {
 	}
 
 	@Override
-	public List<Product_qna> productQnaList(Product_qna product_qna,String pageNum) {
+	public List<Product_qna> productQnaList(String pageNum) {
+		Paging paging = new Paging(product_qnaDao.qnaCnt(),pageNum,10,5);
+		Product_qna product_qna = new Product_qna();
+		product_qna.setStartrow(paging.getStartrow());
+		product_qna.setEndrow(paging.getEndrow());
 		return product_qnaDao.productQnaList(product_qna);
 	}
 

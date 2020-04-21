@@ -30,12 +30,11 @@ public class NoticeDaoimpl implements NoticeDao{
 		return sessionTemplate.selectOne("getNotice",ncode);
 	}
 	@Override
-	public void indentNotice(String ncode) {
-		sessionTemplate.update("indentNotice",ncode);
+	public void indentNotice(Notice notice) {
+		sessionTemplate.update("indentNotice",notice);
 	}
 	@Override
 	public int modifyNotice(Notice notice) {
-		System.out.println("DAO notice : " + notice);
 		return sessionTemplate.update("modifyNotice",notice);
 	}
 

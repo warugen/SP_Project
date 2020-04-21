@@ -24,9 +24,35 @@ $(document).ready(function() {
    	     $('.qnaReplyContent').hide();  
    	}  
 	});  
-})
+	/* $('.exit_window').click(function () {
+		var cartno = $(this).attr('id').substring(1);
+	    $('#coupon_window'+cartno).hide();
+		$('#mask').hide();
+		$("input:radio[name='chnum"+cartno+"']:radio[value='0']").prop('checked', true);
+		$('#'+cartno).css({'color':'#fff','background-color':'#3a5485'}).html('쿠폰사용');
+		$('#sail_price'+cartno).html('');
+		$('#cart_price'+cartno).css({'text-decoration-line':'none','color':'black'});
+	}); */
+});
+/* // 효과창 열기
+function writeQnaForm(){
+    var maskHeight = $(document).height();  
+    var maskWidth = $(window).width();  
+    $('#mask').css({'width':maskWidth,'height':maskHeight});  
+    $('#mask').show();      
+} */
 </script>
-
+<style>
+#mask {  
+  position:absolute;  
+  left:0;
+  top:0;
+  z-index:1400;  
+  background-color:#000;  
+  display:none; 
+  opacity: 50%; 
+}
+</style>
 </head>
 <body>
 	<div id="content">
@@ -86,7 +112,7 @@ $(document).ready(function() {
 						<h2>수량</h2>
 						<div id="origin_amount">
 							<span class="updwon_button">
-								<input type="number" class="num" maxlength="3" value="1">
+								<input type="number" class="num" maxlength="3" value="1" min="1">
 							</span>
 						</div>
 					</div>
@@ -106,29 +132,6 @@ $(document).ready(function() {
 					<tr>
 						<th>번호</th><th>답변상태</th><th>제목</th><th>문의자</th><th>등록일</th>
 					</tr>
-					<%-- <tr class="qnaReplyTitle">
-						<td>1</td>
-						<td>검토중</td>
-						<td class="left">이거 왜 안되요</td>
-						<td>localhostmymy</td>
-						<td>2020.04.17</td>
-					</tr>
-					<tr  class="qnaReplyContent">
-						<td colspan="5">
-							<div>
-								<span>
-									<img src="${conPath }/img/Q.PNG" width="35" height="35">질문
-								</span>
-								ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
-							</div>
-							<div>
-								<span>
-									<img src="${conPath }/img/A.PNG" width="35" height="35">답변
-								</span>
-								ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
-							</div>
-						</td>
-					</tr> --%>
 				 <c:forEach var="pq" items="${product_qna }">
 					<tr class="qnaReplyTitle">
 						<td>${pq.pqcode }</td>
@@ -150,27 +153,30 @@ $(document).ready(function() {
 				</c:forEach> 
 				</table>
 				<div class="btn_wrap">
-					<button onclick="location.href='${conPath }/product_qna.do?method=writeQna'">답변하기</button>
-					<button onclick="location.href='${conPath }/product_qna.do?method=writeQna'">문의하기</button>
+					<button onclick="location.href='${conPath }/product_qna.do?method=writeQnaForm'">답변하기</button>
+					<!-- <button  onclick="writeQnaForm()">문의하기</button> -->
+ 					<button  onclick="location.href='${conPath }/product_qna.do?method=writeQnaForm'">문의하기</button> 
+					
 				</div>
 				<div class="paging">
-					<c:if test="${paging.startPage>paging.blockSize }">
-						[<a href="${conPath }/product_qna.do?method=product_qnaList&pageNum=${paging.startPage-1}">이전</a>]
+					<c:if test="${paging.startpage>paging.blocksize }">
+						[<a href="${conPath }/product_qna.do?method=product_qnaList&pagenum=${paging.startpage-1}">이전</a>]
 					</c:if>
-					<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage }">
-						<c:if test="${paging.currentPage==i }">
+					<c:forEach var="i" begin="${paging.startpage }" end="${paging.endpage }">
+						<c:if test="${paging.currentpage==i }">
 							[<b>${i }</b>]
 						</c:if>	
-						<c:if test="${paging.currentPage!=i }">
-							[<a href="${conPath }/product_qna.do?method=product_qnaList&pageNum=${i}">${i }</a>]
+						<c:if test="${paging.currentpage!=i }">
+							[<a href="${conPath }/product_qna.do?method=product_qnaList&pagenum=${i}">${i }</a>]
 						</c:if>				
 					</c:forEach>
-					<c:if test="${paging.endPage<paging.pageCnt }">
-						[<a href="${conPath }/product_qna.do?method=product_qnaList&pageNum=${paging.endPage+1}">다음</a>]
+					<c:if test="${paging.endpage<paging.pagecnt }">
+						[<a href="${conPath }/product_qna.do?method=product_qnaList&pagenum=${paging.endpage+1}">다음</a>]
 					</c:if>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div id="mask"></div>
 </body>
 </html>

@@ -19,7 +19,12 @@
 <body>
 	
 	<div id="content">
-		<form action="${conPath }/notice.do?method=noticeWrite" method="post">
+		<form action="${conPath }/notice.do?method=noticeReply" method="post">
+			<input type="text" name="ncode" value="${noticeReply.ncode }">
+			<input type="text" name="ngroup" value="${noticeReply.ngroup }">
+			<input type="text" name="nstep" value="${noticeReply.nstep }">
+			<input type="text" name="nindent" value="${noticeReply.nindent }">
+			<input type="text" name="pagenum" value="${param.pagenum}">
 			<table>
 				<tr>
 					<th>제목</th>
@@ -30,10 +35,9 @@
 					<td><textarea rows="50" cols="50" name="ncontent" style="resize:none "></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<input type="submit" value="등록">
-						<input type="reset" value="취소">
-						<input type="button" value="목록" onclick="location.href='${conPath}/notice.do?method=noticeList'">
+					<td colspan="2"><input type="submit" class="btn1" value="확인">
+									<input type="reset" class="btn2" value="취소">
+									<input type="button" class="btn1" value="닫기" onclick="location.href='${conPath}/notice.do?method=noticeList'">
 					</td>
 				</tr>
 			</table>
