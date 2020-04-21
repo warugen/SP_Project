@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="cart.do?method=cart"/>
+	상품금액 <b><fmt:formatNumber value="${cart.cartcount * cart.poprice }" groupingUsed="true"/></b>원 + 배송비 <b>3000</b>원 = 주문합계 
+	<b><fmt:formatNumber value="${cart.cartcount * cart.poprice +3000}" groupingUsed="true"/></b>원
 </body>
 </html>

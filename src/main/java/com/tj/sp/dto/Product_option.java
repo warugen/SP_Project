@@ -7,6 +7,7 @@ public class Product_option {
 	private int    poprice	;
 	private String typecode ;
 	private String pcode    ;
+	private int    postock  ;
 	public Product_option() {}
 	public String getPocode() {
 		return pocode;
@@ -44,11 +45,16 @@ public class Product_option {
 	public void setPcode(String pcode) {
 		this.pcode = pcode;
 	}
+	public int getPostock() {
+		return postock;
+	}
+	public void setPostock(int postock) {
+		this.postock = postock;
+	}
 	@Override
 	public String toString() {
 		return "Product_option [pocode=" + pocode + ", poname=" + poname + ", ponet=" + ponet + ", poprice=" + poprice
-				+ ", typecode=" + typecode + ", pcode=" + pcode + "]";
+				+ ", typecode=" + typecode + ", pcode=" + pcode + ", postock=" + postock + "]";
 	}
 	
-
 }

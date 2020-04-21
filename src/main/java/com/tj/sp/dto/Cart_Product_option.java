@@ -10,6 +10,7 @@ public class Cart_Product_option {
 	private String cartno    ;
 	private String cid       ;
 	private int    cartcount ;
+	private String pimage    ;
 	public Cart_Product_option() {}
 	public String getPocode() {
 		return pocode;
@@ -65,11 +66,17 @@ public class Cart_Product_option {
 	public void setCartcount(int cartcount) {
 		this.cartcount = cartcount;
 	}
+	public String getPimage() {
+		return pimage;
+	}
+	public void setPimage(String pimage) {
+		this.pimage = pimage;
+	}
 	@Override
 	public String toString() {
 		return "Cart_Product_option [pocode=" + pocode + ", poname=" + poname + ", ponet=" + ponet + ", poprice="
 				+ poprice + ", typecode=" + typecode + ", pcode=" + pcode + ", cartno=" + cartno + ", cid=" + cid
-				+ ", cartcount=" + cartcount + "]";
+				+ ", cartcount=" + cartcount + ", pimage=" + pimage + "]";
 	}
 	
 }

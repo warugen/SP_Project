@@ -13,8 +13,9 @@
 	
 	<!-- 보유쿠폰 불러오기 -->
 	<select id="listMycoupon" parameterType="String" resultMap="MycouponResult">
-		SELECT C.*, CHNUM, CID FROM COUPON C, COUPON_HOLD H WHERE CID=#{cid}
+		SELECT C.*, CHNUM, CID FROM COUPON C, COUPON_HOLD H WHERE C.CUID=H.CUID AND CID=#{cid}
 	</select>
+	
 	<!-- 할인쿠폰 선택하기 -->
 	<select id="getMycoupon" parameterType="String" resultType="Mycoupon">
 		SELECT C.*, CHNUM, CID FROM COUPON C, COUPON_HOLD H WHERE CHNUM=#{chnum}

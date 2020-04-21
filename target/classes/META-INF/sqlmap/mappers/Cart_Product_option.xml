@@ -13,24 +13,28 @@
 		<result property="cartno" 		column="cartno"		/>
 		<result property="cid" 			column="cid"		/>
 		<result property="cartcount" 	column="cartcount"	/>
+		<result property="pimage" 		column="pimage"	/>
 	</resultMap>
 	
 	<!-- 카트 불러오기 -->
 	<select id="listCartByCid" parameterType="String" resultMap="Cart_Product_optionResult">
-		SELECT P.*, CARTCOUNT, CARTNO FROM CART C, PRODUCT_OPTION P WHERE C.POCODE=P.POCODE AND CID=#{cid}
+		SELECT P.*, CARTCOUNT, CARTNO, (SELECT PIMAGE1 FROM PRODUCT PR, PRODUCT_OPTION PO WHERE PR.PCODE=PO.PCODE) PIMAGE
+		 FROM CART C, PRODUCT_OPTION P WHERE C.POCODE=P.POCODE AND CID=#{cid}
 	</select>
 	
 	<!-- 장바구이에서 구입으로 넘어갈때 카트 불러오기 -->
-	<select id="listCartByCartno" parameterType="java.util.Map" resultMap="Cart_Product_optionResult">
-		SELECT P.*, CARTCOUNT, CARTNO FROM CART C, PRODUCT_OPTION P WHERE C.POCODE=P.POCODE AND CARTNO = 
-		<foreach item="item" index="index" collection="list"
+	<select id="listCartByCartno" parameterType="java.util.List" resultMap="Cart_Product_optionResult">
+		SELECT P.*, CARTCOUNT, CARTNO, (SELECT PIMAGE1 FROM PRODUCT PR, PRODUCT_OPTION PO WHERE PR.PCODE=PO.PCODE) PIMAGE
+		 FROM CART C, PRODUCT_OPTION P WHERE C.POCODE=P.POCODE AND CARTNO IN 
+		<foreach item="cartno" index="index" collection="list"
      		 open="(" separator="," close=")">
-        		#{CARTNO}
+        		#{cartno}
   		</foreach>
 	</select>
-	
-	
-	
+	<!-- 장바구니 가격 불러오기 -->
+	<select id="CartPrice" parameterType="String" resultMap="Cart_Product_optionResult">
+		SELECT CARTCOUNT,POPRICE FROM CART C, PRODUCT_OPTION P WHERE C.POCODE=P.POCODE AND CARTNO =#{cartno}
+	</select>
 </mapper>
 
 
