@@ -25,13 +25,13 @@
 			INSERT INTO NOTICE
 			(NCODE,NTITLE,NCONTENT,NGROUP,NSTEP,NINDENT,NHIT,CID)
 			VALUES
-			(NOTICE_SEQ.NEXTVAL,#{ntitle},#{ncontent},#{ngroup},#{nstep},#{nindent},#{nhit},#{cid})
+			(NOTICE_SEQ.NEXTVAL,#{ntitle},#{ncontent},#{ngroup},#{nstep},#{nindent},#{nhit},#{cid, jdbcType=VARCHAR})
 		</if>
 		<if test="cid==null and mid==null">
 			INSERT INTO NOTICE
 			(NCODE,NTITLE,NCONTENT,NGROUP,NSTEP,NINDENT,NHIT,AID)
 			VALUES
-			(NOTICE_SEQ.NEXTVAL,#{ntitle},#{ncontent},#{ngroup},#{nstep},#{nindent},#{nhit},#{aid})
+			(NOTICE_SEQ.NEXTVAL,#{ntitle},#{ncontent},#{ngroup},#{nstep},#{nindent},#{nhit},#{aid, jdbcType=VARCHAR})
 		</if>
 	</insert>
 	<update id="noticeHitUp" parameterType="String">
@@ -48,10 +48,9 @@
 		
 	</update>
 	<update id="modifyNotice" parameterType="Notice">
-		UPDATE NOTICE SET
-		NTITLE=#{ntitle},
-		NCONTENT=#{ncontent}
-		WHERE NCODE=#{ncode}
+		UPDATE NOTICE SET NTITLE=#{ntitle},          
+		                  NCONTENT=#{ncontent}
+    		WHERE NCODE=#{ncode}
 	</update>
 	<delete id="deleteNotice" parameterType="String">
 		DELETE FROM NOTICE WHERE

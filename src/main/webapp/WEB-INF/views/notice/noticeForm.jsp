@@ -27,7 +27,14 @@ border-bottom: 1px solid #cccccc;
 <body>
 	<c:if test="${not empty writeResult }">
 		<script>
-			alert('공지사항 등록을 완료하였습니다.');
+		var writeResult = "공지사항 등록 성공";
+		alert(writeResult);
+		</script>
+	</c:if>
+	<c:if test="${not empty modifyResult }">
+		<script>
+		var modifyResult = "공지사항 수정 성공";
+		alert(modifyResult);
 		</script>
 	</c:if>
 	<div id="content">

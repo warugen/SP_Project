@@ -18,10 +18,12 @@
 </head>
 <body>
 	<div id="condtent">
-		<form action="${conPath }/notice.do?method=noticeModify">
+		<form action="${conPath }/notice.do?method=noticeModify" method="post">
+			<input type="text" name="ncode" value="${noticeModify.ncode }">
+			<input type="text" name="pagenum" value="${param.pagenum }">
 			<table>
 				<tr>
-				<th>제목</th><td>${noticeModify.ntitle }</td>
+				<th>제목</th><td><input type="text" name="ntitle" value="${noticeModify.ntitle }"></td>
 				</tr>
 				<tr>
 					<th>내용</th>

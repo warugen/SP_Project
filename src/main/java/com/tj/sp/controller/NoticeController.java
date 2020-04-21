@@ -1,7 +1,6 @@
 package com.tj.sp.controller;
 
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,9 +46,15 @@ public class NoticeController {
 		model.addAttribute("noticeDetail" ,noticeService.getNotice(ncode));
 		return "notice/noticeDetailForm";
 	}
-	@RequestMapping(params="method=noticeModifyForm")
+	@RequestMapping(params="method=noticeModifyForm", method=RequestMethod.POST)
 	public String noticeModifyForm(String ncode, Model model) {
 		model.addAttribute("noticeModify",noticeService.getNotice(ncode));
 		return "notice/noticeModifyForm";
+	}
+	@RequestMapping(params="method=noticeModify", method=RequestMethod.POST)
+	public String noticeModify(Notice notice,Model model) {
+		System.out.println("컨트롤러 notice : " + notice);
+		model.addAttribute("modifyResult", noticeService.modifyNotice(notice));
+		return "forward:notice.do?method=noticeList";
 	}
 }

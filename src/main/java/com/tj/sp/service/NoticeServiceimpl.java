@@ -19,21 +19,19 @@ public class NoticeServiceimpl implements NoticeService{
 		return noticeDao.addNotice(notice);
 	}
 	@Override
-	public int replyNotice(Notice notice) {
+	public int replyNotice(Notice notice,String ncode) {
+		noticeDao.indentNotice(ncode);
 		return noticeDao.replyNotice(notice);
 	}
 	
 	@Override
 	public Notice getNotice(String ncode) {
-		/* noticeDao.noticeHitUp(ncode); */
+		noticeDao.noticeHitUp(ncode);
 		return noticeDao.getNotice(ncode);
 	}
 	@Override
-	public void indentNotice() {
-		
-	}
-	@Override
 	public int modifyNotice(Notice notice) {
+		System.out.println("서비스 notice : " + notice);
 		return noticeDao.modifyNotice(notice);
 	}
 

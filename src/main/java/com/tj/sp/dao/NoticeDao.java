@@ -9,7 +9,7 @@ public interface NoticeDao {
 	public int replyNotice(Notice notice);
 	public void noticeHitUp(String ncode);
 	public Notice getNotice(String ncode);
-	public void indentNotice();
+	public void indentNotice(String ncode);
 	public int modifyNotice(Notice notice);
 	public int deleteNotice(String ncode);
 	public List<Notice> noticeList(Notice notice);

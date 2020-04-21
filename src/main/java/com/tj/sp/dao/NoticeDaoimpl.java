@@ -23,17 +23,19 @@ public class NoticeDaoimpl implements NoticeDao{
 	}
 	@Override
 	public void noticeHitUp(String ncode) {
-		sessionTemplate.update(ncode);
+		sessionTemplate.update("noticeHitUp",ncode);
 	}
 	@Override
 	public Notice getNotice(String ncode) {
 		return sessionTemplate.selectOne("getNotice",ncode);
 	}
 	@Override
-	public void indentNotice() {
+	public void indentNotice(String ncode) {
+		sessionTemplate.update("indentNotice",ncode);
 	}
 	@Override
 	public int modifyNotice(Notice notice) {
+		System.out.println("DAO notice : " + notice);
 		return sessionTemplate.update("modifyNotice",notice);
 	}
 
