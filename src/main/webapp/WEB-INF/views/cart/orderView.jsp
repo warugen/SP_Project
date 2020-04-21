@@ -10,11 +10,15 @@
 <title>Insert title here</title>
 <link href="${conPath }/css/style.css" rel="stylesheet">
 <link href="${conPath }/css/cart/cart.css" rel="stylesheet">
+<link href="${conPath }/css/cart/orderView.css" rel="stylesheet">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="${conPath }/js/address.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $(document).ready(function(){
 	total_products = 0;
 	var checknum = 0;
+	
 	$('input[name=price_cell]').each(function(){ 
 		total_products += Number($(this).val());
 	    
@@ -40,7 +44,11 @@ $(document).ready(function(){
 		var cartno = $(this).attr('id').substring(1);
 	    $('#coupon_window'+cartno).hide();
 		$('#mask').hide();
-		
+		var total_sale =0;
+		$('input[name=sale_cell]').each(function(){
+			total_sale += Number($(this).val()) ;
+		});
+		$('#total_sale').html(total_sale);
 		//쿠폰 적용text초기화
 		$('input[type=radio]').each(function(){	
 			var chnum = $(this).val();
@@ -53,6 +61,7 @@ $(document).ready(function(){
 				$('.cuname'+chnum).show();
 			}
 		});
+		osum();
 	});
 	//쿠폰 체크 하기
 	$('input[type=radio]').change(function(){
@@ -60,7 +69,8 @@ $(document).ready(function(){
 		var chnum = $(this).val();
 		if($(this).val()==0){	//쿠폰 적용안함 체크
 			$('#'+cartno).css({'color':'#fff','background-color':'#3a5485'}).html('쿠폰사용');
-			$('#sail_price'+cartno).html('');
+			$('#sale_cell'+cartno).val('0');
+			$('#sale_price'+cartno).html('');
 			$('#cart_price'+cartno).css({'text-decoration-line':'none','color':'black'});
 		}else{	//쿠폰체크시
 			var chk = 0;
@@ -74,14 +84,17 @@ $(document).ready(function(){
 			if(chk==2){	//쿠폰 중복적용시
 				alert('해당 쿠폰은 다른상품에 적용중입니다.');
 				$("input:radio[name='chnum"+cartno+"']:radio[value='0']").prop('checked', true);
+				$('#'+cartno).css({'color':'#fff','background-color':'#3a5485'}).html('쿠폰사용');
 			}else{	//쿠폰 적용
 				$('#'+cartno).css({'color':'#3a5485','background-color':'#fff'}).html('쿠폰변경');
 				var price_cell = $('#price_cell'+cartno).val();
-				var sail =(100 - $('.coupon'+chnum).html())/100;
-				$('#sail_price'+cartno).html(price_cell*sail + '원');
+				var sale = $('.coupon'+chnum).html()/100;
+				$('#sale_cell'+cartno).val(price_cell*sale);
+				$('#sale_price'+cartno).html(price_cell*(1-sale) + '원');
 				$('#cart_price'+cartno).css({'text-decoration-line':'line-through','color':'#a2a2a5'});
 			}
 		}
+		osum();
 	});
 	//쿠폰사용 윈도우 닫기
 	$('.exit_window').click(function () {
@@ -90,11 +103,40 @@ $(document).ready(function(){
 		$('#mask').hide();
 		$("input:radio[name='chnum"+cartno+"']:radio[value='0']").prop('checked', true);
 		$('#'+cartno).css({'color':'#fff','background-color':'#3a5485'}).html('쿠폰사용');
-		$('#sail_price'+cartno).html('');
+		$('#sale_cell'+cartno).val('0');
+		$('#sale_price'+cartno).html('');
 		$('#cart_price'+cartno).css({'text-decoration-line':'none','color':'black'});
+		$('.btn_coupon_apply').trigger('click');
+		osum();
 	});
 	
+	//포인트 전부 사용
+	$('#point_all').change(function(){
+		if($(this).is(':checked')){
+			$('#point').val($(this).val());
+		}else{
+			$('#point').val(0);
+		}
+	});
+	
+	//주소 선택
+	$('#option_addr').change(function(){
+		var addrcode = $('select[name=addrlist]').val();
+		$('input[name=opost]').val($('#opost'+addrcode).val());
+		$('input[name=oaddr1]').val($('#oaddr1'+addrcode).val());
+		$('input[name=oaddr2]').val($('#oaddr2'+addrcode).val());
+	});
+	
+	osum();
+	var addrcode = $('select[name=addrlist]').val();
+	$('input[name=opost]').val($('#opost'+addrcode).val());
+	$('input[name=oaddr1]').val($('#oaddr1'+addrcode).val());
+	$('input[name=oaddr2]').val($('#oaddr2'+addrcode).val());
 });
+//osum 계산 함수
+function osum(){
+	$('#osum').html($('#total_products').html()-$('#total_sale').html());
+}
 
 //쿠폰 모달 효과창 열기
 function wrapWindowByMask(){
@@ -105,74 +147,6 @@ function wrapWindowByMask(){
 }
 
 </script>
-<style>
-.coupon_window{
-	position: fixed;
-    width: 40%;
-    left: 50%;
-    margin-left: -20%;
-    height: 400px;
-    top: 50%;
-    margin-top: -250px;
-    overflow: auto;
-    background-color: white;
-    z-index: 900;
-    display: none;
-}
-.coupon_window::-webkit-scrollbar {
-	display: none;
-}
-#coupon_window_title{
-	line-height: 45px;
-    font-size: 1.5em;
-    color: #3a5485;
-    right: 38%;
-    position: relative;
-}
-.coupon_window img{
-	width: 20px;
-    position: fixed;
-    right: 30.3%;
-}
-.coupon_window hr{
-	margin-bottom: 20px;
-}
-.coupon_table{
-	width: 100%;
-}
-.coupon_table tr td{
-	height:30px;
-}
-.coupon_table tbody tr > td:nth-child(2){
-	text-align: left;
-}
-.coupon_table tr td:nth-child(n+2){
-	width:30%;
-}
-.btn_coupon_apply{
-	background: #3a5485;
-    color: #fff;
-    font-size: 22px;
-    font-weight: 700;
-    width: 300px;
-    line-height: 20px;
-    border: 2px solid #3a5485;
-    border-radius: 10px;
-    padding: 22px 0 19px;
-    text-align: center;
-    margin: 10px;
-}
-
-#mask {  
-  position:absolute;  
-  left:0;
-  top:0;
-  z-index:800;  
-  background-color:#000;  
-  display:none; 
-  opacity: 50%; 
-}
-</style>
 </head>
 <body>
 	<div id="content">
@@ -217,7 +191,8 @@ function wrapWindowByMask(){
 							<span id="cart_price${cart.cartno}" class="cart_price">
 								<fmt:formatNumber value="${cart.cartcount * cart.poprice }" groupingUsed="true"/>원
 							</span>
-							<p id="sail_price${cart.cartno }"></p>
+							<p id="sale_price${cart.cartno }" class="sale_price"></p>
+							<input type="hidden" value="0" name="sale_cell" id="sale_cell${cart.cartno}">
 						</td>
 						<td>
 							<fmt:formatNumber value="3000" groupingUsed="true"/>원
@@ -248,9 +223,9 @@ function wrapWindowByMask(){
 												${coupon.cuname}
 												<b class="cuname${coupon.chnum }">(적용중)</b>
 											</td>
-											<td><span class="coupon${coupon.chnum }">${coupon.cusail}</span>%</td>
+											<td><span class="coupon${coupon.chnum }">${coupon.cusale}</span>%</td>
 											<td>
-												<fmt:formatNumber value="${cart.cartcount * cart.poprice * (100-coupon.cusail) / 100}" groupingUsed="true"/>원
+												<fmt:formatNumber value="${cart.cartcount * cart.poprice * (100-coupon.cusale) / 100}" groupingUsed="true"/>원
 											</td>
 										</tr>
 									</c:forEach>
@@ -262,7 +237,58 @@ function wrapWindowByMask(){
 				</c:forEach>
 			</table>
 			<div id="total_price">
-				주문금액<b id="total_products"></b>원 - 할인금액 <b></b>원 = 최종결재금액 <b>30,000</b>원
+				주문금액<b id="total_products"></b>원 - 할인금액 <b id="total_sale">0</b>원 = 최종결재금액 <b id="osum"></b>원
+			</div>
+			<div id="bottom">
+				<div>
+					SP point <input type="text" id="point" value="0">원 <input type="checkbox" id="point_all" value="${customer.cpoint}">모두사용(보유 ${customer.cpoint} )
+				</div>
+				<div>
+					배송지 선택
+					<select name="addrlist" id="option_addr">
+						<c:forEach var="addr" items="${addrlist }">
+							<option value="${addr.addrcode }" 
+								<c:if test="${addr.addrcode == customer.addrcode}">
+								selected="selected" 
+								</c:if>
+							>
+							${addr.addrname }</option>
+						</c:forEach>
+					</select>
+						<c:forEach var="addr" items="${addrlist }">
+							<input type="hidden" id="opost${addr.addrcode }" value="${addr.cpost }">
+							<input type="hidden" id="oaddr1${addr.addrcode }" value="${addr.caddr1 }">
+							<input type="hidden" id="oaddr2${addr.addrcode }" value="${addr.caddr2 }">
+						</c:forEach>
+				</div>
+				<div>
+					<table>
+						<tr>
+							<th>받으시는 분</th><td><input type="text" name="oname" value="${customer.cname }"/></td>
+						</tr>
+						<tr>
+							<th>연락처</th><td><input type="text" name="otel" value="${customer.ctel }"/></td>
+						</tr>
+						<tr>
+							<th>우편번호</th>
+							<td>
+								<input type="text" id="sample4_postcode" name="opost" class="text_box"  placeholder="우편번호" readonly="readonly">
+								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+							</td>
+						</tr>
+						<tr>
+							<th>주소</th>
+							<td>
+								<input type="text" id="sample4_roadAddress" name="oaddr1" placeholder="도로명주소" readonly="readonly">
+								<input type="hidden" id="sample4_jibunAddress"  placeholder="지번주소">
+								<span id="guide"></span>
+							</td>
+						</tr>
+						<tr>
+							<th>상세주소</th><td><input type="text" name="oaddr2" /></td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</form>
 	</div>

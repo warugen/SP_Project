@@ -6,7 +6,7 @@ public class Customer {
 	private String cid      ;
 	private String cpw      ;
 	private String cname	;
-	private String caddrnum	;
+	private String addrcode	;
 	private String cemail	;
 	private String ctel	    ;
 	private Date   crdate	;
@@ -39,11 +39,11 @@ public class Customer {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
-	public String getCaddrnum() {
-		return caddrnum;
+	public String getAddrcode() {
+		return addrcode;
 	}
-	public void setCaddrnum(String caddrnum) {
-		this.caddrnum = caddrnum;
+	public void setAddrcode(String addrcode) {
+		this.addrcode = addrcode;
 	}
 	public String getCemail() {
 		return cemail;
@@ -125,7 +125,7 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [cid=" + cid + ", cpw=" + cpw + ", cname=" + cname + ", caddrnum=" + caddrnum + ", cemail="
+		return "Customer [cid=" + cid + ", cpw=" + cpw + ", cname=" + cname + ", addrcode=" + addrcode + ", cemail="
 				+ cemail + ", ctel=" + ctel + ", crdate=" + crdate + ", cbirth=" + cbirth + ", gcode=" + gcode
 				+ ", grade=" + grade + ", cpoint=" + cpoint + ", csnsid=" + csnsid + ", cprovider=" + cprovider
 				+ ", startrow=" + startrow + ", endrow=" + endrow + ", schitem=" + schitem + ", schword=" + schword

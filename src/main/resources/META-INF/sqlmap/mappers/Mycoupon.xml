@@ -8,7 +8,7 @@
 		<result property="cuid" 		column="cuid"	/>
 		<result property="cid" 			column="cid"	/>
 		<result property="cuname"		column="cuname"	/>
-		<result property="cusail"		column="cusail"	/>
+		<result property="cusale"		column="cusale"	/>
 	</resultMap>
 	
 	<!-- 보유쿠폰 불러오기 -->

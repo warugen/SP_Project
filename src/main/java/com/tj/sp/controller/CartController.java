@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tj.sp.dto.Cart;
+import com.tj.sp.service.AddrlistService;
 import com.tj.sp.service.CartService;
+import com.tj.sp.service.Customer_gradeService;
 import com.tj.sp.service.MycouponService;
 
 @Controller
@@ -19,6 +21,10 @@ public class CartController {
 	private CartService cartservice;
 	@Autowired
 	private MycouponService mycouponService;
+	@Autowired
+	private Customer_gradeService customerService;
+	@Autowired
+	private AddrlistService addrlistService;
 	//장바구니 호출
 	@RequestMapping(params="method=cart", method =RequestMethod.GET)
 	public String cart(Model model) {
@@ -51,6 +57,8 @@ public class CartController {
 	public String orderView(String[] cartno ,Model model, HttpServletRequest request) {
 		model.addAttribute("coupon",mycouponService.listMycoupon("aaa"));
 		model.addAttribute("list", cartservice.listCartByCartno(cartno));
+		model.addAttribute("customer", customerService.getCustomer("aaa"));
+		model.addAttribute("addrlist", addrlistService.listAddrlist("aaa"));
 		return "cart/orderView";
 	}
 	

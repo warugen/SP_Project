@@ -56,10 +56,11 @@ select[name="option"]{
 	line-height:70px;
 }
 input[name="logo"]{
-	position: absolute;
-	top:2%;
-	left:16%;
-	outline:0;
+	width: 80px;
+    position: absolute;
+    top: 4%;
+    left: 16%;
+    outline: 0;
 }
 .search {
 	width:620px;

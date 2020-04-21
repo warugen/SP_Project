@@ -5,7 +5,7 @@ public class Mycoupon {
 	private String  cuid  	;
 	private String  cid   	;
 	private String 	cuname	;
-	private int 	cusail	;
+	private int 	cusale	;
 	public Mycoupon() {}
 	public String getChnum() {
 		return chnum;
@@ -31,16 +31,16 @@ public class Mycoupon {
 	public void setCuname(String cuname) {
 		this.cuname = cuname;
 	}
-	public int getCusail() {
-		return cusail;
+	public int getCusale() {
+		return cusale;
 	}
-	public void setCusail(int cusail) {
-		this.cusail = cusail;
+	public void setCusale(int cusale) {
+		this.cusale = cusale;
 	}
 	@Override
 	public String toString() {
-		return "Mycoupon [chnum=" + chnum + ", cuid=" + cuid + ", cid=" + cid + ", cuname=" + cuname + ", cusail="
-				+ cusail + "]";
+		return "Mycoupon [chnum=" + chnum + ", cuid=" + cuid + ", cid=" + cid + ", cuname=" + cuname + ", cusale="
+				+ cusale + "]";
 	}
 	
 }

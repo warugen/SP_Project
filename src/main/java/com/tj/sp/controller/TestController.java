@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tj.sp.dto.Cart;
 import com.tj.sp.service.CartService;
-import com.tj.sp.service.CustomerService;
+import com.tj.sp.service.Customer_gradeService;
 
 @Controller
 @RequestMapping("test")
@@ -22,7 +22,7 @@ public class TestController {
 	@Autowired 
 	private CartService cartservice;
 	@Autowired
-	private CustomerService customerService;
+	private Customer_gradeService customerService;
 	@RequestMapping(params="method=cart", method =RequestMethod.GET)
 	public String cart(Model model) {
 		model.addAttribute("list",cartservice.listCartByCid("aaa"));

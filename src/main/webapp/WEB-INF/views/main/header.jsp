@@ -29,7 +29,7 @@
 		</c:if>
 		</div>
 		<div class="logo">
-			<a href=""><input type="image" name="logo" src="${conPath }/img/logo.png" width="180"></a>
+			<a href=""><input type="image" name="logo" src="${conPath }/img/SP.png" width="180"></a>
 			<div class="search">
 				<select name="option">
 					<option>전체</option>

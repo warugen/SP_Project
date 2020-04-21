@@ -1,0 +1,71 @@
+@charset "UTF-8";
+.coupon_window{
+	position: fixed;
+    width: 40%;
+    left: 50%;
+    margin-left: -20%;
+    height: 400px;
+    top: 50%;
+    margin-top: -250px;
+    overflow: auto;
+    background-color: white;
+    z-index: 900;
+    display: none;
+}
+.coupon_window::-webkit-scrollbar {
+	display: none;
+}
+#coupon_window_title{
+	line-height: 45px;
+    font-size: 1.5em;
+    color: #3a5485;
+    right: 38%;
+    position: relative;
+}
+.coupon_window img{
+	width: 20px;
+    position: fixed;
+    right: 30.3%;
+}
+.coupon_window hr{
+	margin-bottom: 20px;
+}
+.coupon_table{
+	width: 100%;
+}
+.coupon_table tr td{
+	height:30px;
+}
+.coupon_table tbody tr > td:nth-child(2){
+	text-align: left;
+}
+.coupon_table tr td:nth-child(1){width:10%;}
+.coupon_table tr td:nth-child(2){width:40%;}
+.coupon_table tr td:nth-child(3){width:15%;}
+.coupon_table tr td:nth-child(4){width:35%;}
+.btn_coupon_apply{
+	background: #3a5485;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    width: 300px;
+    line-height: 20px;
+    border: 2px solid #3a5485;
+    border-radius: 10px;
+    padding: 22px 0 19px;
+    text-align: center;
+    margin: 10px;
+}
+#total_price #osum{
+	color:#ea0000;
+}
+
+#mask {  
+  position:absolute;  
+  left:0;
+  top:0;
+  z-index:800;  
+  background-color:#000;  
+  display:none; 
+  opacity: 50%; 
+}
