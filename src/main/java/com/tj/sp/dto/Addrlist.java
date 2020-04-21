@@ -2,7 +2,7 @@ package com.tj.sp.dto;
 
 public class Addrlist {
 	private String addrcode ;
-	private String addrnum  ;
+	private String addrname ;
 	private String cpost    ;
 	private String caddr1   ;
 	private String caddr2   ;
@@ -14,11 +14,11 @@ public class Addrlist {
 	public void setAddrcode(String addrcode) {
 		this.addrcode = addrcode;
 	}
-	public String getAddrnum() {
-		return addrnum;
+	public String getAddrname() {
+		return addrname;
 	}
-	public void setAddrnum(String addrnum) {
-		this.addrnum = addrnum;
+	public void setAddrname(String addrname) {
+		this.addrname = addrname;
 	}
 	public String getCpost() {
 		return cpost;
@@ -46,7 +46,7 @@ public class Addrlist {
 	}
 	@Override
 	public String toString() {
-		return "Addrlist [addrcode=" + addrcode + ", addrnum=" + addrnum + ", cpost=" + cpost + ", caddr1=" + caddr1
+		return "Addrlist [addrcode=" + addrcode + ", addrname=" + addrname + ", cpost=" + cpost + ", caddr1=" + caddr1
 				+ ", caddr2=" + caddr2 + ", cid=" + cid + "]";
 	}
 	

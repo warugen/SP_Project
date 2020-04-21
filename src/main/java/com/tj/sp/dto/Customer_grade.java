@@ -2,7 +2,13 @@ package com.tj.sp.dto;
 
 import java.sql.Date;
 
-public class Customer {
+public class Customer_grade {
+	private String gcode	;
+	private String grade	;
+	private int    ghigh	;
+	private int    glow		;
+	private int    gpoint	;
+	
 	private String cid      ;
 	private String cpw      ;
 	private String cname	;
@@ -11,8 +17,6 @@ public class Customer {
 	private String ctel	    ;
 	private Date   crdate	;
 	private Date   cbirth	;
-	private String gcode    ;
-	private String grade	;
 	private int    cpoint	;
 	private String csnsid	;
 	private String cprovider;
@@ -20,7 +24,37 @@ public class Customer {
 	private int    endrow	;
 	private String schitem	;
 	private String schword	;
-	public Customer() {}
+	public Customer_grade() {}
+	public String getGcode() {
+		return gcode;
+	}
+	public void setGcode(String gcode) {
+		this.gcode = gcode;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public int getGhigh() {
+		return ghigh;
+	}
+	public void setGhigh(int ghigh) {
+		this.ghigh = ghigh;
+	}
+	public int getGlow() {
+		return glow;
+	}
+	public void setGlow(int glow) {
+		this.glow = glow;
+	}
+	public int getGpoint() {
+		return gpoint;
+	}
+	public void setGpoint(int gpoint) {
+		this.gpoint = gpoint;
+	}
 	public String getCid() {
 		return cid;
 	}
@@ -69,18 +103,6 @@ public class Customer {
 	public void setCbirth(Date cbirth) {
 		this.cbirth = cbirth;
 	}
-	public String getGcode() {
-		return gcode;
-	}
-	public void setGcode(String gcode) {
-		this.gcode = gcode;
-	}
-	public String getGrade() {
-		return grade;
-	}
-	public void setGrade(String grade) {
-		this.grade = grade;
-	}
 	public int getCpoint() {
 		return cpoint;
 	}
@@ -125,11 +147,12 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [cid=" + cid + ", cpw=" + cpw + ", cname=" + cname + ", caddrnum=" + caddrnum + ", cemail="
-				+ cemail + ", ctel=" + ctel + ", crdate=" + crdate + ", cbirth=" + cbirth + ", gcode=" + gcode
-				+ ", grade=" + grade + ", cpoint=" + cpoint + ", csnsid=" + csnsid + ", cprovider=" + cprovider
-				+ ", startrow=" + startrow + ", endrow=" + endrow + ", schitem=" + schitem + ", schword=" + schword
-				+ "]";
+		return "Customer_grade [gcode=" + gcode + ", grade=" + grade + ", ghigh=" + ghigh + ", glow=" + glow
+				+ ", gpoint=" + gpoint + ", cid=" + cid + ", cpw=" + cpw + ", cname=" + cname + ", caddrnum=" + caddrnum
+				+ ", cemail=" + cemail + ", ctel=" + ctel + ", crdate=" + crdate + ", cbirth=" + cbirth + ", cpoint="
+				+ cpoint + ", csnsid=" + csnsid + ", cprovider=" + cprovider + ", startrow=" + startrow + ", endrow="
+				+ endrow + ", schitem=" + schitem + ", schword=" + schword + "]";
 	}
+	
 	
 }
