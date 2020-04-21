@@ -85,6 +85,5 @@ public class Product {
 				+ ", pimage2=" + pimage2 + ", pimage3=" + pimage3 + ", mid=" + mid + ", startrow=" + startrow
 				+ ", endrow=" + endrow + ", schitem=" + schitem + ", schword=" + schword + "]";
 	}
-	
 
 }

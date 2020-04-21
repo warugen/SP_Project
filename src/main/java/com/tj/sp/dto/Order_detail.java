@@ -85,7 +85,5 @@ public class Order_detail {
 				+ ", odcount=" + odcount + ", odunit=" + odunit + ", poname=" + poname + ", startrow=" + startrow
 				+ ", endrow=" + endrow + ", schitem=" + schitem + ", schword=" + schword + "]";
 	}
-	
-	
 
 }
