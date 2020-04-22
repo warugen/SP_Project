@@ -21,7 +21,6 @@ $(document).ready(function(){
 	
 	$('input[name=price_cell]').each(function(){ 
 		total_products += Number($(this).val());
-	    
 	    checknum++;
 	});
 	shiping = checknum * 3000;
@@ -48,6 +47,7 @@ $(document).ready(function(){
 		$('input[name=sale_cell]').each(function(){
 			total_sale += Number($(this).val()) ;
 		});
+		total_sale += Number($('#cpoint').val()); 
 		$('#total_sale').html(total_sale);
 		//쿠폰 적용text초기화
 		$('input[type=radio]').each(function(){	
@@ -61,6 +61,7 @@ $(document).ready(function(){
 				$('.cuname'+chnum).show();
 			}
 		});
+		
 		osum();
 	});
 	//쿠폰 체크 하기
@@ -69,6 +70,7 @@ $(document).ready(function(){
 		var chnum = $(this).val();
 		if($(this).val()==0){	//쿠폰 적용안함 체크
 			$('#'+cartno).css({'color':'#fff','background-color':'#3a5485'}).html('쿠폰사용');
+			$('#setcuid'+cartno).val('0');
 			$('#sale_cell'+cartno).val('0');
 			$('#sale_price'+cartno).html('');
 			$('#cart_price'+cartno).css({'text-decoration-line':'none','color':'black'});
@@ -83,12 +85,14 @@ $(document).ready(function(){
 			});
 			if(chk==2){	//쿠폰 중복적용시
 				alert('해당 쿠폰은 다른상품에 적용중입니다.');
+				$('#setcuid'+cartno).val('0');
 				$("input:radio[name='chnum"+cartno+"']:radio[value='0']").prop('checked', true);
 				$('#'+cartno).css({'color':'#fff','background-color':'#3a5485'}).html('쿠폰사용');
 			}else{	//쿠폰 적용
 				$('#'+cartno).css({'color':'#3a5485','background-color':'#fff'}).html('쿠폰변경');
 				var price_cell = $('#price_cell'+cartno).val();
 				var sale = $('.coupon'+chnum).html()/100;
+				$('#setcuid'+cartno).val( $('#cuid'+chnum).val());
 				$('#sale_cell'+cartno).val(price_cell*sale);
 				$('#sale_price'+cartno).html(price_cell*(1-sale) + '원');
 				$('#cart_price'+cartno).css({'text-decoration-line':'line-through','color':'#a2a2a5'});
@@ -103,6 +107,7 @@ $(document).ready(function(){
 		$('#mask').hide();
 		$("input:radio[name='chnum"+cartno+"']:radio[value='0']").prop('checked', true);
 		$('#'+cartno).css({'color':'#fff','background-color':'#3a5485'}).html('쿠폰사용');
+		$('#setcuid'+cartno).val('0');
 		$('#sale_cell'+cartno).val('0');
 		$('#sale_price'+cartno).html('');
 		$('#cart_price'+cartno).css({'text-decoration-line':'none','color':'black'});
@@ -110,13 +115,38 @@ $(document).ready(function(){
 		osum();
 	});
 	
+	//point 숫자 검사
+	$('#cpoint').focusout(function() {
+		var sum = $('#osum').html();
+		var point_all = Math.floor($('#point_all').val()/10) * 10;
+		if(point_all > sum){	//point가 총 결제금액보다 많을 경우->결제금액을 상한 point로 설정
+			point_all = sum;
+		}
+		if( Number($(this).val()) >= point_all ){ //쓴 숫자가 point보다 클 경우
+			$(this).val(point_all);
+			$('#point_all').prop("checked", true);
+		}else{
+			$('#point_all').prop("checked", false);
+			$(this).val(Math.floor($(this).val()/10) * 10);
+		}
+		$('.btn_coupon_apply').trigger('click');
+		osum();
+	});
+	
 	//포인트 전부 사용
 	$('#point_all').change(function(){
-		if($(this).is(':checked')){
-			$('#point').val($(this).val());
-		}else{
-			$('#point').val(0);
+		var sum = $('#osum').html();
+		var point_all = Math.floor($('#point_all').val()/10) * 10;
+		if(point_all > sum){	//point가 총 결제금액보다 많을 경우->결제금액을 상한 point로 설정
+			point_all = sum;
 		}
+		if($(this).is(':checked')){
+			$('#cpoint').val(point_all);
+		}else{
+			$('#cpoint').val(0);
+		}
+		$('.btn_coupon_apply').trigger('click');
+		osum();
 	});
 	
 	//주소 선택
@@ -128,6 +158,7 @@ $(document).ready(function(){
 	});
 	
 	osum();
+	//창 실행시 기본 선택주소 출력
 	var addrcode = $('select[name=addrlist]').val();
 	$('input[name=opost]').val($('#opost'+addrcode).val());
 	$('input[name=oaddr1]').val($('#oaddr1'+addrcode).val());
@@ -135,7 +166,17 @@ $(document).ready(function(){
 });
 //osum 계산 함수
 function osum(){
-	$('#osum').html($('#total_products').html()-$('#total_sale').html());
+	var osum = $('#total_products').html()-$('#total_sale').html();
+	var gpoint = $('input[name=gpoint]').val();
+	if(osum<0){	//osum이 -가 될경우 point 낮추기.
+		var temp = osum * -1;
+		osum = 0;
+		$('#cpoint').val($('#cpoint').val()-temp);
+		$('#total_sale').html($('#total_sale').html()-temp );
+	}
+	$('#osum').html(osum);
+	$('input[name=osum]').val(osum);
+	$('#plus_point').html( Math.floor(osum*gpoint/100) );
 }
 
 //쿠폰 모달 효과창 열기
@@ -145,6 +186,7 @@ function wrapWindowByMask(){
     $('#mask').css({'width':maskWidth,'height':maskHeight});  
     $('#mask').show();      
 }
+
 
 </script>
 </head>
@@ -163,12 +205,20 @@ function wrapWindowByMask(){
 			</ul>
 		</div>
 		<hr>
-		<form action="">
+		<form action="cart.do">
+		<input type="hidden" name="method" value="orderCompl">
+		<input type="hidden" name="cid" value="${customer.cid }">
 			<table>
 				<tr>
 					<th>상품정보</th><th>수량</th><th>금액</th><th>배송비</th><th>쿠폰사용</th>
 				</tr>
 				<c:forEach var="cart" items="${list }">
+					<!-- order_detail로 넘겨줄 값 -->
+					<input type="hidden" name="pocode"	value="${cart.pocode }" >
+					<input type="hidden" name="cuid"   	value="0" id="setcuid${cart.cartno}">
+					<input type="hidden" name="odcount"   	value="${cart.cartcount}" >
+					<input type="hidden" name="odunit"   	value="${cart.poprice }">
+					<!--  -->
 					<tr class="list">
 						<td>
 							<div class="list_left">
@@ -214,12 +264,12 @@ function wrapWindowByMask(){
 										<td colspan="3">적용안함</td>
 									</tr>
 									<c:forEach var="coupon" items="${coupon }">
+										<input type="hidden" id="cuid${coupon.chnum }" value="${coupon.cuid }">
 										<tr>
 											<td>
 												<input type="radio" name="chnum${cart.cartno }" value="${coupon.chnum }">
 											</td>
 											<td class="cunametd">
-												<input type="hidden" name="${coupon.cuname}" value="${coupon.cuname}">
 												${coupon.cuname}
 												<b class="cuname${coupon.chnum }">(적용중)</b>
 											</td>
@@ -238,12 +288,20 @@ function wrapWindowByMask(){
 			</table>
 			<div id="total_price">
 				주문금액<b id="total_products"></b>원 - 할인금액 <b id="total_sale">0</b>원 = 최종결재금액 <b id="osum"></b>원
+				<p> 고객등급 : ${customer.grade} /적립혜택 : <b><span id="plus_point"></span>P</b> </p>
+				<input type="hidden" name="osum">
+				<input type="hidden" name="gpoint" value="${customer.gpoint }">
 			</div>
 			<div id="bottom">
 				<div>
-					SP point <input type="text" id="point" value="0">원 <input type="checkbox" id="point_all" value="${customer.cpoint}">모두사용(보유 ${customer.cpoint} )
+					SP point <input type="text" id="cpoint" name="cpoint" value="0" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">원 
+					<input type="checkbox" id="point_all" value="${customer.cpoint}">모두사용(보유 <b>${customer.cpoint} P</b>)
 				</div>
 				<div>
+					배송지 정보 입력
+				</div>
+				<div>
+					<div id="addr_head">
 					배송지 선택
 					<select name="addrlist" id="option_addr">
 						<c:forEach var="addr" items="${addrlist }">
@@ -260,14 +318,13 @@ function wrapWindowByMask(){
 							<input type="hidden" id="oaddr1${addr.addrcode }" value="${addr.caddr1 }">
 							<input type="hidden" id="oaddr2${addr.addrcode }" value="${addr.caddr2 }">
 						</c:forEach>
-				</div>
-				<div>
+					</div>
 					<table>
 						<tr>
-							<th>받으시는 분</th><td><input type="text" name="oname" value="${customer.cname }"/></td>
+							<th>연락처</th><td><input type="text" name="otel" value="${customer.ctel }"/></td>
 						</tr>
 						<tr>
-							<th>연락처</th><td><input type="text" name="otel" value="${customer.ctel }"/></td>
+							<th>받으시는 분</th><td><input type="text" name="oname" value="${customer.cname }"/></td>
 						</tr>
 						<tr>
 							<th>우편번호</th>
@@ -290,8 +347,12 @@ function wrapWindowByMask(){
 					</table>
 				</div>
 			</div>
+			<div id="btns_pay">
+				<button type="button" class="btn2">취소하기</button><input type="submit" class="btn1" value="결제하기">	
+			</div>
 		</form>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 	<div id="mask"></div>
 	</body>
 </html>

@@ -148,7 +148,7 @@ form>table>tbody>tr>th:nth-of-type(n+2), form>table>tbody>tr>td:nth-of-type(n+2)
 #total_price b{
 	font-size: 1.3em;
 }
-#total_price b:last-child {
+#total_price b:nth-of-type(3) {
 	color: #ea0000;
 }
 #btns_order{

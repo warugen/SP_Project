@@ -10,8 +10,8 @@ public class Customer_gradeServiceImpl implements Customer_gradeService{
 	@Autowired
 	private Customer_gradeDao customer_gradeDao;
 	@Override
-	public Customer_grade getCustomer(String cid) {
-		return customer_gradeDao.getCustomer(cid);
+	public Customer_grade getCustomer_grade(String cid) {
+		return customer_gradeDao.getCustomer_grade(cid);
 	}
 
 }

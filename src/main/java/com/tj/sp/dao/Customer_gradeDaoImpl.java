@@ -10,8 +10,8 @@ public class Customer_gradeDaoImpl implements Customer_gradeDao {
 	@Autowired
 	private SqlSessionTemplate sessionTemplate;
 	@Override
-	public Customer_grade getCustomer(String cid) {
-		return sessionTemplate.selectOne("getCustomer" ,cid);
+	public Customer_grade getCustomer_grade(String cid) {
+		return sessionTemplate.selectOne("getCustomer_grade" ,cid);
 	}
 
 }

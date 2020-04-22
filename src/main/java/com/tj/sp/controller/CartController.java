@@ -9,10 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tj.sp.dto.Cart;
+import com.tj.sp.dto.Customer;
+import com.tj.sp.dto.Sp_order;
 import com.tj.sp.service.AddrlistService;
 import com.tj.sp.service.CartService;
+import com.tj.sp.service.CustomerService;
 import com.tj.sp.service.Customer_gradeService;
 import com.tj.sp.service.MycouponService;
+import com.tj.sp.service.Order_detailService;
+import com.tj.sp.service.Sp_orderService;
 
 @Controller
 @RequestMapping("cart")
@@ -22,9 +27,15 @@ public class CartController {
 	@Autowired
 	private MycouponService mycouponService;
 	@Autowired
-	private Customer_gradeService customerService;
+	private Customer_gradeService customergradeService;
 	@Autowired
 	private AddrlistService addrlistService;
+	@Autowired
+	private Sp_orderService sp_orderService;
+	@Autowired
+	private Order_detailService order_detailService;
+	@Autowired
+	private CustomerService customerService;
 	//장바구니 호출
 	@RequestMapping(params="method=cart", method =RequestMethod.GET)
 	public String cart(Model model) {
@@ -57,10 +68,20 @@ public class CartController {
 	public String orderView(String[] cartno ,Model model, HttpServletRequest request) {
 		model.addAttribute("coupon",mycouponService.listMycoupon("aaa"));
 		model.addAttribute("list", cartservice.listCartByCartno(cartno));
-		model.addAttribute("customer", customerService.getCustomer("aaa"));
+		model.addAttribute("customer", customergradeService.getCustomer_grade("aaa"));
 		model.addAttribute("addrlist", addrlistService.listAddrlist("aaa"));
 		return "cart/orderView";
 	}
-	
+	//주문하기
+	@RequestMapping(params="method=orderCompl", method =RequestMethod.GET)
+	public String orderCompl(String[] pocode, String[] cuid, String[] odcount, String[] odunit, 
+			Model model, Sp_order sp_order, Customer customer) {
+		sp_order.setCid(customer.getCid());
+		model.addAttribute("orderResult", sp_orderService.insertSp_order(sp_order));
+		model.addAttribute("order_detailResult",order_detailService.insertOrder_detail(pocode, cuid, odcount, odunit));
+		customerService.upPoint(customer.getCid());		//구매 포인트 적립
+		customerService.usePoint(customer);
+		return "cart/orderCompl";
+	}
 	
 }
