@@ -12,6 +12,8 @@
 		<typeAlias type="com.tj.sp.dto.Product_qna" 		alias="Product_qna"/>
 		<typeAlias type="com.tj.sp.dto.Notice" 				alias="Notice"/>
 		<typeAlias type="com.tj.sp.dto.Favorite" 			alias="Favorite"/>
+		<typeAlias type="com.tj.sp.dto.Addrlist"			alias="Addrlist"/>
+		<typeAlias type="com.tj.sp.dto.Admin"				alias="Admin"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/Cart.xml"					/>
@@ -22,5 +24,7 @@
 		<mapper resource="META-INF/sqlmap/mappers/Product_qna.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/Notice.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/Product.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Addrlist.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Admin.xml"/>
 	</mappers>
 </configuration>

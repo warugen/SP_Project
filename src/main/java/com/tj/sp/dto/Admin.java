@@ -3,10 +3,8 @@ package com.tj.sp.dto;
 public class Admin {
 	private String aid	;
 	private String apw	;
-	public Admin() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public Admin() {}
+	
 	public String getAid() {
 		return aid;
 	}

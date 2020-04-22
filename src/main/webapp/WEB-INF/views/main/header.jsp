@@ -9,6 +9,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="${conPath }/css/header.css" rel="stylesheet">
+<script type="text/javascript">
+function logout() {
+    if (!Kakao.Auth.getAccessToken()) {
+      alert('Not logged in.');
+      return
+    }
+    Kakao.Auth.logout(function() {
+      alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
+    });
+    
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
 </head>
 <body>
 	<header>
@@ -16,14 +32,15 @@
 		<c:if test="${empty member}">
 			<ul>
 				<li><a href="">입점신청</a></li>
-				<li><a href="">회원가입</a></li>
-				<li><a href="">로그인</a></li>
+				<li><a href="member.do?method=memberJoin">회원가입</a></li>
+				<li><a href="login.do?method=loginForm">로그인</a></li>
+				<li><a href="javascript:logout(this);">로그아웃</a></li>
 			</ul>
 		</c:if>
 		<c:if test="${not empty member}">
 			<ul>
 				<li><a href="">정보수정</a></li>
-				<li><a href="">로그아웃</a></li>
+				<li><a href="return logout();">로그아웃</a></li>
 				<li><a>${member.mname }님</a></li>
 			</ul>
 		</c:if>

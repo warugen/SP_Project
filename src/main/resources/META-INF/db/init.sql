@@ -92,7 +92,7 @@ CREATE TABLE CUSTOMER (
 	CEMAIL      VARCHAR2(30) NOT NULL,  /* 메일 */
 	CTEL        VARCHAR2(20) NOT NULL,  /* 고객전화 */
 	CRDATE      DATE DEFAULT SYSDATE,   /* 가입날짜 */
-	CBIRTH      DATE NOT NULL,          /* 고객생일 */
+	/*CBIRTH      DATE NOT NULL,*/          /* 고객생일 */
     CPOINT      NUMBER(10),             /* 고객포인트 */
 	GCODE       VARCHAR2(1) NOT NULL    /* 등급코드 */
     
