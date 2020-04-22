@@ -20,11 +20,11 @@ public class ProductController {
 	@Autowired
 	private Product_qnaService  product_qnaService;
 	@RequestMapping(params="method=detailProduct" )
-	public String detailProduct(String pcode,Model model,String pageNum) {
-		Paging paging = new Paging(product_qnaService.qnaCnt(),pageNum,10,5);
-		model.addAttribute("product_qna",product_qnaService.productQnaList(pageNum));
+	public String detailProduct(String pcode,Model model,String pagenum) {
+		Paging paging = new Paging(product_qnaService.qnaCnt(),pagenum,10,5);
+		model.addAttribute("product_qna",product_qnaService.productQnaList(pagenum));
 		model.addAttribute("paging",paging);
-		model.addAttribute("detail",productService.detailProduct(pcode));
+		System.out.println(paging);
 		return "product/detailProduct";
 	}
 

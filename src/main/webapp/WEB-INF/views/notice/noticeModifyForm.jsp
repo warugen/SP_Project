@@ -98,8 +98,8 @@ padding: 5px 0 5px 7px;
 				<tr>
 					<td colspan="2" class="btnClass">
 						<input type="submit" value="확인" class="btn1">
-						<input type="reset" value="취소" class="btn2">
-						<input type="button" value="뒤로가기" class="btn1" onclick="history.go(-1)">
+						<input type="button" value="삭제" class="btn2" onclick="location.href='${conPath }/notice.do?method=noticeDelete&ncode=${noticeDetail.ncode }&pagenum=${param.pagenum }'">
+					</td>
 				</tr>
 			</table>
 		</form>

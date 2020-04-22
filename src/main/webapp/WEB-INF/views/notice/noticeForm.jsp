@@ -12,7 +12,10 @@
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	function noticeWrap(ncode) {
-		location.href='notice.do?method=noticeDetailForm&ncode='+ncode+'&pagenum=${paging.currentpage}';
+		window.open('notice.do?method=noticeDetailForm&ncode='+ncode+'&pagenum=${paging.currentpage}', '', 'width=1000,height=700,left=100,top=100');
+	}
+	function writeBtn() {
+		window.open('notice.do?method=noticeWriteForm', '', 'width=1000,height=700,left=100,top=100');
 	}
 </script>
 <style>
@@ -64,24 +67,31 @@ padding-top: 10px;
 	<c:if test="${not empty deleteResult }">
 		<script>
 			alert('${deleteResult}');
+			opener.location.href='notice.do?method=noticeList';
+			window.close();
 		</script>
 	</c:if>
 	<c:if test="${not empty replyResult }">
 		<script>
 			var replyResult = "답변글 등록 완료";
-			alert('${replyResult}');
+			opener.location.href='notice.do?method=noticeList';
+			alert(replyResult);
 		</script>
 	</c:if>
 	<c:if test="${not empty writeResult }">
 		<script>
 			var writeResult = "공지사항 등록 성공";
-			alert('${writeResult}'); 
+			alert(writeResult); 
+			opener.location.href='notice.do?method=noticeList';
+			window.close();
 		</script>
 	</c:if>
 	<c:if test="${not empty modifyResult }">
 		<script>
 			var modifyResult = "공지사항 수정 성공";
-			alert('${modifyResult}');
+			alert(modifyResult);
+			opener.location.href='notice.do?method=noticeList';
+			window.close();
 		</script>
 	</c:if>
 	<div id="content">
@@ -92,7 +102,7 @@ padding-top: 10px;
 			<c:forEach var="notice" items="${noticeList}">
 				<tr class="noticeWrap" onclick="noticeWrap('${notice.ncode}')">
 					<td class="center">${notice.ncode }</td>
-					<td class="left">
+					<td class="left" id="ntitle">
 						<c:forEach var="i" begin="1" end="${notice.nindent }">
 							<c:if test="${i==notice.nindent }">
 								┗─ ⓡ 
@@ -125,7 +135,8 @@ padding-top: 10px;
 			</c:if>
 		</div>
 		<div class="btnwrite">
-			<button class="btn1"  onclick="location.href='${conPath}/notice.do?method=noticeWriteForm'">공지사항 등록</button>
+			<button class="btn1"  onclick="writeBtn()">공지사항 등록</button>
+<%-- 			location.href='${conPath}/notice.do?method=noticeWriteForm' --%>
 			<button class="btn2" onclick="location.href='${conPath}/notice.do?method=noticeReplyForm'">답변 등록</button>
 		</div>
 	</div>

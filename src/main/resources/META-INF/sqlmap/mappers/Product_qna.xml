@@ -34,7 +34,7 @@
 	</update>
 	<select id="productQnaList" resultMap="Product_qnaResult">
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
-		(SELECT * FROM PRODUCT_QNA WHERE PCODE=#{pcode, jdbcType=VARCHAR} ORDER BY PQDATE DESC)A)
+		(SELECT * FROM PRODUCT_QNA WHERE PCODE='2' ORDER BY PQDATE DESC)A)
 		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
 	<delete id="deleteQna">
@@ -44,6 +44,6 @@
 		SELECT * FROM PRODUCT_QNA WHERE PQCODE=#{pqcode}
 	</select>
 	<select id="qnaCnt" resultType="int">
-		SELECT COUNT(*) FROM PRODUCT_QNA WHERE PCODE=#{pcode, jdbcType=VARCHAR}
+		SELECT COUNT(*) FROM PRODUCT_QNA WHERE PCODE='2'
 	</select>
 </mapper> 

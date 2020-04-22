@@ -19,7 +19,7 @@ import com.tj.sp.util.Paging;
 public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
-	
+	private int writable=0;
 	@RequestMapping(params="method=noticeList")
 	public String noticeList(Model model,String pagenum) {
 		Paging paging = new Paging(noticeService.totalNotice(), pagenum, 10, 5);
@@ -36,11 +36,15 @@ public class NoticeController {
 	}
 	@RequestMapping(params="method=noticeWriteForm")
 	public String noticeWriteForm() {
+		writable = 1;
 		return "notice/noticeWirteForm";
 	}
 	@RequestMapping(params="method=noticeWrite" ,method=RequestMethod.POST)
 	public String noticeWrite(Notice notice, Model model){
-		model.addAttribute("writeResult", noticeService.addNotice(notice));
+		if(writable==1) {
+			model.addAttribute("writeResult", noticeService.addNotice(notice));
+			writable=0;
+		}
 		return "forward:notice.do?method=noticeList";
 	}
 	@RequestMapping(params="method=noticeDetailForm", method=RequestMethod.GET)

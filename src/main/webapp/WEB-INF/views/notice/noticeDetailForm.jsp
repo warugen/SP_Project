@@ -10,6 +10,16 @@
 <title>Insert title here</title>
 <link href="${conPath }/css/style.css" rel="stylesheet">
 <style>
+#content #noticeCaption{
+width:100%;
+font-size: 12px;
+color: #808080;
+margin-left: 11px;
+padding: 0;
+word-break: break-all;
+height: 40px;
+background:#3a5485;
+}
 #content #noticeCaption h1{
 color: white;
 padding: 0;
@@ -96,13 +106,13 @@ padding: 5px 0 5px 7px;
 						pattern="yyyy/MM/dd" /></td>
 			</tr>
 			<tr>
-				<td colspan="4"><textarea rows="30" cols="120" name="ncontent"
-						style="resize: none">${noticeDetail.ncontent }</textarea></td>
+				<td colspan="4">
+					<textarea rows="30" cols="120" name="ncontent" style="resize: none">${noticeDetail.ncontent }</textarea>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="4" class="btnClass">
 					<input type="submit" value="수정" class="btn1">
-					<input type="button" value="삭제" class="btn2" onclick="location.href='${conPath }/notice.do?method=noticeDelete&ncode=${noticeDetail.ncode }&pagenum=${param.pagenum }'">
 					<input type="button" value="답글달기" class="btn1" onclick="location.href='${conPath}/notice.do?method=noticeReplyForm&ncode=${noticeDetail.ncode }&pagenum=${param.pagenum }'">
 				</td>
 			</tr>
