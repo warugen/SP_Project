@@ -8,12 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/style.css" rel="stylesheet">
+<link href="${conPath }/css/product/style.css" rel="stylesheet">
 </head>
 <body>
 	<div id="content">
 		<table>
-			<caption>${productDetail.pcode } 상품 상세보기</caption>
+			<caption>${productDetail.pcode }번 상품 상세보기</caption>
 				<tr><th>상품명</th><td colspan="3">${productDetail.ptitle }</td></tr>
 				<tr><th>상품소개</th><td colspan="3">${productDetail.pcontent }</td></tr>
 				<tr><th>상품이미지</th>

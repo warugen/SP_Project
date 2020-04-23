@@ -4,14 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.tj.sp.dto.Cart" 				alias="Cart"/>
-		<typeAlias type="com.tj.sp.dto.Cart_Product_option" alias="Cart_Product_option"/>
-		<typeAlias type="com.tj.sp.dto.Customer" 			alias="Customer"/>
-		<typeAlias type="com.tj.sp.dto.Mycoupon" 			alias="Mycoupon"/>
-		<typeAlias type="com.tj.sp.dto.Product" 			alias="Product"/>
-		<typeAlias type="com.tj.sp.dto.Product_qna" 		alias="Product_qna"/>
-		<typeAlias type="com.tj.sp.dto.Notice" 				alias="Notice"/>
-		<typeAlias type="com.tj.sp.dto.Favorite" 			alias="Favorite"/>
+		<typeAlias type="com.tj.sp.dto.Cart" 					alias="Cart"/>
+		<typeAlias type="com.tj.sp.dto.Cart_Product_option" 	alias="Cart_Product_option"/>
+		<typeAlias type="com.tj.sp.dto.Customer" 				alias="Customer"/>
+		<typeAlias type="com.tj.sp.dto.Mycoupon" 				alias="Mycoupon"/>
+		<typeAlias type="com.tj.sp.dto.Product" 				alias="Product"/>
+		<typeAlias type="com.tj.sp.dto.Product_qna" 			alias="Product_qna"/>
+		<typeAlias type="com.tj.sp.dto.Notice" 					alias="Notice"/>
+		<typeAlias type="com.tj.sp.dto.Favorite" 				alias="Favorite"/>
+		<typeAlias type="com.tj.sp.dto.Product_Product_option"	alias="Product_Product_option"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/Cart.xml"					/>
@@ -22,5 +23,6 @@
 		<mapper resource="META-INF/sqlmap/mappers/Product_qna.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/Notice.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/Product.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Product_Product_option.xml"/>
 	</mappers>
 </configuration>

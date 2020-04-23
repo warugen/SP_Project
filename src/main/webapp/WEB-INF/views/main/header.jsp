@@ -29,7 +29,8 @@
 		</c:if>
 		</div>
 		<div class="logo">
-			<a href=""><input type="image" name="logo" src="${conPath }/img/logo.png" width="180"></a>
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;🆂-🅿🅻🅰🅲🅴
+			<a href="main.do"><input type="image" name="logo" src="${conPath }/img/SP_Logo.png" width="65"></a>
 			<div class="search">
 				<select name="option">
 					<option>전체</option>
@@ -52,6 +53,12 @@
 				</ul>
 			</div>
 		</div>
+		<input type="checkbox" id="menuicon">
+		<label for="menuicon">
+			<span></span>
+			<span></span>
+			<span></span>
+		</label>
 		<div class="sidebar">
 			<ul>
 				<li><a href="">의류/잡화</a>
