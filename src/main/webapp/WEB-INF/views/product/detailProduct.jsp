@@ -11,9 +11,6 @@
 <link href="${conPath}/css/style.css" rel="stylesheet">
 <link href="${conPath}/css/productContent.css" rel="stylesheet">
 <style>
-#content #content_bottom #product_qna table tbody .qnaReplyContent {
-	display: none;
-}
 b{
 color:red;
 }
@@ -29,19 +26,14 @@ color:red;
 		});
 	}); 
 	function writeQnaForm() {
-		window.open('product_qna.do?method=writeQnaForm','','width=650,height=410,left=100,top=100')
+		window.open('product_qna.do?method=writeQnaForm','','width=650,height=530,left=100,top=100')
+	}
+	function modifyQnaForm(pqcode) {
+		window.open('product_qna.do?method=modifyQnaForm&pqcode='+pqcode,'','width=650,height=530,left=100,top=100')
 	}
 </script>
 </head>
 <body>
-	<c:if test="${not empty writeQnaResult }">
-		<script>
-			var writeQnaResult = "문의가 등록 되었습니다."
-			alert(writeQnaResult);
-			opener.location.href='product.do?method=detailProduct';
-			window.close();
-		</script>
-	</c:if>
 	<div id="content">
 		<div id="content_top">
 			<div id="product_img">
@@ -96,8 +88,8 @@ color:red;
 						<div id="origin_area">
 							<h2>수량</h2>
 							<div id="origin_amount">
-								<span class="updwon_button"> <input type="number"
-									class="num" maxlength="3" value="1" min="1">
+								<span class="updwon_button"> 
+									<input type="number" class="num" maxlength="3" value="1" min="1">
 								</span>
 							</div>
 						</div>
@@ -125,28 +117,50 @@ color:red;
 					<c:forEach var="pq" items="${product_qna }">
 						<tr class="qnaReplyTitle">
 							<td>${pq.pqcode }</td>
-							<td>${pq.pqcomplete }</td>
-							<td class="left">${pq.pqtitle }</td>
+							<td>
+								<c:if test="${pq.pqcomplete==0 }">
+									<span style="border: 1px solid black;">검토중</span>
+								</c:if>
+								<c:if test="${pq.pqcomplete==1 }">
+									<span style="border: 1px solid black;">답변완료</span>
+								</c:if>
+							</td>
+							<td class="left">
+								<c:if test="${pq.pqsecret==0 }">
+									${pq.pqtitle }
+								</c:if>
+								<c:if test="${pq.pqsecret==1 }">
+									비밀글 입니다.
+								</c:if>	
+							</td>
 							<td>${pq.cid }</td>
 							<td>${pq.pqdate }</td>
 						</tr>
 						<tr class="qnaReplyContent" id="qnaReplyContent${i }">
-							<td colspan="5">
+							<td colspan="4">
 								<div>
-									<span> <img src="${conPath }/img/Q.PNG" width="35"
-										height="35">질문
-									</span> ${pq.pqcontent }
+									<span> 
+										<img src="${conPath }/img/Q.PNG" width="35" height="35">질문
+									</span> 
+									<c:if test="${pq.pqsecret==0 }">
+										${pq.pqcontent }
+									</c:if>
+									<c:if test="${pq.pqsecret==1 }">
+											비밀글 입니다.
+									</c:if>	
 								</div>
+							</td>
+							<td>
+								<button onclick="modifyQnaForm('${pq.pqcode }')">수정</button>
+								<button onclick="location.href='${conPath}/product_qna.do?method=deleteQna'">삭제</button>
 							</td>
 						</tr>
 						<c:set var="i" value="${i+1 }"/>
 					</c:forEach>
 				</table>
 				<div class="btn_wrap">
-					<button
-						onclick="">답변하기</button>
-					<button
-						onclick="writeQnaForm()">문의하기</button>
+					<button onclick="">답변하기</button>
+					<button onclick="writeQnaForm()">문의하기</button>
 				</div>
 				<div class="paging">
 					<c:if test="${paging.startpage>paging.blocksize }">

@@ -16,34 +16,35 @@
 	</resultMap>
 	<insert id="writeQna" parameterType="Product_qna">
 		INSERT INTO PRODUCT_QNA
-		(pqcode,pqtitle,pqcontent,pqanswer,pqsecret,pqcomplete,pcode,cid)
-		VALUES(PRODUCT_QNA_SEQ.nextval,#{pqtitle},#{pqcontent},#{pqanswer},
-		#{pqsecret},#{pqcomplete},#{pcode},#{cid})
+		(PQCODE,PQTITLE,PQCONTENT,PQSECRET,PQCOMPLETE,PCODE,CID)
+		VALUES(PRODUCT_QNA_SEQ.nextval,#{pqtitle},#{pqcontent},#{pqsecret},#{pqcomplete},'2','bbb')
 	</insert>
 	<update id="replyQna">
-		SELECT * FROM PRODUCT WHERE PCODE=#{pcode}
+		UPDATE PRODUCT_QNA SET PQCOMPLETE=#{pqcomplete},PQANSWER=#{pqanswer} WHERE PQCODE='3'
 	</update>
 	<update id="modifyQna" parameterType="Product_qna">
 		UPDATE PRODUCT_QNA SET
-		PQTITLE=#{pqcode},
+		PQTITLE=#{pqtitle},
 		PQCONTENT=#{pqcontent},
-		PQANSWER=#{pqanswer},
-		PQSECRET=#{pqsecret},
-		PQCOMPLETE=#{pqcomplete}
-		WHERE PqCODE=#{pqcode} AND CID=#{cid}
+		PQSECRET=#{pqsecret}
+		WHERE PQCODE=#{pqcode} AND CID='bbb' AND PCODE='2'		
 	</update>
 	<select id="productQnaList" resultMap="Product_qnaResult">
-		SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+		SELECT * FROM (SELECT
+		ROWNUM RN, A.* FROM
 		(SELECT * FROM PRODUCT_QNA WHERE PCODE='2' ORDER BY PQDATE DESC)A)
-		WHERE RN BETWEEN #{startrow} AND #{endrow}
+		WHERE RN
+		BETWEEN #{startrow} AND #{endrow}
 	</select>
 	<delete id="deleteQna">
-		DELETE FROM PRODUCT_QNA WHERE PCODE=#{pcode} AND CID=#{cid}
+		DELETE FROM PRODUCT_QNA WHERE PCODE='2' AND CID='bbb' AND PQCODE=#{pqcode}
 	</delete>
-	<select id="getQna" parameterType="String" resultType="Product_qna">
+	<select id="getQna" parameterType="String"
+		resultType="Product_qna">
 		SELECT * FROM PRODUCT_QNA WHERE PQCODE=#{pqcode}
 	</select>
 	<select id="qnaCnt" resultType="int">
-		SELECT COUNT(*) FROM PRODUCT_QNA WHERE PCODE='2'
+		SELECT COUNT(*) FROM PRODUCT_QNA
+		WHERE PCODE='2'
 	</select>
 </mapper> 

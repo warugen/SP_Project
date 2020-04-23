@@ -41,6 +41,7 @@ public class NoticeController {
 	}
 	@RequestMapping(params="method=noticeWrite" ,method=RequestMethod.POST)
 	public String noticeWrite(Notice notice, Model model){
+		System.out.println(notice.toString());
 		if(writable==1) {
 			model.addAttribute("writeResult", noticeService.addNotice(notice));
 			writable=0;

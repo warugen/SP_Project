@@ -86,33 +86,36 @@ margin-bottom: 20px;
 </style>
 </head>
 <body>
-	<c:if test="${not empty writeQnaResult }">
+	<c:if test="${not empty modifyQnaResult }">
 		<script>
-			var writeQnaResult = "문의가 등록 되었습니다."
-			alert(writeQnaResult);
+			/* var modifyQnaResult = "문의가 수정 되었습니다." */
+			alert('${modifyQnaResult}');
 			opener.location.href = 'product.do?method=detailProduct';
 			window.close();
 		</script>
 	</c:if>
 	<div id="questionForm">
-		<form action="${conPath }/product_qna.do?method=writeQna">
-			<input type="hidden" name="method" value="writeQna">
-			<input type="hidden" name="pqcomplate" value="0"> 
+		<form action="${conPath }/product_qna.do?method=modifyQna">
+			<input type="hidden" name="method" value="modifyQna">
+			<input type="hidden" name="pqcode" value="${modifyQnaForm.pqcode }">
 			<div class="question_content">
 				<h2>상품 문의</h2>
 				<table>
 					<tbody>
 						<tr>
 							<th>제목</th>
-							<td><input type="text" name="pqtitle" style="width: 300px;"></td>
+							<td><input type="text" name="pqtitle" style="width: 300px;" value="${modifyQnaForm.pqtitle }"></td>
 						<tr>
 							<th>문의내용</th>
-							<td><textarea name="pqcontent" cols="40" rows="10" style="resize: none"></textarea></td>
+							<td><textarea name="pqcontent" cols="40" rows="10" style="resize: none">${modifyQnaForm.pqcontent }</textarea></td>
 						</tr>
 						<tr>
 							<th>비밀글 여부</th>
-							<td><input type="radio" name="pqsecret" value="1">YES
-								<input type="radio" name="pqsecret" value="0" checked="checked">NO
+							<td>
+								<input type="radio" name="pqsecret" value="1" 
+									<c:if test="${modifyQnaForm.pqsecret eq 1 }">checked="checked"</c:if>>YES
+								<input type="radio" name="pqsecret" value="0" 
+									<c:if test="${modifyQnaForm.pqsecret eq 0 }">checked="checked"</c:if>>NO
 							</td>
 						</tr>
 					</tbody>

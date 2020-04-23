@@ -72,8 +72,8 @@ line-height: 14px;
 text-align: left;
 padding: 5px 0 5px 7px;
 }
-#condtent btnClass{
-	 margin-bottom: 50px;
+#condtent .btnClass{
+ padding:20px 0 20px 0;
 }
 </style>
 </head>

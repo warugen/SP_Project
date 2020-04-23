@@ -14,20 +14,29 @@ import com.tj.sp.util.Paging;
 public class Product_qnaController {
 	@Autowired
 	private Product_qnaService  product_qnaService;
-	/*
-	 * @RequestMapping(params="product_qnaList", method=RequestMethod.GET) public
-	 * String product_qnaList(String pageNum,Model model) { Paging paging = new
-	 * Paging(product_qnaService.qnaCnt(),pageNum,10,5);
-	 * model.addAttribute("product_qna",product_qnaService.productQnaList(pageNum));
-	 * model.addAttribute("paging",paging); return "product/detailProduct"; }
-	 */
 	@RequestMapping(params="method=writeQnaForm")
 	public String writeQnaForm() {
 		return "product_qna/writeQnaForm";
 	}
-	@RequestMapping(params="product_qna.do?method=writeQna")
-	public String writeQna(Product_qna product_qna,Model model) {
+	@RequestMapping(params="method=writeQna")
+	public String writeQna(Product_qna product_qna, Model model) {
 		model.addAttribute("writeQnaResult",product_qnaService.writeQna(product_qna));
+		return "product_qna/writeQnaForm";
+		//return "forward:product.do?method=detailProduct";
+	}
+	@RequestMapping(params="method=modifyQnaForm")
+	public String modifyQnaForm(Product_qna product_qna, Model model) {
+		model.addAttribute("modifyQnaForm",product_qnaService.getQna(product_qna));
+		return "product_qna/modifyQnaForm";
+	}
+	@RequestMapping(params="method=modifyQna")
+	public String modifyQna(Product_qna product_qna, Model model) {
+		model.addAttribute("modifyQnaResult",product_qnaService.modifyQna(product_qna));
+		return "product_qna/modifyQnaForm";
+	}
+	@RequestMapping(params="method=deleteQna")
+	public String deleteQna(String pqcode) {
+		product_qnaService.deleteQna(pqcode);
 		return "forward:product.do?method=detailProduct";
 	}
 }

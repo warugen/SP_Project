@@ -20,7 +20,6 @@
 </script>
 <style>
 #content td{
- border-collapse: collapse;
  word-break: break-all;
 	height: 40px;
  border-bottom: 1px solid #cccccc;
@@ -30,6 +29,7 @@
 }
 #content table{
 	width: 1000px;
+	border-collapse: collapse;
 }
 #content .noticeMenu{
 font-size: 12px;

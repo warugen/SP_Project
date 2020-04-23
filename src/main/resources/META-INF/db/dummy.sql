@@ -3,7 +3,7 @@ INSERT INTO PRODUCT_TYPE VALUES('1-1','1','농산');
 INSERT INTO PRODUCT_TYPE VALUES('1-2','1','수산');
 INSERT INTO PRODUCT_TYPE VALUES('1-3','1','축산');
 INSERT INTO MARKET VALUES('aaa','111','동원몰','010-000-0000','00234','서울시 영등포구','234-24번지');
-INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '뭐임마쌀', '맛좋은 우리쌀', 'ssal.jpg',null,null, 'aaa');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '우리쌀', '맛좋은 우리쌀', 'ssal.jpg',null,null, 'aaa');
 INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'우리쌀5kg',5000,10000,400,'1-1',1);
 INSERT INTO GRADE VALUES('1', '일반회원',4,0,1);
 INSERT INTO GRADE VALUES('2', 'vip',80,5,2);

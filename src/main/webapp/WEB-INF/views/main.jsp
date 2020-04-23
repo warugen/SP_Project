@@ -14,5 +14,6 @@
  	<a href="${conPath }/product.do?method=detailProduct">상세보기</a>
  	<a href="${conPath }/favorit.do?method=favoritList">찜 목록</a>
  	<a href="${conPath }/notice.do?method=noticeList">공지사항</a>
+ 	<a href="${conPath }/Order_detail_product_mid.do?method=listOrder_detailByCid">회원별 주문 목록</a>
 </body>
 </html>
