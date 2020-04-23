@@ -14,16 +14,24 @@ public class Product_qnaServiceimpl implements Product_qnaService {
 	private Product_qnaDao product_qnaDao;
 	@Override
 	public int writeQna(Product_qna product_qna) {
+		product_qna.setPqcomplete("0");
+		System.out.println("글쓰기"+product_qna);
 		return product_qnaDao.writeQna(product_qna);
 	}
 
 	@Override
 	public int modifyQna(Product_qna product_qna) {
+		System.out.println("글수정"+product_qna);
 		return product_qnaDao.modifyQna(product_qna);
 	}
 
 	@Override
-	public List<Product_qna> productQnaList(Product_qna product_qna,String pageNum) {
+	public List<Product_qna> productQnaList(String pagenum) {
+		Paging paging = new Paging(product_qnaDao.qnaCnt(),pagenum,10,5);
+		Product_qna product_qna = new Product_qna();
+		product_qna.setStartrow(paging.getStartrow());
+		product_qna.setEndrow(paging.getEndrow());
+		product_qna.setPcode("2");
 		return product_qnaDao.productQnaList(product_qna);
 	}
 

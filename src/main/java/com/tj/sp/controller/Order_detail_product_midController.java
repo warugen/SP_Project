@@ -30,5 +30,4 @@ public class Order_detail_product_midController {
 				order_detail_product_midService.listOrder_detailByMid(order_detail_product_mid, pagenum) );
 		return"testResult";
 	}
-	
 }

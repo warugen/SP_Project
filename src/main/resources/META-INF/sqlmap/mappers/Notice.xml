@@ -27,7 +27,7 @@
 			VALUES
 			(NOTICE_SEQ.NEXTVAL,#{ntitle},#{ncontent},#{ngroup},#{nstep},#{nindent},#{nhit},#{cid, jdbcType=VARCHAR})
 		</if>
-		<if test="cid==null and mid==null">
+		<if test="cid==null and aid!=null">
 			INSERT INTO NOTICE
 			(NCODE,NTITLE,NCONTENT,NGROUP,NSTEP,NINDENT,NHIT,AID)
 			VALUES
