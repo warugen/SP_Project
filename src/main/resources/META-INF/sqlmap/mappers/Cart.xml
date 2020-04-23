@@ -22,6 +22,14 @@
 	<update id="updateCart" parameterType="Cart">
 		UPDATE CART SET CARTCOUNT=#{cartcount} WHERE CARTNO = #{cartno}
 	</update>
+	<!-- 구매후 카트에서 제거 -->
+	<delete id="buyCart" parameterType="java.util.ArrayList">
+		DELETE FROM CART WHERE CARTNO IN
+		<foreach item="cartno" index="index" collection="array"
+     		 open="(" separator="," close=")">
+        		#{cartno}
+  		</foreach>
+	</delete>
 	
 </mapper>
 

@@ -21,4 +21,12 @@ public class MycouponServiceImpl implements MycouponService {
 		return mycoupondao.getMycoupon(chnum);
 	}
 
+	@Override
+	public int useMycoupon(String[] chnum) {
+		if(chnum.length == 0) {
+			return 0;
+		}
+		return mycoupondao.useMycoupon(chnum);
+	}
+
 }

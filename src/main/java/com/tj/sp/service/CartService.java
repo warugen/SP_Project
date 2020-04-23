@@ -10,6 +10,7 @@ public interface CartService {
 	public int insertCart(Cart cart);
 	public int deleteCart(String cartno);
 	public int updateCart(Cart cart);
+	public int buyCart(String[] cartno);
 	
 	public List<Cart_Product_option> listCartByCartno(String[] cartno);
 	public Cart_Product_option CartPrice(String cartno);

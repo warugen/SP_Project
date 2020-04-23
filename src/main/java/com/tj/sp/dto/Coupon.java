@@ -3,7 +3,7 @@ package com.tj.sp.dto;
 public class Coupon {
 	private String 	cuid    ;
 	private String 	cuname	;
-	private int 	cusail	;
+	private int 	cusale	;
 	public Coupon() {}
 	public String getCuid() {
 		return cuid;
@@ -17,15 +17,15 @@ public class Coupon {
 	public void setCuname(String cuname) {
 		this.cuname = cuname;
 	}
-	public int getCusail() {
-		return cusail;
+	public int getCusale() {
+		return cusale;
 	}
-	public void setCusail(int cusail) {
-		this.cusail = cusail;
+	public void setCusale(int cusale) {
+		this.cusale = cusale;
 	}
 	@Override
 	public String toString() {
-		return "Coupon [cuid=" + cuid + ", cuname=" + cuname + ", cusail=" + cusail + "]";
+		return "Coupon [cuid=" + cuid + ", cuname=" + cuname + ", cusale=" + cusale + "]";
 	}
 	
 }

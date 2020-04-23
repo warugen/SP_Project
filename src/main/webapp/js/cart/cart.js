@@ -7,7 +7,7 @@ $(document).ready(function(){
 	});
 	$('.num_total').html(allcheck);
 	totpr();
-	
+	//전체선택 체크용 함수
 	$('.checkall').change(function(){
 		if($(this).is(':checked')){
 			document.location.href='cart.do?method=cart'
@@ -22,6 +22,7 @@ $(document).ready(function(){
 			totpr();
 		}
 	});
+	//제품 선택 변경시 금액 변경
 	$('.check').change(function(){
 		cartno = $(this).val();
 		cartcount = $('#cartcount'+cartno).val();
@@ -43,6 +44,7 @@ $(document).ready(function(){
 			totpr();
 		}
 	 });
+	//제품 수량 더하기
 	$('.btn_count_plus').click(function(){
 		cartno = $(this).val();
 		$('#cartcount'+cartno).val(Number($('#cartcount'+cartno).val()) +1);
@@ -74,6 +76,7 @@ $(document).ready(function(){
 		});
 		
 	});
+	//제품 수량 빼기
 	$('.btn_count_minus').click(function(){
 		cartno = $(this).val();
 		if($('#cartcount'+cartno).val() == 1){
@@ -108,7 +111,9 @@ $(document).ready(function(){
 		});
 	});
 });
+
 function totpr(){
+	//체크갱신
 	total_products = 0;
 	$('input[name=price_cell]').each(function(){ 
 		total_products += Number($(this).val());
@@ -122,6 +127,7 @@ function totpr(){
 			checknum++;
 		}
 	});
+	//금액 갱신
 	shiping = checknum * 3000;
 	$('#shiping').html(shiping);
 	$('#result').html(Number($('#total_products').html())+Number($('#shiping').html()));
@@ -130,6 +136,7 @@ function totpr(){
 	$('.check').each(function(){
 		allcheck++;
 	});
+	//체크수 검사-> 모두선택 체크 or 해제
 	if(checknum == allcheck){
 		$("input:checkbox[name='checkall']").each(function() {
 			this.checked = true;

@@ -56,10 +56,11 @@ select[name="option"]{
 	line-height:70px;
 }
 input[name="logo"]{
-	position: absolute;
-	top:2%;
-	left:16%;
-	outline:0;
+	width: 80px;
+    position: absolute;
+    top: 4%;
+    left: 16%;
+    outline: 0;
 }
 .search {
 	width:620px;
@@ -148,7 +149,7 @@ div[class="sidebar"] {
 	width: 360px;
 	height: 100%;
 	background: #3a5485;
-	/* opacity: 0.7; */
+	display: none;
 	position: absolute;
 	top: 152px;
 	z-index: 1;

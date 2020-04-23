@@ -88,7 +88,7 @@ CREATE TABLE CUSTOMER (
 	CNAME       VARCHAR2(20) NOT NULL,  /* 고객이름 */
     CSNSID      VARCHAR2(50),           /* SNS로그인ID */
 	CPROVIDER   VARCHAR2(50),           /* SNS로그인종류 */
-	CADDRNUM    VARCHAR2(5)  NOT NULL,  /* 기본주소번호 */
+	ADDRCODE    VARCHAR2(20)  NOT NULL,  /* 기본주소번호 */
 	CEMAIL      VARCHAR2(30) NOT NULL,  /* 메일 */
 	CTEL        VARCHAR2(20) NOT NULL,  /* 고객전화 */
 	CRDATE      DATE DEFAULT SYSDATE,   /* 가입날짜 */
@@ -156,7 +156,7 @@ ALTER TABLE PRODUCT_TYPE
 CREATE TABLE COUPON (
 	CUID    VARCHAR2(20)    NOT NULL, /* 쿠폰아이디 */
 	CUNAME  VARCHAR2(20)    NOT NULL, /* 쿠폰명 */
-	CUSAIL  NUMBER(4)       NOT NULL  /* 할인율 */
+	CUSALE  NUMBER(4)       NOT NULL  /* 할인율 */
 );
 
 ALTER TABLE COUPON
