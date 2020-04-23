@@ -24,11 +24,8 @@
 		<hr width="500" color="green">
 		<form action="${conPath }/product.do?method=pRegister" method="post" enctype="multipart/form-data">
 			<table>
-				<tr><th>상품코드 : </th><td><input type="text" name="pcode" required="required"></td></tr>
 				<tr><th>상품명 : </th><td><input type="text" name="ptitle" required="required"></td></tr>
 				<tr><th>상품소개 : </th><td><textarea rows="5" cols="22" name="pcontent"></textarea></td></tr>
-				<tr><th>판매가격 : </th><td><input type="number" name="poprice" required="required"></td></tr>
-				<tr><th>재고량 : </th><td><input type="number" name="postock" required="required"></td></tr>
 				<tr><th>이미지1 : </th><td><input type="file" name="file1" required="required"></td></tr>
 				<tr><th>이미지2 : </th><td><input type="file" name="file2"></td></tr>
 				<tr><th>이미지3 : </th><td><input type="file" name="file3"></td></tr>

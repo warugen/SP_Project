@@ -74,7 +74,7 @@ public class ProductController {
 		return "product/joinList";
 	}
 	@RequestMapping(params = "method=productRegister", method=RequestMethod.GET)
-	public String productRegister(Model model) {
+	public String productRegister() {
 		return "product/productRegister";
 	}
 	@RequestMapping(params = "method=pRegister")

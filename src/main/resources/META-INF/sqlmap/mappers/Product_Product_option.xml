@@ -23,10 +23,4 @@
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT p.*,(select min(poprice) FROM PRODUCT_OPTION where pcode = p.pcode) poprice from product p ORDER BY PTITLE DESC) A)
     		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
-	<!-- 등록번호로 상품가져오기 -->
-    <select id="getProduct" parameterType="String" resultType="Product">
-    	<![CDATA[
-    		SELECT * FROM (SELECT P.*, POCODE, PONAME, PONET, POPRICE, POSTOCK FROM PRODUCT_OPTION O, PRODUCT P WHERE P.PCODE=O.PCODE) WHERE PCODE=#{pcode}
-    	]]>
-    </select>
 </mapper>

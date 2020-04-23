@@ -34,6 +34,12 @@
     <select id="cntProduct" resultType="int">
     	SELECT COUNT(*) FROM PRODUCT
     </select>
+    <!-- 등록번호로 상품가져오기 -->
+    <select id="getProduct" parameterType="String" resultType="Product">
+    	<![CDATA[
+    		SELECT * FROM PRODUCT WHERE PCODE=#{pcode}
+    	]]>
+    </select>
     <!-- 상품등록 -->
     <insert id="registerProduct" parameterType="Product">
     	INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.NEXTVAL, #{ptitle}, #{pcontent}, #{pimage1}, #{pimage2}, #{pimage3}, #{mid})

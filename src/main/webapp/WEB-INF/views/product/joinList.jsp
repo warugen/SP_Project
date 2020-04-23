@@ -13,7 +13,8 @@
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	function trClicked(pcode) {
-		location.href = '${conPath}/product.do?method=productDetail&pcode=' + pcode + '&pagenum=${paging.currentpage}';
+		location.href = '${conPath}/product.do?method=productDetail&pcode=' + pcode 
+				+ '&pagenum=${paging.currentpage}';
 	 }
 </script>
 </head>
@@ -25,7 +26,7 @@
 		<div id="test">
 			<table>
 				<c:forEach var="product_product_option" items="${joinList }">
-					<tr onclick="trClicked('${product.pcode}')">
+					<tr onclick="trClicked('${product_product_option.pcode}')">
 						<th><img src="${conPath }/productUpload/${product_product_option.pimage1 }"><a href="${conPath }/product.do?method=productDetail&pcode=${product_product_option.pcode }&pagenum=${paging.currentpage }"></a>
 						<br><br>
 						상품명 : ${product_product_option.ptitle }<br>
