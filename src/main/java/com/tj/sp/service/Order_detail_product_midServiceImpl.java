@@ -19,10 +19,16 @@ public class Order_detail_product_midServiceImpl implements Order_detail_product
 		Paging paging = new Paging(order_detail_product_midDao.cntOrder_detailByCid(cid), pageNum, 10, 10);
 		order_detail_product_mid.setStartrow(paging.getStartrow());
 		order_detail_product_mid.setEndrow(paging.getEndrow());
-		System.out.println(cid);
-		System.out.println(paging.getStartrow());
-		System.out.println(paging.getEndrow());
 		return order_detail_product_midDao.listOrder_detailByCid(order_detail_product_mid);
+	}
+	@Override
+	public List<Order_detail_product_mid> listOrder_detailByMid(
+			Order_detail_product_mid order_detail_product_mid, String pageNum) {
+		String mid = order_detail_product_mid.getMid();
+		Paging paging = new Paging(order_detail_product_midDao.cntOrder_detailByMid(mid), pageNum, 10, 10);
+		order_detail_product_mid.setStartrow(paging.getStartrow());
+		order_detail_product_mid.setEndrow(paging.getEndrow());
+		return order_detail_product_midDao.listOrder_detailByMid(order_detail_product_mid);
 	}
 
 }

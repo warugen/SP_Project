@@ -12,12 +12,20 @@ public class Order_detail_product_midDaoImpl implements Order_detail_product_mid
 	@Autowired
 	private SqlSession sessionTemplate;
 	@Override
+	public int cntOrder_detailByCid(String cid) {
+		return sessionTemplate.selectOne("cntOrder_detailByCid", cid);
+	}
+	@Override
 	public List<Order_detail_product_mid> listOrder_detailByCid(Order_detail_product_mid order_detail_product_mid) {
 		return sessionTemplate.selectList("listOrder_detailByCid", order_detail_product_mid);
 	}
 	@Override
-	public int cntOrder_detailByCid(String cid) {
-		return sessionTemplate.selectOne("cntOrder_detailByCid", cid);
+	public int cntOrder_detailByMid(String mid) {
+		return sessionTemplate.selectOne("cntOrder_detailByMid", mid);
+	}
+	@Override
+	public List<Order_detail_product_mid> listOrder_detailByMid(Order_detail_product_mid order_detail_product_mid) {
+		return sessionTemplate.selectList("listOrder_detailByMid", order_detail_product_mid);
 	}
 
 }

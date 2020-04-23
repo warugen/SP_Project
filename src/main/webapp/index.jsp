@@ -17,6 +17,7 @@
 	<a href="notice.do?method=noticeList" class="btn2">공지사항</a>
 	<a href="product.do?method=detailProduct" class="btn1">제품상세</a>
 	<a href="Order_detail_product_mid.do?method=listOrder_detailByCid" class="btn2">주문 리스트</a>
+	<a href="Order_detail_product_mid.do?method=listOrder_detailByMid" class="btn1">마켓별 주문 리스트</a>
 </body>
 
 </html>

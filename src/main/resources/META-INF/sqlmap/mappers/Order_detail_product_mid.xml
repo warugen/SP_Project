@@ -31,6 +31,9 @@
 		
 		<result property="mid" 		column="mid" 		/>
 	</resultMap>
+	<select id="cntOrder_detailByCid" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM ORDER_DETAIL O, SP_ORDER S WHERE O.OCODE=S.OCODE AND CID=#{cid}
+	</select>
 	<select id="listOrder_detailByCid" parameterType="Order_detail_product_mid" resultMap="Order_detail_product_midResult">
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (
     		SELECT O.ODCODE, O.CUID, O.ODCOUNT, O.ODUNIT, S.*, 
@@ -38,11 +41,21 @@
     		(SELECT MID FROM PRODUCT WHERE PCODE=P.POCODE) MID 
     			FROM ORDER_DETAIL O , SP_ORDER S, PRODUCT_OPTION P 
     			WHERE O.OCODE=S.OCODE AND O.POCODE=P.POCODE AND CID=#{cid}
-        		ORDER BY OTIME) A) 
+        		ORDER BY OTIME DESC) A) 
         		 WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
-	<select id="cntOrder_detailByCid" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM ORDER_DETAIL O, SP_ORDER S WHERE O.OCODE=S.OCODE AND CID=#{cid}
-	</select>
 	
+	<select id="cntOrder_detailByMid" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM ORDER_DETAIL O, SP_ORDER S WHERE O.OCODE=S.OCODE AND 
+    		POCODE IN (SELECT POCODE FROM PRODUCT_OPTION O , PRODUCT P WHERE P.PCODE=O.PCODE AND MID=#{mid})
+	</select>
+	<select id="listOrder_detailByMid" parameterType="Order_detail_product_mid" resultMap="Order_detail_product_midResult">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (
+   	 		SELECT O.ODCODE, O.CUID, O.ODCOUNT, O.ODUNIT, S.*, P.PONAME, P.PONET,P.POSTOCK,P.POPRICE, P.TYPECODE,P.PCODE , 
+    		(SELECT MID FROM PRODUCT WHERE PCODE=P.POCODE) MID 
+    		FROM ORDER_DETAIL O , SP_ORDER S, PRODUCT_OPTION P 
+    		WHERE O.OCODE=S.OCODE AND O.POCODE=P.POCODE AND P.PCODE = (SELECT PCODE FROM PRODUCT WHERE MID=#{mid})
+        	ORDER BY OTIME DESC) A) 
+         	WHERE RN BETWEEN #{startrow} AND #{endrow}
+	</select>
 </mapper>

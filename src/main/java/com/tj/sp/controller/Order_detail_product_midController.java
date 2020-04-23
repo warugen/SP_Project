@@ -22,4 +22,13 @@ public class Order_detail_product_midController {
 				order_detail_product_midService.listOrder_detailByCid(order_detail_product_mid, pagenum) );
 		return"order/statusOrder";
 	}
+	@RequestMapping(params="method=listOrder_detailByMid", method=RequestMethod.GET)
+	public String listOrder_detailByMid(Model model, String pagenum, 
+			Order_detail_product_mid order_detail_product_mid ) {
+		order_detail_product_mid.setMid("aaa");
+		model.addAttribute("list", 
+				order_detail_product_midService.listOrder_detailByMid(order_detail_product_mid, pagenum) );
+		return"testResult";
+	}
+	
 }
