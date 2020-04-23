@@ -18,6 +18,7 @@
 		<typeAlias type="com.tj.sp.dto.Product_qna" 				alias="Product_qna"			/>
 		<typeAlias type="com.tj.sp.dto.Review" 						alias="Review"				/>
 		<typeAlias type="com.tj.sp.dto.Sp_order" 					alias="Sp_order"			/>
+		<typeAlias type="com.tj.sp.dto.Product_Product_option"		alias="Product_Product_option"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/Addrlist.xml"				/>
@@ -34,5 +35,6 @@
 		<mapper resource="META-INF/sqlmap/mappers/Product_qna.xml"			/>
 		<mapper resource="META-INF/sqlmap/mappers/Review.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Sp_order.xml"				/>
+		<mapper resource="META-INF/sqlmap/mappers/Product_Product_option.xml"/>
 	</mappers>
 </configuration>
