@@ -58,8 +58,13 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 	@Override
 	public int snsIdConfirm(String csnsid) {
-		// TODO Auto-generated method stub
+		// 회원DB에 snsid가 있는지 확인
 		return sessionTemplate.selectOne("snsIdConfirm", csnsid);
+	}
+	@Override
+	public Customer getSnsCustomer(String csnsid) {
+		// snsid로 회원정보 가져오기
+		return sessionTemplate.selectOne("getSnsCustomer", csnsid);
 	}
 
 }

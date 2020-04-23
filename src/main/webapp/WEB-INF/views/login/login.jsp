@@ -34,23 +34,24 @@
 	<input type="hidden" name="snsemail"  value="">
 
 	<div class="group">
-	  <input type="text"><span class="highlight"></span><span class="bar"></span>
+	  <input type="text" name="id"><span class="highlight"></span><span class="bar"></span>
 	  <label>아이디</label>
 	</div>
 	<div class="group">
-	  <input type="password"><span class="highlight"></span><span class="bar"></span>
+	  <input type="password" name="pw"><span class="highlight"></span><span class="bar"></span>
 	  <label>비밀번호</label>
 	</div>
 	<div class="btn_wrap">
 <!-- 	<a href="login.do?method=login" class="btn1">로그인</a> -->
-	<a type="submit" class="btn1">로그인</a>
+	<!-- <a type="submit" class="btn1">로그인</a> -->
+		<button type="submit" class="btn1">로그인</button>
 	<!-- <button type="button" class="button buttonBlue">로그인
 	  <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
 	</button> -->
 	<p>
 	<a id="kakao-login-btn" class="kakao-login-btn" ></a>
 	<p>
-	<div class="g-signin2" data-onsuccess="onSignIn" data-width="220" data-longtitle="true"></div>
+	<!-- <div class="g-signin2" data-onsuccess="onSignIn" data-width="220" data-longtitle="true"></div> -->
   	</div>
   	
 	<div class="link_group">
@@ -114,6 +115,8 @@
 	   },
 	 });
 	
+	/*
+	구글로그인이 이상동작해서 잠시 막아둠
 	// google login
 	function onSignIn(googleUser) {
 	    var profile = googleUser.getBasicProfile();
@@ -128,8 +131,9 @@
         // google로 로그인
         //location.href='${conPath}/login.do?method=google';
         document.getElementById('frm').submit();
+        
 	}
-	
+	*/
 	</script>
 	
 </body>

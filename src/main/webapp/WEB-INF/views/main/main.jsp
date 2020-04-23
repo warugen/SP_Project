@@ -111,6 +111,5 @@ li {
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />
->>>>>>> refs/heads/taehun7737
 </body>
 </html>

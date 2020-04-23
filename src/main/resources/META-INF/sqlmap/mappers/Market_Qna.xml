@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Market_qna">
+	<resultMap type="Market_qna" id="Market_qna_Result">
+		<result property="mqcode"			column="mqcode"/>
+		<result property="mqtitle"			column="mqtitle"/>
+		<result property="mqcontent"		column="mqcontent"/>
+		<result property="mqrdate"			column="mqrdate"/>
+		<result property="mqgroup"			column="mqgroup"/>
+		<result property="mqstep"			column="mqstep"/>
+		<result property="mqindent"			column="mqindent"/>
+		<result property="mqhit"			column="mqhit"/>
+		<result property="mid"				column="mid"/>
+		<result property="aid"				column="aid"/>
+	</resultMap>
+	
+	<!-- 글 전체 갯수 가져오기 -->
+	<select id="totalMarketQna" resultType="int">
+		SELECT COUNT(*) FROM MARKET_QNA
+	</select>
+	
+</mapper>

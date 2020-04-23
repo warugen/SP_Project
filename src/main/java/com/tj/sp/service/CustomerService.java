@@ -6,6 +6,7 @@ import com.tj.sp.dto.Customer;
 
 public interface CustomerService {
 	public Customer getCustomer(String cid);
+	public Customer getSnsCustomer(String csnsid);
 	public int idConfirm(String cid);
 	public List<Customer> totlaCustomer();
 	public int snsConfirm(Customer customer);

@@ -20,6 +20,8 @@ h1, h3 { font-weight: 300; }
 
 h1 { color: #636363; }
 
+h2 { color: #636363; }
+
 h3 { color: #4a89dc; }
 
 form {
@@ -326,3 +328,6 @@ div {
 	width: 100%;
 }
 
+table {
+	width: 300px;
+}

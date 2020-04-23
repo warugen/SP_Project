@@ -62,4 +62,9 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.snsIdConfirm(csnsid);
 	}
 
+	@Override
+	public Customer getSnsCustomer(String csnsid) {
+		return customerDao.getSnsCustomer(csnsid);
+	}
+
 }

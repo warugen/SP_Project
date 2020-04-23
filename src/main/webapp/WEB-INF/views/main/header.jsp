@@ -8,21 +8,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- kakao api -->
+<script src="${conPath }/js/kakao.js" type="text/javascript"></script>
 <link href="${conPath }/css/header.css" rel="stylesheet">
 <script type="text/javascript">
+Kakao.init('3153b15ee605504fc683c26e15e2324a')
+console.log('kakao init : '+Kakao.isInitialized());
 function logout() {
-    if (!Kakao.Auth.getAccessToken()) {
+    /* if (!Kakao.Auth.getAccessToken()) {
       alert('Not logged in.');
       return
+    } */
+    if (Kakao.Auth.getAccessToken()) {
+	    Kakao.Auth.logout(function() {
+	    	console.log('kakao logout');
+	    });    	
+    } else {
+    	console.log('not logged in kakao');
     }
-    Kakao.Auth.logout(function() {
-      alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
-    });
     
-    var auth2 = gapi.auth2.getAuthInstance();
+    location.href='${conPath}/login.do?method=logout';
+    
+    /* var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
-    });
+    }); */
   }
 </script>
 </head>
@@ -40,8 +50,8 @@ function logout() {
 		<c:if test="${not empty member}">
 			<ul>
 				<li><a href="">정보수정</a></li>
-				<li><a href="return logout();">로그아웃</a></li>
-				<li><a>${member.mname }님</a></li>
+				<li><a href="javascript:logout(this);">로그아웃</a></li>
+				<li><a>${member.cname }님</a></li>
 			</ul>
 		</c:if>
 		</div>

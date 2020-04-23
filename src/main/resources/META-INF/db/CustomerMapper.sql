@@ -13,6 +13,10 @@ SELECT * FROM CUSTOMER WHERE CID='aaa';
 -- SNS로 로그인시 해당 SNS명과 SNSID가 있는지 검색
 SELECT COUNT(*) FROM CUSTOMER WHERE CPROVIDER = '' AND CSNSID = '';
 
+-- SNSid로 해당 회원 정보 가져오기
+SELECT * FROM CUSTOMER WHERE CSNSID='aaa';
+
+
 -- 회원가입하기
 -- ( 일반회원 가입)
 INSERT INTO CUSTOMER VALUES('aaa','111','hong',null,null,'1','jeenpark@mail.com','010-2017-7619',SYSDATE, 0,'1');

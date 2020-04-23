@@ -18,7 +18,10 @@
 	</resultMap>
 
  	<!-- 고객정보 가져오기 -->
-	<select id="getCustomer" parameterType="String" resultMap="CustomerResult">
+<!-- 	<select id="getCustomer" parameterType="String" resultMap="CustomerResult">
+		SELECT * FROM CUSTOMER WHERE CID=#{cid}
+	</select> -->
+	<select id="getCustomer" parameterType="String" resultType="Customer">
 		SELECT * FROM CUSTOMER WHERE CID=#{cid}
 	</select>
 	
@@ -40,6 +43,10 @@
 	<!-- SNS로 로그인시 해당 SNS명과 SNSID가 있는지 검색 -->
 	<select id="snsIdConfirm" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM CUSTOMER WHERE CSNSID = #{csnsid}
+	</select>
+	
+	<select id="getSnsCustomer" parameterType="String" resultType="Customer">
+		SELECT * FROM CUSTOMER WHERE CSNSID= #{csnsid}
 	</select>
 	
 	<!-- 회원가입하기 -->

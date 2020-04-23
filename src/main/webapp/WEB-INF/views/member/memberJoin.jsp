@@ -7,11 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JOINFORM</title>
+<title>회원가입</title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="${conPath }/js/address.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+<link href="${conPath }/css/login/login.css" rel="stylesheet">
 <script>
 	$(document).ready(function(){		
 		
@@ -75,7 +76,10 @@
 <body>
 	<div id="contentWrap" class="userWrap">
 		<section class="joinFormWrap">
-			<form action="${conPath}/joinResult.do" method="post" enctype="multipart/form-data">
+			<h1 class="logo">
+				<a href="main.do">G9</a>
+			</h1>
+			<form action="${conPath}/memberJoinResult.do" method="post">
 				
 				<%-- <c:if test="${method eq 'user'}"> --%>
 				
@@ -120,20 +124,9 @@
 							<td><input type="text" name="userPhone" placeholder="연락처를 입력하세요" required="required"></td>
 						</tr>
 						<tr>
-							<th><h2>추가정보</h2></th>
-						</tr>
-						<tr>
-							<td><input type="file" name="file"></td>
-						</tr>
-						<tr>
-							<td>
-								<input type="date" name="userBirthDay">
-							</td>
-						</tr>
-						<tr>
 							<td>
 								<input type="text" id="sample4_postcode" name="userPost" class="postBox"  placeholder="우편번호">
-								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="button postButton">
+								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn1">
 							</td>
 						</tr>
 						<tr>
@@ -147,16 +140,10 @@
 							<td><input type="text" name="userAddressDetail" placeholder="상세주소를 입력하세요"></td>
 						</tr>
 						<tr>
-							<td class="checkBoxWrap">
-								휴대폰 광고 수신동의 <input type="checkbox" name="userAdPhone" value="1">
-								이메일 광고 수신동의 <input type="checkbox" name="userAdEmail" value="1">
-							</td>
-						</tr>
-						<tr>
 							<th id="buttonWrap">
-								<input type="submit" value="JOIN" class="button">
-								<input type="reset" value="RESET" class="button">
-								<input type="button" value="BACK" class="button">
+								<input type="submit" value="회원가입" class="btn1">
+								<input type="reset" value="RESET" class="btn2">
+								<input type="button" value="BACK" class="btn2">
 							</th>
 						</tr>
 					</table>
