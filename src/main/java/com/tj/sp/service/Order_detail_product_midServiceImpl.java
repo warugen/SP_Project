@@ -11,7 +11,7 @@ import com.tj.sp.util.Paging;
 @Service
 public class Order_detail_product_midServiceImpl implements Order_detail_product_midService {
 	@Autowired
-	Order_detail_product_midDao order_detail_product_midDao;
+	private Order_detail_product_midDao order_detail_product_midDao;
 	@Override
 	public List<Order_detail_product_mid> listOrder_detailByCid(
 			Order_detail_product_mid order_detail_product_mid, String pageNum) {
@@ -30,5 +30,6 @@ public class Order_detail_product_midServiceImpl implements Order_detail_product
 		order_detail_product_mid.setEndrow(paging.getEndrow());
 		return order_detail_product_midDao.listOrder_detailByMid(order_detail_product_mid);
 	}
+	
 
 }

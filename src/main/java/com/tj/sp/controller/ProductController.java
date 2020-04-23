@@ -53,8 +53,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tj.sp.dto.Product;
 import com.tj.sp.dto.Product_qna;
+import com.tj.sp.dto.Review;
 import com.tj.sp.service.ProductService;
 import com.tj.sp.service.Product_qnaService;
+import com.tj.sp.service.ReviewService;
 import com.tj.sp.util.Paging;
 
 @Controller
@@ -62,9 +64,14 @@ import com.tj.sp.util.Paging;
 public class ProductController {
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ReviewService reviewService;
 	@RequestMapping(params="method=detailProduct" )
-	public String detailProduct(String pcode,Model model) {
+	public String detailProduct(String pcode,Model model, String review_pagenum) {
 		model.addAttribute("detail",productService.detailProduct(pcode));
+		Review review = new Review();
+		review.setPcode("1");
+		model.addAttribute("review", reviewService.listReview(review, review_pagenum));
 		return "product/detailProduct";
 	}
 

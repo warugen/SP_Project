@@ -171,6 +171,9 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
+		<c:forEach var="review" items="${review }">
+ 			${review.rcontent } / ${review.rstar}
+ 		</c:forEach>
 	</div>
 </body>
 </html>

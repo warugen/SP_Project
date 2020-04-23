@@ -9,7 +9,7 @@ import com.tj.sp.dto.Sp_order;
 @Service
 public class Order_detailServiceImpl implements Order_detailService {
 	@Autowired
-	Order_detailDao order_detailDao;
+	private Order_detailDao order_detailDao;
 	@Override
 	public int insertOrder_detail(String[] pocode, String[] cuid, String[] odcount, String[] odunit) {
 		Order_detail order_detail = new Order_detail();

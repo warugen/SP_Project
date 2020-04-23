@@ -12,6 +12,8 @@ public class Review {
 	private String pcode   ;
 	private int    startrow;
 	private int    endrow  ;
+	private String schitem	;
+	private String schword	;
 	public Review() {}
 	public String getRcode() {
 		return rcode;
@@ -67,11 +69,23 @@ public class Review {
 	public void setEndrow(int endrow) {
 		this.endrow = endrow;
 	}
+	public String getSchitem() {
+		return schitem;
+	}
+	public void setSchitem(String schitem) {
+		this.schitem = schitem;
+	}
+	public String getSchword() {
+		return schword;
+	}
+	public void setSchword(String schword) {
+		this.schword = schword;
+	}
 	@Override
 	public String toString() {
 		return "Review [rcode=" + rcode + ", rcontent=" + rcontent + ", rstar=" + rstar + ", rrdate=" + rrdate
 				+ ", rimage=" + rimage + ", cid=" + cid + ", pcode=" + pcode + ", startrow=" + startrow + ", endrow="
-				+ endrow + "]";
+				+ endrow + ", schitem=" + schitem + ", schword=" + schword + "]";
 	}
 	
 
