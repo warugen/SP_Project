@@ -22,9 +22,9 @@
 	</select>
 	
 	<!-- 사용 쿠폰 제거하기 -->
-	<delete id="useMycoupon" parameterType="java.util.List" >
+	<delete id="useMycoupon" parameterType="java.util.ArrayList" >
 		DELETE FROM COUPON_HOLD WHERE CHNUM IN
-		<foreach item="chnum" index="index" collection="list"
+		<foreach item="chnum" index="index" collection="array"
      		 open="(" separator="," close=")">
         		#{chnum}
   		</foreach>

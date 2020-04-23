@@ -36,19 +36,29 @@ DELETE FROM COUPON_HOLD WHERE CHNUM IN (1,2);
 DELETE FROM CART WHERE CARTNO IN(2, 3);
 
 
-
-select * from SP_ORDER;
-select * from ORDER_DETAIL;
-
-ROLLBACK;
-commit;
-
+--★☆배송상태  ★☆      --
+--주문 리스트 불러오기--
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM (
+    SELECT O.ODCODE, O.CUID, O.ODCOUNT, O.ODUNIT, S.*, P.PONAME, P.PONET,P.POSTOCK,P.POPRICE, P.TYPECODE,P.PCODE , 
+    (SELECT MID FROM PRODUCT WHERE PCODE=P.POCODE) MID 
+    FROM ORDER_DETAIL O , SP_ORDER S, PRODUCT_OPTION P WHERE O.OCODE=S.OCODE AND O.POCODE=P.POCODE 
+        ORDER BY OTIME) A) 
+         WHERE RN BETWEEN 1 AND 10;
+--한 고객의 주문 리스트--
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM (
+    SELECT O.ODCODE, O.CUID, O.ODCOUNT, O.ODUNIT, S.*, 
+            P.PONAME, P.PONET,P.POSTOCK,P.POPRICE, P.TYPECODE, P.PCODE, 
+    (SELECT MID FROM PRODUCT WHERE PCODE=P.POCODE) MID 
+    FROM ORDER_DETAIL O , SP_ORDER S, PRODUCT_OPTION P 
+    WHERE O.OCODE=S.OCODE AND O.POCODE=P.POCODE AND CID='aaa'
+        ORDER BY OTIME) A) 
+         WHERE RN BETWEEN 1 AND 10;
+--한 고객의 주문 총 갯수--
+--환불신청        --
+--구매확정        --
 --리뷰등록        --
 --리뷰수정        --
 --리뷰삭제        --
---배송상태        --
---환불신청        --
---구매확정        --
 --스토어 고객 문의--
 
 --일별 매출 통계  --

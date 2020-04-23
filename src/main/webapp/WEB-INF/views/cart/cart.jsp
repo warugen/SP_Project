@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>sp마켓</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${conPath }/js/cart.js"></script>
+<script src="${conPath }/js/cart/cart.js"></script>
 <link href="${conPath }/css/style.css" rel="stylesheet">
 <link href="${conPath }/css/cart/cart.css" rel="stylesheet">
 </head>
