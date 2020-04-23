@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.tj.sp.dao.ProductDao;
 import com.tj.sp.dto.Product;
 import com.tj.sp.dto.Product_Product_option;
-import com.tj.sp.utill.Paging;
+import com.tj.sp.util.Paging;
 
 @Service
 public class ProductServiceimpl implements ProductService{
