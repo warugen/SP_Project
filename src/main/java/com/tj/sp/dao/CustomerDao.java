@@ -16,5 +16,7 @@ public interface CustomerDao {
 	public int modifyCustomerAddrcode(Customer customer);
 	public int emailConfirm(String cemail);
 	public int deleteCustomer(String cid);
+	public int upPoint(String cid);
+	public int usePoint(Customer customer);
 	
 }

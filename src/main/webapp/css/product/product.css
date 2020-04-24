@@ -1,0 +1,35 @@
+@charset "UTF-8";
+*{
+	magin:0
+	padding:0
+}
+h2, p{
+	text-align: center;
+}
+#test {
+	overflow:hidden;
+}
+#content table{
+	width:1350px;
+	margin: 0 auto;
+}
+#content tr{
+	float:left;
+	margin:10px 30px;
+}
+
+#content th, #content td {
+	width:250px;
+	height:310px;
+	border: 1px solid #e9e9e9;
+	padding: 5px;
+	text-align: center;
+}
+
+#content caption {
+	font-size: 1.3em;
+	text-align: center;
+}
+.paging {
+	text-align: center;
+}

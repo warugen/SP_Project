@@ -12,7 +12,7 @@ public class Customer_grade {
 	private String cid      ;
 	private String cpw      ;
 	private String cname	;
-	private String caddrnum	;
+	private String addrcode	;
 	private String cemail	;
 	private String ctel	    ;
 	private Date   crdate	;
@@ -73,11 +73,11 @@ public class Customer_grade {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
-	public String getCaddrnum() {
-		return caddrnum;
+	public String getAddrcode() {
+		return addrcode;
 	}
-	public void setCaddrnum(String caddrnum) {
-		this.caddrnum = caddrnum;
+	public void setAddrcode(String addrcode) {
+		this.addrcode = addrcode;
 	}
 	public String getCemail() {
 		return cemail;
@@ -148,7 +148,7 @@ public class Customer_grade {
 	@Override
 	public String toString() {
 		return "Customer_grade [gcode=" + gcode + ", grade=" + grade + ", ghigh=" + ghigh + ", glow=" + glow
-				+ ", gpoint=" + gpoint + ", cid=" + cid + ", cpw=" + cpw + ", cname=" + cname + ", caddrnum=" + caddrnum
+				+ ", gpoint=" + gpoint + ", cid=" + cid + ", cpw=" + cpw + ", cname=" + cname + ", addrcode=" + addrcode
 				+ ", cemail=" + cemail + ", ctel=" + ctel + ", crdate=" + crdate + ", cbirth=" + cbirth + ", cpoint="
 				+ cpoint + ", csnsid=" + csnsid + ", cprovider=" + cprovider + ", startrow=" + startrow + ", endrow="
 				+ endrow + ", schitem=" + schitem + ", schword=" + schword + "]";

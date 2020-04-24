@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tj.sp.dto.Product;
+import com.tj.sp.dto.Product_Product_option;
 @Repository
 public class ProductDaoimpl implements ProductDao{
 	@Autowired
@@ -19,14 +20,13 @@ public class ProductDaoimpl implements ProductDao{
 	public int totalproduct() {
 		return sessionTemplate.selectOne("totalproduct");
 	}
-	
 	@Override
 	public Product detailProduct(String pcode) {
 		return sessionTemplate.selectOne("detailProduct",pcode);
 	}
 	@Override
-	public List<Product> productList(Product product) {
-		return sessionTemplate.selectList("productList", product);
+	public List<Product_Product_option> product_Product_optionList(Product_Product_option ppo){
+		return sessionTemplate.selectList("product_Product_optionList", ppo);
 	}
 	@Override
 	public List<Product> marketList(Product product) {
@@ -37,8 +37,8 @@ public class ProductDaoimpl implements ProductDao{
 		return sessionTemplate.selectOne("getProduct", pcode);
 	}
 	@Override
-	public int registerProduct(Product product) {
-		return sessionTemplate.insert("registerProduct", product);
+	public int registerProduct(Product_Product_option ppo) {
+		return sessionTemplate.insert("registerProduct", ppo);
 	}
 	@Override
 	public int modifyProduct(Product product) {

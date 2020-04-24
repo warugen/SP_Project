@@ -66,5 +66,15 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer getSnsCustomer(String csnsid) {
 		return customerDao.getSnsCustomer(csnsid);
 	}
+	
+	@Override
+	public int upPoint(String cid) {
+		return customerDao.upPoint(cid);
+	}
+
+	@Override
+	public int usePoint(Customer customer) {
+		return customerDao.usePoint(customer);
+	}
 
 }

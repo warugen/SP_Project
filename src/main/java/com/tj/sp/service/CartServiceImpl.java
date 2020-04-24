@@ -33,15 +33,20 @@ public class CartServiceImpl implements CartService {
 	}
 	@Override
 	public List<Cart_Product_option> listCartByCartno(String[] cartno) {
-		List<String> list = new ArrayList<String>();
+		List<String> cartnos = new ArrayList<String>();
 		for(int i=0 ; i<cartno.length ; i++) {
-			list.add(cartno[i]);
+			cartnos.add(cartno[i]);
 		}
-		return cartDao.listCartByCartno(list);
+		return cartDao.listCartByCartno(cartnos);
 	}
 	@Override
 	public Cart_Product_option CartPrice(String cartno) {
 		return cartDao.CartPrice(cartno);
 	}
+	@Override
+	public int buyCart(String[] cartno) {
+		return cartDao.buyCart(cartno);
+	}
+	
 
 }

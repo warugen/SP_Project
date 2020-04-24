@@ -18,13 +18,13 @@
 	
 	<!-- 카트 불러오기 -->
 	<select id="listCartByCid" parameterType="String" resultMap="Cart_Product_optionResult">
-		SELECT P.*, CARTCOUNT, CARTNO, (SELECT PIMAGE1 FROM PRODUCT PR, PRODUCT_OPTION PO WHERE PR.PCODE=PO.PCODE) PIMAGE
+		SELECT P.*, CARTCOUNT, CARTNO, (SELECT PIMAGE1 FROM PRODUCT PR, PRODUCT_OPTION PO WHERE PR.PCODE=PO.PCODE AND POCODE=C.POCODE) PIMAGE
 		 FROM CART C, PRODUCT_OPTION P WHERE C.POCODE=P.POCODE AND CID=#{cid}
 	</select>
 	
 	<!-- 장바구이에서 구입으로 넘어갈때 카트 불러오기 -->
 	<select id="listCartByCartno" parameterType="java.util.List" resultMap="Cart_Product_optionResult">
-		SELECT P.*, CARTCOUNT, CARTNO, (SELECT PIMAGE1 FROM PRODUCT PR, PRODUCT_OPTION PO WHERE PR.PCODE=PO.PCODE) PIMAGE
+		SELECT P.*, CARTCOUNT, CARTNO, (SELECT PIMAGE1 FROM PRODUCT PR, PRODUCT_OPTION PO WHERE PR.PCODE=PO.PCODE AND POCODE=C.POCODE) PIMAGE
 		 FROM CART C, PRODUCT_OPTION P WHERE C.POCODE=P.POCODE AND CARTNO IN 
 		<foreach item="cartno" index="index" collection="list"
      		 open="(" separator="," close=")">

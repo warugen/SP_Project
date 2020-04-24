@@ -66,5 +66,15 @@ public class CustomerDaoImpl implements CustomerDao {
 		// snsid로 회원정보 가져오기
 		return sessionTemplate.selectOne("getSnsCustomer", csnsid);
 	}
+	@Override
+	public int upPoint(String cid) {
+		// 구매시 포인트 적립
+		return sessionTemplate.update("upPoint", cid);
+	}
+	@Override
+	public int usePoint(Customer customer) {
+		// 포인트 사용
+		return sessionTemplate.update("usePoint", customer);
+	}
 
 }

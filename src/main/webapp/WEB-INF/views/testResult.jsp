@@ -11,8 +11,8 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-	<c:forEach var="cartno" items="${cartnos }">
-		${cartno }<br>
+	<c:forEach var="list" items="${list }">
+		${list.ocode } / ${list.ocode} /${list.poname }<br>
 	</c:forEach>
 </body>
 </html>

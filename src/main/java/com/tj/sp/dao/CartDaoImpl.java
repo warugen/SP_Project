@@ -33,13 +33,18 @@ public class CartDaoImpl implements CartDao {
 	}
 
 	@Override
-	public List<Cart_Product_option> listCartByCartno(List<String> cartnos) {
-		return sessionTemplate.selectList("listCartByCartno",cartnos);
+	public List<Cart_Product_option> listCartByCartno(List<String> cartno) {
+		return sessionTemplate.selectList("listCartByCartno",cartno);
 	}
 
 	@Override
 	public Cart_Product_option CartPrice(String cartno) {
 		return sessionTemplate.selectOne("CartPrice",cartno);
+	}
+
+	@Override
+	public int buyCart(String[] cartno) {
+		return sessionTemplate.delete("buyCart",cartno);
 	}
 
 }

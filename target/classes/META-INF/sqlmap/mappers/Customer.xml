@@ -82,6 +82,18 @@
 	<delete id="deleteCustomer" parameterType="String">
 		DELETE FROM CUSTOMER WHERE CID = #{cid}
 	</delete>
+	
+	<!-- 포인트적립 -->
+	<update id="upPoint" parameterType="String">
+		UPDATE CUSTOMER SET CPOINT = CPOINT + 
+			TRUNC((SELECT OSUM FROM SP_ORDER WHERE OCODE=(SELECT MAX(TO_NUMBER(OCODE)) FROM SP_ORDER))
+			*(SELECT GPOINT/100 FROM GRADE G, CUSTOMER C WHERE G.GCODE = C.GCODE AND CID=#{cid}),0)
+	</update>
+	
+	<!-- 포인트 사용 -->
+	<update id="usePoint" parameterType="Customer">
+		UPDATE CUSTOMER SET CPOINT = CPOINT - #{cpoint} WHERE CID=#{cid}
+	</update>
 
 
 </mapper>

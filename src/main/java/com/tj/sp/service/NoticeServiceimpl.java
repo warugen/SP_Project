@@ -3,6 +3,7 @@ package com.tj.sp.service;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ public class NoticeServiceimpl implements NoticeService{
 		return noticeDao.addNotice(notice);
 	}
 	@Override
-	public int replyNotice(Notice notice,String ncode) {
-		noticeDao.indentNotice(ncode);
+	public int replyNotice(Notice notice,HttpSession session) {
+		noticeDao.indentNotice(notice);
 		return noticeDao.replyNotice(notice);
 	}
 	
@@ -31,7 +32,6 @@ public class NoticeServiceimpl implements NoticeService{
 	}
 	@Override
 	public int modifyNotice(Notice notice) {
-		System.out.println("서비스 notice : " + notice);
 		return noticeDao.modifyNotice(notice);
 	}
 
@@ -51,7 +51,6 @@ public class NoticeServiceimpl implements NoticeService{
 
 	@Override
 	public int totalNotice() {
-		// TODO Auto-generated method stub
 		return noticeDao.totalNotice();
 	}
 }
