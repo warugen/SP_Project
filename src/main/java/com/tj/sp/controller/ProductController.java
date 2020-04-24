@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.tj.sp.dto.Product_Product_option;
 import com.tj.sp.dto.Review;
 import com.tj.sp.service.ProductService;
+import com.tj.sp.service.Product_optionService;
 import com.tj.sp.service.Product_qnaService;
 import com.tj.sp.service.ReviewService;
 import com.tj.sp.util.Paging;
@@ -23,16 +24,21 @@ public class ProductController {
 	private ReviewService reviewService;
 	@Autowired
 	private Product_qnaService  product_qnaService;
+	@Autowired
+	private Product_optionService product_optionService;
 	@RequestMapping(params="method=detailProduct" )
 	public String detailProduct(String pcode,Model model, String review_pagenum, String pagenum) {
 		model.addAttribute("detail",productService.detailProduct(pcode));
-		Review review = new Review();
-		review.setPcode("1");
-		model.addAttribute("review", reviewService.listReview(review, review_pagenum));
+		//장바구니 담을 option list불러오기
+		model.addAttribute("listForCart",product_optionService.listForCart(pcode));
+		//qna불러오기
 		Paging paging = new Paging(product_qnaService.qnaCnt(),pagenum,10,5);
 		model.addAttribute("product_qna",product_qnaService.productQnaList(pagenum));
 		model.addAttribute("paging",paging);
-		model.addAttribute("detailProduct",productService.getProduct(pcode));
+		//리뷰 불러오기
+		Review review = new Review();
+		review.setPcode(pcode);
+		model.addAttribute("review", reviewService.listReview(review, review_pagenum));
 		return "product/detailProduct";
 	}
 	@RequestMapping(params = "method=joinList")
@@ -56,9 +62,5 @@ public class ProductController {
 		model.addAttribute("paging", paging);
 		return "product/joinList";
 	}
-	@RequestMapping(params = "method=productDetail")
-	public String productDetail(Model model, String pcode) {
-		model.addAttribute("productDetail", productService.getProduct(pcode));
-		return "product/productDetail";
-	}
+	
 }

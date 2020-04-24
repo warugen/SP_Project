@@ -11,8 +11,16 @@
 <link href="${conPath}/css/style.css" rel="stylesheet">
 <link href="${conPath}/css/productContent.css" rel="stylesheet">
 <style>
-b{
-color:red;
+
+#form_body{
+	width: 550px;
+	max-height: 280px;
+	overflow: scroll;
+	-ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+#form_body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -24,7 +32,57 @@ color:red;
 				$('#qnaReplyContent'+index).toggle();
 			})
 		});
-	}); 
+		
+		//장바구니 담을 물건 추가하기
+		var cartnum = 0;
+		$('#iobCart').change(function(){
+			var pocode = $(this).val();
+			if(pocode < 0){
+				return false;
+			}
+			var poname = $('#poname_'+pocode).val();
+			var poprice = $('#poprice_'+pocode).val();
+			var tag="<div id='goods_"+cartnum+"' class='goods'><p class='goods_top'>"+poname+"</p>"+
+					"<input type='number' value='1' min='1' class='goods_num' name='cartcount' id='num_"+cartnum+"'>"+
+					"<a id='btnx_"+cartnum+"' class='btnx'><img src='${conPath }/img/x.png' class='ximg'></a>"+
+					"<span class='goods_right'><b id='priceresult_"+cartnum+"'>"+poprice+"</b>원</span></div>"+
+					"<input type='hidden' name='pocode' value='"+pocode+"'>"+
+					"<input type='hidden' name='poprice' id='cartprice_"+cartnum+"' value='"+poprice+"'>";
+			$("#goods_option").append(tag);
+			$(".goods").css({
+		        "background-color" 	: "#f5f5f5"          ,
+		        "border-top"		: "1px solid #cccccc",
+		        "height"			: "45px"             ,
+		        "line-height"		: "22px"             ,
+		        "color"				: "black"            ,
+		        "padding"			: "5px 10px"
+		 	});
+			$(".goods_num").css({"width" : "30px"});
+			$(".goods_right").css({
+				"float":"right",
+				"font-size" : "14px"	
+			});
+			$(".ximg").css({
+				"width" : "13px",
+				"float" : "right",
+				"position" : "relative",
+		    	"top" : "3px",
+		    	"left" : "4px"
+			});
+			cartnum++;
+		});
+	});
+	//장바구니 담을 목록에서 제거
+	$(document).on('click','.btnx',function(){
+		var tempt = $(this).attr('id').substring(5);
+		$('#goods_'+tempt).detach();
+	});
+	$(document).on('change','.goods_num',function(){
+		var cartnumber = $(this).attr('id').substring(4);
+		var price = $('#cartprice_'+cartnumber).val();
+		var count = $(this).val();
+		$('#priceresult_'+cartnumber).html(count*price);
+	});
 	function writeQnaForm() {
 		window.open('product_qna.do?method=writeQnaForm','','width=650,height=530,left=100,top=100')
 	}
@@ -75,29 +133,24 @@ color:red;
 					</div>
 				</div>
 				<div id="items_option_box">
-					<select>
-						<option>베이킹 소다 대용량 3Kg 2개 / 다양한 용도의 천연세제1</option>
-						<option>베이킹 소다 대용량 1Kg 1개 / 다양한 용도의 천연세제2</option>
-						<option>베이킹 소다 대용량 2Kg 2개 / 다양한 용도의 천연세제3</option>
-						<option>카테고리4</option>
-						<option>카테고리5</option>
+					<select id="iobCart">
+						<option selected="selected" value="-1">선택하세요.</option>
+						<c:forEach var="ForCart" items="${listForCart }">
+							<option value="${ForCart.pocode }">${ForCart.poname} / ${ForCart.poprice}</option>
+						</c:forEach>
 					</select>
+						<c:forEach var="ForCart" items="${listForCart }">
+							<input type='hidden' id='poname_${ForCart.pocode }' class='poname' value='${ForCart.poname }'>
+							<input type='hidden' id='poprice_${ForCart.pocode }' class='poprice' value='${ForCart.poprice }'>
+						</c:forEach>
 				</div>
 				<div id="form_body">
 					<div id="goods_option">
-						<div id="origin_area">
-							<h2>수량</h2>
-							<div id="origin_amount">
-								<span class="updwon_button"> 
-									<input type="number" class="num" maxlength="3" value="1" min="1">
-								</span>
-							</div>
-						</div>
 					</div>
 				</div>
 				<div id="form_bottom">
 					<div id="bottom_button">
-						<button class="btn2">장바구니</button>
+						<button class="btn2">장바구니담기</button>
 						<button class="btn1">구매하기</button>
 					</div>
 				</div>

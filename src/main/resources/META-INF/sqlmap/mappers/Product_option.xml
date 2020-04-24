@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Product_option">
+	<resultMap type="Product_option" id="Product_optionResult">
+		<result property="pocode" 	column="pocode" 	/>
+		<result property="poname" 	column="poname" 	/>
+		<result property="ponet" 	column="ponet" 		/>
+		<result property="postock" 	column="postock" 	/>
+		<result property="poprice" 	column="poprice" 	/>
+		<result property="typecode" column="typecode" 	/>
+		<result property="pcode" 	column="pcode" 		/>
+	</resultMap>
+	<select id="listForCart" parameterType="String" resultMap="Product_optionResult">
+		SELECT * FROM PRODUCT_OPTION WHERE PCODE=#{pcode}
+	</select>
+</mapper>

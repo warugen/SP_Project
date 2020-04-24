@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body{
-	background-color: #e2dfdf;
+	font-size: 12px;
 }
 #cart_head{
 	position: relative;
@@ -84,7 +84,7 @@ table tr th{
 }
 form>table>tbody>tr>th #wholecheck{
 	position: relative;
-    left: -30.5%;
+    left: -34%;
     color: #8c8b8b;
 }
 form>table>tbody>tr>th:nth-of-type(1), form>table>tbody>tr>td:nth-of-type(1) {
@@ -141,7 +141,7 @@ form>table>tbody>tr>th:nth-of-type(n+2), form>table>tbody>tr>td:nth-of-type(n+2)
 	text-align: center;
     height: 70px;
     line-height: 70px;
-    margin: 0px 150px;
+    margin: 10px 150px;
     border-radius: 10px;
     border: 4px solid #9e9e9e;
 }
@@ -156,5 +156,6 @@ form>table>tbody>tr>th:nth-of-type(n+2), form>table>tbody>tr>td:nth-of-type(n+2)
     margin: 10px;
 }
 #btns_order .btn1, #btns_order .btn2{
+	font-size: 14px;
 	margin: 10px;
 } 

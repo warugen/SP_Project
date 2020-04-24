@@ -19,5 +19,13 @@ public class ReviewDaoImpl implements ReviewDao {
 	public List<Review> listReview(Review review) {
 		return sessionTemplate.selectList("listReview", review);
 	}
+	@Override
+	public int insertReview(Review review) {
+		return sessionTemplate.insert("insertReview", review);
+	}
+	@Override
+	public int deleteReview(String rcode) {
+		return sessionTemplate.delete("deleteReview", rcode);
+	}
 
 }

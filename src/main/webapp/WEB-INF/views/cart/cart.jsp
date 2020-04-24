@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>sp마켓</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${conPath }/js/cart/cart.js"></script>
 <link href="${conPath }/css/style.css" rel="stylesheet">

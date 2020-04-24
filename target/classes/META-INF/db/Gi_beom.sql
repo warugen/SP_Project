@@ -74,11 +74,8 @@ SELECT COUNT(*) CNT FROM REVIEW WHERE PCODE=1;
 --리뷰 출력--
 SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM REVIEW WHERE PCODE=1 ORDER BY RCODE DESC)A) WHERE RN BETWEEN 1 AND 10;
 
---스토어 고객 문의--
---일별 매출 통계  --
---월별 매출 통계  --
---분기별 매출 통계--
---상품별 매출 통계--
-select * from product_qna;
+--상품 옵션 불러오기(장바구니 담기 용)--
+SELECT * FROM PRODUCT_OPTION WHERE POCODE=1;
 
-update product_qna set pqanswer='', pqcomplete=1 where pqcode=1;
+
+--스토어 고객 문의--
