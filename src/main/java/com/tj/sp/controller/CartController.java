@@ -1,6 +1,6 @@
 package com.tj.sp.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -65,14 +65,27 @@ public class CartController {
 	
 	//주문 페이지 호출
 	@RequestMapping(params="method=orderView", method =RequestMethod.GET)
-	public String orderView(String[] cartno ,Model model, HttpServletRequest request) {
-		model.addAttribute("coupon",mycouponService.listMycoupon("aaa"));
+	public String orderView(Model model, String[] cartno, String cid) {
+		cid="aaa";	//임시 id 처리
+		model.addAttribute("coupon",mycouponService.listMycoupon(cid));
 		model.addAttribute("list", cartservice.listCartByCartno(cartno));
-		model.addAttribute("customer", customergradeService.getCustomer_grade("aaa"));
-		model.addAttribute("addrlist", addrlistService.listAddrlist("aaa"));
+		model.addAttribute("customer", customergradeService.getCustomer_grade(cid));
+		model.addAttribute("addrlist", addrlistService.listAddrlist(cid));
 		return "cart/orderView";
 	}
-	//주문하기
+	//주문상세페이지에서 바로 주문페이지로 
+	@RequestMapping(params="method=orderDirect", method =RequestMethod.GET)
+	public String orderDirect(Model model, String cid, String[] pocode, String[] cartcount ) {
+		cid="aaa";	//임시 id 처리
+		int num = cartservice.insertCart(cid, pocode, cartcount);
+		String[] cartno = cartservice.getArrayCartno(num);
+		model.addAttribute("coupon",mycouponService.listMycoupon(cid));
+		model.addAttribute("list", cartservice.listCartByCartno(cartno));
+		model.addAttribute("customer", customergradeService.getCustomer_grade(cid));
+		model.addAttribute("addrlist", addrlistService.listAddrlist(cid));
+		return "cart/orderView";
+	}
+	//주문하기완료
 	@RequestMapping(params="method=orderCompl", method =RequestMethod.GET)
 	public String orderCompl(String[] pocode, String[] cuid, String[] odcount, String[] odunit, String[] chnum,
 			Model model, Sp_order sp_order, Customer customer, String[] cartno) {

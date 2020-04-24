@@ -47,4 +47,8 @@ public class CartDaoImpl implements CartDao {
 		return sessionTemplate.delete("buyCart",cartno);
 	}
 
+	@Override
+	public List<Cart> getArrayCartno(int num) {
+		return sessionTemplate.selectList("getArrayCartno", num);
+	}
 }

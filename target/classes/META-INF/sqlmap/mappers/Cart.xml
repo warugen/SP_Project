@@ -30,7 +30,12 @@
         		#{cartno}
   		</foreach>
 	</delete>
-	
+	<!-- 바로구매시 넣은 CARTNO바로 가져오기-->
+	<select id="getArrayCartno" parameterType="int" resultMap="CartResult">
+		SELECT CARTNO FROM (SELECT ROWNUM RN, A.* FROM 
+		(SELECT CARTNO FROM CART ORDER BY TO_NUMBER(CARTNO) DESC) A) 
+		WHERE RN BETWEEN 1 AND #{result}
+	</select>
 </mapper>
 
 

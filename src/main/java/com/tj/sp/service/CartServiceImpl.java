@@ -18,8 +18,17 @@ public class CartServiceImpl implements CartService {
 		return cartDao.listCartByCid(cid);
 	}
 	@Override
-	public int insertCart(Cart cart) {
-		return cartDao.insertCart(cart);
+	public int insertCart(String cid, String[] pocode, String[] cartcount){
+		Cart cart = new Cart();
+		int result = 0;
+		while(result<pocode.length ) {
+			cart.setCid(cid);
+			cart.setPocode(pocode[result]);
+			cart.setCartcount(Integer.parseInt(cartcount[result]));
+			cartDao.insertCart(cart);
+			result++;
+		}
+		return result;
 	}
 
 	@Override
@@ -46,6 +55,15 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public int buyCart(String[] cartno) {
 		return cartDao.buyCart(cartno);
+	}
+	@Override
+	public String[] getArrayCartno(int num){
+		List<Cart> cart = cartDao.getArrayCartno(num);
+		String[] cartno = new String[cart.size()];
+		for(int i=0; i<cart.size();i++){
+			cartno[i] = cart.get(i).getCartno();
+		}
+		return cartno;
 	}
 	
 

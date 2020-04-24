@@ -132,28 +132,32 @@
 							가능합니다.</span>
 					</div>
 				</div>
-				<div id="items_option_box">
-					<select id="iobCart">
-						<option selected="selected" value="-1">선택하세요.</option>
-						<c:forEach var="ForCart" items="${listForCart }">
-							<option value="${ForCart.pocode }">${ForCart.poname} / ${ForCart.poprice}</option>
-						</c:forEach>
-					</select>
-						<c:forEach var="ForCart" items="${listForCart }">
-							<input type='hidden' id='poname_${ForCart.pocode }' class='poname' value='${ForCart.poname }'>
-							<input type='hidden' id='poprice_${ForCart.pocode }' class='poprice' value='${ForCart.poprice }'>
-						</c:forEach>
-				</div>
-				<div id="form_body">
-					<div id="goods_option">
+				<form action="cart.do?">
+					<input type="hidden" name="method" value="orderDirect">
+					<input type="hidden" name="cid" value="${customer.cid}">
+					<div id="items_option_box">
+						<select id="iobCart">
+							<option selected="selected" value="-1">선택하세요.</option>
+							<c:forEach var="ForCart" items="${listForCart }">
+								<option value="${ForCart.pocode }">${ForCart.poname} / ${ForCart.poprice}</option>
+							</c:forEach>
+						</select>
+							<c:forEach var="ForCart" items="${listForCart }">
+								<input type='hidden' id='poname_${ForCart.pocode }' class='poname' value='${ForCart.poname }'>
+								<input type='hidden' id='poprice_${ForCart.pocode }' class='poprice' value='${ForCart.poprice }'>
+							</c:forEach>
 					</div>
-				</div>
-				<div id="form_bottom">
-					<div id="bottom_button">
-						<button class="btn2">장바구니담기</button>
-						<button class="btn1">구매하기</button>
+					<div id="form_body">
+						<div id="goods_option">
+						</div>
 					</div>
-				</div>
+					<div id="form_bottom">
+						<div id="bottom_button">
+							<button type="button" class="btn2">장바구니담기</button>
+							<button class="btn1">구매하기</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div id="content_bottom">
