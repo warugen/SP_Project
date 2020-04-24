@@ -79,3 +79,6 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM REVIEW WHERE PCODE=1 OR
 --월별 매출 통계  --
 --분기별 매출 통계--
 --상품별 매출 통계--
+select * from product_qna;
+
+update product_qna set pqanswer='', pqcomplete=1 where pqcode=1;
