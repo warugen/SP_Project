@@ -32,7 +32,7 @@ public class ProductController {
 		Paging paging = new Paging(product_qnaService.qnaCnt(),pagenum,10,5);
 		model.addAttribute("product_qna",product_qnaService.productQnaList(pagenum));
 		model.addAttribute("paging",paging);
-		model.addAttribute("detailProduct",productService.getProduct(pcode));
+//		model.addAttribute("detailProduct",productService.getProduct(pcode));
 		return "product/detailProduct";
 	}
 	@RequestMapping(params = "method=joinList")
