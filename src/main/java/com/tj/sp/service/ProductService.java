@@ -18,4 +18,6 @@ public interface ProductService {
 	public int cntProduct();
 	public int totalproduct();
 	public Product detailProduct(String pcode);
+	public List<Product_Product_option> marketMain(Product product, String pagenum, String schword);
+	public int cntMarketMain(Product product);
 }

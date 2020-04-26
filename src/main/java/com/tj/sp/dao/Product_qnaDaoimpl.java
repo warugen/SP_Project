@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.tj.sp.dto.Product;
 import com.tj.sp.dto.Product_qna;
 @Repository
 public class Product_qnaDaoimpl implements Product_qnaDao{
@@ -38,6 +40,16 @@ public class Product_qnaDaoimpl implements Product_qnaDao{
 	@Override
 	public int qnaCnt() {
 		return sessionTemplate.selectOne("qnaCnt");
+	}
+
+	@Override
+	public List<Product_qna> unansweredQnaList(Product product) {
+		return sessionTemplate.selectList("unansweredQnaList", product);
+	}
+
+	@Override
+	public int cntUnansweredQnaList(Product product) {
+		return sessionTemplate.selectOne("cntUnansweredQnaList", product);
 	}
 
 }

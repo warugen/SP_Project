@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tj.sp.dao.Product_qnaDao;
+import com.tj.sp.dto.Product;
 import com.tj.sp.dto.Product_qna;
 import com.tj.sp.util.Paging;
 @Service
@@ -48,5 +49,18 @@ public class Product_qnaServiceimpl implements Product_qnaService {
 	@Override
 	public int qnaCnt() {
 		return product_qnaDao.qnaCnt();
+	}
+
+	@Override
+	public List<Product_qna> unansweredQnaList(Product product, String pagenum) {
+		Paging paging = new Paging(product_qnaDao.cntUnansweredQnaList(product),pagenum,10,5);
+		product.setStartrow(paging.getStartrow());
+		product.setEndrow(paging.getEndrow());
+		return product_qnaDao.unansweredQnaList(product);
+	}
+
+	@Override
+	public int cntUnansweredQnaList(Product product) {
+		return product_qnaDao.cntUnansweredQnaList(product);
 	}
 }

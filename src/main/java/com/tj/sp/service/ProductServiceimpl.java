@@ -165,4 +165,21 @@ public class ProductServiceimpl implements ProductService{
 		}
 		return isCopy;
 	}
+
+	@Override
+	public List<Product_Product_option> marketMain(Product product, String pagenum, String schword) {
+		if(schword==null) {
+			schword="";
+		}
+		Paging paging = new Paging(productDao.cntMarketMain(product), pagenum, 8, 3);
+		product.setStartrow(paging.getStartrow());
+		product.setEndrow(paging.getEndrow());
+		return productDao.marketMain(product, schword);
+	}
+
+	@Override
+	public int cntMarketMain(Product product) {
+		return productDao.cntMarketMain(product);
+	}
+	
 }

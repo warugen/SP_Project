@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.tj.sp.dto.Product;
 import com.tj.sp.dto.Product_Product_option;
 import com.tj.sp.dto.Review;
 import com.tj.sp.service.ProductService;
@@ -48,6 +49,7 @@ public class ProductController {
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
 		return "product/joinList";
 	}
+	
 	@RequestMapping(params = "method=productRegister", method=RequestMethod.GET)
 	public String productRegister() {
 		return "product/productRegister";

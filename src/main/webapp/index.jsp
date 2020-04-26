@@ -11,6 +11,7 @@
 <link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
+	
 	<%-- <jsp:forward page="main.do"/> --%>
 	<a href="main.do" class="btn2">메인화면</a>
 	<a href="cart.do?method=cart" class="btn1">카트</a>
@@ -18,6 +19,18 @@
 	<a href="Order_detail_product_mid.do?method=listOrder_detailByCid" class="btn1">주문 리스트</a>
 	<a href="Order_detail_product_mid.do?method=listOrder_detailByMid" class="btn2">마켓별 주문 리스트</a>
 	<a href="product.do?method=joinList" class="btn1">제품리스트</a>
+	<form action="market.do">
+	<input type="hidden" name="method" value="marketmain">
+	<input type="hidden" name="mid" value="aaa">
+	<input type="hidden" name="schword" value="">
+	<input type="submit" class="btn2" value="마켓">
+	</form>
+	<form action="market.do">
+	<input type="hidden" name="mid" value="aaa">
+	<input type="hidden" name="method" value="unAnswerList">
+	<input type="submit" class="btn1" value="마켓 qna리스트">
+	</form>
+	
 	
 	
 	<div>

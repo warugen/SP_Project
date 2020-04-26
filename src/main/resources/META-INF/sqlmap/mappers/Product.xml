@@ -56,4 +56,9 @@
     <delete id="deleteProduct" parameterType="String">
     	DELETE FROM PRODUCT WHERE PCODE=#{pcode}
     </delete>
+    <!--  마켓용 리스트 총갯수 -->
+    <select id="cntMarketMain" parameterType="Product" resultType="int">
+    	SELECT COUNT(*) FROM PRODUCT  WHERE MID=#{mid}
+    </select>
+    	
 </mapper>

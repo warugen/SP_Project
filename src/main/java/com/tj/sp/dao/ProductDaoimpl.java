@@ -52,4 +52,12 @@ public class ProductDaoimpl implements ProductDao{
 	public int cntProduct() {
 		return sessionTemplate.selectOne("cntProduct");
 	}
+	@Override
+	public List<Product_Product_option> marketMain(Product product, String schword) {
+		return sessionTemplate.selectList("marketMain", product);
+	}
+	@Override
+	public int cntMarketMain(Product product) {
+		return sessionTemplate.selectOne("cntMarketMain", product);
+	}
 }

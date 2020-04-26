@@ -77,6 +77,7 @@
 		var tempt = $(this).attr('id').substring(5);
 		$('#goods_'+tempt).detach();
 	});
+	//수량조정
 	$(document).on('change','.goods_num',function(){
 		var cartnumber = $(this).attr('id').substring(4);
 		var price = $('#cartprice_'+cartnumber).val();

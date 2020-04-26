@@ -16,4 +16,6 @@ public interface ProductDao {
 	public List<Product> getProductList(Product product);
 	public int totalproduct();
 	public Product detailProduct(String pcode);
+	public List<Product_Product_option> marketMain(Product product, String schword);
+	public int cntMarketMain(Product product);
 }

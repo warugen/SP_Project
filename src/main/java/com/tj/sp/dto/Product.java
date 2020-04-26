@@ -10,7 +10,7 @@ public class Product {
 	private String mid      ;
 	private int    startrow	;
 	private int    endrow	;
-	private String mname;	
+	private String mname	;	
 	private String schword	;
 	
 	public Product() {}

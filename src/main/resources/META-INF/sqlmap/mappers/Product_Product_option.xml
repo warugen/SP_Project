@@ -20,7 +20,18 @@
 	</resultMap>
 	<!-- Join리스트 -->
 	<select id="product_Product_optionList" parameterType="Product_Product_option" resultMap="Product_Product_optionResult">
-		SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT p.*,(select min(poprice) FROM PRODUCT_OPTION where pcode = p.pcode) poprice from product p ORDER BY PTITLE DESC) A)
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT p.*,
+			(SELECT MIN(POPRICE) FROM PRODUCT_OPTION WHERE PCODE = P.PCODE) POPRICE 
+				FROM PRODUCT P ORDER BY TO_NUMBER(PCODE) DESC) A)
     		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
+	<!-- 마켓용 메인 리스트-->
+    <select id="marketMain" parameterType="Product" resultMap="Product_Product_optionResult">
+    	SELECT * FROM (SELECT ROWNUM RN, A.* FROM(
+    		SELECT P.*,(SELECT MIN(POPRICE) FROM PRODUCT_OPTION WHERE PCODE = P.PCODE) POPRICE 
+    			FROM PRODUCT P ORDER BY TO_NUMBER(PCODE) DESC) A)
+    				WHERE  MID= #{mid} AND RN BETWEEN #{startrow} AND #{endrow} AND 
+    				(PTITLE LIKE '%'||#{schword}||'%' OR PCONTENT LIKE '%'||#{schword}||'%')
+    </select>
+    
 </mapper>
