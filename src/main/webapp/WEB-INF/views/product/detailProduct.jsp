@@ -71,6 +71,27 @@
 				$('#qnaReplyContent'+index).toggle();
 			})
 		});
+		
+		//favorite
+		var pcode = $('input[name=pcode]').val();
+		$.ajax({
+			url : '${conPath }/favorite.do',
+			type : 'get',
+			data : 'method='+check+"&cId="+aaa+"&pcode="+pcode,
+			success : function(data,status){
+				$('.favoriteClick').html(data);
+			}
+		})
+		$('.favoriteClick').click(function(){
+			$.ajax({
+				url : '${conPath }/favorite.do',
+				type : 'get',
+				data : 'method='+check+"&cId="+aaa+"&pcode="+pcode,
+				success : function(data,status){
+					$('.favoriteClick').html(data);
+				}
+			})
+		}); 
 		//장바구니 담을 물건 추가하기
 		var cartnum = 0;
 		sumprice();
@@ -208,6 +229,7 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
+	<input type="hidden" name="pcode" value="${detail.pcode }">
 	<div id="content">
 		<div id="content_top">
 			<div id="product_img">
@@ -217,14 +239,6 @@
 						width="600" height="600" alt="상품이미지">
 				</div>
 				<div class="favoriteClick">
-					<button class="favoriteBtn">
-                  <c:if test="${not empty cid && favoriteChk==1}">
-                     <img src="${conPath }/img/fav.PNG" alt="위시리스트 추가" style="width: 60px; height: 60px;" class="removeWish">
-                  </c:if>
-                  <c:if test="${empty cid && favoriteChk==0}">
-                     <img src="${conPath }/img/notfav.PNG" alt="위시리스트 추가" style="width: 60px; height: 60px;" class="addWish">
-                  </c:if>
-                  </button>
 					<span>5개</span>
 				</div>
 			</div>

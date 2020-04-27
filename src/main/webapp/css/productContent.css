@@ -35,18 +35,7 @@ a {
 width: 600px;
 height: 630px;
 }
-#content #content_top #product_img .favoriteClick{
-color: #676767;
-font-size: 0;
-padding: 0;
-height: 80x;
-overflow: hidden;
-top: 630px;
-left: 116px;
-position: static;
-margin: 0 auto;
-width: 75px;
-}
+
 #content #content_top #product_img .favoriteClick button{
 	border: 0px;
 }

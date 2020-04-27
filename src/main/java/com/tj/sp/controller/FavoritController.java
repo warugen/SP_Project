@@ -9,4 +9,5 @@ public class FavoritController {
 	public String favoritList() {
 		return "favorit/favoritList";
 	}
+	
 }
