@@ -54,7 +54,6 @@ $(document).ready(function(){
 	</div>
 	<div id="content">
 		<div id="content">
-			<h2>상품 목록</h2>
 			<p><a href="${conPath }/market.do?method=productRegister">상품 등록</a></p>
 			<div id="test">
 				<table>

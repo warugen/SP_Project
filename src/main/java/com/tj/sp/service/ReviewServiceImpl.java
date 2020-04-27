@@ -22,7 +22,6 @@ public class ReviewServiceImpl implements ReviewService {
 	String backupPath = "C:/dsd/SP_Project/src/main/webapp/review_img/";
 	@Override
 	public List<Review> listReview(Review review, String pagenum) {
-		System.out.println(review.getPcode());
 		String pcode = review.getPcode();
 		Paging paging = new Paging(reviewDao.cntReview(pcode),pagenum, 5, 10);
 		review.setStartrow(paging.getStartrow());

@@ -155,6 +155,7 @@
 </script>
 </head>
 <body>
+	<jsp:include page="../main/header.jsp" />
 	<div id="content">
 		<div id="content_top">
 			<div id="product_img">
@@ -175,7 +176,7 @@
 			<div id="product_info">
 				<div id="product_info_headline">
 					<p>
-						<a href=""> 입점상점 </a> <span>상품번호 : 971855654</span>
+						<a href="market.do?method=marketmain&schword=&mid=${detail.mid}"> 입점상점 ${detail.mid} </a> <span>상품번호 : 971855654</span>
 					</p>
 					<hr>
 					<br>
@@ -309,5 +310,6 @@
  			${review.rcontent } / ${review.rstar}
  		</c:forEach>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

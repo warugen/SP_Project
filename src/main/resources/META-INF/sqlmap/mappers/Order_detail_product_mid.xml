@@ -46,7 +46,7 @@
 	</select>
 	
 	<select id="cntOrder_detailByMid" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM ORDER_DETAIL O, SP_ORDER S WHERE O.OCODE=S.OCODE AND 
+		SELECT COUNT(*) FROMSP_ORDER 
     		POCODE IN (SELECT POCODE FROM PRODUCT_OPTION O , PRODUCT P WHERE P.PCODE=O.PCODE AND MID=#{mid})
 	</select>
 	<select id="listOrder_detailByMid" parameterType="Order_detail_product_mid" resultMap="Order_detail_product_midResult">
