@@ -53,7 +53,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tj.sp.dto.Product_Product_option;
+import com.tj.sp.dto.Product_option;
 import com.tj.sp.service.ProductService;
+import com.tj.sp.service.Product_qnaService;
 import com.tj.sp.util.Paging;
 
 @Controller
@@ -61,9 +63,14 @@ import com.tj.sp.util.Paging;
 public class ProductController {
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private Product_qnaService  product_qnaService;
 	@RequestMapping(params="method=detailProduct" )
-	public String detailProduct(String pcode,Model model) {
-		model.addAttribute("detail",productService.detailProduct(pcode));
+	public String detailProduct(String pcode,Model model,String pagenum) {
+		Paging paging = new Paging(product_qnaService.qnaCnt(),pagenum,10,5);
+		model.addAttribute("product_qna",product_qnaService.productQnaList(pagenum));
+		model.addAttribute("paging",paging);
+		model.addAttribute("detailProduct",productService.getProduct(pcode));
 		return "product/detailProduct";
 	}
 	@RequestMapping(params = "method=joinList")
@@ -74,7 +81,7 @@ public class ProductController {
 		return "product/joinList";
 	}
 	@RequestMapping(params = "method=productRegister", method=RequestMethod.GET)
-	public String productRegister() {
+	public String productRegister(Product_option product_option) {
 		return "product/productRegister";
 	}
 	@RequestMapping(params = "method=pRegister")

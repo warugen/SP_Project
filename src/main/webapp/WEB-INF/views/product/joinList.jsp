@@ -13,7 +13,7 @@
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	function trClicked(pcode) {
-		location.href = '${conPath}/product.do?method=productDetail&pcode=' + pcode 
+		location.href = '${conPath}/product.do?method=detailProduct&pcode=' + pcode 
 				+ '&pagenum=${paging.currentpage}';
 	 }
 </script>
@@ -55,5 +55,6 @@
 			[ <a href="${conPath }/product.do?method=joinList&pagenum=${paging.endpage+1}">다음</a> ]
 		</c:if>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

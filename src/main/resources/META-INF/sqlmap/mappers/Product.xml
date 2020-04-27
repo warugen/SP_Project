@@ -44,7 +44,7 @@
     <insert id="registerProduct" parameterType="Product">
     	INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.NEXTVAL, #{ptitle}, #{pcontent}, #{pimage1}, #{pimage2}, #{pimage3}, #{mid})
     </insert>
-    <!-- 마켓 상품 리스트 -->
+    <!-- 마켓별 상품 리스트 -->
     <select id="marketList" parameterType="Product" resultMap="ProductResult">
     	SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT * FROM PRODUCT WHERE MID=#{mid} ORDER BY PTITLE DESC) A)
     		WHERE RN BETWEEN #{startrow} AND #{endrow}

@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+#content table {
+	width:1000px;
+	height:700px;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	background-color: lightgray;
+	margin: 30px auto;
+}
+
+#content tr {
+	
+}
+
+#content td, #content th {
+	text-align: center;
+	padding: 5px;
+	background-color: white;
+}
+
+#content caption {
+	font-size: 1.3em;
+	text-align: center;
+}
+
+#content h2 {
+	text-align: center;
+	color: red;
+}
+
+#content div {
+	text-align: center;
+}
+input[type="button"]{
+	outline:0;
+	padding:2px;
+}
+input[type="button"]:nth-child(2){
+	background-color: #716f6a;
+	color:white;
+}

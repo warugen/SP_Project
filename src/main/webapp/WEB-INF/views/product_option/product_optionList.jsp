@@ -7,12 +7,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="${conPath }/css/product/style.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+});
+</script>
 </head>
 <body>
-	<%-- <jsp:forward page="Order_detail_product_mid.do?method=listOrder_detailByCid"/> --%>
-	<%-- <jsp:forward page="Product_option.do?method=registerProduct_option"/> --%>
-	<jsp:forward page="main.do"/>
+	Hello~
 </body>
-</body>
-
 </html>
