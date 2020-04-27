@@ -6,7 +6,7 @@ import com.tj.sp.dto.Market_qna;
 import com.tj.sp.dto.Store_qna;
 
 public interface MarketQnaService {
-	public List<Market_qna> marketQnaList();
+	public List<Market_qna> marketQnaList(Market_qna qna);
 	public int totalMarketQna();
 	public Store_qna getMarketQnaDetail(String mqcode);
 	public int writeMarketQna(Market_qna qna);

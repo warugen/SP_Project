@@ -9,11 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${conPath }/css/style.css" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-	$(document).ready(function() {
-	})
-</script>
 <style>
 * {
 	margin: 0;

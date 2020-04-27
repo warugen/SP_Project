@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.tj.sp.dto.Customer;
 import com.tj.sp.dto.Customer_qna;
 @Repository
 public class CustomerQnaDaoImpl implements CustomerQnaDao {
@@ -14,9 +15,9 @@ public class CustomerQnaDaoImpl implements CustomerQnaDao {
 	private SqlSessionTemplate sessionTemplate;
 
 	@Override
-	public List<CustomerQnaDao> customerQnaList() {
+	public List<CustomerQnaDao> customerQnaList(Customer_qna qna) {
 		// 글 목록 가져오기
-		return sessionTemplate.selectList("customerQnaList");
+		return sessionTemplate.selectList("customerQnaList", qna);
 	}
 
 	@Override

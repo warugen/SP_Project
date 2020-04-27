@@ -15,8 +15,8 @@ public class MarketQnaServiceImpl implements MarketQnaService {
 	MarketQnaDao qDao;
 
 	@Override
-	public List<Market_qna> marketQnaList() {
-		return qDao.marketQnaList();
+	public List<Market_qna> marketQnaList(Market_qna qna) {
+		return qDao.marketQnaList(qna);
 	}
 
 	@Override

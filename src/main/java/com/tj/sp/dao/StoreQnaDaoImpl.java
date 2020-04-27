@@ -14,9 +14,9 @@ public class StoreQnaDaoImpl implements StoreQnaDao {
 	private SqlSessionTemplate sessionTemplate;
 	
 	@Override
-	public List<Store_qna> storeQnaList() {
+	public List<Store_qna> storeQnaList(Store_qna qna) {
 		// 글 목록 가져오기
-		return sessionTemplate.selectList("storeQnaList");
+		return sessionTemplate.selectList("storeQnaList", qna);
 	}
 
 	@Override

@@ -17,9 +17,9 @@
 	<a href="product.do?method=detailProduct" class="btn1">제품상세</a>
 	<a href="Order_detail_product_mid.do?method=listOrder_detailByCid" class="btn2">주문 리스트</a>
 	<a href="Order_detail_product_mid.do?method=listOrder_detailByMid" class="btn1">마켓별 주문 리스트</a>
-	<a href="Order_detail_product_mid.do?method=listOrder_detailByCid" class="btn2">고객-관리자 게시판</a>
-	<a href="Order_detail_product_mid.do?method=listOrder_detailByMid" class="btn1">고객-마켓 게시판</a>
-	<a href="Order_detail_product_mid.do?method=listOrder_detailByMid" class="btn2">마켓-관리자 게시판</a>
+	<a href="customerQna.do?method=qnaList" class="btn2">고객-관리자 게시판</a>
+	<a href="storeQna.do?method=qnaList" class="btn1">고객-마켓 게시판</a>
+	<a href="marketQna.do?method=qnaList" class="btn2">마켓-관리자 게시판</a>
 </body>
 
 </html>

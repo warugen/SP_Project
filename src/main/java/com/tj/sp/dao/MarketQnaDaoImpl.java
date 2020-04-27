@@ -15,9 +15,9 @@ public class MarketQnaDaoImpl implements MarketQnaDao {
 	private SqlSessionTemplate sessionTemplate;
 	
 	@Override
-	public List<Market_qna> marketQnaList() {
+	public List<Market_qna> marketQnaList(Market_qna qna) {
 		// 글 목록 가져오기
-		return sessionTemplate.selectList("marketQnaList");
+		return sessionTemplate.selectList("marketQnaList", qna);
 	}
 
 	@Override

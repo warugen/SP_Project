@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tj.sp.dao.CustomerQnaDao;
+import com.tj.sp.dto.Customer;
 import com.tj.sp.dto.Customer_qna;
 @Service
 public class CustomerQnaServiceImpl implements CustomerQnaService {
@@ -14,8 +15,8 @@ public class CustomerQnaServiceImpl implements CustomerQnaService {
 	CustomerQnaDao qDao;
 
 	@Override
-	public List<CustomerQnaDao> customerQnaList() {
-		return qDao.customerQnaList();
+	public List<CustomerQnaDao> customerQnaList(Customer_qna qna) {
+		return qDao.customerQnaList(qna);
 	}
 
 	@Override

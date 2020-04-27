@@ -21,7 +21,7 @@
 		SELECT COUNT(*) FROM MARKET_QNA
 	</select>
 	<!-- 글 목록 가져오기 (startrow, endrow) -->
-	<select id="marketQnaList" resultMap="Market_qna_Result" >
+	<select id="marketQnaList" parameterType="Market_qna" resultMap="Market_qna_Result" >
 		SELECT * FROM (SELECT ROWNUM RN, A.* 
     		FROM (SELECT * FROM MARKET_QNA ORDER BY SQGROUP DESC, SQSTEP) A)
 		WHERE RN BETWEEN #{startrow} AND #{endrow}

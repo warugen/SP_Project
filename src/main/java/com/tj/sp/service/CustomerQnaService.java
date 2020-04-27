@@ -6,7 +6,7 @@ import com.tj.sp.dao.CustomerQnaDao;
 import com.tj.sp.dto.Customer_qna;
 
 public interface CustomerQnaService {
-	public List<CustomerQnaDao> customerQnaList();
+	public List<CustomerQnaDao> customerQnaList(Customer_qna qna);
 	public int totalCustomerQna();
 	public Customer_qna getCustomerQnaDetail(String cqcode);
 	public int writeCustomerQna(Customer_qna qna);

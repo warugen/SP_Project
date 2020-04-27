@@ -22,7 +22,7 @@
 	</select>
 	
 	<!-- 글 목록 가져오기 (startrow, endrow) -->
-	<select id="customerQnaList" resultMap="Customer_qna_Result" >
+	<select id="customerQnaList" parameterType="Customer_qna" resultMap="Customer_qna_Result" >
 		SELECT * FROM (SELECT ROWNUM RN, A.* 
     		FROM (SELECT * FROM CUSTOMER_QNA ORDER BY CQGROUP DESC, CQSTEP) A)
 		WHERE RN BETWEEN #{startrow} AND #{endrow}

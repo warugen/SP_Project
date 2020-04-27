@@ -14,8 +14,8 @@ public class StoerQnaServiceImpl implements StoerQnaService {
 	StoreQnaDao qDao;
 
 	@Override
-	public List<Store_qna> storeQnaList() {
-		return qDao.storeQnaList();
+	public List<Store_qna> storeQnaList(Store_qna qna) {
+		return qDao.storeQnaList(qna);
 	}
 
 	@Override
