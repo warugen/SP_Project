@@ -22,6 +22,27 @@
 #form_body::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
 }
+#sum_price_cell{
+	height: 65px;
+    line-height: 65px;
+	border-bottom: 1px solid #cccccc;
+}
+#sum_price_cell > span:nth-child(1){
+	font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+#sum_price_cell > span:nth-child(2){
+	float: right;
+    padding: 5px 10px 0 0;
+    color: #333;
+    text-align: right;
+}
+#sum_price{
+	font: bold 28px/1.2 Tahoma, sans-serif;
+    color: #f43142;
+}
+
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
@@ -32,9 +53,9 @@
 				$('#qnaReplyContent'+index).toggle();
 			})
 		});
-		
 		//장바구니 담을 물건 추가하기
 		var cartnum = 0;
+		sumprice();
 		$('#iobCart').change(function(){
 			var pocode = $(this).val();
 			if(pocode < 0){
@@ -70,12 +91,14 @@
 		    	"left" : "4px"
 			});
 			cartnum++;
+			sumprice();
 		});
 	});
 	//장바구니 담을 목록에서 제거
 	$(document).on('click','.btnx',function(){
 		var tempt = $(this).attr('id').substring(5);
 		$('#goods_'+tempt).detach();
+		sumprice();
 	});
 	//수량조정
 	$(document).on('change','.goods_num',function(){
@@ -83,6 +106,45 @@
 		var price = $('#cartprice_'+cartnumber).val();
 		var count = $(this).val();
 		$('#priceresult_'+cartnumber).html(count*price);
+		sumprice();
+	});
+	//총 합계금액 표시 
+	function sumprice(){
+		$('#sum_price').html(0);
+		$('.goods_num').each(function(){
+			var cartnumber = $(this).attr('id').substring(4);
+			var price = $('#cartprice_'+cartnumber).val();
+			var count = $(this).val();
+			$('#sum_price').html( Number($('#sum_price').html()) + count*price );
+		});
+		if($('#sum_price').html() == 0){
+			$('#sum_price_cell').hide();
+		}else{
+			$('#sum_price_cell').show();
+		}
+	}
+	//장바구니에 담기
+	$(document).on('click','#insertCart',function(){
+		var cid = $('input[name=cid]').val();
+		var str = "&cid="+cid;
+		$('input[name=pocode]').each(function() {
+			str += "&pocode=";
+			str += $(this).val();
+		});
+		$('input[name=cartcount]').each(function() {
+			str += "&cartcount=";
+			str += $(this).val();
+		});
+		$.ajax({
+			url : 'cart.do',
+			dataType : 'html',
+			data : 'method=insert'+str,
+			success : function(data,status){
+			}
+		});
+		if(confirm('상품이 장바구니에 담겼습니다.\n 바로 확인 하시겠습니까?')){
+			location.href="cart.do?method=cart&cid="+cid;
+		}
 	});
 	function writeQnaForm() {
 		window.open('product_qna.do?method=writeQnaForm','','width=650,height=530,left=100,top=100')
@@ -135,7 +197,8 @@
 				</div>
 				<form action="cart.do?">
 					<input type="hidden" name="method" value="orderDirect">
-					<input type="hidden" name="cid" value="${customer.cid}">
+					<%-- <input type="hidden" name="cid" value="${customer.cid}"> --%>
+					<input type="hidden" name="cid" value="aaa">
 					<div id="items_option_box">
 						<select id="iobCart">
 							<option selected="selected" value="-1">선택하세요.</option>
@@ -143,18 +206,22 @@
 								<option value="${ForCart.pocode }">${ForCart.poname} / ${ForCart.poprice}</option>
 							</c:forEach>
 						</select>
-							<c:forEach var="ForCart" items="${listForCart }">
-								<input type='hidden' id='poname_${ForCart.pocode }' class='poname' value='${ForCart.poname }'>
-								<input type='hidden' id='poprice_${ForCart.pocode }' class='poprice' value='${ForCart.poprice }'>
-							</c:forEach>
+						<c:forEach var="ForCart" items="${listForCart }">
+							<input type='hidden' id='poname_${ForCart.pocode }' class='poname' value='${ForCart.poname }'>
+							<input type='hidden' id='poprice_${ForCart.pocode }' class='poprice' value='${ForCart.poprice }'>
+						</c:forEach>
 					</div>
 					<div id="form_body">
 						<div id="goods_option">
 						</div>
 					</div>
 					<div id="form_bottom">
+						<div id="sum_price_cell">
+							<span>총 합계급액</span> 
+							<span><span id="sum_price">0</span>원</span> 
+						</div>
 						<div id="bottom_button">
-							<button type="button" class="btn2">장바구니담기</button>
+							<button type="button" class="btn2" id="insertCart">장바구니담기</button>
 							<button class="btn1">구매하기</button>
 						</div>
 					</div>

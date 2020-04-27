@@ -34,6 +34,13 @@ public class CartController {
 	private Order_detailService order_detailService;
 	@Autowired
 	private CustomerService customerService;
+	//장바구니 답기
+	@RequestMapping(params="method=insert", method =RequestMethod.GET)
+	public String insertCart(Model model, String cid, String[] pocode, String[] cartcount ) {
+		cartservice.insertCart(cid, pocode, cartcount);
+		return "cart/insertCart";
+	}
+	
 	//장바구니 호출
 	@RequestMapping(params="method=cart", method =RequestMethod.GET)
 	public String cart(Model model) {
