@@ -50,12 +50,12 @@
 		 </script>
 		 </td>
 		 </tr>
-		<tr><th>이미지1 : </th><td colspan="3"><input type="file" name="file1" required="required"></td></tr>
-				<tr><th>이미지2 : </th><td colspan="3"><input type="file" name="file2"></td></tr>
-				<tr><th>이미지3 : </th><td colspan="3"><input type="file" name="file3"></td></tr>
+		<tr><th>대표이미지1 : </th><td colspan="3"><input type="file" name="file1" required="required"></td></tr>
+				<tr><th>대표이미지2 : </th><td colspan="3"><input type="file" name="file2"></td></tr>
+				<tr><th>대표이미지3 : </th><td colspan="3"><input type="file" name="file3"></td></tr>
 		<tr id="top">
 					<td colspan="4">
-						<a>원가</a><a>수량</a><a>판매가격</a><a>상품분류</a>
+						<span>원가</span><span>수량</span><span>판매가격</span><span>상품분류</span>
 					</td>
 		</tr>
 		<tr id="option">
@@ -72,12 +72,13 @@
 					</td>
 		</tr>
 		<tr><td colspan="4">
-					<input type="submit" value="상품등록">
-					</td>
-				</tr>
+			<input type="submit" value="상품등록">
+			</td>
+		</tr>
 	</table>
 	</div>
 	</div>
 </form>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

@@ -5,7 +5,7 @@
 }
 table{
 	border:1px solid black;
-	width:500px;
+	width:900px;
 	margin-top:30px;
 }
 table td,th{
@@ -24,20 +24,13 @@ textarea{
 	height:250px;
 	outline:0;
 }
-#top a:nth-child(1){
-	margin-left: 50px;
-}
-#top a:nth-child(2){
-	margin-left: 85px;
-}
-#top a:nth-child(3){
-	margin-left: 75px;
-}
-#top a:nth-child(4){
-	margin-left: 40px;
-}
 #top{
 	font-weight: bold;
+}
+#top > td > span{
+	margin: 0 79px;
+    position: relative;
+    left: 10px;
 }
 #option input[type="text"]{
 	width:20%;
