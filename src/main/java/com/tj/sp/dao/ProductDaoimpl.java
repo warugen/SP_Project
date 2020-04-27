@@ -2,6 +2,8 @@ package com.tj.sp.dao;
 
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,6 +14,8 @@ import com.tj.sp.dto.Product_Product_option;
 public class ProductDaoimpl implements ProductDao{
 	@Autowired
 	private SqlSession sessionTemplate;
+	@Autowired
+	private DataSource ds;
 	@Override
 	public List<Product> getProductList(Product product) {
 		return sessionTemplate.selectList("getProductList",product);

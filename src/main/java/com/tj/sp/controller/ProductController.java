@@ -49,7 +49,6 @@ public class ProductController {
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
 		return "product/joinList";
 	}
-	
 	@RequestMapping(params = "method=productRegister", method=RequestMethod.GET)
 	public String productRegister(Product_option product_option) {
 		return "product/productRegister";

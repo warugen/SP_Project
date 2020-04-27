@@ -54,7 +54,7 @@ $(document).ready(function(){
 	</div>
 	<div id="content">
 		<div id="content">
-			<p><a href="${conPath }/market.do?method=productRegister">상품 등록</a></p>
+			<p><a href="${conPath }/product.do?method=productRegister">상품 등록</a></p>
 			<div id="test">
 				<table>
 					<c:forEach var="product_product_option" items="${marketmain }">
