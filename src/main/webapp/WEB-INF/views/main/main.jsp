@@ -9,106 +9,51 @@
 <meta charset="UTF-8">
 <title>S-Place</title>
 <link href="${conPath }/css/style.css" rel="stylesheet">
+<link href="${conPath }/css/product/product.css" rel="stylesheet">
 <style></style>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-<style>
-* {
-	padding: 0;
-	margin: 0;
-}
-
-a {
-	text-decoration: none;
-	color: black;
-}
-
-li {
-	list-style: none;
-}
-
-#content {
-	width: 1000px;
-	margin: 0 auto;
-}
-
-#content .section1 .side_banner {
-	float: left;
-	width: 1002px;
-	height: 400px;
-	border: 1px solid lightgray;
-	line-height: 400px;
-	text-align: center;
-	box-sizing: border-box;
-	margin-bottom:10px;
-	margin-top:10px;
-}
-
-#content .section2 .hit_product {
-	width: 1000px;
-	height: 400px;
-	margin: 0 auto;
-	border: 1px solid lightgray;
-	overflow: hidden;
-}
-
-#content .section2 .hit_product ul li {
-	float: left;
-	width: 240px;
-	height: 400px;
-	border: 1px solid lightgray;
-	margin-left: 7px;
-	line-height: 400px;
-	text-align: center;
-	box-sizing: border-box;
-}
-
-#content .section2 .md_product {
-	width: 1000px;
-	height: 400px;
-	margin: 10px auto;
-	border: 1px solid lightgray;
-	overflow: hidden;
-}
-
-#content .section2 .md_product ul li {
-	float: left;
-	width: 240px;
-	height: 400px;
-	border: 1px solid lightgray;
-	margin-left: 7px;
-	line-height: 400px;
-	text-align: center;
-	box-sizing: border-box;
-}
-</style>
+	<script>
+	function trClicked(pcode) {
+		location.href = '${conPath}/product.do?method=detailProduct&pcode=' + pcode 
+				+ '&pagenum=${paging.currentpage}';
+	 }
+</script>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
 	<div id="content">
-	<div><a href="${conPath }/product.do?method=joinList">상품리스트</a></div>
-		<div class="section1">
-			<div class="side_banner">
-				<a href=""><img src="${conPath }/img/NOTHING.JPG"></a>
-			</div>
+		<p><a href="${conPath }/product.do?method=productRegister">상품 등록</a></p>
+		<div id="test">
+			<table>
+				<c:forEach var="product_product_option" items="${joinList }">
+					<tr onclick="trClicked('${product_product_option.pcode}')">
+						<th><img src="${conPath }/productUpload/${product_product_option.pimage1 }"><a href="${conPath }/product.do?method=productDetail&pcode=${product_product_option.pcode }&pagenum=${paging.currentpage }"></a>
+						<br><br>
+						상품명 : ${product_product_option.ptitle }<br>
+						판매가격(최소가) : ${product_product_option.poprice}<br>
+						등록업체 : ${product_product_option.mid }</th>
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
-		<div class="section2">
-			<div class="hit_product">
-				<ul>
-					<li><a href=""><img src="${conPath }/img/NOTHING.JPG"></a></li>
-					<li><a href=""><img src="${conPath }/img/NOTHING.JPG"></a></li>
-					<li><a href=""><img src="${conPath }/img/NOTHING.JPG"></a></li>
-					<li><a href=""><img src="${conPath }/img/NOTHING.JPG"></a></li>
-				</ul>
-			</div>
-			<div class="md_product">
-				<ul>
-					<li><a href=""><img src="${conPath }/img/NOTHING.JPG"></a></li>
-					<li><a href=""><img src="${conPath }/img/NOTHING.JPG"></a></li>
-					<li><a href=""><img src="${conPath }/img/NOTHING.JPG"></a></li>
-					<li><a href=""><img src="${conPath }/img/NOTHING.JPG"></a></li>
-				</ul>
-			</div>
-		</div>
+	</div>
+	<br>
+	<br>
+	<div class="paging">
+		<c:if test="${paging.startpage>paging.blocksize }">
+			[ <a href="${conPath }/main.do?pagenum=${paging.startpage-1}">이전</a> ]
+		</c:if>
+		<c:forEach var="i" begin="${paging.startpage }" end="${paging.endpage }">
+			<c:if test="${paging.currentpage==i }">
+				[ <b> ${i }</b> ]
+			</c:if>
+			<c:if test="${paging.currentpage!=i }">
+				[ <a href="${conPath }/main.do?pagenum=${i }">${i }</a> ]
+			</c:if>
+		</c:forEach>
+		<c:if test="${paging.endpage<paging.pagecnt }">
+			[ <a href="${conPath }/main.do?pagenum=${paging.endpage+1}">다음</a> ]
+		</c:if>
 	</div>
 	<jsp:include page="footer.jsp" />
 </body>
