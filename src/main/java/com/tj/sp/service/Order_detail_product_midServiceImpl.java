@@ -34,5 +34,4 @@ public class Order_detail_product_midServiceImpl implements Order_detail_product
 	public int cntOrder_detailByCid(String cid) {
 		return order_detail_product_midDao.cntOrder_detailByCid(cid);
 	}
-
 }

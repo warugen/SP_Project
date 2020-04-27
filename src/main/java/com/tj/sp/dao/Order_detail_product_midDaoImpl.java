@@ -27,5 +27,4 @@ public class Order_detail_product_midDaoImpl implements Order_detail_product_mid
 	public List<Order_detail_product_mid> listOrder_detailByMid(Order_detail_product_mid order_detail_product_mid) {
 		return sessionTemplate.selectList("listOrder_detailByMid", order_detail_product_mid);
 	}
-
 }

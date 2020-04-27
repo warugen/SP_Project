@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.tj.sp.dto.Product;
 import com.tj.sp.dto.Product_Product_option;
+import com.tj.sp.dto.Product_option;
 import com.tj.sp.dto.Review;
 import com.tj.sp.service.ProductService;
 import com.tj.sp.service.Product_optionService;
@@ -51,7 +51,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(params = "method=productRegister", method=RequestMethod.GET)
-	public String productRegister() {
+	public String productRegister(Product_option product_option) {
 		return "product/productRegister";
 	}
 	@RequestMapping(params = "method=pRegister")
@@ -64,5 +64,4 @@ public class ProductController {
 		model.addAttribute("paging", paging);
 		return "product/joinList";
 	}
-	
 }

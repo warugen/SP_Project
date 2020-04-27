@@ -19,6 +19,7 @@ public class Product_qnaDaoimpl implements Product_qnaDao{
 
 	@Override
 	public int modifyQna(Product_qna product_qna) {
+		System.out.println("수정할 데이터(DAO) : "+product_qna);
 		return sessionTemplate.update("modifyQna",product_qna);
 	}
 
@@ -51,5 +52,8 @@ public class Product_qnaDaoimpl implements Product_qnaDao{
 	public int cntUnansweredQnaList(Product product) {
 		return sessionTemplate.selectOne("cntUnansweredQnaList", product);
 	}
-
+	@Override
+	public int replyQna(Product_qna product_qna) {
+		return sessionTemplate.update("replyQna",product_qna);
+	}
 }

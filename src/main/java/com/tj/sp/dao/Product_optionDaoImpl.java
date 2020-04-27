@@ -15,5 +15,16 @@ public class Product_optionDaoImpl implements Product_optionDao {
 	public List<Product_option> listForCart(String pcode) {
 		return sessionTemplate.selectList("listForCart", pcode);
 	}
-
+	@Override
+	public List<Product_option> product_optionList(Product_option product_option) {
+		return sessionTemplate.selectList("product_optionList", product_option);
+	}
+	@Override
+	public int registerProduct_option(Product_option product_option) {
+		return sessionTemplate.insert("registerProduct_option", product_option);
+	}
+	@Override
+	public Product_option getProduct_option(String pocode) {
+		return sessionTemplate.selectOne("getProduct_option", pocode);
+	}
 }

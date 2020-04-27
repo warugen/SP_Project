@@ -204,5 +204,4 @@ public class Order_detail_product_mid {
 				+ ", pcode=" + pcode + ", mid=" + mid + ", startrow=" + startrow + ", endrow=" + endrow + ", schitem="
 				+ schitem + ", schword=" + schword + "]";
 	}
-	
 }

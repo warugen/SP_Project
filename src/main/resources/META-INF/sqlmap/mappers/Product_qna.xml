@@ -19,25 +19,28 @@
 		(PQCODE,PQTITLE,PQCONTENT,PQSECRET,PQCOMPLETE,PCODE,CID)
 		VALUES(PRODUCT_QNA_SEQ.nextval,#{pqtitle},#{pqcontent},#{pqsecret},#{pqcomplete},'2','bbb')
 	</insert>
-	<update id="replyQna">
-		UPDATE PRODUCT_QNA SET PQCOMPLETE=#{pqcomplete},PQANSWER=#{pqanswer} WHERE PQCODE='3'
+	<update id="replyQna" parameterType="Product_qna">
+		UPDATE PRODUCT_QNA SET
+		PQCOMPLETE=1,PQANSWER=#{pqanswer} WHERE PQCODE=#{pqcode}
 	</update>
 	<update id="modifyQna" parameterType="Product_qna">
 		UPDATE PRODUCT_QNA SET
 		PQTITLE=#{pqtitle},
 		PQCONTENT=#{pqcontent},
+		PQANSWER=null,
 		PQSECRET=#{pqsecret}
-		WHERE PQCODE=#{pqcode} AND CID='bbb' AND PCODE='2'		
+		WHERE PQCODE=#{pqcode}
 	</update>
 	<select id="productQnaList" resultMap="Product_qnaResult">
 		SELECT * FROM (SELECT
 		ROWNUM RN, A.* FROM
-		(SELECT * FROM PRODUCT_QNA WHERE PCODE='2' ORDER BY PQDATE DESC)A)
+		(SELECT * FROM PRODUCT_QNA WHERE PCODE='1' ORDER BY
+		PQDATE DESC)A)
 		WHERE RN
 		BETWEEN #{startrow} AND #{endrow}
 	</select>
 	<delete id="deleteQna">
-		DELETE FROM PRODUCT_QNA WHERE PCODE='2' AND CID='bbb' AND PQCODE=#{pqcode}
+		DELETE FROM PRODUCT_QNA WHERE PQCODE=#{pqcode}
 	</delete>
 	<select id="getQna" parameterType="String"
 		resultType="Product_qna">

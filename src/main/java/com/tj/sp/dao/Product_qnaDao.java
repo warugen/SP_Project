@@ -11,6 +11,7 @@ public interface Product_qnaDao {
 	public List<Product_qna> productQnaList(Product_qna product_qna);
 	public int deleteQna(String pqcode);
 	public Product_qna getQna(Product_qna product_qna);
+	public int replyQna(Product_qna product_qna);
 	public int qnaCnt();
 	public List<Product_qna> unansweredQnaList(Product product);
 	public int cntUnansweredQnaList(Product product);

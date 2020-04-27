@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/style.css" rel="stylesheet">
+<link href="${conPath }/css/product/productRegister.css" rel="stylesheet">
 <style></style>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -18,24 +18,49 @@
 </script>
 </head>
 <body>
+	<jsp:include page="../main/header.jsp"/>
+	<div id="main">
 	<div align="center">
-		<hr width="500" color="green">
+		<hr width="500" color="#3a5485">
 		<h2>상품등록</h2>
-		<hr width="500" color="green">
+		<hr width="500" color="#3a5485">
 		<form action="${conPath }/product.do?method=pRegister" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="mid" value="aaa">
+			<input type="hidden" name="typecode" value="1-1">
+			<input type="hidden" name="pcode" value="1">
 			<table>
-				<tr><th>상품명 : </th><td><input type="text" name="ptitle" required="required"></td></tr>
-				<tr><th>상품소개 : </th><td><textarea rows="5" cols="22" name="pcontent"></textarea></td></tr>
-				<tr><th>이미지1 : </th><td><input type="file" name="file1" required="required"></td></tr>
-				<tr><th>이미지2 : </th><td><input type="file" name="file2"></td></tr>
-				<tr><th>이미지3 : </th><td><input type="file" name="file3"></td></tr>
-				<tr><th>등록업체 : </th><td><input type="text" name="mid" required="required"></td></tr>
-				<tr><td colspan="2">
+				<tr><th>상품명 : </th><td colspan="3"><input type="text" name="ptitle" required="required"></td></tr>
+				<tr><th>상품소개 : </th><td colspan="3"><textarea rows="5" cols="22" name="pcontent"></textarea></td></tr>
+				<tr><th>이미지1 : </th><td colspan="3"><input type="file" name="file1" required="required"></td></tr>
+				<tr><th>이미지2 : </th><td colspan="3"><input type="file" name="file2"></td></tr>
+				<tr><th>이미지3 : </th><td colspan="3"><input type="file" name="file3"></td></tr>
+				
+				<tr id="top">
+					<td colspan="4">
+						<a>원가</a><a>수량</a><a>판매가격</a><a>상품분류</a>
+					</td>
+				</tr>
+				<tr id="option">
+					<td colspan="4">
+						<input type="text" name="ponet" required="required">
+						<input type="text" name="postock" required="required">
+						<input type="text" name="poprice" required="required">
+						<select name="poname">
+							<option>식품</option>
+							<option>농산</option>
+							<option>수산</option>
+							<option>축산</option>
+						</select>
+					</td>
+				</tr>
+				<tr><td colspan="4">
 					<input type="submit" value="상품등록">
 					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
+	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

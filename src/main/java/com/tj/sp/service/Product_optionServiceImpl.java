@@ -15,5 +15,19 @@ public class Product_optionServiceImpl implements Product_optionService {
 	public List<Product_option> listForCart(String pcode) {
 		return product_optionDao.listForCart(pcode);
 	}
+	@Override
+	public List<Product_option> product_optionList(Product_option product_option) {
+		return product_optionDao.product_optionList(product_option);
+	}
+
+	@Override
+	public int registerProduct_option(Product_option product_option) {
+		return product_optionDao.registerProduct_option(product_option);
+	}
+
+	@Override
+	public Product_option getProduct_option(String pocode) {
+		return product_optionDao.getProduct_option(pocode);
+	}
 
 }

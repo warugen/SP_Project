@@ -55,5 +55,6 @@
 			[ <a href="${conPath }/product.do?method=joinList&pagenum=${paging.endpage+1}">다음</a> ]
 		</c:if>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

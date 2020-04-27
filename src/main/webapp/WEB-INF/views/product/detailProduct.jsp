@@ -11,7 +11,25 @@
 <link href="${conPath}/css/style.css" rel="stylesheet">
 <link href="${conPath}/css/productContent.css" rel="stylesheet">
 <style>
+#btnQ {
+   background: #fff;
+   color: #3a5485;
+   font-size: 12px;
+   width: 70px;
+   height: 30px;
+   border: 2px solid #3a5485;
+   border-radius: 10px;
+}
 
+#btnA {
+   background: #3a5485;
+   color: #fff;
+   font-size: 12px;
+   width: 70px;
+   height: 30px;
+   border: 2px solid #3a5485;
+   border-radius: 10px;
+}
 #form_body{
 	width: 550px;
 	max-height: 280px;
@@ -127,14 +145,20 @@
 	$(document).on('click','#insertCart',function(){
 		var cid = $('input[name=cid]').val();
 		var str = "&cid="+cid;
+		var chk = 0;
 		$('input[name=pocode]').each(function() {
 			str += "&pocode=";
 			str += $(this).val();
+			chk++;
 		});
 		$('input[name=cartcount]').each(function() {
 			str += "&cartcount=";
 			str += $(this).val();
+			chk++;
 		});
+		if(chk == 0 ){
+			return false;
+		}
 		$.ajax({
 			url : 'cart.do',
 			dataType : 'html',
@@ -146,12 +170,40 @@
 			location.href="cart.do?method=cart&cid="+cid;
 		}
 	});
-	function writeQnaForm() {
-		window.open('product_qna.do?method=writeQnaForm','','width=650,height=530,left=100,top=100')
+	function buychk(){
+		var chk = 0;
+		$('input[name=pocode]').each(function() {
+			str += "&pocode=";
+			str += $(this).val();
+			chk++;
+		});
+		if(chk == 0 ){
+			return false;
+		}
 	}
-	function modifyQnaForm(pqcode) {
-		window.open('product_qna.do?method=modifyQnaForm&pqcode='+pqcode,'','width=650,height=530,left=100,top=100')
-	}
+</script>
+<script>
+   $(document).ready(function() {
+      $('.qnaReplyContent').css('display', 'none');
+      $('.qnaReplyTitle').each(function(index, item) {
+         $(this).click(function() {
+            $('#qnaReplyContent' + index).toggle();
+         })
+      });
+      $('.addWish').click(function() {
+         location.href='${conPath}/product.do?method=detailProduct';         
+      });
+   });
+   function writeQnaForm() {
+      window.open('product_qna.do?method=writeQnaForm', '',
+            'width=650,height=530,left=100,top=100')
+   }
+   function modifyQnaForm(pqcode) {
+      window.open('product_qna.do?method=modifyQnaForm&pqcode='+pqcode,'','width=650,height=530,left=100,top=100')
+   }
+   function replyQnaForm(pqcode) {
+      window.open('product_qna.do?method=replyQnaForm&pqcode='+pqcode, '','width=650,height=530,left=100,top=100')
+   }
 </script>
 </head>
 <body>
@@ -165,11 +217,14 @@
 						width="600" height="600" alt="상품이미지">
 				</div>
 				<div class="favoriteClick">
-					<button>
-						<img
-							src="https://t4.ftcdn.net/jpg/02/05/18/21/240_F_205182152_z0fPFHyA9xM5U3UDAWhGIrd1G0HVt6zi.jpg"
-							width="60" height="60" alt="상품이미지">
-					</button>
+					<button class="favoriteBtn">
+                  <c:if test="${not empty cid && favoriteChk==1}">
+                     <img src="${conPath }/img/fav.PNG" alt="위시리스트 추가" style="width: 60px; height: 60px;" class="removeWish">
+                  </c:if>
+                  <c:if test="${empty cid && favoriteChk==0}">
+                     <img src="${conPath }/img/notfav.PNG" alt="위시리스트 추가" style="width: 60px; height: 60px;" class="addWish">
+                  </c:if>
+                  </button>
 					<span>5개</span>
 				</div>
 			</div>
@@ -223,7 +278,7 @@
 						</div>
 						<div id="bottom_button">
 							<button type="button" class="btn2" id="insertCart">장바구니담기</button>
-							<button class="btn1">구매하기</button>
+							<button class="btn1" onclick="return buychk();">구매하기</button>
 						</div>
 					</div>
 				</form>

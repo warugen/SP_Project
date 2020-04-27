@@ -23,6 +23,7 @@ public class Product_qnaServiceimpl implements Product_qnaService {
 	@Override
 	public int modifyQna(Product_qna product_qna) {
 		System.out.println("글수정"+product_qna);
+		System.out.println("수정할 데이터(서비스) : "+product_qna);
 		return product_qnaDao.modifyQna(product_qna);
 	}
 
@@ -32,7 +33,7 @@ public class Product_qnaServiceimpl implements Product_qnaService {
 		Product_qna product_qna = new Product_qna();
 		product_qna.setStartrow(paging.getStartrow());
 		product_qna.setEndrow(paging.getEndrow());
-		product_qna.setPcode("2");
+		product_qna.setPcode("1");
 		return product_qnaDao.productQnaList(product_qna);
 	}
 
@@ -62,5 +63,10 @@ public class Product_qnaServiceimpl implements Product_qnaService {
 	@Override
 	public int cntUnansweredQnaList(Product product) {
 		return product_qnaDao.cntUnansweredQnaList(product);
+	}
+	@Override
+	public int replyQna(Product_qna product_qna) {
+		product_qna.setPqcomplete("1");
+		return product_qnaDao.replyQna(product_qna);
 	}
 }
