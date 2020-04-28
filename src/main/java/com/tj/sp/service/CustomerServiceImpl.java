@@ -23,8 +23,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 	
 	@Override
-	public List<Customer> totlaCustomer() {
-		return customerDao.totlaCustomer();
+	public List<Customer> totlaCustomer(Customer customer) {
+		return customerDao.totlaCustomer(customer);
 	}
 	
 	@Override

@@ -71,7 +71,8 @@ public class LoginController {
 			if (customer != null) {
 				if(customer.getCpw().equals(cpw)) {
 					// 비밀번호 일치
-					session.setAttribute("customer", customer);
+					session.setAttribute("member", customer);
+					session.setAttribute("cid", customer.getCid());
 					model.addAttribute("member", customer);
 					model.addAttribute("result", "로그인 성공");
 					System.out.println("로그인 성공");

@@ -40,6 +40,7 @@ public class ProductController {
 		Review review = new Review();
 		review.setPcode(pcode);
 		model.addAttribute("review", reviewService.listReview(review, review_pagenum));
+
 		return "product/detailProduct";
 	}
 	@RequestMapping(params = "method=joinList")
