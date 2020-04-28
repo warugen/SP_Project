@@ -22,7 +22,6 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div id="content">
-		<p><a href="${conPath }/product.do?method=productRegister">상품 등록</a></p>
 		<div id="test">
 			<table>
 				<c:forEach var="product_product_option" items="${joinList }">

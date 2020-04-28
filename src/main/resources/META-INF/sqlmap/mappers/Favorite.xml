@@ -8,19 +8,13 @@
 		<result property="cid" column="cid"/>
 		<result property="pcode" column="pcode"/>
 	</resultMap>
-	<select id="getWish" resultMap="FavoriteResult">
-		SELECT PIMAGE1,PTITLE FROM PRODUCT P, FAVORITE F WHERE P.PCODE=F.PCODE AND CID=#{cid}
+	<select id="checkFavorite" parameterType="Favorite" resultType="int">
+		SELECT COUNT(*) FROM FAVORITE WHERE PCODE=#{pcode} AND CID=#{cid}
 	</select>
-	<insert id="addWish" parameterType="Favorite">
-		INSERT INTO FAVORITE (FCODE,CID,PCODE) VALUES (FAVORITE_SEQ.NEXTVAL,#{cid},#{pcode});
+	<insert id="insertFavorite" parameterType="Favorite">
+		INSERT INTO FAVORITE VALUES (FAVORITE_SEQ.NEXTVAL,#{cid},#{pcode})
 	</insert>
-	<delete id="removeWish" parameterType="Favorite">
-		DELETE FROM FAVORITE WHERE CID=#{cid} AND FCODE=#{pcode}
+	<delete id="deleteFavorite" parameterType="Favorite">
+		DELETE FROM FAVORITE WHERE PCODE=#{pcode} AND CID=#{cid}
 	</delete>
-	<select id="totalMyWish">
-		SELECT COUNT(*) FROM FAVORITE WHERE CID=#{cid}
-	</select>
-	<select id="totalProductWish">
-		SELECT COUNT(*) FROM FAVORITE WHERE PCODE=#{pcode}
-	</select>
 </mapper>

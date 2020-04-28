@@ -11,6 +11,7 @@ public interface Product_qnaService {
 	public List<Product_qna> productQnaList(String pagenum);
 	public int deleteQna(String pqcode);
 	public Product_qna getQna(Product_qna product_qna);
+	public int replyQna(Product_qna product_qna);
 	public int qnaCnt();
 	public List<Product_qna> unansweredQnaList(Product product, String pagenum);
 	public int cntUnansweredQnaList(Product product);

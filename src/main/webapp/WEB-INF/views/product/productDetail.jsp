@@ -21,6 +21,7 @@
 					<td><img src="${conPath }/productUpload/${productDetail.pimage2 }"></td>
 					<td><img src="${conPath }/productUpload/${productDetail.pimage3 }"></td>
 				</tr>
+				<tr><th>상품분류</th><td colspan="3">${product_option.poname }</td></tr>
 				<tr><th>등록업체</th><td colspan="3">${productDetail.mid }</td></tr>
 				<tr><td colspan="4">
 				

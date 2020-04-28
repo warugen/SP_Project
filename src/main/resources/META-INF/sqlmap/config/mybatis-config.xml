@@ -42,5 +42,6 @@
 		<mapper resource="META-INF/sqlmap/mappers/Review.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Sp_order.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Product_Product_option.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Order_detail_product_mid.xml"	/>
 	</mappers>
 </configuration>
