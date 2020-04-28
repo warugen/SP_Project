@@ -13,5 +13,9 @@ public class Customer_gradeDaoImpl implements Customer_gradeDao {
 	public Customer_grade getCustomer_grade(String cid) {
 		return sessionTemplate.selectOne("getCustomer_grade" ,cid);
 	}
+	@Override
+	public int updateGrade(String cid) {
+		return sessionTemplate.update("updateGrade", cid);
+	}
 
 }

@@ -11,6 +11,11 @@
 <link href="${conPath}/css/style.css" rel="stylesheet">
 <link href="${conPath}/css/productContent.css" rel="stylesheet">
 <style>
+#favoriteClick{
+	width: 60px;
+    margin: 0 auto;
+}
+#favoriteClick:hover{cursor: pointer;}
 #btnQ {
    background: #fff;
    color: #3a5485;
@@ -65,13 +70,17 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 	$(document).ready(function() {
-		$('.qnaReplyContent').css('display','none');
+		$('.qnaReplyContent').css('display', 'none');
 		$('.qnaReplyTitle').each(function(index, item) {
 			$(this).click(function() {
-				$('#qnaReplyContent'+index).toggle();
-			})
+				$('.qnaReplyContent').each(function(){
+					$(this).hide();
+				});
+				$('#qnaReplyContent' + index).toggle();
+			});
 		});
 		
+
 		//favorite
 		var pcode = $('input[name=pcode]').val();
 		$.ajax({
@@ -86,7 +95,7 @@
 			$.ajax({
 				url : 'favorite.do',
 				type : 'get',
-				data : 'method=check&cid=aaa&pcode='+pcode,
+				data : 'method=click&cid=aaa&pcode='+pcode,
 				success : function(data,status){
 					$('#favoriteClick').html(data);
 				}
@@ -202,19 +211,6 @@
 			return false;
 		}
 	}
-</script>
-<script>
-   $(document).ready(function() {
-      $('.qnaReplyContent').css('display', 'none');
-      $('.qnaReplyTitle').each(function(index, item) {
-         $(this).click(function() {
-            $('#qnaReplyContent' + index).toggle();
-         })
-      });
-      $('.addWish').click(function() {
-         location.href='${conPath}/product.do?method=detailProduct';         
-      });
-   });
    function writeQnaForm() {
       window.open('product_qna.do?method=writeQnaForm', '',
             'width=650,height=530,left=100,top=100')

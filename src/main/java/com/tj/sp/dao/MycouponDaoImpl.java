@@ -25,5 +25,10 @@ public class MycouponDaoImpl implements MycouponDao {
 	public int useMycoupon(String[] chnum) {
 		return sessionTemplate.delete("useMycoupon", chnum);
 	}
+
+	@Override
+	public int givecoupon(Mycoupon mycoupon) {
+		return sessionTemplate.insert("givecoupon", mycoupon);
+	}
 	
 }

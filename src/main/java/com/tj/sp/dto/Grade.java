@@ -1,11 +1,11 @@
 package com.tj.sp.dto;
 
 public class Grade {
-	private String gcode;
-	private String grade;
-	private int    ghigh;
-	private int    glow;
-	private int    gpoint;
+	private String gcode	;
+	private String grade	;
+	private int    ghigh	;
+	private int    glow		;
+	private int    gpoint	;
 	public Grade() {}
 	public String getGcode() {
 		return gcode;

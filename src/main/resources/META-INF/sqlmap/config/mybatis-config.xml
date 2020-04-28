@@ -8,9 +8,11 @@
 		<typeAlias type="com.tj.sp.dto.Addrlist" 					alias="Addrlist"			/>
 		<typeAlias type="com.tj.sp.dto.Cart" 						alias="Cart"				/>
 		<typeAlias type="com.tj.sp.dto.Cart_Product_option" 		alias="Cart_Product_option"	/>
+		<typeAlias type="com.tj.sp.dto.Coupon" 						alias="Coupon"				/>
 		<typeAlias type="com.tj.sp.dto.Customer" 					alias="Customer"			/>
 		<typeAlias type="com.tj.sp.dto.Customer_grade" 				alias="Customer_grade"		/>
 		<typeAlias type="com.tj.sp.dto.Favorite" 					alias="Favorite"			/>
+		<typeAlias type="com.tj.sp.dto.Grade" 						alias="Grade"				/>
 		<typeAlias type="com.tj.sp.dto.Market"						alias="Market"				/>
 		<typeAlias type="com.tj.sp.dto.Mycoupon" 					alias="Mycoupon"			/>
 		<typeAlias type="com.tj.sp.dto.Notice" 						alias="Notice"				/>
@@ -28,9 +30,11 @@
 		<mapper resource="META-INF/sqlmap/mappers/Addrlist.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Cart.xml"					/>
 		<mapper resource="META-INF/sqlmap/mappers/Cart_Product_option.xml"	/>
+		<mapper resource="META-INF/sqlmap/mappers/Coupon.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Customer.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Customer_grade.xml"		/>
 		<mapper resource="META-INF/sqlmap/mappers/Favorite.xml"				/>
+		<mapper resource="META-INF/sqlmap/mappers/Grade.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Market.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/Mycoupon.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Notice.xml"				/>

@@ -13,5 +13,9 @@ public class Customer_gradeServiceImpl implements Customer_gradeService{
 	public Customer_grade getCustomer_grade(String cid) {
 		return customer_gradeDao.getCustomer_grade(cid);
 	}
+	@Override
+	public int updateGrade(String cid) {
+		return customer_gradeDao.updateGrade(cid);
+	}
 
 }

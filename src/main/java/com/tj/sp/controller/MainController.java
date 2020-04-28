@@ -21,10 +21,6 @@ public class MainController {
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, product_Product_option));
 		return "main/main";
 	}
-	@RequestMapping(value="main23")
-	public String main23() {
-		return "main";
-	}
 	@RequestMapping(value="writeForm", method = RequestMethod.GET)
 	public String writeForm() {
 		return "write";

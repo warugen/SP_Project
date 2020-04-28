@@ -76,5 +76,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		// 포인트 사용
 		return sessionTemplate.update("usePoint", customer);
 	}
+	@Override
+	public List<Customer> getListCidByGrade(String gcode) {
+		return sessionTemplate.selectList("getListCidByGrade", gcode);
+	}
 
 }

@@ -15,15 +15,12 @@ public class FavoriteController {
 	private FavoriteService favoriteService;
 	@RequestMapping(params="method=check", method =RequestMethod.GET)
 	public String checkFavorite(String pcode, String cid, Model model) {
-		int check = favoriteService.checkFavorite(cid, pcode);
-		if(check==1) {
-			favoriteService.deleteFavorite(cid, pcode);
-		}else {
-			favoriteService.insertFavorite(cid, pcode);
-		}
 		model.addAttribute("check",favoriteService.checkFavorite(cid, pcode));
 		return "product/favoriteBtn";
 	}
-	
-	
+	@RequestMapping(params="method=click", method =RequestMethod.GET)
+	public String clickFavorite(String pcode, String cid, Model model) {
+		model.addAttribute("check",favoriteService.clickFavorite(cid, pcode));
+		return "product/favoriteBtn";
+	}
 }

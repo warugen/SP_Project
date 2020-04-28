@@ -26,12 +26,20 @@
 	<select id="getCustomer_grade" parameterType="String" resultType="Customer_grade">
 		<![CDATA[
 		SELECT C.*, GRADE, GHIGH, GLOW, GPOINT  FROM CUSTOMER C, GRADE G 
-    		WHERE GHIGH>=(SELECT COUNT(*) FROM SP_ORDER S, ORDER_DETAIL O WHERE O.OCODE=S.OCODE AND CID=#{cid}) AND
-        		GLOW<= (SELECT COUNT(*) FROM SP_ORDER S, ORDER_DETAIL O WHERE O.OCODE=S.OCODE AND CID=#{cid}) AND
+    		WHERE GHIGH >= (SELECT COUNT(*) FROM SP_ORDER S, ORDER_DETAIL O WHERE O.OCODE=S.OCODE AND CID=#{cid}) AND
+        		GLOW <= (SELECT COUNT(*) FROM SP_ORDER S, ORDER_DETAIL O WHERE O.OCODE=S.OCODE AND CID=#{cid}) AND
         		CID=#{cid}
         ]]>
 	</select>
-	
+	<!-- 구입시 회원 등급 조정 -->
+	<update id="updateGrade" parameterType="String">
+		<![CDATA[
+		UPDATE CUSTOMER SET GCODE = (SELECT GCODE FROM GRADE 
+        WHERE GHIGH >= (SELECT COUNT(*) FROM ORDER_DETAIL O, SP_ORDER S WHERE O.OCODE=S.OCODE AND CID=#{cid}) AND
+            GLOW <= (SELECT COUNT(*) FROM ORDER_DETAIL O, SP_ORDER S WHERE O.OCODE=S.OCODE AND CID=#{cid}) ) 
+            WHERE CID=#{cid}
+        ]]>
+	</update>
 </mapper>
 
 
