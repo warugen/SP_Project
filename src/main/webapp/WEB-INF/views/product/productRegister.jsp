@@ -17,12 +17,25 @@
 	<!-- include summernote css/js-->
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-
+<script>
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			height: 300,
+			minHeight: null,
+			maxHeight: null,
+			lang : 'ko-KR'/* ,
+			onImageUpload: function(files, editor, welEditable) {
+			        sendFile(files[0], editor, welEditable);
+			    } */
+		   });
+	});
+</script>	
 
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-<form action="${conPath }/smEditwrite.do" method="post" enctype="multipart/form-data">
+<form action="${conPath }/product.do" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="method" value="pRegister">
 	<div id="main">
 	<div align="center">
 	<hr width="500" color="#3a5485">
@@ -30,24 +43,9 @@
 		<hr width="500" color="#3a5485">
 		<input type="hidden" name="mid" value="aaa">
 		<input type="hidden" name="typecode" value="1-1">
-		<input type="hidden" name="pcode" value="1">
 	<table>
 		<tr><th>상품명 : </th><td colspan="3"><input type="text" name="ptitle" required="required"></td></tr>
 		<tr><th>상품소개 : </th><td colspan="3"><textarea name="pcontent" id="summernote"></textarea>
-		 <script>
-			 $(document).ready(function() {
-				 $('#summernote').summernote({
-				        height: 300,
-				        minHeight: null,
-				        maxHeight: null,
-				        lang : 'ko-KR',
-				        onImageUpload: function(files, editor, welEditable) {
-				                sendFile(files[0], editor, welEditable);
-				            }
-
-				    });
-			 });
-		 </script>
 		 </td>
 		 </tr>
 		<tr><th>대표이미지1 : </th><td colspan="3"><input type="file" name="file1" required="required"></td></tr>

@@ -53,14 +53,12 @@ public class ProductController {
 	public String productRegister(Product_option product_option) {
 		return "product/productRegister";
 	}
-	@RequestMapping(params = "method=pRegister")
-	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model, String pcode, String pagenum) {
+	@RequestMapping(params = "method=pRegister", method=RequestMethod.POST)
+	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model, String pagenum) {
 		productService.registerProduct(mRequest, ppo);
-		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
 		Paging paging = new Paging(productService.cntProduct(), pagenum, 8, 3);
-		ppo.setStartrow(paging.getStartrow());
-		ppo.setEndrow(paging.getEndrow());
 		model.addAttribute("paging", paging);
+		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
 		return "product/joinList";
 	}
 }

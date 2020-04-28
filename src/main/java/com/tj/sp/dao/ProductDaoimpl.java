@@ -42,6 +42,7 @@ public class ProductDaoimpl implements ProductDao{
 	}
 	@Override
 	public int registerProduct(Product_Product_option ppo) {
+		System.out.println("DAO에서 mapper 호출 바로 전 ppo : "+ppo);
 		return sessionTemplate.insert("registerProduct", ppo);
 	}
 	@Override
