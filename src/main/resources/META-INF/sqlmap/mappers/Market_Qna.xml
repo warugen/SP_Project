@@ -23,7 +23,7 @@
 	<!-- 글 목록 가져오기 (startrow, endrow) -->
 	<select id="marketQnaList" parameterType="Market_qna" resultMap="Market_qna_Result" >
 		SELECT * FROM (SELECT ROWNUM RN, A.* 
-    		FROM (SELECT * FROM MARKET_QNA ORDER BY SQGROUP DESC, SQSTEP) A)
+    		FROM (SELECT * FROM MARKET_QNA ORDER BY MQGROUP DESC, MQSTEP) A)
 		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
 	
@@ -52,7 +52,7 @@
 		MQTITLE = #{mqtitle},
 		MQCONTENT = #{mqcontent},
 		MQRDATE = SYSDATE
-	WHERE SQCODE = #{mqcode}
+	WHERE MQCODE = #{mqcode}
 	</update>
 	
 	<!-- 조회수 올리기 -->

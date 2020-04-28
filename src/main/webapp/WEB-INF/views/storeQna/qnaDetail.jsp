@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="conPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
@@ -20,53 +21,48 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-<form action="${conPath }/customerQna.do?method=write" method="post">
 	<div id="main">
 	<div align="center">
 	<hr width="500" color="#3a5485">
-	<h2>문의 작성</h2>
+	<h2>문의 내용</h2>
 		<hr width="500" color="#3a5485">
 	<table>
 		<tr><th>작성자 : </th><td colspan="3">
-		<c:if test="${not empty member }">
-			<input type="hidden" name="cid" readonly="readonly" value="${member.cid }">
-			<input type="text" readonly="readonly" value="${member.cname }">
+		<c:if test="${not empty detail.mid }">
+			${detail.mid }						
 		</c:if>
-		<c:if test="${not empty admin }">
-			<input type="hidden" name="aid" readonly="readonly" value="${admin.aid }">
-			<input type="text" readonly="readonly" value="관리자">
+		<c:if test="${not empty detail.cid }">
+			${detail.cid }						
 		</c:if>
 		</td></tr>
 		<tr>
 			<th>제목</th>
-			<td><input type="text" name="cqtitle"></td>
+			<td>${detail.sqtitle }</td>
 		</tr>
-		<tr><th>문의 내용 : </th><td colspan="3"><textarea name="cqcontent" id="summernote"></textarea>
-		 <script>
-			 $(document).ready(function() {
-				 $('#summernote').summernote({
-				        height: 300,
-				        minHeight: null,
-				        maxHeight: null,
-				        lang : 'ko-KR',
-				        onImageUpload: function(files, editor, welEditable) {
-				                sendFile(files[0], editor, welEditable);
-				            }
-				    });
-			 });
-		 </script>
-		 </td>
-		 </tr>
+		<tr><th>작성일</th>
+			<td colspan="3">
+				<fmt:formatDate value="${detail.sqrdate }" pattern="YY/MM/dd(E)"/>
+		 	</td>
+		</tr>
+		<tr><th>문의 내용 : </th>
+			<td colspan="3" style="height:400px;">
+				${detail.sqcontent }
+		 	</td>
+		</tr>
 		<tr><td colspan="4">
-					<input type="button" value="취소" onclick="location.href='${conPath}/customerQna.do?method=qnaList'">
-							<input type="submit" value="등록">
-					</td>
-				</tr>
+			<%-- <c:if test="${detail.mid eq market.mid || detail.aid eq admin.aId }"> --%>
+						<button onclick="location.href='${conPath}/storeQna.do?method=modifyForm&pageNum=${param.pageNum }&sqcode=${detail.sqcode}'">수정하기</button>
+						<button onclick="location.href='${conPath}/storeQna.do?method=delete&pageNum=${param.pageNum }&sqcode=${detail.sqcode}'">삭제하기</button>			
+			<%-- </c:if> --%>
+			<button onclick="location.href='${conPath}/storeQna.do?method=qnaList&pageNum=${param.pageNum }'">목록으로</button>
+			<%-- <c:if test="${not empty admin }"> --%>
+				<button onclick="location.href='${conPath}/storeQna.do?method=replyForm&sqcode=${detail.sqcode }&pageNum=${param.pageNum }'">답변작성</button>
+			<%-- </c:if> --%>
+			</td>
+		</tr>
 	</table>
 	</div>
 	</div>
-</form>
-
 <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

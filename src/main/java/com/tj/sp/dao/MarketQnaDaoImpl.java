@@ -27,7 +27,7 @@ public class MarketQnaDaoImpl implements MarketQnaDao {
 	}
 
 	@Override
-	public Store_qna getMarketQnaDetail(String mqcode) {
+	public Market_qna getMarketQnaDetail(String mqcode) {
 		// 상세글 보기
 		return sessionTemplate.selectOne("getMarketQnaDetail", mqcode);
 	}

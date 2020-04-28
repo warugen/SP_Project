@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tj.sp.dto.Store_qna;
 
-public interface StoerQnaService {
+public interface StoreQnaService {
 	public List<Store_qna> storeQnaList(Store_qna qna);
 	public int totalStoreQna();
 	public Store_qna getStoreQnaDetail(String sqcode);

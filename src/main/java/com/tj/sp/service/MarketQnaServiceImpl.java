@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.tj.sp.dao.MarketQnaDao;
 import com.tj.sp.dto.Market_qna;
-import com.tj.sp.dto.Store_qna;
 @Service
 public class MarketQnaServiceImpl implements MarketQnaService {
 	
@@ -25,7 +24,7 @@ public class MarketQnaServiceImpl implements MarketQnaService {
 	}
 
 	@Override
-	public Store_qna getMarketQnaDetail(String mqcode) {
+	public Market_qna getMarketQnaDetail(String mqcode) {
 		return qDao.getMarketQnaDetail(mqcode);
 	}
 
@@ -51,6 +50,9 @@ public class MarketQnaServiceImpl implements MarketQnaService {
 
 	@Override
 	public int replyMarketQna(Market_qna qna) {
+		// 들여쓰기 처리
+		qna.setMqstep(qna.getMqstep()+1);
+		qna.setMqindent(qna.getMqindent()+1);
 		return qDao.replyMarketQna(qna);
 	}
 

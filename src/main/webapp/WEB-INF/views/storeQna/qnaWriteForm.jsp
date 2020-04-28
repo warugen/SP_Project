@@ -20,7 +20,7 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-<form action="${conPath }/customerQna.do?method=write" method="post">
+<form action="${conPath }/storeQna.do?method=write" method="post">
 	<div id="main">
 	<div align="center">
 	<hr width="500" color="#3a5485">
@@ -28,20 +28,21 @@
 		<hr width="500" color="#3a5485">
 	<table>
 		<tr><th>작성자 : </th><td colspan="3">
+		<c:if test="${not empty market }">
+			<input type="hidden" name="mid" readonly="readonly" value="${market.mid }">
+			<input type="text" readonly="readonly" value="${market.mid }">
+		</c:if>
 		<c:if test="${not empty member }">
 			<input type="hidden" name="cid" readonly="readonly" value="${member.cid }">
-			<input type="text" readonly="readonly" value="${member.cname }">
+			<input type="text" readonly="readonly" value="${member.cid }">
 		</c:if>
-		<c:if test="${not empty admin }">
-			<input type="hidden" name="aid" readonly="readonly" value="${admin.aid }">
-			<input type="text" readonly="readonly" value="관리자">
-		</c:if>
+		<input type="text" name="mid" readonly="readonly" value="aaa">
 		</td></tr>
 		<tr>
 			<th>제목</th>
-			<td><input type="text" name="cqtitle"></td>
+			<td><input type="text" name="sqtitle"></td>
 		</tr>
-		<tr><th>문의 내용 : </th><td colspan="3"><textarea name="cqcontent" id="summernote"></textarea>
+		<tr><th>문의 내용 : </th><td colspan="3"><textarea name="sqcontent" id="summernote"></textarea>
 		 <script>
 			 $(document).ready(function() {
 				 $('#summernote').summernote({
@@ -58,7 +59,7 @@
 		 </td>
 		 </tr>
 		<tr><td colspan="4">
-					<input type="button" value="취소" onclick="location.href='${conPath}/customerQna.do?method=qnaList'">
+					<input type="button" value="취소" onclick="location.href='${conPath}/storeQna.do?method=qnaList'">
 							<input type="submit" value="등록">
 					</td>
 				</tr>

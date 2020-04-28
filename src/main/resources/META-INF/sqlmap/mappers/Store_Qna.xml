@@ -28,20 +28,20 @@
 		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
 	
-	<!-- 상세글 보기 (cqcode로 dto 가져오기) -->
+	<!-- 상세글 보기 (sqcode로 dto 가져오기) -->
 	<select id="getStoreQnaDetail" parameterType="String" resultType="Store_qna">
 		SELECT * FROM STORE_QNA WHERE SQCODE =  #{sqcode}
 	</select>
 	
 	<!-- 원글 쓰기 -->
 	<insert id="writeStoreQna" parameterType="Store_qna">
-	<!-- 고객이 글을 쓸경우 -->
-	<if test="cid != null and cid != ''">
+	<!-- 마켓이 글을 쓸경우 -->
+	<if test="mid != null and mid != ''">
 		INSERT INTO STORE_QNA(SQCODE, SQTITLE, SQCONTENT, SQRDATE, SQGROUP, SQSTEP, SQINDENT, SQHIT, MID, CID)
 	    	VALUES (STORE_QNA_SEQ.nextval, #{sqtitle}, #{sqcontent}, SYSDATE, STORE_QNA_SEQ.CURRVAL, 0, 0, 0, #{mid}, null)	
 	</if>
-	<!-- 관리자가 글을 쓸경우 -->
-	<if test="aid != null and aid != ''">
+	<!-- 고객이 글을 쓸경우 -->
+	<if test="cid != null and cid != ''">
 		INSERT INTO STORE_QNA(SQCODE, SQTITLE, SQCONTENT, SQRDATE, SQGROUP, SQSTEP, SQINDENT, SQHIT, MID, CID)
 	    	VALUES (STORE_QNA_SEQ.nextval, #{sqtitle}, #{sqcontent}, SYSDATE, STORE_QNA_SEQ.CURRVAL, 0, 0, 0, null, #{cid})
 	</if>
@@ -58,7 +58,7 @@
 	
 	<!-- 조회수 올리기 -->
 	<update id="hitupStoreQna" parameterType="String">
-		UPDATE STORE_QNA SET CQHIT = CQHIT + 1
+		UPDATE STORE_QNA SET SQHIT = SQHIT + 1
 			WHERE SQCODE = #{sqcode}
 	</update>
 	
@@ -69,16 +69,16 @@
 	
 	<!-- 답변글 달기 -->
 	<insert id="replyStoreQna" parameterType="Store_qna">
-	<!-- 고객이 글을 쓸경우 -->
-	<if test="cid != null and cid != ''">
-		INSERT INTO STORE_QNA(SQCODE, SQTITLE, SQCONTENT, SQRDATE, SQGROUP, SQSTEP, SQINDENT, SQHIT, CID, AID)
-    		VALUES (STORE_QNA_SEQ.nextval,  #{sqtitle}, #{sqcontent}, SYSDATE, #{sqgroup}, #{sqstep}, #{sqindent}, 0, #{cid}, NULL)
+	<!-- 마켓이 글을 쓸경우 -->
+	<if test="mid != null and mid != ''">
+		INSERT INTO STORE_QNA(SQCODE, SQTITLE, SQCONTENT, SQRDATE, SQGROUP, SQSTEP, SQINDENT, SQHIT, MID, CID)
+    		VALUES (STORE_QNA_SEQ.nextval,  #{sqtitle}, #{sqcontent}, SYSDATE, #{sqgroup}, #{sqstep}, #{sqindent}, 0, #{mid}, NULL)
 	</if>
 	
-	<!-- 관리자가 글을 쓸경우 -->
-	<if test="aid != null and aid != ''">
-		INSERT INTO CUSTOMER_QNA(SQCODE, SQTITLE, SQCONTENT, SQRDATE, SQGROUP, SQSTEP, SQINDENT, SQHIT, CID, AID)
-    		VALUES (STORE_QNA_SEQ.nextval,  #{sqtitle}, #{sqcontent}, SYSDATE, #{sqgroup}, #{sqstep}, #{sqindent}, 0, NULL, #{aid})
+	<!-- 고객이 글을 쓸경우 -->
+	<if test="cid != null and cid != ''">
+		INSERT INTO CUSTOMER_QNA(SQCODE, SQTITLE, SQCONTENT, SQRDATE, SQGROUP, SQSTEP, SQINDENT, SQHIT, MID, CID)
+    		VALUES (STORE_QNA_SEQ.nextval,  #{sqtitle}, #{sqcontent}, SYSDATE, #{sqgroup}, #{sqstep}, #{sqindent}, 0, NULL, #{cid})
 	</if>
 	</insert>
 	

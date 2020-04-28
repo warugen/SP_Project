@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>글 수정</title>
+	<title>문의 수정</title>
 	<link href="${conPath }/css/product/productRegister.css" rel="stylesheet">
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -23,6 +23,8 @@
 <body>
 	<jsp:include page="../main/header.jsp"/>
 <form action="${conPath }/customerQna.do?method=modify" method="post">
+	<input type="hidden" name="pageNum" id="pageNum" value="${param.pageNum }"/>
+    <input type="hidden" name="cqcode" id="cqcode" value="${modify.cqcode }"/>
 	<div id="main">
 	<div align="center">
 	<hr width="500" color="#3a5485">
@@ -41,9 +43,9 @@
 		</td></tr>
 		<tr>
 			<th>제목</th>
-			<td><input type="text" name="cqtitle"></td>
+			<td><input type="text" name="cqtitle" value="${modify.cqtitle }"></td>
 		</tr>
-		<tr><th>문의 내용 : </th><td colspan="3"><textarea name="cqcontent" id="summernote"></textarea>
+		<tr><th>문의 내용 : </th><td colspan="3"><textarea name="cqcontent" id="summernote">${modify.cqcontent }</textarea>
 		 <script>
 			 $(document).ready(function() {
 				 $('#summernote').summernote({
@@ -54,7 +56,6 @@
 				        onImageUpload: function(files, editor, welEditable) {
 				                sendFile(files[0], editor, welEditable);
 				            }
-
 				    });
 			 });
 		 </script>

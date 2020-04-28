@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.tj.sp.dao.StoreQnaDao;
 import com.tj.sp.dto.Store_qna;
 @Service
-public class StoerQnaServiceImpl implements StoerQnaService {
+public class StoreQnaServiceImpl implements StoreQnaService {
 	
 	@Autowired
 	StoreQnaDao qDao;
@@ -50,6 +50,9 @@ public class StoerQnaServiceImpl implements StoerQnaService {
 
 	@Override
 	public int replyStoreQna(Store_qna qna) {
+		// 들여쓰기 처리
+		qna.setSqstep(qna.getSqstep()+1);
+		qna.setSqindent(qna.getSqindent()+1);
 		return qDao.replyStoreQna(qna);
 	}
 

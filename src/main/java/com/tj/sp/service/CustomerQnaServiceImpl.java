@@ -51,6 +51,9 @@ public class CustomerQnaServiceImpl implements CustomerQnaService {
 
 	@Override
 	public int replyCustomerQna(Customer_qna qna) {
+		// 들여쓰기 처리
+		qna.setCqstep(qna.getCqstep()+1);
+		qna.setCqindent(qna.getCqindent()+1);
 		return qDao.replyCustomerQna(qna);
 	}
 

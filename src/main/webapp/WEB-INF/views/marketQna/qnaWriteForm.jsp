@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>글 작성</title>
 	<link href="${conPath }/css/product/productRegister.css" rel="stylesheet">
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -17,23 +17,32 @@
 	<!-- include summernote css/js-->
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-
-
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-<form action="${conPath }/smEditwrite.do" method="post" enctype="multipart/form-data">
+<form action="${conPath }/marketQna.do?method=write" method="post">
 	<div id="main">
 	<div align="center">
 	<hr width="500" color="#3a5485">
-	<h2>상품등록</h2>
+	<h2>문의 작성</h2>
 		<hr width="500" color="#3a5485">
-		<input type="hidden" name="mid" value="aaa">
-		<input type="hidden" name="typecode" value="1-1">
-		<input type="hidden" name="pcode" value="1">
 	<table>
-		<tr><th>상품명 : </th><td colspan="3"><input type="text" name="ptitle" required="required"></td></tr>
-		<tr><th>상품소개 : </th><td colspan="3"><textarea name="pcontent" id="summernote"></textarea>
+		<tr><th>작성자 : </th><td colspan="3">
+		<c:if test="${not empty market }">
+			<input type="hidden" name="mid" readonly="readonly" value="${market.mid }">
+			<input type="text" readonly="readonly" value="${market.mid }">
+		</c:if>
+		<c:if test="${not empty admin }">
+			<input type="hidden" name="aid" readonly="readonly" value="${admin.aid }">
+			<input type="text" readonly="readonly" value="관리자">
+		</c:if>
+		<input type="text" name="mid" readonly="readonly" value="aaa">
+		</td></tr>
+		<tr>
+			<th>제목</th>
+			<td><input type="text" name="mqtitle"></td>
+		</tr>
+		<tr><th>문의 내용 : </th><td colspan="3"><textarea name="mqcontent" id="summernote"></textarea>
 		 <script>
 			 $(document).ready(function() {
 				 $('#summernote').summernote({
@@ -44,40 +53,21 @@
 				        onImageUpload: function(files, editor, welEditable) {
 				                sendFile(files[0], editor, welEditable);
 				            }
-
 				    });
 			 });
 		 </script>
 		 </td>
 		 </tr>
-		<tr><th>이미지1 : </th><td colspan="3"><input type="file" name="file1" required="required"></td></tr>
-				<tr><th>이미지2 : </th><td colspan="3"><input type="file" name="file2"></td></tr>
-				<tr><th>이미지3 : </th><td colspan="3"><input type="file" name="file3"></td></tr>
-		<tr id="top">
-					<td colspan="4">
-						<a>원가</a><a>수량</a><a>판매가격</a><a>상품분류</a>
-					</td>
-		</tr>
-		<tr id="option">
-					<td colspan="4">
-						<input type="text" name="ponet" required="required">
-						<input type="text" name="postock" required="required">
-						<input type="text" name="poprice" required="required">
-						<select name="poname">
-							<option>식품</option>
-							<option>농산</option>
-							<option>수산</option>
-							<option>축산</option>
-						</select>
-					</td>
-		</tr>
 		<tr><td colspan="4">
-					<input type="submit" value="상품등록">
+					<input type="button" value="취소" onclick="location.href='${conPath}/marketQna.do?method=qnaList'">
+							<input type="submit" value="등록">
 					</td>
 				</tr>
 	</table>
 	</div>
 	</div>
 </form>
+
+<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

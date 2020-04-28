@@ -8,7 +8,7 @@ import com.tj.sp.dto.Store_qna;
 public interface MarketQnaDao {
 	public List<Market_qna> marketQnaList(Market_qna qna);
 	public int totalMarketQna();
-	public Store_qna getMarketQnaDetail(String mqcode);
+	public Market_qna getMarketQnaDetail(String mqcode);
 	public int writeMarketQna(Market_qna qna);
 	public int modifyMarketQna(Market_qna qna);
 	public int hitupMarketQna(String mqcode);
