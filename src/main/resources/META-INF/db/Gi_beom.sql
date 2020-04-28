@@ -57,7 +57,9 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM (
     WHERE O.OCODE=S.OCODE AND O.POCODE=P.POCODE AND P.PCODE IN (SELECT PCODE FROM PRODUCT WHERE MID='aaa')
         ORDER BY OTIME DESC) A) 
          WHERE RN BETWEEN 1 AND 10;
-
+select * from product;
+delete from product where pcode>13;
+commit;
 --한 고객의 주문상세 총 갯수--
 SELECT COUNT(*) FROM ORDER_DETAIL O, SP_ORDER S WHERE O.OCODE=S.OCODE AND CID='aaa';         
 --한 고객의 주문 리스트--
@@ -127,6 +129,7 @@ SELECT CID FROM CUSTOMER WHERE GCODE=1;
 --쿠폰 지급--
 INSERT INTO COUPON_HOLD VALUES (COUPON_HOLD_SEQ.NEXTVAL, 1, 'aaa');
 
+--상품 등록시 하위 분류 불러오기--
+SELECT * FROM PRODUCT_TYPE WHERE TYPECODEREF!=0;
 
 
---스토어 고객 문의--

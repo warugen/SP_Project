@@ -20,10 +20,11 @@
 		<typeAlias type="com.tj.sp.dto.Order_detail_product_mid"	alias="Order_detail_product_mid"/>
 		<typeAlias type="com.tj.sp.dto.Product" 					alias="Product"				/>
 		<typeAlias type="com.tj.sp.dto.Product_option" 				alias="Product_option"		/>
+		<typeAlias type="com.tj.sp.dto.Product_Product_option"		alias="Product_Product_option"/>
 		<typeAlias type="com.tj.sp.dto.Product_qna" 				alias="Product_qna"			/>
+		<typeAlias type="com.tj.sp.dto.Product_type" 				alias="Product_type"		/>
 		<typeAlias type="com.tj.sp.dto.Review" 						alias="Review"				/>
 		<typeAlias type="com.tj.sp.dto.Sp_order" 					alias="Sp_order"			/>
-		<typeAlias type="com.tj.sp.dto.Product_Product_option"		alias="Product_Product_option"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/Admin.xml"/>
@@ -42,10 +43,10 @@
 		<mapper resource="META-INF/sqlmap/mappers/Order_detail_product_mid.xml"	/>
 		<mapper resource="META-INF/sqlmap/mappers/Product.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Product_option.xml"		/>
+		<mapper resource="META-INF/sqlmap/mappers/Product_Product_option.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/Product_qna.xml"			/>
+		<mapper resource="META-INF/sqlmap/mappers/Product_type.xml"			/>
 		<mapper resource="META-INF/sqlmap/mappers/Review.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Sp_order.xml"				/>
-		<mapper resource="META-INF/sqlmap/mappers/Product_Product_option.xml"/>
-		<mapper resource="META-INF/sqlmap/mappers/Order_detail_product_mid.xml"	/>
 	</mappers>
 </configuration>

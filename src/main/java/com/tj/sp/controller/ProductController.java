@@ -13,6 +13,7 @@ import com.tj.sp.dto.Review;
 import com.tj.sp.service.ProductService;
 import com.tj.sp.service.Product_optionService;
 import com.tj.sp.service.Product_qnaService;
+import com.tj.sp.service.Product_typeService;
 import com.tj.sp.service.ReviewService;
 import com.tj.sp.util.Paging;
 
@@ -27,6 +28,8 @@ public class ProductController {
 	private Product_qnaService  product_qnaService;
 	@Autowired
 	private Product_optionService product_optionService;
+	@Autowired
+	private Product_typeService product_typeService;
 	@RequestMapping(params="method=detailProduct" )
 	public String detailProduct(String pcode,Model model, String review_pagenum, String pagenum) {
 		model.addAttribute("detail",productService.detailProduct(pcode));
@@ -50,7 +53,8 @@ public class ProductController {
 		return "product/joinList";
 	}
 	@RequestMapping(params = "method=productRegister", method=RequestMethod.GET)
-	public String productRegister(Product_option product_option) {
+	public String productRegister(Model model) {
+		model.addAttribute("type",product_typeService.getListProduct_type());
 		return "product/productRegister";
 	}
 	@RequestMapping(params = "method=pRegister", method=RequestMethod.POST)

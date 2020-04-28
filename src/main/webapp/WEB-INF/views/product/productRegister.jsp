@@ -51,26 +51,27 @@
 		<tr><th>대표이미지1 : </th><td colspan="3"><input type="file" name="file1" required="required"></td></tr>
 				<tr><th>대표이미지2 : </th><td colspan="3"><input type="file" name="file2"></td></tr>
 				<tr><th>대표이미지3 : </th><td colspan="3"><input type="file" name="file3"></td></tr>
+	</table>
+	<table>
 		<tr id="top">
-					<td colspan="4">
-						<span>원가</span><span>수량</span><span>판매가격</span><span>상품분류</span>
-					</td>
+				<th>옵션명</th><th>원가</th><th>수량</th><th>판매가격</th><th>상품분류</th><th>
 		</tr>
 		<tr id="option">
-					<td colspan="4">
-						<input type="text" name="ponet" required="required">
-						<input type="text" name="postock" required="required">
-						<input type="text" name="poprice" required="required">
-						<select name="poname">
-							<option>식품</option>
-							<option>농산</option>
-							<option>수산</option>
-							<option>축산</option>
-						</select>
-					</td>
+			<td><input type="text" name="poname" required="required">     </td>
+			<td><input type="number" name="ponet" required="required" min="0">    </td>
+			<td><input type="number" name="postock" required="required" min="0">  </td>
+			<td><input type="number" name="poprice" required="required" min="0">  </td>
+			<td><select name="typecode">
+					<c:forEach var="type" items="${type }">
+						<option value="${type.typecode }">${type.producttype }</option>
+					</c:forEach>
+				</select></td>
 		</tr>
-		<tr><td colspan="4">
-			<input type="submit" value="상품등록">
+		<tr id="blank"></tr>
+		<tr><td colspan="5">
+			<button type="button" class="btn2">-</button>
+			<button type="button" class="btn2">+</button>
+			<input type="submit" value="상품등록" class="btn1">
 			</td>
 		</tr>
 	</table>
