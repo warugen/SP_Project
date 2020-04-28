@@ -11,6 +11,9 @@
 <link href="${conPath}/css/style.css" rel="stylesheet">
 <link href="${conPath}/css/productContent.css" rel="stylesheet">
 <style>
+b{
+	color:red;
+}
 #btnQ {
    background: #fff;
    color: #3a5485;
@@ -65,12 +68,13 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 	$(document).ready(function() {
-		$('.qnaReplyContent').css('display','none');
+		/* $('.qnaReplyContent').css('display','none');
 		$('.qnaReplyTitle').each(function(index, item) {
 			$(this).click(function() {
+				alert(index);
 				$('#qnaReplyContent'+index).toggle();
-			})
-		});
+			});
+		}); */
 		
 		//favorite
 		var pcode = $('input[name=pcode]').val();
@@ -211,9 +215,6 @@
             $('#qnaReplyContent' + index).toggle();
          })
       });
-      $('.addWish').click(function() {
-         location.href='${conPath}/product.do?method=detailProduct';         
-      });
    });
    function writeQnaForm() {
       window.open('product_qna.do?method=writeQnaForm', '',
@@ -236,9 +237,9 @@
 				<div class="bigImage">
 					<img
 						src="http://gdimg.gmarket.co.kr/971829233/still/600?ver=1567658430"
-						width="600" height="600" alt="상품이미지">
+						width="400" height="600" alt="상품이미지">
 				</div>
-				<div id="favoriteClick">
+				<div id="favoriteClick" style="text-align: center;">
 					<span>5개</span>
 				</div>
 			</div>
@@ -291,86 +292,103 @@
 							<span><span id="sum_price">0</span>원</span> 
 						</div>
 						<div id="bottom_button">
-							<button type="button" class="btn2" id="insertCart">장바구니담기</button>
-							<button class="btn1" onclick="return buychk();">구매하기</button>
+							<button type="button" class="btn2" id="insertCart" style="margin-right: 10px;">장바구니담기</button>
+							<button class="btn1" onclick="return buychk();" style="margin-left: 10px;">구매하기</button>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
+		
+		
+		<!-- 상품 QnA -->
 		<div id="content_bottom">
 			<div id="product_qna">
 				<table>
 					<tr>
-						<th>번호</th>
+						<th style="width: 70px;">번호</th>
 						<th>답변상태</th>
 						<th>제목</th>
 						<th>문의자</th>
 						<th>등록일</th>
 					</tr>
-					<c:set var="i" value="0"/>
+					<c:set var="i" value="0" />
 					<c:forEach var="pq" items="${product_qna }">
 						<tr class="qnaReplyTitle">
 							<td>${pq.pqcode }</td>
-							<td>
-								<c:if test="${pq.pqcomplete==0 }">
-									<span style="border: 1px solid black;">검토중</span>
-								</c:if>
-								<c:if test="${pq.pqcomplete==1 }">
-									<span style="border: 1px solid black;">답변완료</span>
-								</c:if>
-							</td>
-							<td class="left">
-								<c:if test="${pq.pqsecret==0 }">
+							<td><c:if test="${pq.pqcomplete==0 }">
+									<span style="border: 1px solid red; color: red;">검토중</span>
+								</c:if> <c:if test="${pq.pqcomplete==1 }">
+									<span style="border: 1px solid blue; color: blue">답변완료</span>
+								</c:if></td>
+							<td class="left"><c:if test="${pq.pqsecret==0 }">
 									${pq.pqtitle }
-								</c:if>
-								<c:if test="${pq.pqsecret==1 }">
+								</c:if> <c:if test="${pq.pqsecret==1 }">
 									비밀글 입니다.
-								</c:if>	
-							</td>
+								</c:if></td>
 							<td>${pq.cid }</td>
 							<td>${pq.pqdate }</td>
 						</tr>
 						<tr class="qnaReplyContent" id="qnaReplyContent${i }">
-							<td colspan="4">
-								<div>
-									<span> 
-										<img src="${conPath }/img/Q.PNG" width="35" height="35">질문
-									</span> 
+							<td colspan="5">
+								<div style="width: 1000px; overflow: hidden;">
+									<span> <img src="${conPath }/img/Q.PNG" width="35"
+										height="35">질문
+									</span>
 									<c:if test="${pq.pqsecret==0 }">
 										${pq.pqcontent }
 									</c:if>
 									<c:if test="${pq.pqsecret==1 }">
 											비밀글 입니다.
-									</c:if>	
-								</div>
-							</td>
-							<td>
-								<button onclick="modifyQnaForm('${pq.pqcode }')">수정</button>
-								<button onclick="location.href='${conPath}/product_qna.do?method=deleteQna'">삭제</button>
+									</c:if>
+									<span style="float: right;">
+										<button id="btnA" onclick="replyQnaForm('${pq.pqcode }')">답변하기</button>
+										<button id="btnQ" onclick="modifyQnaForm('${pq.pqcode }')">수정</button>
+									</span>
+								</div> 
+								<c:if test="${pq.pqanswer != null }">
+									<div style="width: 1000px;">
+										<span> <img src="${conPath }/img/A.PNG" width="35"
+											height="35">답변
+										</span> ${pq.pqanswer }
+									</div>
+								</c:if> 
+								<c:if test="${pq.pqanswer eq null }">
+									<div style="display: none;">
+										<span> 
+										<img src="${conPath }/img/A.PNG" width="35" height="35">답변
+										</span>
+									</div>
+								</c:if>
 							</td>
 						</tr>
-						<c:set var="i" value="${i+1 }"/>
+						<c:set var="i" value="${i+1 }" />
 					</c:forEach>
 				</table>
+				
 				<div class="btn_wrap">
-					<button onclick="">답변하기</button>
-					<button onclick="writeQnaForm()">문의하기</button>
+					<button onclick="writeQnaForm()" style="margin-right: 45px;">문의하기</button>
 				</div>
+				
+				
 				<div class="paging">
 					<c:if test="${paging.startpage>paging.blocksize }">
-						[<a href="${conPath }/product.do?method=detailProduct&pagenum=${paging.startpage-1}">이전</a>]
+						[<a
+							href="${conPath }/product.do?method=detailProduct&pagenum=${paging.startpage-1}">이전</a>]
 					</c:if>
-					<c:forEach var="i" begin="${paging.startpage }" end="${paging.endpage }">
+					<c:forEach var="i" begin="${paging.startpage }"
+						end="${paging.endpage }">
 						<c:if test="${paging.currentpage==i }">
 							[<b>${i }</b>]
 						</c:if>
 						<c:if test="${paging.currentpage!=i }">
-							[<a href="${conPath }/product.do?method=detailProduct&pagenum=${i}">${i }</a>]
+							[<a
+								href="${conPath }/product.do?method=detailProduct&pagenum=${i}">${i }</a>]
 						</c:if>
 					</c:forEach>
 					<c:if test="${paging.endpage<paging.pagecnt }">
-						[<a href="${conPath }/product.do?method=detailProduct&pagenum=${paging.endpage+1}">다음</a>]
+						[<a
+							href="${conPath }/product.do?method=detailProduct&pagenum=${paging.endpage+1}">다음</a>]
 					</c:if>
 				</div>
 			</div>
@@ -380,5 +398,15 @@
  		</c:forEach>
 	</div>
 	<jsp:include page="../main/footer.jsp" />
+	<script>
+	$(document).ready(function() {
+		$('.qnaReplyContent').css('display','none');
+		$('.qnaReplyTitle').each(function(index, item) {
+			$(this).click(function() {
+				$('#qnaReplyContent'+index).toggle();
+			});
+		});
+	});
+</script>
 </body>
 </html>
