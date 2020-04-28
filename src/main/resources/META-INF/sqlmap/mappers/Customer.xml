@@ -52,7 +52,8 @@
 	<!-- 회원가입하기 -->
 	<insert id="registCustomer" parameterType="Customer">
 		INSERT INTO CUSTOMER VALUES
-			(#{cid}, #{cpw}, #{cname}, #{csnsid}, #{cprovider}, ADDRLIST_SEQ.nextval, #{cemail}, #{ctel}, SYSDATE, 0,'1')
+			(#{cid}, #{cpw}, #{cname}, #{csnsid}, #{cprovider}, (SELECT MAX( TO_NUMBER(ADDRCODE)) FROM ADDRLIST), #{cemail}, #{ctel}, SYSDATE, 0,'1')
+			
 	</insert>
 	
 	<!-- 회원정보 수정 -->

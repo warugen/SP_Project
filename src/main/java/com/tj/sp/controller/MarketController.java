@@ -38,4 +38,10 @@ public class MarketController {
 		return "market/unAnswerList";
 	}
 	
+	@RequestMapping(params ="method=marketJoin")
+	public String marketJoin() {
+		return "market/marketJoin";
+	}
+	
+	
 }

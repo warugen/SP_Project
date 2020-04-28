@@ -124,4 +124,9 @@ public class LoginController {
 		System.out.println("logout!!!");
 		return "redirect:main.do";
 	}
+	
+	@RequestMapping(params="method=join")
+	public String join(HttpSession httpSession) {
+		return "login/joinForm";
+	}
 }

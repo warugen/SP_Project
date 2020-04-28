@@ -42,7 +42,7 @@ function logout() {
 		<c:if test="${empty member}">
 			<ul>
 				<li><a href="">입점신청</a></li>
-				<li><a href="member.do?method=memberJoin">회원가입</a></li>
+				<li><a href="login.do?method=join">회원가입</a></li>
 				<li><a href="login.do?method=loginForm">로그인</a></li>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
 			</ul>
