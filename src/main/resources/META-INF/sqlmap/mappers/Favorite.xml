@@ -12,7 +12,7 @@
 		SELECT COUNT(*) FROM FAVORITE WHERE PCODE=#{pcode} AND CID=#{cid}
 	</select>
 	<insert id="insertFavorite" parameterType="Favorite">
-		INSERT INTO FAVORITE VALUES (LIKEHISTORY_SEQ.NEXTVAL,#{pcode},#{cid})
+		INSERT INTO FAVORITE VALUES (FAVORITE_SEQ.NEXTVAL,#{cid},#{pcode})
 	</insert>
 	<delete id="deleteFavorite" parameterType="Favorite">
 		DELETE FROM FAVORITE WHERE PCODE=#{pcode} AND CID=#{cid}

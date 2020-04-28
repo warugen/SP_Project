@@ -75,20 +75,20 @@
 		//favorite
 		var pcode = $('input[name=pcode]').val();
 		$.ajax({
-			url : '${conPath }/favorite.do',
+			url : 'favorite.do',
 			type : 'get',
-			data : 'method='+check+"&cId="+aaa+"&pcode="+pcode,
+			data : 'method=check&cid=aaa&pcode='+pcode,
 			success : function(data,status){
-				$('.favoriteClick').html(data);
+				$('#favoriteClick').html(data);
 			}
 		})
-		$('.favoriteClick').click(function(){
+		$('#favoriteClick').click(function(){
 			$.ajax({
-				url : '${conPath }/favorite.do',
+				url : 'favorite.do',
 				type : 'get',
-				data : 'method='+check+"&cId="+aaa+"&pcode="+pcode,
+				data : 'method=check&cid=aaa&pcode='+pcode,
 				success : function(data,status){
-					$('.favoriteClick').html(data);
+					$('#favoriteClick').html(data);
 				}
 			})
 		}); 
@@ -238,7 +238,7 @@
 						src="http://gdimg.gmarket.co.kr/971829233/still/600?ver=1567658430"
 						width="600" height="600" alt="상품이미지">
 				</div>
-				<div class="favoriteClick">
+				<div id="favoriteClick">
 					<span>5개</span>
 				</div>
 			</div>
