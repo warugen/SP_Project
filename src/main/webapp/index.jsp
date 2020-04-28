@@ -48,6 +48,7 @@
 			<input type="submit" value="등록">
 		</form>
 	</div>
+	
 </body>
 </body>
 
