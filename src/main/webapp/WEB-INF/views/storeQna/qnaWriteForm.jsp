@@ -42,7 +42,7 @@
 			<th>제목</th>
 			<td><input type="text" name="sqtitle"></td>
 		</tr>
-		<tr><th>문의 내용 : </th><td colspan="3"><textarea name="sqcontent" id="summernote"></textarea>
+		<tr><th>문의 내용 : </th><td colspan="3"><textarea class="left" name="sqcontent" id="summernote"></textarea>
 		 <script>
 			 $(document).ready(function() {
 				 $('#summernote').summernote({

@@ -27,7 +27,7 @@
 	<h2>문의 내용</h2>
 		<hr width="500" color="#3a5485">
 	<table>
-		<tr><th>작성자 : </th><td colspan="3">
+		<tr><th>작성자 </th><td colspan="3">
 		<c:if test="${not empty detail.mid }">
 			${detail.mid }						
 		</c:if>
@@ -46,7 +46,7 @@
 		</tr>
 		<tr><th>문의 내용 : </th>
 			<td colspan="3" style="height:400px;">
-				${detail.sqcontent }
+				<pre style="height:400px;">${detail.sqcontent }</pre>
 		 	</td>
 		</tr>
 		<tr><td colspan="4">

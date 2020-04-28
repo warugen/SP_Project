@@ -33,14 +33,14 @@ public class CustomerQnaController {
 		//model.addAttribute("pageNum", pageNum);
 		model.addAttribute("list", qService.customerQnaList(qna));
 		model.addAttribute("paging", paging);
-		return "cqna/qnaList";
+		return "customerQna/qnaList";
 	}
 	
 	// 글쓰기 폼 호출
 	@RequestMapping(params="method=writeForm")
 	public String registerForm() {
 		writable = true;
-		return "cqna/qnaWriteForm";
+		return "customerQna/qnaWriteForm";
 	}
 	
 	// 원글 쓰기
@@ -67,7 +67,7 @@ public class CustomerQnaController {
 		writable = true;
 		model.addAttribute("cqcode", cqcode);
 		model.addAttribute("detail", qService.getCustomerQnaDetail(cqcode));
-		return "cqna/qnaReplyForm";
+		return "customerQna/qnaReplyForm";
 	}
 	
 	// 답변글 달기
@@ -97,7 +97,7 @@ public class CustomerQnaController {
 	public String detail(Model model, String cqcode) {
 		qService.hitupCustomerQna(cqcode);
 		model.addAttribute("detail", qService.getCustomerQnaDetail(cqcode));
-		return "cqna/qnaDetail";
+		return "customerQna/qnaDetail";
 	}
 	
 	// 글 수정하기 폼 호출
@@ -105,7 +105,7 @@ public class CustomerQnaController {
 	public String modifyForm(String pageNum, String cqcode, Model model) {
 		writable = true;
 		model.addAttribute("modify", qService.getCustomerQnaDetail(cqcode));
-		return "cqna/qnaModifyForm";
+		return "customerQna/qnaModifyForm";
 	}
 	
 	// 글 수정하기

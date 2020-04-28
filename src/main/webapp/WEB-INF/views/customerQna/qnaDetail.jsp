@@ -46,7 +46,7 @@
 		</tr>
 		<tr><th>문의 내용 : </th>
 			<td colspan="3" style="height:400px;">
-				${detail.cqcontent }
+				<pre>${detail.cqcontent }</pre>
 		 	</td>
 		</tr>
 		<tr><td colspan="4">
