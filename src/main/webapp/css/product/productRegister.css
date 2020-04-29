@@ -12,8 +12,6 @@ table td,th{
 	border:1px solid #e9e9e9;
 	padding:5px;
 }
-table th{
-}
 input[type="text"]{
 	width:300px;
 	outline:0;
@@ -41,15 +39,6 @@ textarea{
 	padding:2px;
 	margin-left: 10px;	
 }
-input[type="submit"]{
-	background: #3a5485;
-    color: #fff;
-	font-size: 16px;
-    width: 100px;
-    height:37px;
-    line-height:37px;
-    border: 2px solid #3a5485;
-    border-radius: 10px;
-    text-align: center;
-    margin-top:10px;
+#option > td:nth-child(1) > input[type=text]{
+	width: 300px;
 }

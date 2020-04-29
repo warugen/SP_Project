@@ -18,5 +18,5 @@ public interface CustomerDao {
 	public int deleteCustomer(String cid);
 	public int upPoint(String cid);
 	public int usePoint(Customer customer);
-	
+	public List<Customer> getListCidByGrade(String gcode);
 }

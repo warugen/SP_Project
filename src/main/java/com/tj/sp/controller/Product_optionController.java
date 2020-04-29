@@ -20,14 +20,4 @@ public class Product_optionController {
 		model.addAttribute("product_oprionList", product_optionService.product_optionList(product_option));
 		return "product_option/product_optionList";
 	}
-	@RequestMapping(params="method=registerProduct_option", method=RequestMethod.GET)
-	public String registerProduct_option() {
-		return "product_option/registerProduct_option";
-	}
-	@RequestMapping(params="method=RProduct_option")
-	public String RProduct_option(Product_option product_option, Model model) {
-		product_optionService.registerProduct_option(product_option);
-		model.addAttribute("product_optionList", product_optionService.registerProduct_option(product_option));
-		return "product_option/product_optionList";
-	}
 }

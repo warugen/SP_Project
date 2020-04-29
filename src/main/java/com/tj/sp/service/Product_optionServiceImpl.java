@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tj.sp.dao.Product_optionDao;
 import com.tj.sp.dto.Product_option;
@@ -21,13 +22,34 @@ public class Product_optionServiceImpl implements Product_optionService {
 	}
 
 	@Override
-	public int registerProduct_option(Product_option product_option) {
-		return product_optionDao.registerProduct_option(product_option);
+	public int registerProduct_option(MultipartHttpServletRequest mRequest) {
+		String[] poname = mRequest.getParameterValues("poname");
+		String[] ponet = mRequest.getParameterValues("ponet");
+		String[] postock = mRequest.getParameterValues("postock");
+		String[] poprice = mRequest.getParameterValues("poprice");
+		String[] typecode = mRequest.getParameterValues("typecode");
+		Product_option product_option = new Product_option();
+		int result=0;
+		for(int i=0; i<poname.length ; i++) {
+			System.out.println("poname : "+ poname[i]);
+			System.out.println("ponet : "+ ponet[i]);
+			System.out.println("postock : "+ postock[i]);
+			System.out.println("poprice : "+ poprice[i]);
+			System.out.println("tycode : "+ typecode[i]);
+			product_option.setPoname(poname[i]);
+			product_option.setPonet(Integer.parseInt(ponet[i]));
+			product_option.setPostock(Integer.parseInt(postock[i]));
+			product_option.setPoprice(Integer.parseInt(poprice[i]));
+			product_option.setTypecode(typecode[i]);
+			result += product_optionDao.registerProduct_option(product_option);
+		}
+		return result;
 	}
 
 	@Override
 	public Product_option getProduct_option(String pocode) {
 		return product_optionDao.getProduct_option(pocode);
 	}
+	
 
 }

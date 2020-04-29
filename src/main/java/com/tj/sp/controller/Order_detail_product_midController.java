@@ -10,7 +10,7 @@ import com.tj.sp.dto.Order_detail_product_mid;
 import com.tj.sp.service.Order_detail_product_midService;
 
 @Controller
-@RequestMapping("Order_detail_product_mid")
+@RequestMapping("Order_detail_product")
 public class Order_detail_product_midController {
 	@Autowired
 	private Order_detail_product_midService order_detail_product_midService;

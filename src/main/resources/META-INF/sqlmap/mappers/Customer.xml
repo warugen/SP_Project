@@ -95,8 +95,11 @@
 	<update id="usePoint" parameterType="Customer">
 		UPDATE CUSTOMER SET CPOINT = CPOINT - #{cpoint} WHERE CID=#{cid}
 	</update>
-
-
+	
+	<!-- 특정 고객등급 아이디 불러오기(쿠폰지급용) -->
+	<select id="getListCidByGrade" parameterType="String" resultMap="CustomerResult">
+		SELECT CID FROM CUSTOMER WHERE GCODE=#{gcode}
+	</select>
 </mapper>
 
 

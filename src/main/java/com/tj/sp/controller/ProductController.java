@@ -13,6 +13,7 @@ import com.tj.sp.dto.Review;
 import com.tj.sp.service.ProductService;
 import com.tj.sp.service.Product_optionService;
 import com.tj.sp.service.Product_qnaService;
+import com.tj.sp.service.Product_typeService;
 import com.tj.sp.service.ReviewService;
 import com.tj.sp.util.Paging;
 
@@ -27,6 +28,8 @@ public class ProductController {
 	private Product_qnaService  product_qnaService;
 	@Autowired
 	private Product_optionService product_optionService;
+	@Autowired
+	private Product_typeService product_typeService;
 	@RequestMapping(params="method=detailProduct" )
 	public String detailProduct(String pcode,Model model, String review_pagenum, String pagenum) {
 		model.addAttribute("detail",productService.detailProduct(pcode));
@@ -50,18 +53,15 @@ public class ProductController {
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
 		return "product/joinList";
 	}
-	@RequestMapping(params = "method=productRegister", method=RequestMethod.GET)
-	public String productRegister(Product_option product_option) {
+	@RequestMapping(params = "method=productRegister", method={RequestMethod.GET, RequestMethod.POST})
+	public String productRegister(Model model) {
+		model.addAttribute("type",product_typeService.getListProduct_type());
 		return "product/productRegister";
 	}
-	@RequestMapping(params = "method=pRegister")
-	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model, String pcode, String pagenum) {
+	@RequestMapping(params = "method=pRegister", method=RequestMethod.POST)
+	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model) {
 		productService.registerProduct(mRequest, ppo);
-		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
-		Paging paging = new Paging(productService.cntProduct(), pagenum, 8, 3);
-		ppo.setStartrow(paging.getStartrow());
-		ppo.setEndrow(paging.getEndrow());
-		model.addAttribute("paging", paging);
-		return "product/joinList";
+		model.addAttribute("result", product_optionService.registerProduct_option(mRequest));
+		return productRegister(model);
 	}
 }

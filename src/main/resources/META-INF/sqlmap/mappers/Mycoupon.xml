@@ -30,6 +30,11 @@
   		</foreach>
 	</delete>
 	
+	<!-- 쿠폰 지급하기 -->
+	<insert id="givecoupon" parameterType="Mycoupon">
+		INSERT INTO COUPON_HOLD VALUES (COUPON_HOLD_SEQ.NEXTVAL, #{cuid}, #{cid})
+	</insert>
+	
 </mapper>
 
 

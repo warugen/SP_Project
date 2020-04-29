@@ -34,4 +34,18 @@ public class FavoriteServiceImpl implements FavoriteService {
 		return favoriteDao.deleteFavorite(favorite);
 	}
 
+	@Override
+	public int clickFavorite(String cid, String pcode) {
+		Favorite favorite = new Favorite();
+		favorite.setCid(cid);
+		favorite.setPcode(pcode);
+		int check = favoriteDao.checkFavorite(favorite);
+		if(check==1) {
+			favoriteDao.deleteFavorite(favorite);
+		}else {
+			favoriteDao.insertFavorite(favorite);
+		}
+		return favoriteDao.checkFavorite(favorite);
+	}
+
 }

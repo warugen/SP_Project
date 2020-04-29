@@ -21,7 +21,7 @@ import com.tj.sp.util.Paging;
 public class ProductServiceimpl implements ProductService{
 	@Autowired
 	private ProductDao productDao;
-	String backupPath = "D:/sp/SP_Project/src/main/webapp/productUpload/";
+	String backupPath = "C:/dsd/SP_Project/src/main/webapp/product_img/";
 	@Override
 	public List<Product> getProductList(Product product) {
 		return productDao.getProductList(product);
@@ -56,14 +56,19 @@ public class ProductServiceimpl implements ProductService{
 	}
 	@Override
 	public int registerProduct(MultipartHttpServletRequest mRequest, Product_Product_option ppo) {
-		String uploadPath = mRequest.getRealPath("productUpload/");
+		String uploadPath = mRequest.getRealPath("product_img/");
 		Iterator<String> params = mRequest.getFileNames();
+		System.out.println(params.toString());
 		String[] pimage = { "", "", "" };
 		int idx = 0;
 		while (params.hasNext()) {
-			String param = params.next();
+			String param = params.next().trim();
+			if(param.equals("files")) {
+				continue;
+			}
 			MultipartFile mFile = mRequest.getFile(param);
 			pimage[idx] = mFile.getOriginalFilename();
+			System.out.println("파라미터 이름은 "+param+"이고 파일이름은 "+pimage[idx]);
 			if (pimage[idx] != null && !pimage[idx].equals("")) {
 				if (new File(uploadPath + pimage[idx]).exists()) {
 					pimage[idx] = System.currentTimeMillis() + "_" + pimage[idx];
@@ -83,9 +88,14 @@ public class ProductServiceimpl implements ProductService{
 			}
 			idx++;
 		}
-		ppo.setPimage1(pimage[0]);
-		ppo.setPimage2(pimage[1]);
-		ppo.setPimage3(pimage[2]);
+		ppo.setPcode(mRequest.getParameter("pcode"));
+		ppo.setPtitle(mRequest.getParameter("ptitle"));
+		ppo.setPcontent(mRequest.getParameter("pcontent"));
+		ppo.setPimage1(pimage[0]);// 첫번째 첨부한 파일이름
+		ppo.setPimage2(pimage[1]);// 두번째 첨부한 파일이름
+		ppo.setPimage3(pimage[2]);// 두번째 첨부한 파일이름
+		ppo.setMid(mRequest.getParameter("mid"));
+		System.out.println("서비스에서 DAO 호출 바로 전 ppo : "+ppo);
 		return productDao.registerProduct(ppo);
 	}
 
@@ -96,7 +106,10 @@ public class ProductServiceimpl implements ProductService{
 		String[] pimage = { "", "", "" };
 		int idx = 0;
 		while (params.hasNext()) {
-			String param = params.next();
+			String param = params.next().trim();
+			if(param.equals("files")) {
+				continue;
+			}
 			MultipartFile mFile = mRequest.getFile(param);
 			pimage[idx] = mFile.getOriginalFilename();
 			if (pimage[idx] != null && !pimage[idx].equals("")) {
@@ -125,6 +138,7 @@ public class ProductServiceimpl implements ProductService{
 		product.setPimage1(pimage[0]);// 첫번째 첨부한 파일이름
 		product.setPimage2(pimage[1]);// 두번째 첨부한 파일이름
 		product.setPimage3(pimage[2]);// 두번째 첨부한 파일이름
+		product.setMid(mRequest.getParameter("mid"));
 		return productDao.modifyProduct(product);
 	}
 

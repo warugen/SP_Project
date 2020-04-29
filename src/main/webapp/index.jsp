@@ -6,19 +6,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">`
+<title>Insert title here</title>
 <link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
 
-	<%-- <jsp:forward page="main.do"/> --%>
 	<a href="main.do" class="btn2">메인화면</a>
 	<a href="cart.do?method=cart" class="btn1">카트</a>
 	<a href="notice.do?method=noticeList" class="btn2">공지사항</a>
-	<a href="Order_detail_product_mid.do?method=listOrder_detailByCid" class="btn1">주문 리스트</a>
-	<a href="Order_detail_product_mid.do?method=listOrder_detailByMid" class="btn2">마켓별 주문 리스트</a>
+	<a href="Order_detail_product.do?method=listOrder_detailByCid" class="btn1">주문 리스트</a>
+	<a href="Order_detail_product.do?method=listOrder_detailByMid&mid=aaa" class="btn2">마켓별 주문 리스트</a>
 	<a href="product.do?method=joinList" class="btn1">제품리스트</a>
 	<a href="writeForm.do?" class="btn2">썸머</a>
+	<a href="coupon.do?method=adminCoupon" class="btn1">관리자용 쿠폰주기</a>
 	<form action="market.do">
 	<input type="hidden" name="method" value="marketmain">
 	<input type="hidden" name="mid" value="aaa">

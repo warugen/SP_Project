@@ -94,13 +94,15 @@ public class CartController {
 	@RequestMapping(params="method=orderCompl", method =RequestMethod.GET)
 	public String orderCompl(String[] pocode, String[] cuid, String[] odcount, String[] odunit, String[] chnum,
 			Model model, Sp_order sp_order, Customer customer, String[] cartno) {
-		sp_order.setCid(customer.getCid());
+		String cid = customer.getCid();
+		sp_order.setCid(cid);
 		model.addAttribute("orderResult", sp_orderService.insertSp_order(sp_order));
 		order_detailService.insertOrder_detail(pocode, cuid, odcount, odunit);
 		customerService.upPoint(customer.getCid());		//구매 포인트 적립
 		customerService.usePoint(customer);				//포인트 적립
 		mycouponService.useMycoupon(chnum);				//사용쿠폰제거
 		cartservice.buyCart(cartno);					//구매 카트 제거
+		customergradeService.updateGrade(cid);			//고객등급 조정
 		return "cart/orderCompl";
 	}
 	
