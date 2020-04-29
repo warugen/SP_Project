@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="conPath" value="${pageContext.request.contextPath }" />
+<c:set var="conPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +12,11 @@
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 	$(document).ready(function() {
-
+		
 	})
 </script>
 <style>
+/* 최근주문내역 ****************************************************************** */
 #content #mypagewrap{
 	width: 1000px;
 	height: 60px;
@@ -28,7 +29,7 @@ font-size: 12px;
 color: #676767;
 vertical-align: top;
 border: 0;
-margin: 0;
+margin:160px 0 0 0;
 padding: 0;
 position: absolute;
 top: 0;
@@ -63,143 +64,130 @@ margin: 0 auto;
  color: #3a5485;
  display: block;
 }
-#content #mypagewrap{
-	width: 1000px;
-}
-#content #top_info{
+#content  #ordertitle{
+color: #444;
+vertical-align: top;
+border: 0;
+margin: 20px 0 0 0;
 padding: 0;
-font-weight: 400;
-font-size: 14px;
-line-height: 1.3;
-color: #333;
-letter-spacing: -0.6px;
-display: table;
+height: 43px;
+padding-top: 14px;
+}
+#content #ordertitle p{
+font-weight:bold;
+font-size: 1.5em;
+}
+#content #myorderlist{
+width:1000px;
+color: #444;
+vertical-align: top;
+border: 0;
+margin: 10px auto;
+padding: 0;
+}
+#content #myorderlist table{
 width: 100%;
-margin: 0 0 35px 0;
-border: 1px solid #e3e3e3;
-background: #f7f9f8;
-border-top: 1px solid #999;
-}
-#content #top_info .mygrade{
-margin: 0;
-font-weight: 400;
-font-size: 14px;
-line-height: 1.3;
-color: #333;
-letter-spacing: -0.6px;
-display: table-cell;
-width: 30%;
-padding: 20px 0 20px 0;
-text-align: center;
-vertical-align: middle;
-background: #f7f9f8;
-}
-#content #top_info .mygrade .grade_txt{
-text-align: center;
+vertical-align: top;
+border: 0;
 margin: 0;
 padding: 0;
-font-weight: 400;
-font-size: 14px;
-line-height: 1.3;
-color: #333;
-letter-spacing: -0.6px;
+color: #676767;
+border-collapse: collapse;
+border-spacing: 0;
+clear: both;
 }
-#content #top_info .myCouponCount{
+#content #myorderlist table .fieldname{
+color: #676767;
+border-collapse: collapse;
+border-spacing: 0;
+vertical-align: top;
+border: 0;
 margin: 0;
 padding: 0;
-font-weight: 400;
-font-size: 14px;
-line-height: 1.3;
-color: #333;
-letter-spacing: -0.6px;
-display: table-cell;
-width: 69%;
-vertical-align: middle;
-background: #ffffff;
 }
-#content #top_info .myCouponCount ul{
-margin: 0;
-font-weight: 400;
-color: #333;
-letter-spacing: -0.6px;
-list-style: none;
-width: 100%;
-padding: 27px 10px 27px 10px;
-font-size: 0;
-line-height: 1;
-}
-#content #top_info .myCouponCount ul li:nth-child(1),
-#content #top_info .myCouponCount ul li:nth-child(2){
+#content #myorderlist table .fieldname th:nth-child(1) {
+width:160px;
+border-collapse: collapse;
+border-spacing: 0;
+vertical-align: top;
+border: 0;
 margin: 0;
 padding: 0;
-font-weight: 400;
-line-height: 1.3;
-color: #333;
-letter-spacing: -0.6px;
-list-style: none;
-display: inline-block;
-width: 33%;
-font-size: 14px;
-text-align: center;
-border-left: none 0;
-
-
-}
-#content #top_info .myCouponCount ul li:nth-child(1) span:nth-child(1),
-#content #top_info .myCouponCount ul li:nth-child(1) span:nth-child(2) {
-list-style: none;
-text-align: center;
-margin: 0;
-font-weight: 400;
-font-size: 14px;
-line-height: 1.3;
-color: #333;
-letter-spacing: -0.6px;
-display: block;
-padding: 0 10px 0 10px;	
-}
-#content #top_info .myCouponCount ul li:nth-child(1) span:nth-child(2) em,
-#content #top_info .myCouponCount ul li:nth-child(2) span:nth-child(2) em{
-list-style: none;
-text-align: center;
-margin: 0;
-font-size: 14px;
-line-height: 1.3;
-color: #333;
-letter-spacing: -0.6px;
 font-style: normal;
-display: block;
-padding: 15px 0 15px 0;
-font-weight: bold;
+font-weight: normal;
+height: 21px;
+background: url(//pics.gmarket.co.kr/pc/ko/myg/bg_myg_table.png) repeat-x;
+color: rgb(255, 255, 255);
+padding-top: 10px;
+font-size: 11px;
 }
-#content #top_info .myCouponCount ul li:nth-child(1) span:nth-child(2) strong,
-#content #top_info .myCouponCount ul li:nth-child(2) span:nth-child(2) strong
-{
-list-style: none;
-text-align: center;
-line-height: 1.3;
-letter-spacing: -0.6px;
-font-weight: 500;
-padding: 0 3px 0 0;
-font-size: 24px;
-color: red;
-}
-#content #top_info .myCouponCount ul li:nth-child(2) span:nth-child(1),
-#content #top_info .myCouponCount ul li:nth-child(2) span:nth-child(2) {
-list-style: none;
-text-align: center;
+#content #myorderlist table .fieldname th:nth-child(2){
+width:500px;
+border-collapse: collapse;
+border-spacing: 0;
+vertical-align: top;
+border: 0;
 margin: 0;
-font-weight: 400;
-font-size: 14px;
-line-height: 1.3;
-color: #333;
-letter-spacing: -0.6px;
-display: block;
-padding: 0 10px 0 10px;
+padding: 0;
+font-style: normal;
+font-weight: normal;
+background: url(//pics.gmarket.co.kr/pc/ko/myg/bg_myg_table.png) repeat-x;
+height: 21px;
+color: rgb(255, 255, 255);
+padding-top: 10px;
+font-size: 11px;
 }
+#content #myorderlist table .fieldname th:nth-child(3){
+width:180px;
+border-collapse: collapse;
+border-spacing: 0;
+vertical-align: top;
+border: 0;
+margin: 0;
+padding: 0;
+font-style: normal;
+font-weight: normal;
+background: url(//pics.gmarket.co.kr/pc/ko/myg/bg_myg_table.png) repeat-x;
+height: 21px;
+color: rgb(255, 255, 255);
+padding-top: 10px;
+font-size: 11px;
+}
+#content #myorderlist table .fieldname th:nth-child(4){
+width:160px;
+border-collapse: collapse;
+border-spacing: 0;
+vertical-align: top;
+border: 0;
+margin: 0;
+padding: 0;
+font-style: normal;
+font-weight: normal;
+background: url(//pics.gmarket.co.kr/pc/ko/myg/bg_myg_table.png) repeat-x;
+height: 21px;
+color: rgb(255, 255, 255);
+padding-top: 10px;
+font-size: 11px;
+}
+#content #myorderlist table .fieldvalue{
+color: #676767;
+border-collapse: collapse;
+border-spacing: 0;
+vertical-align: top;
+border: 0;
+margin: 0;
+padding: 0;
+}
+#content #myorderlist table .fieldvalue td{
+text-align: center;
+border: 1px solid #cccccc;
+box-sizing: border-box;
+}
+/* 최근주문내역 ****************************************************************** */
+/* 진행중인 주문 */
 #content #order_info{
 width:1000px;
-margin: 0;
+margin-top: 60px;
 padding: 0;
 font-weight: 400;
 font-size: 14px;
@@ -317,53 +305,73 @@ vertical-align: middle;
 box-sizing: border-box;
 line-height: 52px;
 }
+#content #myCouponContent{
+margin: 0;
+padding: 0;
+font-weight: 400;
+font-size: 14px;
+line-height: 1.3;
+color: #333;
+letter-spacing: -0.6px;
+}
+#content #myCouponContent span{
+margin: 0;
+font-weight: 400;
+line-height: 1.3;
+color: #333;
+letter-spacing: -0.6px;
+display: block;
+padding: 20px 0 10px 0;
+font-size: 14px;
+}
+#content #myCouponContent span strong {
+line-height: 1.3;
+color: #333;
+letter-spacing: -0.6px;
+font-size: 14px;
+font-weight: 500;
+}
 </style>
 </head>
 <body>
+	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<div id="mypagewrap">
 			<div id="mainmenu">
 				<ul class="menu_list">
-					<li class="menu1"><a href="${conPath }/myPage.do">전체 주문 내역</a></li>
-					<li class="menu2"><a href="">정보수정</a>
-					<li class="menu3"><a href="${conPath }/myCoupon.do">쿠폰</a></li>
-					<li class="menu4"><a href="${conPath }/myAddressList.do">주소지 설정</a>
+					<li class="menu1">
+						<a href="${conPath }/myPage.do">전체 주문 내역</a>
+					</li>
+					<li class="menu2">
+						<a href="">정보수정</a>
+					</li>
+					<li class="menu3">
+						<a href="${conPath }/myCoupon.do">쿠폰</a>
+					</li>
+					<li class="menu4">
+						<a href="${conPath }/myAddressList.do">주소지 설정</a>
 					</li>
 				</ul>
 			</div>	
 		</div>
-		<div id="mypagewrap">
-			<div id="top_info">
-				<div class="mygrade">
-					<div class="grade_txt">
-						<p>XXX님의</p>
-						<p>회원등급은<span>'일반회원'</span>입니다.</p>
-					</div>
-				</div>
-				<div class="myCouponCount">
-					<ul>
-						<li>
-							<span>
-								<img src="http://placehold.it/68x68" />
-							</span>
-							<span>
-								<em>쿠폰</em>
-								<strong>1</strong>장
-							</span>
-						</li>
-						<li>
-							<span>
-								<img src="http://placehold.it/68x68" />
-							</span>
-							<span>
-								<em>적립금</em>
-								<strong>0</strong>원
-							</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div id="order_info">
+		<div id="ordertitle">
+				<p>최근 주문내역</p>
+		</div>
+		<div id="myorderlist">
+			<table>
+				<tr class="fieldname">
+					<th>날짜</th><th>상품정보</th><th>상태</th><th>확인/신청</th>
+				</tr>
+				<tr class="fieldvalue">
+<!-- 					<td>최근 한 달간 주문내역이 없습니다.</td> -->
+					<td>2020-04-28</td>
+					<td>[루메나] 오난코리아 루메나 N9-FAN STAND 2세대 탁상용 선풍기</td>
+					<td>집하</td>
+					<td>구매완료</td>
+				</tr>
+			</table>
+		</div>
+		<div id="order_info">
 				<div class="order_title">
 					<h3>진행 중인 주문</h3>
 				</div>
@@ -394,7 +402,7 @@ line-height: 52px;
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

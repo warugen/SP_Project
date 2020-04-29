@@ -39,8 +39,8 @@ public class Product_qnaDaoimpl implements Product_qnaDao{
 	}
 
 	@Override
-	public int qnaCnt() {
-		return sessionTemplate.selectOne("qnaCnt");
+	public int qnaCnt(String pcode) {
+		return sessionTemplate.selectOne("qnaCnt", pcode);
 	}
 
 	@Override
