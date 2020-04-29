@@ -34,18 +34,12 @@
 	<input type="hidden" name="method" value="grade">
 	<input type="submit" class="btn2" value="aaa고객등급조회">
 	</form>
-	<div>
-		<p>리뷰작성 TEST</p>
-		<form action="product.do" enctype="multipart/form-data" method="post">
-			<p><input type="hidden" name="method" value="insertReview"></p>
-			<p>"rcontent"	<input type="text" name="rcontent" value="insertReview"></p>
-			<p>"rstar"	<input type="text" name="rstar"	 value="insertReview"></p>
-			<p>"rimage"	<input type="file" name="temprimage"	 value="insertReview"></p>
-			<p>"cid"		<input type="text" name="cid"	value="insertReview"></p>
-			<p>"pcode"	<input type="text" name="pcode"	 value="insertReview"></p>
-			<input type="submit" value="등록">
-		</form>
-	</div>
+	<form action="review.do">
+		<input type="hidden" name="cid" value="aaa">
+		<input type="hidden" name="pcode" value="1">
+		<input type="hidden" name="method" value="review">
+		<input type="submit" class="btn2" value="리뷰">
+	</form>
 </body>
 </body>
 
