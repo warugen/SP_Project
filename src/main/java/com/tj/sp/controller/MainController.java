@@ -29,4 +29,16 @@ public class MainController {
 	public String writeForm() {
 		return "write";
 	}
+	@RequestMapping(value="myPage")
+	public String myPage() {
+		return "myPage";
+	}
+	@RequestMapping(value="myAddressList")
+	public String myAddressList() {
+		return "myAddressList";
+	}
+	@RequestMapping(value="myCoupon")
+	public  String myCoupon() {
+		return "myCoupon";
+	}
 }
