@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.tj.sp.dto.Product_Product_option;
-import com.tj.sp.dto.Product_option;
 import com.tj.sp.dto.Review;
 import com.tj.sp.service.ProductService;
 import com.tj.sp.service.Product_optionService;
