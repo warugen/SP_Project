@@ -27,7 +27,11 @@
 			<table>
 				<c:forEach var="product_product_option" items="${joinList }">
 					<tr onclick="trClicked('${product_product_option.pcode}')">
+<<<<<<< HEAD
 						<th><img src="${conPath }/product_img/${product_product_option.pimage1 }"><a href="${conPath }/product.do?method=productDetail&pcode=${product_product_option.pcode }&pagenum=${paging.currentpage }"></a>
+=======
+						<th><img src="${conPath }/productUpload/${product_product_option.pimage1 }"><a href="${conPath }/product.do?method=detailProduct&pcode=${product_product_option.pcode }&pagenum=${paging.currentpage }"></a>
+>>>>>>> refs/heads/taehun7737
 						<br><br>
 						상품명 : ${product_product_option.ptitle }<br>
 						판매가격(최소가) : ${product_product_option.poprice}<br>

@@ -29,7 +29,7 @@ public class ProductServiceimpl implements ProductService{
 
 	@Override
 	public int totalproduct() {
-		return productDao.totalproduct();
+		return productDao.totalproduct(); 
 	}
 
 	@Override
