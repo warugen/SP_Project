@@ -19,8 +19,13 @@
 	<a href="Order_detail_product_mid.do?method=listOrder_detailByMid" class="btn2">마켓별 주문 리스트</a>
 	<a href="product.do?method=joinList" class="btn1">제품리스트</a>
 	<a href="writeForm.do?" class="btn2">썸머</a>
+	<a href="myPage.do">마이 페이지</a>
+	
+	
+	
 	<form action="market.do">
-	<input type="hidden" name="method" value="marketmain">
+	<input type="hidden" name="method" value="marketmai
+	n">
 	<input type="hidden" name="mid" value="aaa">
 	<input type="hidden" name="schword" value="">
 	<input type="submit" class="btn2" value="마켓">
