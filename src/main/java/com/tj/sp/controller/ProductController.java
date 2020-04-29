@@ -35,8 +35,8 @@ public class ProductController {
 		//장바구니 담을 option list불러오기
 		model.addAttribute("listForCart",product_optionService.listForCart(pcode));
 		//qna불러오기
-		Paging paging = new Paging(product_qnaService.qnaCnt(),pagenum,10,5);
-		model.addAttribute("product_qna",product_qnaService.productQnaList(pagenum));
+		Paging paging = new Paging(product_qnaService.qnaCnt(pcode),pagenum,10,5);
+		model.addAttribute("product_qna",product_qnaService.productQnaList(pcode, pagenum));
 		model.addAttribute("paging",paging);
 		//리뷰 불러오기
 		Review review = new Review();
