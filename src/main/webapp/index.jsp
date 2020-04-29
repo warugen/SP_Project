@@ -20,6 +20,9 @@
 	<a href="product.do?method=joinList" class="btn1">제품리스트</a>
 	<a href="writeForm.do?" class="btn2">썸머</a>
 	<a href="coupon.do?method=adminCoupon" class="btn1">관리자용 쿠폰주기</a>
+	<a href="myPage.do">마이 페이지</a>
+	
+
 	<form action="market.do">
 	<input type="hidden" name="method" value="marketmain">
 	<input type="hidden" name="mid" value="aaa">
