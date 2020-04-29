@@ -39,3 +39,6 @@ textarea{
 	padding:2px;
 	margin-left: 10px;	
 }
+#option > td:nth-child(1) > input[type=text]{
+	width: 300px;
+}

@@ -28,11 +28,38 @@
 			        sendFile(files[0], editor, welEditable);
 			    } */
 		   });
+		//option 항목 추가
+		var option_num=0;
+		$('#btn_plus').click(function () {
+			option_num++;
+			$('#blank').before("<tr id='option"+option_num+"'>"+
+				"	<td><input type='text' name='poname' required='required'>     </td>"+
+				"	<td><input type='number' name='ponet' required='required' min='0'>    </td>"+
+				"	<td><input type='number' name='postock' required='required' min='0'>  </td>"+
+				"	<td><input type='number' name='poprice' required='required' min='0'>  </td>"+
+				"	<td><select name='typecode'>"+
+				"			<c:forEach var='type' items='${type }'>"+
+				"				<option value='${type.typecode }'>${type.producttype }</option>"+
+				"			</c:forEach>"+
+				"		</select></td>"+
+				"</tr>");
+		});
+		$('#btn_minus').click(function(){
+			$('#option'+option_num).detach();
+			option_num--;
+		});
+		//제품등록시 알람
+		var result = $('input[name=result]').val();
+		if(result > 0){
+			alert(result+'개의 제품이 등록 되었습니다.');
+		}
+	
 	});
 </script>	
 
 </head>
 <body>
+	<input type="hidden" name="result" value="${result }">
 	<jsp:include page="../main/header.jsp"/>
 <form action="${conPath }/product.do" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="method" value="pRegister">
@@ -69,8 +96,8 @@
 		</tr>
 		<tr id="blank"></tr>
 		<tr><td colspan="5">
-			<button type="button" class="btn2">-</button>
-			<button type="button" class="btn2">+</button>
+			<button type="button" class="btn2" id="btn_minus">-</button>
+			<button type="button" class="btn2" id="btn_plus">+</button>
 			<input type="submit" value="상품등록" class="btn1">
 			</td>
 		</tr>

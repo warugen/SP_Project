@@ -52,17 +52,17 @@ public class ProductController {
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
 		return "product/joinList";
 	}
-	@RequestMapping(params = "method=productRegister", method=RequestMethod.GET)
+	@RequestMapping(params = "method=productRegister", method={RequestMethod.GET, RequestMethod.POST})
 	public String productRegister(Model model) {
 		model.addAttribute("type",product_typeService.getListProduct_type());
 		return "product/productRegister";
 	}
 	@RequestMapping(params = "method=pRegister", method=RequestMethod.POST)
-	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model, String pagenum) {
+	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model) {
+		System.out.println(1);
 		productService.registerProduct(mRequest, ppo);
-		Paging paging = new Paging(productService.cntProduct(), pagenum, 8, 3);
-		model.addAttribute("paging", paging);
-		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
-		return "product/joinList";
+		model.addAttribute("result", product_optionService.registerProduct_option(mRequest));
+		System.out.println(2);
+		return "forward: product.do?method=productRegister";
 	}
 }
