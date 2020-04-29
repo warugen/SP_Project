@@ -77,4 +77,9 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.usePoint(customer);
 	}
 
+	@Override
+	public int updateAddrList(Customer customer) {
+		return customerDao.updateAddrList(customer);
+	}
+
 }

@@ -19,12 +19,17 @@
 	
 	<!-- 회원 주소 등록하기 (회원가입시) -->
 	<insert id="firstAddrlist" parameterType="Addrlist">
-		INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.CURRVAL, #{addrname}, #{cpost}, #{caddr1}, #{caddr2}, #{cid});
+		INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval, ADDRLIST_SEQ.CURRVAL, #{cpost}, #{caddr1}, #{caddr2}, #{cid})
 	</insert>
+	
+	<!-- 회원가입시 ADDRCODE가져오기 -->
+	<select id="getFirstAddrCode" resultType="String">
+		SELECT TO_CHAR(MAX(TO_NUMBER(ADDRCODE))) FROM ADDRLIST
+	</select>
 
 	<!-- 회원 주소 등록하기 (주소 추가 할때) -->
 	<insert id="registAddrlist" parameterType="Addrlist">
-		INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval, #{addrname}, #{cpost}, #{caddr1}, #{caddr2}, #{cid});
+		INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval, ADDRLIST_SEQ.CURRVAL, #{cpost}, #{caddr1}, #{caddr2}, #{cid})
 	</insert>
 	
 	<!-- 회원 주소 수정 -->

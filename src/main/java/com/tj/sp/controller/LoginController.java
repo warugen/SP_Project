@@ -47,7 +47,7 @@ public class LoginController {
 			if(customerDao.snsIdConfirm(csnsid) == MEMBER_EXIST) {
 				// 회원DB에 등록되있으면 회원정보 가져와서 메인화면으로 가기
 				model.addAttribute("member", customerDao.getSnsCustomer(csnsid));
-				session.setAttribute("customer", customerDao.getSnsCustomer(csnsid));
+				session.setAttribute("member", customerDao.getSnsCustomer(csnsid));
 				System.out.println("sns 로그인 성공");
 			} else {
 				// 회원DB에 등록 안되있으면 회원가입처리하기

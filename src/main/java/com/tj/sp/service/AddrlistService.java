@@ -9,5 +9,6 @@ public interface AddrlistService {
 	public int registAddrlist(Addrlist addrlist);
 	public int modifyAddrlist(Addrlist addrlist);
 	public int deleteAddrlist(String addrcode);
+	public String getFirstAddrCode();
 
 }

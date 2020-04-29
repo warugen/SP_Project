@@ -21,6 +21,12 @@
 </style>
 </head>
 <body>
+	<c:if test="${not empty joinResult }">
+		<script>
+		alert('${joinResult}');
+		</script>
+	</c:if>
+	
 	<div class="contaner">
 		<div class="login_content">
 			<h1 class="logo">
@@ -34,7 +40,12 @@
 	<input type="hidden" name="snsemail"  value="">
 
 	<div class="group">
-	  <input type="text" name="id"><span class="highlight"></span><span class="bar"></span>
+	<c:if test="${not empty customer }">
+		<input type="text" name="id" value="${customer.cid }" ><span class="highlight"></span><span class="bar"></span>
+	</c:if>
+	<c:if test="${empty customer }">
+		<input type="text" name="id"><span class="highlight"></span><span class="bar"></span>
+	</c:if>
 	  <label>아이디</label>
 	</div>
 	<div class="group">

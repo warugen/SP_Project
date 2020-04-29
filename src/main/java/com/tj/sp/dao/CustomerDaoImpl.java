@@ -80,5 +80,10 @@ public class CustomerDaoImpl implements CustomerDao {
 	public List<Customer> getListCidByGrade(String gcode) {
 		return sessionTemplate.selectList("getListCidByGrade", gcode);
 	}
+	@Override
+	public int updateAddrList(Customer customer) {
+		// addrname 업데이트
+		return sessionTemplate.update("updateAddrList", customer);
+	}
 
 }

@@ -52,9 +52,15 @@
 	<!-- 회원가입하기 -->
 	<insert id="registCustomer" parameterType="Customer">
 		INSERT INTO CUSTOMER VALUES
-			(#{cid}, #{cpw}, #{cname}, #{csnsid}, #{cprovider}, (SELECT MAX( TO_NUMBER(ADDRCODE)) FROM ADDRLIST), #{cemail}, #{ctel}, SYSDATE, 0,'1')
-			
+			(#{cid}, #{cpw}, #{cname}, #{csnsid}, #{cprovider}, #{cid}, #{cemail}, #{ctel}, SYSDATE, 0,'1')
 	</insert>
+	
+	<!-- 회원 가입후 addrcode에 addlist의 addrcode 넣어주기 -->
+	<update id="updateAddrList" parameterType="Customer">
+		UPDATE CUSTOMER SET
+		    ADDRCODE = #{addrcode}
+		WHERE CID = #{cid}
+	</update>
 	
 	<!-- 회원정보 수정 -->
 	<update id="modifyCustomer" parameterType="Customer">
