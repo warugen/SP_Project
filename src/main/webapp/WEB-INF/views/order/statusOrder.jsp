@@ -10,31 +10,44 @@
 <title>Insert title here</title>
 <link href="${conPath }/css/order/order.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-$(document).ready(function(){
-	
-});
-</script>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<div id="content">
 		<table>
 			<tr>
-				<th>주문일자</th><th>주문 상품 정보</th><th>상품금액(수량)</th><th>배송비(판매자)</th><th>주문상태</th>
+				<th>주문일자</th><th>주문 상품 정보</th><th>상품금액(수량)</th><th>수령인(주소)</th><th>주문상태</th>
 			</tr>
-			<c:forEach var="order" items="${list }">
+			<c:set var="temp" value=""/>
+			<c:forEach var="order" items="${list }" varStatus="vs">
 			<tr>
-				<td><fmt:formatDate value="${order.otime }" pattern="yyyy-MM-dd"/><br><input type="button" value="주문상세보기"></td>
+				<c:if test="${order.ocode  != temp}">
+					<td>
+						<fmt:formatDate value="${order.otime }" pattern="yyyy-MM-dd hh:mm:ss"/>
+					</td>
+				</c:if>
+				<c:if test="${order.ocode  eq temp}"><td class="noborder"></td></c:if>
 				<td>${order.poname}</td>
 				<td><fmt:formatNumber value="${order.poprice }" pattern="#,###,###"/><br>(${order.odcount}개)</td>
-				<td>3,000원<br>${order.mid}</td>
-				<td>
-					<input type="button" value="구매확정"><br>
-					<input type="button" value="배송조회"><br>
-					<input type="button" value="리뷰작성">
-				</td>
+				<td>${order.oname }<br>${order.oaddr1}<br>${order.oaddr2}</td>
+				<c:if test="${order.ocode  != temp}">
+					<td>
+						<span>${order.odelivery }</span><br>
+						<form action="Order_detail_product.do">
+							<input type="hidden" name="ocode" value="${order.ocode }">
+							<input type="hidden" name="method" value="updateSp_order">
+							<c:if test="${order.ostatus != '구매확정'}">
+								<input type="submit" value="구매확정">
+							</c:if>
+							<c:if test="${order.ostatus eq '구매확정'}">
+								<span>구매확정</span>
+							</c:if>
+						</form>
+					</td>
+				</c:if>
+				<c:if test="${order.ocode  eq temp}"><td class="noborder"></td></c:if>
 			</tr>
+				<c:set var="temp" value="${order.ocode }"/>
 			</c:forEach>
 		</table>
 		<div class="paging">

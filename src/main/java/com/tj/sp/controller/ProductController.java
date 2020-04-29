@@ -59,10 +59,8 @@ public class ProductController {
 	}
 	@RequestMapping(params = "method=pRegister", method=RequestMethod.POST)
 	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model) {
-		System.out.println(1);
-		productService.registerProduct(mRequest, ppo);
 		model.addAttribute("result", product_optionService.registerProduct_option(mRequest));
-		System.out.println(2);
-		return "forward: product.do?method=productRegister";
+		model.addAttribute("type",product_typeService.getListProduct_type());
+		return "product/productRegister";
 	}
 }

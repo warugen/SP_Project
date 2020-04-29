@@ -13,5 +13,9 @@ public class Sp_orderServiceImpl implements Sp_orderService {
 	public int insertSp_order(Sp_order sp_order) {
 		return sp_orderDao.insertSp_order(sp_order);
 	}
+	@Override
+	public int updateSp_order(String ocode) {
+		return sp_orderDao.updateSp_order(ocode);
+	}
 
 }

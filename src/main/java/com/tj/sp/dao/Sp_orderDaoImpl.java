@@ -14,5 +14,9 @@ public class Sp_orderDaoImpl implements Sp_orderDao {
 	public int insertSp_order(Sp_order sp_order) {
 		return sessionTemplate.insert("insertSp_order", sp_order);
 	}
+	@Override
+	public int updateSp_order(String ocode) {
+		return sessionTemplate.update("updateSp_order", ocode);
+	}
 
 }

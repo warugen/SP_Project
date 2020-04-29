@@ -57,7 +57,7 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM (
     WHERE O.OCODE=S.OCODE AND O.POCODE=P.POCODE AND P.PCODE IN (SELECT PCODE FROM PRODUCT WHERE MID='aaa')
         ORDER BY OTIME DESC) A) 
          WHERE RN BETWEEN 1 AND 10;
-select * from product;
+select * from sp_order;
 delete from product where pcode>13;
 commit;
 --한 고객의 주문상세 총 갯수--
@@ -71,8 +71,6 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM (
     WHERE O.OCODE=S.OCODE AND O.POCODE=P.POCODE AND CID='aaa'
         ORDER BY OTIME DESC) A) 
          WHERE RN BETWEEN 1 AND 100;
---환불신청        --
---구매확정        --
 
 --리뷰등록        --
 INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL, '좋은 제품입니다', 4, SYSDATE, 'ssal.jpg','aaa',1);
@@ -131,5 +129,13 @@ INSERT INTO COUPON_HOLD VALUES (COUPON_HOLD_SEQ.NEXTVAL, 1, 'aaa');
 
 --상품 등록시 하위 분류 불러오기--
 SELECT * FROM PRODUCT_TYPE WHERE TYPECODEREF!=0;
-
-
+SELECT * FROM PRODUCT;
+SELECT * FROM PRODUCT_OPTION;
+SELECT * FROM SP_ORDER;
+SELECT * FROM order_detail;
+delete from sp_order where ocode>15;
+delete from order_detail where odcode>7;
+commit;
+--구매 확정 하기--
+UPDATE SP_ORDER SET OSTATUS = '구매확정' WHERE OCODE=1;
+COMMIT;
