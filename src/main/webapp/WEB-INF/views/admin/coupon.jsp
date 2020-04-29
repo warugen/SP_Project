@@ -21,6 +21,23 @@ $(document).ready(function(){
 	}
 });
 </script>
+<style>
+#content{
+	height: 400px;
+}
+fieldset{
+	padding: 20px;
+    width: 400px;
+    margin: 50px auto;
+    font-size: 1.2em;
+}
+input, select{
+	padding: 4px;
+}
+input[type=text]{
+	width: 300px;
+}
+</style>
 </head>
 <body>
 <input type="hidden" name="insertResult" value="${insertResult}">
@@ -33,7 +50,7 @@ $(document).ready(function(){
 				<legend>쿠폰 등록 </legend>
 				<label>쿠폰명 : <input type="text" name="cuname"></label><br>
 				<label>할인율 : <input type="number" name="cusale" min="0" max="100">(%)</label>
-				<input type="submit" value="등록" class="btn1">
+				<input type="submit" value="등록">
 			</fieldset>
 		</form>
 		<form action="coupon.do">
@@ -54,7 +71,7 @@ $(document).ready(function(){
 						</c:forEach>
 					</select>
 				</label>
-				<input type="submit" value="쿠폰증정" class="btn1">
+				<input type="submit" value="쿠폰증정" >
 			</fieldset>
 		</form>
 	</div>

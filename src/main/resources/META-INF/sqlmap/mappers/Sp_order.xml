@@ -22,4 +22,7 @@
 		#{osum}, SYSDATE, '발송준비', '주문완료', #{cid})
 	</insert>
 	
+	<update id="updateSp_order" parameterType="String">
+		UPDATE SP_ORDER SET OSTATUS = '구매확정' WHERE OCODE=#{ocode}
+	</update>
 </mapper>
