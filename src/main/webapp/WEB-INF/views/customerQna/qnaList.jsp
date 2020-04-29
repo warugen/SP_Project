@@ -132,9 +132,9 @@ padding-top: 10px;
 		</c:if>
 </div>
 	<div class="btnwrite">
-	<%-- <c:if test="${not empty member || not empty admin }"> --%>
+	<c:if test="${not empty member || not empty admin }">
 		<button onclick="location.href='${conPath}/customerQna.do?method=writeForm'">문의하기</button>
-	<%-- </c:if> --%>
+	</c:if>
 	</div>
 </div>
 

@@ -50,10 +50,10 @@
 		 	</td>
 		</tr>
 		<tr><td colspan="4">
-			<%-- <c:if test="${detail.mid eq market.mid || detail.aid eq admin.aId }"> --%>
-						<button onclick="location.href='${conPath}/marketQna.do?method=modifyForm&pageNum=${param.pageNum }&mqcode=${detail.mqcode}'">수정하기</button>
-						<button onclick="location.href='${conPath}/marketQna.do?method=delete&pageNum=${param.pageNum }&mqcode=${detail.mqcode}'">삭제하기</button>			
-			<%-- </c:if> --%>
+			<c:if test="${detail.mid eq market.mid || detail.aid eq admin.aId }">
+				<button onclick="location.href='${conPath}/marketQna.do?method=modifyForm&pageNum=${param.pageNum }&mqcode=${detail.mqcode}'">수정하기</button>
+				<button onclick="location.href='${conPath}/marketQna.do?method=delete&pageNum=${param.pageNum }&mqcode=${detail.mqcode}'">삭제하기</button>			
+			</c:if>
 			<button onclick="location.href='${conPath}/marketQna.do?method=qnaList&pageNum=${param.pageNum }'">목록으로</button>
 			<%-- <c:if test="${not empty admin }"> --%>
 				<button onclick="location.href='${conPath}/marketQna.do?method=replyForm&mqcode=${detail.mqcode }&pageNum=${param.pageNum }'">답변작성</button>

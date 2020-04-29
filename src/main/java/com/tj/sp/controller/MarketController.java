@@ -1,10 +1,15 @@
 package com.tj.sp.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tj.sp.dto.Customer;
+import com.tj.sp.dto.Market;
 import com.tj.sp.dto.Product;
 import com.tj.sp.service.MarketService;
 import com.tj.sp.service.ProductService;
@@ -38,9 +43,70 @@ public class MarketController {
 		return "market/unAnswerList";
 	}
 	
+	@RequestMapping(params ="method=marketJoinResult")
+	public String marketJoinResult(Market market, Model model) {
+		System.out.println("market : "+market.toString());
+		// 마켓 등록
+		int result = marketService.registMarket(market);
+		if(result == 1) {
+			model.addAttribute("joinResult", "마켓등록 성공");
+			model.addAttribute("market", marketService.getMarket(market.getMid()));
+		} else {
+			model.addAttribute("joinResult", "마켓등록 실패");
+		}
+		
+		return "market/login";
+	}
+	
 	@RequestMapping(params ="method=marketJoin")
 	public String marketJoin() {
 		return "market/marketJoin";
+	}
+	
+	@RequestMapping(params ="method=marketLogin")
+	public String marketLogin() {
+		return "market/login";
+	}
+	
+	@RequestMapping(params="method=login")
+	public String login(HttpServletRequest request, Model model, HttpSession session) {
+		System.out.println("===============method=login===============");
+		
+		String csnsid = request.getParameter("snsid");
+		String provider = request.getParameter("provider");
+		String snsemail = request.getParameter("snsemail");
+		
+		// 일반 로그인한경우
+		System.out.println("marketLogin!!!!!!");
+		String mid = request.getParameter("id");
+		String mpw = request.getParameter("pw");
+		
+		System.out.println("id : " + mid);
+		System.out.println("pw : " + mpw);
+		Market market = marketService.getMarket(mid);
+		if (market != null) {
+			if(market.getMpw().equals(mpw)) {
+				// 비밀번호 일치
+				session.setAttribute("market", market);
+				session.setAttribute("mid", market.getMid());
+				model.addAttribute("market", market);
+				model.addAttribute("result", "로그인 성공");
+				System.out.println("로그인 성공");
+			} else {
+				// 비밀번호 불일치
+				model.addAttribute("errMsg", "비밀번호를 확인해주세요");
+				System.out.println("로그인 실패");
+			}
+			
+		} else {
+			// 아이디 불일치
+			model.addAttribute("errMsg", "아이디를 확인해주세요");
+			System.out.println("로그인 실패 아이디부터 없음");
+		}
+		
+				
+		//return "login/login";
+		return "forward:main.do";
 	}
 	
 	

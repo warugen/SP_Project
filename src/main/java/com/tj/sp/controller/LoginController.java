@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tj.sp.dao.AdminDao;
 import com.tj.sp.dao.CustomerDao;
+import com.tj.sp.dto.Admin;
 import com.tj.sp.dto.Customer;
 
 @Controller
@@ -21,20 +23,55 @@ public class LoginController {
 	@Autowired
 	private CustomerDao customerDao;
 	
+	@Autowired
+	private AdminDao adminDao;
+	
 	@RequestMapping(params="method=loginForm")
 	public String loginForm() {
 		
-		return "login/login";
+		return "login/loginForm";
 	}
 	
+	@RequestMapping(params="method=adminLogin")
+	public String adminLogin(HttpServletRequest request, Model model, HttpSession session) {
+		// 관리자 로그인
+		System.out.println("adminLogin!!!!!!");
+		String aid = request.getParameter("id");
+		String apw = request.getParameter("pw");
+		
+		System.out.println("id : " + aid);
+		System.out.println("pw : " + apw);
+		
+		Admin admin = adminDao.getAdmin(aid);
+		
+		if (admin != null) {
+			if(admin.getApw().equals(apw)) {
+				// 비밀번호 일치
+				session.setAttribute("admin", admin);
+				session.setAttribute("aid", admin.getAid());
+				model.addAttribute("admin", admin);
+				model.addAttribute("result", "관리자 로그인 성공");
+				System.out.println("로그인 성공");
+			} else {
+				// 비밀번호 불일치
+				model.addAttribute("errMsg", "비밀번호를 확인해주세요");
+				System.out.println("로그인 실패");
+			}
+			
+		} else {
+			// 아이디 불일치
+			model.addAttribute("errMsg", "아이디를 확인해주세요");
+			System.out.println("로그인 실패 아이디부터 없음");
+		}
+		
+		return "forward:main.do";
+	}
 	@RequestMapping(params="method=login")
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
-		System.out.println("===============method=login===============");
 		
 		String csnsid = request.getParameter("snsid");
 		String provider = request.getParameter("provider");
 		String snsemail = request.getParameter("snsemail");
-		
 		
 		if (csnsid != "") {
 			// sns로 로그인 한경우
@@ -88,7 +125,6 @@ public class LoginController {
 				System.out.println("로그인 실패 아이디부터 없음");
 			}
 		}
-		
 				
 		//return "login/login";
 		return "forward:main.do";
@@ -129,4 +165,17 @@ public class LoginController {
 	public String join(HttpSession httpSession) {
 		return "login/joinForm";
 	}
+
+	@RequestMapping(params="method=memberLogin")
+	public String memberLogin() {
+		return "login/login";
+	}
+	
+	@RequestMapping(params="method=adminLoginForm")
+	public String adminLoginForm() {
+		return "login/adminLogin";
+	}
+	
+	
+		
 }

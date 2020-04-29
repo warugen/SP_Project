@@ -53,18 +53,16 @@
 					pwDegreeSafety++;
 				}
 				if(pwDegreeSafety < 2){
-					$('.passWordSafety').html('<span class="danger"> ■□□ 위험 </span>');					
+					$('.passWordSafety').html('<span style="color:red;"> 3자리 이상을 추천합니다. </span>');					
 				}else if(pwDegreeSafety == 2){
-					$('.passWordSafety').html('<span class="normal"> ■■□ 중간 </span>');					
+					$('.passWordSafety').html('<span class="normal">  </span>');					
 				}else if(pwDegreeSafety > 2){
-					$('.passWordSafety').html('<span class="safety"> ■■■ 안전 </span>');					
+					$('.passWordSafety').html('<span class="safety">  </span>');					
 				}
 				
-				$('.passwordConfirm').html('<span class="safety">일치</span>');
+				$('.passwordConfirm').html('<span style="color:blue;">일치</span>');
 			}			
 		});
-		
-		
 	});
 </script>
 </head>
@@ -74,22 +72,22 @@
 			<h1 class="logo">
 				<a href="main.do">G9</a>
 			</h1>
-			<form action="${conPath}/marketJoinResult.do" method="post">
+			<form action="${conPath}/market.do?method=marketJoinResult" method="post">
 				<table class="company">
 						<tr>
 							<th><h2>상점 기본 정보</h2></th>
 						</tr>
 						<tr>
-							<td><input type="email" name="companyId" placeholder="아이디(이메일)를 입력하세요" required="required" class="confirmKeyUp"></td>
+						<td><input type="text" name="mid" placeholder="아이디를 입력하세요" required="required" class="confirmKeyUp"></td>
 						</tr>
 						<tr>
 							<td>
-								<p class="idConfirm">									
+								<p class="idConfirm">
 								</p>
 							</td>
 						</tr>
 						<tr>
-							<td><input type="password" name="companyPassword" placeholder="비밀번호을 입력하세요." required="required" class="pw"></td>
+							<td><input type="password" name="mpw" placeholder="비밀번호을 입력하세요." required="required" class="pw"></td>
 						</tr>
 						<tr>
 							<td>
@@ -99,47 +97,54 @@
 						</tr>
 						<tr>
 						
-							<td><input type="password" name="companyPasswordCheck" placeholder="다시한번 비밀번호를 입력하세요" required="required" class="pwchk"></td>
+							<td><input type="password" name="mpwChk" placeholder="다시한번 비밀번호를 입력하세요" required="required" class="pwchk"></td>
 						</tr>
 						<tr>
 							<td>
-								<p class="passwordConfirm">
+								<p class="passwordConfirm">									
+									
 								</p>
 							</td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyNumber" placeholder="사업자 번호를 입력하세요" required="required"></td>
+							<td><input type="email" name="cemail" placeholder="이메일을 입력하세요" required="required" class="confirmMailKeyUp"></td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyName" placeholder="이름을 입력하세요." required="required"></td>
+							<td>
+								<p class="emailConfirm">
+								</p>
+							</td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyPhone" placeholder="연락처를 입력하세요" required="required"></td>
+							<td><input type="text" name="mname" placeholder="마켓명을 입력하세요." required="required"></td>
+						</tr>
+						<tr>
+							<td><input type="text" name="mtel" placeholder="연락처를 입력하세요" required="required"></td>
 						</tr>
 						<tr>
 							<th><h2>추가정보</h2></th>
 						</tr>
 						<tr>
 							<td>
-								<input type="text" id="sample4_postcode" name="companyPost" class="postBox"  placeholder="우편번호">
+								<input type="text" id="sample4_postcode" name="mpost" class="postBox"  placeholder="우편번호">
 								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn1">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="text" id="sample4_roadAddress" name="companyAddressBasic"  placeholder="도로명주소">
+								<input type="text" id="sample4_roadAddress" name="maddr1"  placeholder="도로명주소">
 								<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
 								<span id="guide"></span>
 							</td>
 						</tr>
 						<tr>
-							<td><input type="text" name="companyAdderssDetail" placeholder="상세주소를 입력하세요"></td>
+							<td><input type="text" name="maddr2" placeholder="상세주소를 입력하세요"></td>
 						</tr>						
 						<tr>
 							<th id="buttonWrap">
 								<input type="submit" value="회원가입" class="btn1">
 								<input type="reset" value="RESET" class="btn2">
-								<input type="button" value="BACK" class="btn2">
+								<input type="button" value="홈화면으로" class="btn2" onclick="main.do">
 							</th>
 						</tr>
 					</table>

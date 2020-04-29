@@ -50,10 +50,10 @@
 		 	</td>
 		</tr>
 		<tr><td colspan="4">
-			<%-- <c:if test="${detail.mid eq market.mid || detail.aid eq admin.aId }"> --%>
+			<c:if test="${detail.mid eq market.mid || member.cid eq member.cId }">
 						<button onclick="location.href='${conPath}/storeQna.do?method=modifyForm&pageNum=${param.pageNum }&sqcode=${detail.sqcode}'">수정하기</button>
 						<button onclick="location.href='${conPath}/storeQna.do?method=delete&pageNum=${param.pageNum }&sqcode=${detail.sqcode}'">삭제하기</button>			
-			<%-- </c:if> --%>
+			</c:if>
 			<button onclick="location.href='${conPath}/storeQna.do?method=qnaList&pageNum=${param.pageNum }'">목록으로</button>
 			<%-- <c:if test="${not empty admin }"> --%>
 				<button onclick="location.href='${conPath}/storeQna.do?method=replyForm&sqcode=${detail.sqcode }&pageNum=${param.pageNum }'">답변작성</button>

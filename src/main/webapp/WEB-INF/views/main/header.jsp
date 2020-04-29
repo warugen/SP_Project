@@ -39,12 +39,11 @@ function logout() {
 <body>
 	<header>
 		<div class="gnb">
-		<c:if test="${empty member}">
+		<c:if test="${empty member && empty market && empty admin}">
 			<ul>
-				<li><a href="">입점신청</a></li>
+				<li><a href="market.do?method=marketJoin">입점신청</a></li>
 				<li><a href="login.do?method=join">회원가입</a></li>
 				<li><a href="login.do?method=loginForm">로그인</a></li>
-				<li><a href="javascript:logout(this);">로그아웃</a></li>
 			</ul>
 		</c:if>
 		<c:if test="${not empty member}">
@@ -52,6 +51,20 @@ function logout() {
 				<li><a href="">정보수정</a></li>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
 				<li><a>${member.cname }님</a></li>
+			</ul>
+		</c:if>
+		<c:if test="${not empty market}">
+			<ul>
+				<li><a href="">정보수정</a></li>
+				<li><a href="javascript:logout(this);">로그아웃</a></li>
+				<li><a>${market.mname }님</a></li>
+			</ul>
+		</c:if>
+		<c:if test="${not empty admin}">
+			<ul>
+				<li><a href="">정보수정</a></li>
+				<li><a href="javascript:logout(this);">로그아웃</a></li>
+				<li><a>관리자님</a></li>
 			</ul>
 		</c:if>
 		</div>

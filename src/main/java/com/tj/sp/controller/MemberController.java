@@ -36,9 +36,7 @@ public class MemberController {
 	
 	@RequestMapping(params="method=cutomerJoinResult")
 	public String cutomerJoinResult(Customer customer, Addrlist addrlist, Model model) {
-		System.out.println("customer : "+customer.toString());
-		System.out.println("addrlist : "+addrlist.toString());
-		
+	
 		// 회원 등록
 		int result = customerService.registCustomer(customer);
 		if (result == 1) {
