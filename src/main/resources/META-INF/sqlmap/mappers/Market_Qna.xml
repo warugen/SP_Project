@@ -15,10 +15,8 @@
 		<result property="mid"				column="mid"/>
 		<result property="aid"				column="aid"/>
 	</resultMap>
-	
 	<!-- 글 전체 갯수 가져오기 -->
 	<select id="totalMarketQna" resultType="int">
 		SELECT COUNT(*) FROM MARKET_QNA
 	</select>
-	
 </mapper>
