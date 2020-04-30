@@ -42,7 +42,8 @@ public class ProductController {
 		Review review = new Review();
 		review.setPcode(pcode);
 		model.addAttribute("review", reviewService.listReview(review, review_pagenum));
-
+		Paging review_paging = new Paging(reviewService.cntReview(pcode), review_pagenum, 10, 5);
+		model.addAttribute("review_paging", review_paging);
 		return "product/detailProduct";
 	}
 	@RequestMapping(params = "method=joinList")

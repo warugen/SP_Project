@@ -31,15 +31,15 @@
 		PQSECRET=#{pqsecret}
 		WHERE PQCODE=#{pqcode}
 	</update>
-	<select id="productQnaList" resultMap="Product_qnaResult">
+	<select id="productQnaList" parameterType="Product_qna" resultMap="Product_qnaResult">
 		SELECT * FROM (SELECT
 		ROWNUM RN, A.* FROM
-		(SELECT * FROM PRODUCT_QNA WHERE PCODE='1' ORDER BY
+		(SELECT * FROM PRODUCT_QNA WHERE PCODE=#{pcode} ORDER BY
 		PQDATE DESC)A)
 		WHERE RN
 		BETWEEN #{startrow} AND #{endrow}
 	</select>
-	<delete id="deleteQna">
+	<delete id="deleteQna" parameterType="String">
 		DELETE FROM PRODUCT_QNA WHERE PQCODE=#{pqcode}
 	</delete>
 	<select id="getQna" resultType="Product_qna"><!-- parameterType="String" --> 

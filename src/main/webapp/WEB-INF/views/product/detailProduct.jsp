@@ -270,7 +270,7 @@ border: 1px solid #cccccc;
 		<div id="content_top">
 			<div id="product_img">
 				<div class="bigImage">
-					<img src="${conPath }/productUpload/${detail.pimage1 }" width="600" height="600" alt="상품이미지">
+					<img src="${conPath }/product_img/${detail.pimage1 }" width="600" height="600" alt="상품이미지">
 					<!-- <img src="http://gdimg.gmarket.co.kr/971829233/still/600?ver=1567658430" width="600" height="600" alt="상품이미지"> -->
 				</div>
 				<div id="favoriteClick">
@@ -391,20 +391,23 @@ border: 1px solid #cccccc;
 
 				<div class="paging">
 					<c:if test="${paging.startpage>paging.blocksize }">
-						[<a href="${conPath }/product.do?method=detailProduct&pagenum=${paging.startpage-1}">이전</a>]
+						[<a href="${conPath }/product.do?method=detailProduct
+							&pcode=${detail.pcode }&pagenum=${paging.startpage-1}">이전</a>]
 					</c:if>
 					<c:forEach var="i" begin="${paging.startpage }" end="${paging.endpage }">
 						<c:if test="${paging.currentpage==i }">
 							[<b>${i }</b>]
 						</c:if>
 						<c:if test="${paging.currentpage!=i }">
-							[<a href="${conPath }/product.do?method=detailProduct&pagenum=${i}">${i }</a>]
+							[<a href="${conPath }/product.do?method=detailProduct
+							&pcode=${detail.pcode }&pagenum=${i}">${i }</a>]
 						</c:if>
 					</c:forEach>
 					<c:if test="${paging.endpage<paging.pagecnt }">
-						[<a href="${conPath }/product.do?method=detailProduct&pagenum=${paging.endpage+1}">다음</a>]
+						[<a href="${conPath }/product.do?method=detailProduct
+							&pcode=${detail.pcode }&pagenum=${paging.endpage+1}">다음</a>]
 					</c:if>
-			</div>
+				</div>
 				<div class="btn_wrap">
 					<button onclick="writeQnaForm()" style="margin-right: 45px;">문의하기</button>
 				</div>
@@ -430,6 +433,25 @@ border: 1px solid #cccccc;
 					</tr>
 					</c:forEach>
 				</table>
+				<div class="review_paging">
+					<c:if test="${review_paging.startpage>review_paging.blocksize }">
+						[<a href="${conPath }/product.do?method=detailProduct&pcode=${detail.pcode }
+						&review_pagenum=${review_paging.startpage-1}">이전</a>]
+					</c:if>
+					<c:forEach var="i" begin="${review_paging.startpage }" end="${review_paging.endpage }">
+						<c:if test="${review_paging.currentpage==i }">
+							[<b>${i }</b>]
+						</c:if>
+						<c:if test="${review_paging.currentpage!=i }">
+							[<a href="${conPath }/product.do?method=detailProduct
+							&pcode=${detail.pcode }&review_pagenum=${i}">${i }</a>]
+						</c:if>
+					</c:forEach>
+					<c:if test="${review_paging.endpage<review_paging.pagecnt }">
+						[<a href="${conPath }/product.do?method=detailProduct&pcode=${detail.pcode }
+						&review_pagenum=${review_paging.endpage+1}">다음</a>]
+					</c:if>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -94,5 +94,9 @@ public class ReviewServiceImpl implements ReviewService {
 	public int deleteReview(String rcode) {
 		return reviewDao.deleteReview(rcode);
 	}
+	@Override
+	public int cntReview(String pcode) {
+		return reviewDao.cntReview(pcode);
+	}
 
 }

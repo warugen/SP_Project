@@ -30,6 +30,7 @@ public class Product_qnaServiceimpl implements Product_qnaService {
 		Product_qna product_qna = new Product_qna();
 		product_qna.setStartrow(paging.getStartrow());
 		product_qna.setEndrow(paging.getEndrow());
+		product_qna.setPcode(pcode);
 		return product_qnaDao.productQnaList(product_qna);
 	}
 
