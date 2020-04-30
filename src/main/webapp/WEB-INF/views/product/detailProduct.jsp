@@ -270,8 +270,7 @@ border: 1px solid #cccccc;
 		<div id="content_top">
 			<div id="product_img">
 				<div class="bigImage">
-					<img src="${conPath }/product_img/${detail.pimage1 }" width="600" height="600" alt="상품이미지">
-					<!-- <img src="http://gdimg.gmarket.co.kr/971829233/still/600?ver=1567658430" width="600" height="600" alt="상품이미지"> -->
+					<img src="${conPath }/product_img/${detail.pimage1 }" width="400" height="600" alt="상품이미지">
 				</div>
 				<div id="favoriteClick">
 					<span>5개</span>
