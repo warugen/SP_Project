@@ -389,22 +389,22 @@ border: 1px solid #cccccc;
 				</table>
 
 				<div class="paging">
-					<c:if test="${paging.startpage>paging.blocksize }">
+					<c:if test="${qna_paging.startpage>qna_paging.blocksize }">
 						[<a href="${conPath }/product.do?method=detailProduct
-							&pcode=${detail.pcode }&pagenum=${paging.startpage-1}">이전</a>]
+							&pcode=${detail.pcode }&qna_pagenum=${qna_paging.startpage-1}">이전</a>]
 					</c:if>
-					<c:forEach var="i" begin="${paging.startpage }" end="${paging.endpage }">
-						<c:if test="${paging.currentpage==i }">
+					<c:forEach var="i" begin="${qna_paging.startpage }" end="${qna_paging.endpage }">
+						<c:if test="${qna_paging.currentpage==i }">
 							[<b>${i }</b>]
 						</c:if>
-						<c:if test="${paging.currentpage!=i }">
+						<c:if test="${qna_paging.currentpage!=i }">
 							[<a href="${conPath }/product.do?method=detailProduct
-							&pcode=${detail.pcode }&pagenum=${i}">${i }</a>]
+							&pcode=${detail.pcode }&qna_pagenum=${i}">${i }</a>]
 						</c:if>
 					</c:forEach>
-					<c:if test="${paging.endpage<paging.pagecnt }">
+					<c:if test="${qna_paging.endpage<qna_paging.pagecnt }">
 						[<a href="${conPath }/product.do?method=detailProduct
-							&pcode=${detail.pcode }&pagenum=${paging.endpage+1}">다음</a>]
+							&pcode=${detail.pcode }&qna_pagenum=${paging.endpage+1}">다음</a>]
 					</c:if>
 				</div>
 				<div class="btn_wrap">
@@ -432,7 +432,7 @@ border: 1px solid #cccccc;
 					</tr>
 					</c:forEach>
 				</table>
-				<div class="review_paging">
+				<div class="paging">
 					<c:if test="${review_paging.startpage>review_paging.blocksize }">
 						[<a href="${conPath }/product.do?method=detailProduct&pcode=${detail.pcode }
 						&review_pagenum=${review_paging.startpage-1}">이전</a>]

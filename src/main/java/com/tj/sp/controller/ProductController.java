@@ -30,14 +30,14 @@ public class ProductController {
 	@Autowired
 	private Product_typeService product_typeService;
 	@RequestMapping(params="method=detailProduct" )
-	public String detailProduct(String pcode,Model model, String review_pagenum, String pagenum) {
+	public String detailProduct(String pcode,Model model, String review_pagenum, String pagenum, String qna_pagenum) {
 		model.addAttribute("detail",productService.detailProduct(pcode));
 		//장바구니 담을 option list불러오기
 		model.addAttribute("listForCart",product_optionService.listForCart(pcode));
 		//qna불러오기
-		Paging paging = new Paging(product_qnaService.qnaCnt(pcode),pagenum,10,5);
-		model.addAttribute("product_qna",product_qnaService.productQnaList(pcode, pagenum));
-		model.addAttribute("paging",paging);
+		Paging qna_paging = new Paging(product_qnaService.qnaCnt(pcode),qna_pagenum,10,5);
+		model.addAttribute("product_qna",product_qnaService.productQnaList(pcode, qna_pagenum));
+		model.addAttribute("qna_paging",qna_paging);
 		//리뷰 불러오기
 		Review review = new Review();
 		review.setPcode(pcode);
