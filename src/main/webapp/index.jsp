@@ -40,6 +40,7 @@
 	<input type="submit" class="btn2" value="aaa고객등급조회">
 	</form>
 	<div>
+	
 		<p>리뷰작성 TEST</p>
 		<form action="product.do" enctype="multipart/form-data" method="post">
 			<p><input type="hidden" name="method" value="insertReview"></p>
