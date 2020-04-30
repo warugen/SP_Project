@@ -12,6 +12,7 @@ import com.tj.sp.service.CustomerService;
 import com.tj.sp.service.Customer_gradeService;
 import com.tj.sp.service.Order_detail_product_midService;
 
+
 @Controller
 @RequestMapping("member")
 public class MemberController {
@@ -32,6 +33,22 @@ public class MemberController {
 		model.addAttribute("member", customer_gradeService.getCustomer_grade(cid));
 		model.addAttribute("count", order_detail_product_midService.cntOrder_detailByCid(cid));
 		return "member/grade";
+	}
+	
+	@RequestMapping(params="method=idConfirm")
+	public String customerIdConfirm(String cid, Model model) {
+		boolean idResult = true; // 사용가능
+		if (customerService.getCustomer(cid) != null) {
+			idResult = false;
+		}
+
+		if (idResult) {
+			model.addAttribute("idConfirmResult", "가입가능");
+		} else {
+			model.addAttribute("idConfirmResult", "중복");
+		}
+
+		return "member/idConfirm";
 	}
 	
 	@RequestMapping(params="method=cutomerJoinResult")
