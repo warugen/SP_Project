@@ -19,12 +19,22 @@ public class MainController {
 		Paging paging = new Paging(productService.cntProduct(), pagenum, 8, 3);
 		model.addAttribute("paging", paging);
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, product_Product_option));
-		for(int i=1; i<4; i++) {
-		}
 		return "main/main";
 	}
 	@RequestMapping(value="writeForm", method = RequestMethod.GET)
 	public String writeForm() {
 		return "write";
+	}
+	@RequestMapping(value="myPage")
+	public String myPage() {
+		return "member/myPage";
+	}
+	@RequestMapping(value="myAddressList")
+	public String myAddressList() {
+		return "member/myAddressList";
+	}
+	@RequestMapping(value="myCoupon")
+	public  String myCoupon() {
+		return "member/myCoupon";
 	}
 }
