@@ -101,9 +101,9 @@ INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'제품 디테일 관련 
 INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'택배 회사 관련 문의','그거에대한 내용이요','답변입니다.','1','1',to_date('2020-03-05', 'yyyy-mm-dd'),1,'eeee');
 INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'택배비 문의 입니다.','택배비 할인 가능한가요','택배비는 저희측에서 처리해드릴수 없습니다.','0','1',to_date('2020-03-16', 'yyyy-mm-dd'),1,'ffff');
 INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'상품문의요','그거에대한 내용이요','답변입니다.','1','1',to_date('2020-03-17', 'yyyy-mm-dd'),1,'gggg');
-INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'배송 얼마나 걸리나요','답변해 주세요',Null','0','0',to_date('2020-03-28', 'yyyy-mm-dd'),1,'hhhh');
-INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'전에 봤던 다른제품이 있는데','어디로 문의 할 수 있나요',Null','0','0',to_date('2020-03-29', 'yyyy-mm-dd'),1,'iiii');
-INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'환불 가능한 범위가 어떻게 되나요?','구입전에 고민되서 남깁니다.',Null','0','0',to_date('2020-03-31', 'yyyy-mm-dd'),1,'jjjj');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'배송 얼마나 걸리나요','답변해 주세요',Null,'0','0',to_date('2020-03-28', 'yyyy-mm-dd'),1,'hhhh');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'전에 봤던 다른제품이 있는데','어디로 문의 할 수 있나요',Null,'0','0',to_date('2020-03-29', 'yyyy-mm-dd'),1,'iiii');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'환불 가능한 범위가 어떻게 되나요?','구입전에 고민되서 남깁니다.',Null,'0','0',to_date('2020-03-31', 'yyyy-mm-dd'),1,'jjjj');
 INSERT INTO FAVORITE VALUES(FAVORITE_SEQ.nextval,'aaaa',1);
 INSERT INTO FAVORITE VALUES(FAVORITE_SEQ.nextval,'aaaa',2);
 INSERT INTO FAVORITE VALUES(FAVORITE_SEQ.nextval,'aaaa',3);
