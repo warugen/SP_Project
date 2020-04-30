@@ -18,9 +18,6 @@ local.properties
 # Servers
 /Servers/
 
-<<<<<<< HEAD
-#target
-=======
 # target
 >>>>>>> refs/heads/joonsu1125
 /target/

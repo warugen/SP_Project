@@ -36,4 +36,10 @@ public class AddrlistServiceImpl implements AddrlistService {
 		return addrlistDao.deleteAddrlist(addrcode);
 	}
 
+	@Override
+	public String getFirstAddrCode() {
+		// 회원가입시 addrname 가져오기
+		return addrlistDao.getFirstAddrCode();
+	}
+
 }

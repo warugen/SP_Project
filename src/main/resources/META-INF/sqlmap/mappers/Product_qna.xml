@@ -42,13 +42,11 @@
 	<delete id="deleteQna">
 		DELETE FROM PRODUCT_QNA WHERE PQCODE=#{pqcode}
 	</delete>
-	<select id="getQna" parameterType="String"
-		resultType="Product_qna">
+	<select id="getQna" resultType="Product_qna"><!-- parameterType="String" --> 
 		SELECT * FROM PRODUCT_QNA WHERE PQCODE=#{pqcode}
 	</select>
-	<select id="qnaCnt" resultType="int">
-		SELECT COUNT(*) FROM PRODUCT_QNA
-		WHERE PCODE='2'
+	<select id="qnaCnt" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM PRODUCT_QNA WHERE PCODE=#{pcode}
 	</select>
 	<select id="unansweredQnaList" parameterType="Product" resultMap="Product_qnaResult">
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM

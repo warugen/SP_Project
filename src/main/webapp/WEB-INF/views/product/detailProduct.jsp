@@ -65,7 +65,47 @@
 	font: bold 28px/1.2 Tahoma, sans-serif;
     color: #f43142;
 }
-
+#content #content_bottom #product_review{
+color: #333;
+letter-spacing: -1px;
+width: 1000px;
+margin-top: 10px;
+border-top: 1px solid #ccc;
+display: block;
+}
+#content #content_bottom #product_review table tr th:nth-child(1) {
+width: 80px;
+height: 30px;
+border: 1px solid #cccccc;
+}
+#content #content_bottom #product_review table tr th:nth-child(2) {
+width: 150px;
+height: 30px;
+border: 1px solid #cccccc;
+}
+#content #content_bottom #product_review table tr th:nth-child(3) {
+width: 400px;
+height: 30px;
+border: 1px solid #cccccc;
+}
+#content #content_bottom #product_review table tr th:nth-child(4) {
+width: 100px;
+height: 30px;
+border: 1px solid #cccccc;
+}
+#content #content_bottom #product_review table tr th:nth-child(5) {
+width: 100px;
+height: 30px;
+border: 1px solid #cccccc;
+}
+#content #content_bottom #product_review table tr th:nth-child(6){
+width: 100px;
+height: 30px;
+border: 1px solid #cccccc;
+}
+#content #content_bottom #product_review table tr td{
+	border: 1px solid #cccccc;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
@@ -230,9 +270,8 @@
 		<div id="content_top">
 			<div id="product_img">
 				<div class="bigImage">
-					<img
-						src="http://gdimg.gmarket.co.kr/971829233/still/600?ver=1567658430"
-						width="600" height="600" alt="상품이미지">
+					<img src="${conPath }/productUpload/${detail.pimage1 }" width="600" height="600" alt="상품이미지">
+					<!-- <img src="http://gdimg.gmarket.co.kr/971829233/still/600?ver=1567658430" width="600" height="600" alt="상품이미지"> -->
 				</div>
 				<div id="favoriteClick">
 					<span>5개</span>
@@ -349,10 +388,7 @@
 						<c:set var="i" value="${i+1 }"/>
 					</c:forEach>
 				</table>
-				<div class="btn_wrap">
-					<button onclick="">답변하기</button>
-					<button onclick="writeQnaForm()">문의하기</button>
-				</div>
+
 				<div class="paging">
 					<c:if test="${paging.startpage>paging.blocksize }">
 						[<a href="${conPath }/product.do?method=detailProduct&pagenum=${paging.startpage-1}">이전</a>]
@@ -368,12 +404,34 @@
 					<c:if test="${paging.endpage<paging.pagecnt }">
 						[<a href="${conPath }/product.do?method=detailProduct&pagenum=${paging.endpage+1}">다음</a>]
 					</c:if>
+			</div>
+				<div class="btn_wrap">
+					<button onclick="writeQnaForm()" style="margin-right: 45px;">문의하기</button>
 				</div>
 			</div>
+			<div id="product_review">
+				<table>
+					<tr>
+						<th>번호</th>
+						<th>이미지</th>
+						<th>내용</th>
+						<th>별점</th>
+						<th>작성자</th>
+						<th>등록일</th>
+					</tr>
+					<c:forEach var="review" items="${review }">
+					<tr>
+						<td>${review.rcode }</td>
+						<td>${review.rimage }</td>
+						<td class="left">${review.rcontent }</td>
+						<td>${review.rstar }</td>
+						<td>${review.cid }</td>
+						<td>${review.rrdate }</td>
+					</tr>
+					</c:forEach>
+				</table>
+			</div>
 		</div>
-		<c:forEach var="review" items="${review }">
- 			${review.rcontent } / ${review.rstar}
- 		</c:forEach>
 	</div>
 	<jsp:include page="../main/footer.jsp" />
 </body>

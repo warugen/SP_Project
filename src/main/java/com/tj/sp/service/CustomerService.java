@@ -8,7 +8,7 @@ public interface CustomerService {
 	public Customer getCustomer(String cid);
 	public Customer getSnsCustomer(String csnsid);
 	public int idConfirm(String cid);
-	public List<Customer> totlaCustomer();
+	public List<Customer> totlaCustomer(Customer customer);
 	public int snsConfirm(Customer customer);
 	public int snsIdConfirm(String csnsid);
 	public int registCustomer(Customer customer);
@@ -18,4 +18,5 @@ public interface CustomerService {
 	public int deleteCustomer(String cid);
 	public int upPoint(String cid);
 	public int usePoint(Customer customer);
+	public int updateAddrList(Customer customer);
 }

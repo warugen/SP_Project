@@ -23,8 +23,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 	
 	@Override
-	public List<Customer> totlaCustomer() {
-		return customerDao.totlaCustomer();
+	public List<Customer> totlaCustomer(Customer customer) {
+		return customerDao.totlaCustomer(customer);
 	}
 	
 	@Override
@@ -75,6 +75,11 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public int usePoint(Customer customer) {
 		return customerDao.usePoint(customer);
+	}
+
+	@Override
+	public int updateAddrList(Customer customer) {
+		return customerDao.updateAddrList(customer);
 	}
 
 }

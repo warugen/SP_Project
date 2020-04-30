@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tj.sp.dao.AdminDao;
 import com.tj.sp.dao.CustomerDao;
+import com.tj.sp.dto.Admin;
 import com.tj.sp.dto.Customer;
 
 @Controller
@@ -21,20 +23,55 @@ public class LoginController {
 	@Autowired
 	private CustomerDao customerDao;
 	
+	@Autowired
+	private AdminDao adminDao;
+	
 	@RequestMapping(params="method=loginForm")
 	public String loginForm() {
 		
-		return "login/login";
+		return "login/loginForm";
 	}
 	
+	@RequestMapping(params="method=adminLogin")
+	public String adminLogin(HttpServletRequest request, Model model, HttpSession session) {
+		// 관리자 로그인
+		System.out.println("adminLogin!!!!!!");
+		String aid = request.getParameter("id");
+		String apw = request.getParameter("pw");
+		
+		System.out.println("id : " + aid);
+		System.out.println("pw : " + apw);
+		
+		Admin admin = adminDao.getAdmin(aid);
+		
+		if (admin != null) {
+			if(admin.getApw().equals(apw)) {
+				// 비밀번호 일치
+				session.setAttribute("admin", admin);
+				session.setAttribute("aid", admin.getAid());
+				model.addAttribute("admin", admin);
+				model.addAttribute("result", "관리자 로그인 성공");
+				System.out.println("로그인 성공");
+			} else {
+				// 비밀번호 불일치
+				model.addAttribute("errMsg", "비밀번호를 확인해주세요");
+				System.out.println("로그인 실패");
+			}
+			
+		} else {
+			// 아이디 불일치
+			model.addAttribute("errMsg", "아이디를 확인해주세요");
+			System.out.println("로그인 실패 아이디부터 없음");
+		}
+		
+		return "forward:main.do";
+	}
 	@RequestMapping(params="method=login")
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
-		System.out.println("===============method=login===============");
 		
 		String csnsid = request.getParameter("snsid");
 		String provider = request.getParameter("provider");
 		String snsemail = request.getParameter("snsemail");
-		
 		
 		if (csnsid != "") {
 			// sns로 로그인 한경우
@@ -47,7 +84,7 @@ public class LoginController {
 			if(customerDao.snsIdConfirm(csnsid) == MEMBER_EXIST) {
 				// 회원DB에 등록되있으면 회원정보 가져와서 메인화면으로 가기
 				model.addAttribute("member", customerDao.getSnsCustomer(csnsid));
-				session.setAttribute("customer", customerDao.getSnsCustomer(csnsid));
+				session.setAttribute("member", customerDao.getSnsCustomer(csnsid));
 				System.out.println("sns 로그인 성공");
 			} else {
 				// 회원DB에 등록 안되있으면 회원가입처리하기
@@ -71,7 +108,8 @@ public class LoginController {
 			if (customer != null) {
 				if(customer.getCpw().equals(cpw)) {
 					// 비밀번호 일치
-					session.setAttribute("customer", customer);
+					session.setAttribute("member", customer);
+					session.setAttribute("cid", customer.getCid());
 					model.addAttribute("member", customer);
 					model.addAttribute("result", "로그인 성공");
 					System.out.println("로그인 성공");
@@ -87,7 +125,6 @@ public class LoginController {
 				System.out.println("로그인 실패 아이디부터 없음");
 			}
 		}
-		
 				
 		//return "login/login";
 		return "forward:main.do";
@@ -123,4 +160,22 @@ public class LoginController {
 		System.out.println("logout!!!");
 		return "redirect:main.do";
 	}
+	
+	@RequestMapping(params="method=join")
+	public String join(HttpSession httpSession) {
+		return "login/joinForm";
+	}
+
+	@RequestMapping(params="method=memberLogin")
+	public String memberLogin() {
+		return "login/login";
+	}
+	
+	@RequestMapping(params="method=adminLoginForm")
+	public String adminLoginForm() {
+		return "login/adminLogin";
+	}
+	
+	
+		
 }

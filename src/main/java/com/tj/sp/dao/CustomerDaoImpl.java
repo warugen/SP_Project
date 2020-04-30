@@ -22,9 +22,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		return sessionTemplate.selectOne("idConfirm", cid);
 	}
 	@Override
-	public List<Customer> totlaCustomer() {
+	public List<Customer> totlaCustomer(Customer customer) {
 		// 전체 회원 목록 가져오기
-		return sessionTemplate.selectList("totlaCustomer");
+		return sessionTemplate.selectList("totlaCustomer", customer);
 	}
 	@Override
 	public int snsConfirm(Customer customer) {
@@ -79,6 +79,11 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public List<Customer> getListCidByGrade(String gcode) {
 		return sessionTemplate.selectList("getListCidByGrade", gcode);
+	}
+	@Override
+	public int updateAddrList(Customer customer) {
+		// addrname 업데이트
+		return sessionTemplate.update("updateAddrList", customer);
 	}
 
 }

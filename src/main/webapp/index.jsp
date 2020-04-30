@@ -11,7 +11,7 @@
 <link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
-	<%-- <jsp:forward page="main.do"/> --%>
+
 	<a href="main.do" class="btn2">메인화면</a>
 	<a href="cart.do?method=cart" class="btn1">카트</a>
 	<a href="notice.do?method=noticeList" class="btn2">공지사항</a>
@@ -20,6 +20,9 @@
 	<a href="product.do?method=joinList" class="btn1">제품리스트</a>
 	<a href="writeForm.do?" class="btn2">썸머</a>
 	<a href="coupon.do?method=adminCoupon" class="btn1">관리자용 쿠폰주기</a>
+	<a href="myPage.do">마이 페이지</a>
+	
+
 	<form action="market.do">
 	<input type="hidden" name="method" value="marketmain">
 	<input type="hidden" name="mid" value="aaa">
@@ -48,7 +51,14 @@
 			<input type="submit" value="등록">
 		</form>
 	</div>
-</body>
+	
+	<a href="product.do?method=detailProduct" class="btn1">제품상세</a>
+	<a href="Order_detail_product_mid.do?method=listOrder_detailByCid" class="btn2">주문 리스트</a>
+	<a href="Order_detail_product_mid.do?method=listOrder_detailByMid" class="btn1">마켓별 주문 리스트</a>
+	<a href="customerQna.do?method=qnaList" class="btn2">고객-관리자 게시판</a>
+	<a href="storeQna.do?method=qnaList" class="btn1">고객-마켓 게시판</a>
+	<a href="marketQna.do?method=qnaList" class="btn2">마켓-관리자 게시판</a>
+
 </body>
 
 </html>

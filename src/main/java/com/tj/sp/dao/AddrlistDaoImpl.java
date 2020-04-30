@@ -32,4 +32,9 @@ public class AddrlistDaoImpl implements AddrlistDao {
 		return sessionTemplate.delete("deleteAddrlist", addrcode);
 	}
 
+	@Override
+	public String getFirstAddrCode() {
+		return sessionTemplate.selectOne("getFirstAddrCode");
+	}
+
 }

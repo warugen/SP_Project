@@ -10,6 +10,10 @@ DELETE FROM CART WHERE CARTNO='1';
 UPDATE CART SET CARTCOUNT=2 WHERE CARTNO = '1';
 --바로구매시 장바구니에 넣고 바로 CARTNO가져오기--
 SELECT CARTNO FROM (SELECT ROWNUM RN, A.* FROM (SELECT CARTNO FROM CART ORDER BY TO_NUMBER(CARTNO) DESC) A) WHERE RN BETWEEN 1 AND 4;
+<<<<<<< HEAD
+=======
+select * from review;
+>>>>>>> refs/heads/joonsu1125
 
 --★☆구매창 출력☆★--
 --고객정보불러오기--

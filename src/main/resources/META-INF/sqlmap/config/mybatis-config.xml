@@ -11,9 +11,11 @@
 		<typeAlias type="com.tj.sp.dto.Coupon" 						alias="Coupon"				/>
 		<typeAlias type="com.tj.sp.dto.Customer" 					alias="Customer"			/>
 		<typeAlias type="com.tj.sp.dto.Customer_grade" 				alias="Customer_grade"		/>
+		<typeAlias type="com.tj.sp.dto.Customer_qna" 				alias="Customer_qna"		/>
 		<typeAlias type="com.tj.sp.dto.Favorite" 					alias="Favorite"			/>
 		<typeAlias type="com.tj.sp.dto.Grade" 						alias="Grade"				/>
-		<typeAlias type="com.tj.sp.dto.Market"						alias="Market"				/>
+		<typeAlias type="com.tj.sp.dto.Market"						alias="Market"/>
+		<typeAlias type="com.tj.sp.dto.Market_qna"					alias="Market_qna"/>
 		<typeAlias type="com.tj.sp.dto.Mycoupon" 					alias="Mycoupon"			/>
 		<typeAlias type="com.tj.sp.dto.Notice" 						alias="Notice"				/>
 		<typeAlias type="com.tj.sp.dto.Order_detail" 				alias="Order_detail"		/>
@@ -25,6 +27,8 @@
 		<typeAlias type="com.tj.sp.dto.Product_type" 				alias="Product_type"		/>
 		<typeAlias type="com.tj.sp.dto.Review" 						alias="Review"				/>
 		<typeAlias type="com.tj.sp.dto.Sp_order" 					alias="Sp_order"			/>
+		<typeAlias type="com.tj.sp.dto.Store_qna" 					alias="Store_qna"			/>
+		<typeAlias type="com.tj.sp.dto.Product_Product_option"		alias="Product_Product_option"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/Admin.xml"/>
@@ -34,9 +38,11 @@
 		<mapper resource="META-INF/sqlmap/mappers/Coupon.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Customer.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Customer_grade.xml"		/>
+		<mapper resource="META-INF/sqlmap/mappers/Customer_Qna.xml"			/>
 		<mapper resource="META-INF/sqlmap/mappers/Favorite.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Grade.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Market.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Market_Qna.xml"			/>
 		<mapper resource="META-INF/sqlmap/mappers/Mycoupon.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Notice.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Order_detail.xml"			/>
@@ -48,5 +54,8 @@
 		<mapper resource="META-INF/sqlmap/mappers/Product_type.xml"			/>
 		<mapper resource="META-INF/sqlmap/mappers/Review.xml"				/>
 		<mapper resource="META-INF/sqlmap/mappers/Sp_order.xml"				/>
+		<mapper resource="META-INF/sqlmap/mappers/Store_Qna.xml"				/>
+		<mapper resource="META-INF/sqlmap/mappers/Product_Product_option.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/Order_detail_product_mid.xml"	/>
 	</mappers>
 </configuration>

@@ -21,4 +21,70 @@
 		SELECT COUNT(*) FROM MARKET_QNA
 	</select>
 	
+	<!-- 글 목록 가져오기 (startrow, endrow) -->
+	<select id="marketQnaList" parameterType="Market_qna" resultMap="Market_qna_Result" >
+		SELECT * FROM (SELECT ROWNUM RN, A.* 
+    		FROM (SELECT * FROM MARKET_QNA ORDER BY MQGROUP DESC, MQSTEP) A)
+		WHERE RN BETWEEN #{startrow} AND #{endrow}
+	</select>
+	
+	<!-- 상세글 보기 (cqcode로 dto 가져오기) -->
+	<select id="getMarketQnaDetail" parameterType="String" resultType="Market_qna">
+		SELECT * FROM MARKET_QNA WHERE MQCODE =  #{mqcode}
+	</select>
+	
+	<!-- 원글 쓰기 -->
+	<insert id="writeMarketQna" parameterType="Market_qna">
+	<!-- 고객이 글을 쓸경우 -->
+	<if test="mid != null and mid != ''">
+		INSERT INTO MARKET_QNA(MQCODE, MQTITLE, MQCONTENT, MQRDATE, MQGROUP, MQSTEP, MQINDENT, MQHIT, MID, AID)
+	    	VALUES (MARKET_QNA_SEQ.nextval, #{mqtitle}, #{mqcontent}, SYSDATE, MARKET_QNA_SEQ.CURRVAL, 0, 0, 0, #{mid}, null)	
+	</if>
+	<!-- 관리자가 글을 쓸경우 -->
+	<if test="aid != null and aid != ''">
+		INSERT INTO MARKET_QNA(MQCODE, MQTITLE, MQCONTENT, MQRDATE, MQGROUP, MQSTEP, MQINDENT, MQHIT, MID, AID)
+	    	VALUES (MARKET_QNA_SEQ.nextval, #{mqtitle}, #{mqcontent}, SYSDATE, MARKET_QNA_SEQ.CURRVAL, 0, 0, 0, null, #{aid})
+	</if>
+	</insert>
+	
+	<!-- 글 수정하기 -->
+	<update id="modifyMarketQna" parameterType="Market_qna">
+	UPDATE MARKET_QNA SET
+		MQTITLE = #{mqtitle},
+		MQCONTENT = #{mqcontent},
+		MQRDATE = SYSDATE
+	WHERE MQCODE = #{mqcode}
+	</update>
+	
+	<!-- 조회수 올리기 -->
+	<update id="hitupMarketQna" parameterType="String">
+		UPDATE MARKET_QNA SET MQHIT = MQHIT + 1
+			WHERE MQCODE = #{mqcode}
+	</update>
+	
+	<!-- 답변글 달기전 stepA -->
+	<update id="replyStepAMarketQna" parameterType="Market_qna">
+		UPDATE MARKET_QNA SET MQSTEP = MQSTEP +1 WHERE MQGROUP = #{mqgroup} AND MQSTEP > 0
+	</update>
+	
+	<!-- 답변글 달기 -->
+	<insert id="replyMarketQna" parameterType="Market_qna">
+	<!-- 고객이 글을 쓸경우 -->
+	<if test="mid != null and mid != ''">
+		INSERT INTO MARKET_QNA(MQCODE, MQTITLE, MQCONTENT, MQRDATE, MQGROUP, MQSTEP, MQINDENT, MQHIT, MID, AID)
+    		VALUES (MARKET_QNA_SEQ.nextval,  #{mqtitle}, #{mqcontent}, SYSDATE, #{mqgroup}, #{mqstep}, #{mqindent}, 0, #{mid}, NULL)
+	</if>
+	
+	<!-- 관리자가 글을 쓸경우 -->
+	<if test="aid != null and aid != ''">
+		INSERT INTO MARKET_QNA(MQCODE, MQTITLE, MQCONTENT, MQRDATE, MQGROUP, MQSTEP, MQINDENT, MQHIT, MID, AID)
+    		VALUES (MARKET_QNA_SEQ.nextval,  #{mqtitle}, #{mqcontent}, SYSDATE, #{mqgroup}, #{mqstep}, #{mqindent}, 0, NULL, #{aid})
+	</if>
+	</insert>
+	
+	<!-- 글 삭제하기 -->
+	<delete id="deletMarketQna" parameterType="Market_qna">
+		DELETE FROM MARKET_QNA WHERE MQCODE = #{mqcode}
+	</delete>
+	
 </mapper>

@@ -15,12 +15,19 @@
 <meta name="google-signin-client_id" content="270921267005-3gcmpgpi6mom14ib57bmf2f7pav6b5sf.apps.googleusercontent.com">
 <!-- jQuery api -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+<script src="${conPath }/js/login.js" type="text/javascript"></script>
 <link href="${conPath }/css/login/login.css" rel="stylesheet">
 <style>
 
 </style>
 </head>
 <body>
+	<c:if test="${not empty joinResult }">
+		<script>
+		alert('${joinResult}');
+		</script>
+	</c:if>
+	
 	<div class="contaner">
 		<div class="login_content">
 			<h1 class="logo">
@@ -34,7 +41,12 @@
 	<input type="hidden" name="snsemail"  value="">
 
 	<div class="group">
-	  <input type="text" name="id"><span class="highlight"></span><span class="bar"></span>
+	<c:if test="${not empty customer }">
+		<input type="text" name="id" value="${customer.cid }" ><span class="highlight"></span><span class="bar"></span>
+	</c:if>
+	<c:if test="${empty customer }">
+		<input type="text" name="id"><span class="highlight"></span><span class="bar"></span>
+	</c:if>
 	  <label>아이디</label>
 	</div>
 	<div class="group">
@@ -69,49 +81,33 @@
 	// 카카오 로그인 함수
 	// input your appkey
 	Kakao.init('3153b15ee605504fc683c26e15e2324a')
-	console.log('kakao init : '+Kakao.isInitialized());
 	
 	// 버튼생성하기
 	Kakao.Auth.createLoginButton({
 	   container: '#kakao-login-btn',
 	   success: function(authObj) {
 	     Kakao.API.request({
-	    	 url: '/v2/user/me',	       
-	       success: function(res) {
-	    	   var obj = JSON.stringify(res);
-	         //alert(JSON.stringify(res));
-	         //alert(obj);
-	         console.log(res);
-	         console.log("id : "+res.id);
-	         console.log("email : "+res.kakao_account.email);
-	         console.log("nicknamel : "+res.nickname);
+			url: '/v2/user/me',	       
+	       	success: function(res) {
+	    		var obj = JSON.stringify(res);
 	         
-	         $('input[name=snsid]').val(res.id);
-	         $('input[name=provider]').val('kakao');
-	         $('input[name=snsemail]').val(res.kakao_account.email);
-	         
-	         // 카카오로 로그인
-	         
-	         //location.href='${conPath}/login.do?method=kakao';
-	         document.getElementById('frm').submit();
-	
+		        $('input[name=snsid]').val(res.id);
+		        $('input[name=provider]').val('kakao');
+		        $('input[name=snsemail]').val(res.kakao_account.email);
+		         
+	         	//location.href='${conPath}/login.do?method=kakao';
+	         	document.getElementById('frm').submit();
 	       },
 	       fail: function(error) {
 	         alert(
 	           'login success, but failed to request user information: ' +
 	             JSON.stringify(error)
 	         );
-	         $('input[name=snsid]').val('');
-             $('input[name=provider]').val('');
-	         $('input[name=snsemail]').val('');
 	       },
 	     })
 	   },
 	   fail: function(err) {
 	     alert('failed to login: ' + JSON.stringify(err));
-	     $('input[name=snsid]').val('');
-         $('input[name=provider]').val('');
-         $('input[name=snsemail]').val('');
 	   },
 	 });
 	
