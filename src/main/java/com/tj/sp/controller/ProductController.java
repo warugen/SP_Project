@@ -44,7 +44,7 @@ public class ProductController {
 	}
 	@RequestMapping(params = "method=joinList")
 	public String joinList(String pagenum, Model model, Product_Product_option ppo) {
-		Paging paging = new Paging(productService.cntProduct(), pagenum, 8, 3);
+		Paging paging = new Paging(productService.cntProduct(), pagenum, 9, 5);
 		model.addAttribute("paging", paging);
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
 		return "product/joinList";
@@ -58,7 +58,7 @@ public class ProductController {
 	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model, String pcode, String pagenum) {
 		productService.registerProduct(mRequest, ppo);
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
-		Paging paging = new Paging(productService.cntProduct(), pagenum, 8, 3);
+		Paging paging = new Paging(productService.cntProduct(), pagenum, 9, 5);
 		ppo.setStartrow(paging.getStartrow());
 		ppo.setEndrow(paging.getEndrow());
 		model.addAttribute("paging", paging);

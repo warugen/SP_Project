@@ -8,9 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>S-Place</title>
-<link href="${conPath }/css/style.css" rel="stylesheet">
 <link href="${conPath }/css/product/product.css" rel="stylesheet">
-<style></style>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
 	function trClicked(pcode) {
@@ -26,7 +24,7 @@
 			<table>
 				<c:forEach var="product_product_option" items="${joinList }">
 					<tr onclick="trClicked('${product_product_option.pcode}')">
-						<th><img src="${conPath }/productUpload/${product_product_option.pimage1 }"><a href="${conPath }/product.do?method=productDetail&pcode=${product_product_option.pcode }&pagenum=${paging.currentpage }"></a>
+						<th><img src="${conPath }/productUpload/${product_product_option.pimage1 }" style="width: 100%; height:290px;"><a href="${conPath }/product.do?method=productDetail&pcode=${product_product_option.pcode }&pagenum=${paging.currentpage }"></a>
 						<br><br>
 						상품명 : ${product_product_option.ptitle }<br>
 						판매가격(최소가) : ${product_product_option.poprice}<br>

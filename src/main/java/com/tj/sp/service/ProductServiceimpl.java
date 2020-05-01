@@ -39,7 +39,7 @@ public class ProductServiceimpl implements ProductService{
 
 	@Override
 	public List<Product_Product_option> product_Product_optionList(String pagenum, Product_Product_option ppo) {
-		Paging paging = new Paging(productDao.cntProduct(), pagenum, 8, 3);
+		Paging paging = new Paging(productDao.cntProduct(), pagenum, 9, 5);
 		ppo.setStartrow(paging.getStartrow());
 		ppo.setEndrow(paging.getEndrow());
 		return productDao.product_Product_optionList(ppo);
