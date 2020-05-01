@@ -17,7 +17,22 @@ function trClicked(sqcode){
 }
 </script>
 <style>
-
+.qna_list {
+    margin: 0 auto 160px;
+    padding-top : 50px;
+    width: 1000px;
+    text-align: center;
+}
+h2{
+	text-align: center;
+}
+table {
+	margin: auto;
+}
+.paging{
+	width:100%;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -29,7 +44,7 @@ function trClicked(sqcode){
 <jsp:include page="../main/header.jsp"/>
 
 <div id="qna_list">
-	<h2>고객문의 게시판</h2>
+	<h2>고객 - 상점 문의 게시판</h2>
 	<table>
 		<tr class="list_Menu">
 			<th>번호</th>
@@ -93,7 +108,7 @@ function trClicked(sqcode){
 </div>
 	<div class="btnwrite">
 	<c:if test="${not empty member || not empty market }">
-		<button onclick="location.href='${conPath}/storeQna.do?method=writeForm'">문의하기</button>
+		<button onclick="location.href='${conPath}/storeQna.do?method=writeForm'" class="btn1">문의하기</button>
 	</c:if>
 	</div>
 </div>

@@ -48,21 +48,20 @@ function logout() {
 		</c:if>
 		<c:if test="${not empty member}">
 			<ul>
-				<li><a href="">정보수정</a></li>
+				<li><a href="">마이페이지</a></li>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
 				<li><a>${member.cname }님</a></li>
 			</ul>
 		</c:if>
 		<c:if test="${not empty market}">
 			<ul>
-				<li><a href="">정보수정</a></li>
+				<li><a href="">마이페이지</a></li>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
 				<li><a>${market.mname }님</a></li>
 			</ul>
 		</c:if>
 		<c:if test="${not empty admin}">
 			<ul>
-				<li><a href="">정보수정</a></li>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
 				<li><a>관리자님</a></li>
 			</ul>

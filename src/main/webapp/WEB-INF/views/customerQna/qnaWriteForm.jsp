@@ -58,8 +58,8 @@
 		 </td>
 		 </tr>
 		<tr><td colspan="4">
-					<input type="button" value="취소" onclick="location.href='${conPath}/customerQna.do?method=qnaList'">
-							<input type="submit" value="등록">
+					<input type="button" value="취소" onclick="location.href='${conPath}/customerQna.do?method=qnaList'" class="btn2">
+							<input type="submit" value="등록" class="btn1">
 					</td>
 				</tr>
 	</table>

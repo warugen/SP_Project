@@ -173,6 +173,26 @@ border-collapse: collapse;
 border-spacing: 0;
 border: 1px solid #cccccc;
 }
+.btn1{
+	background: #3a5485;
+    color: #fff;
+	font-size: 12px;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    line-height: 50px;
+    height:30px;
+    border: 2px solid #3a5485;
+    border-radius: 10px;
+    text-align: center;
+}
+.btnwrite{
+padding: 0;
+text-align: center;
+margin: 10px auto;
+padding-top: 10px;
+}
 </style>
 </head>
 <body>	
@@ -194,8 +214,7 @@ border: 1px solid #cccccc;
 			</div>	
 		</div>
 		<div id="addresstitle">
-			<p>주소설정</p>    
-			<button>주소 추가하기</button>
+			<p>주소설정</p><br>
 		</div>	
 		<div id="myaddresslist">
 			<table>
@@ -206,6 +225,9 @@ border: 1px solid #cccccc;
 					<td>(주)호성테크닉스</td><td>김호성</td><td>서울시 종로구 수표로 256-3 호성빌딩 4층</td><td>032-123-4567</td><td>?????</td>
 				</tr>
 			</table>
+			<div class="btnwrite">
+			<a href="${conPath }/myAddressList.do?method=addrlistAdd" class="btn1">주소 추가하기</a>
+			</div>
 		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>

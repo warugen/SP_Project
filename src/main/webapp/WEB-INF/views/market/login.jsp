@@ -13,7 +13,9 @@
 <script src="${conPath }/js/login.js" type="text/javascript"></script>
 <link href="${conPath }/css/login/login.css" rel="stylesheet">
 <style>
-
+h2{
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -28,7 +30,7 @@
 			<h1 class="logo">
 				<a href="main.do">G9</a>
 			</h1>
-			<h3>상점로그인</h3>
+			<h2>상점로그인</h2>
 <form action="market.do" id="frm" method="post">
 	
 	<input type="hidden" name="method" value="login">

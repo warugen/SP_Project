@@ -50,7 +50,7 @@
 			var pw = $('.pw').val();
 			var pwchk = $('.pwchk').val();
 			if(pw != pwchk){
-				$('.passwordConfirm').html('<span class="danger">불일치</span>');	
+				$('.passwordConfirm').html('<span style="color:red;">불일치</span>');	
 				$('.passWordSafety').html('');
 			}else{
 				if(pwPatternNumber.test($(this).val())){
@@ -154,7 +154,7 @@
 							<th id="buttonWrap">
 								<input type="submit" value="회원가입" class="btn1">
 								<input type="reset" value="RESET" class="btn2">
-								<input type="button" value="홈화면으로" class="btn2" onclick="main.do">
+								<input type="button" value="홈화면으로" class="btn2" onclick="location.href='${conPath}/main.do'">
 							</th>
 						</tr>
 					</table>

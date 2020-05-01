@@ -45,18 +45,18 @@
 		 	</td>
 		</tr>
 		<tr><th>문의 내용 : </th>
-			<td colspan="3" style="height:400px;">
+			<td colspan="3" >
 				<pre>${detail.cqcontent }</pre>
 		 	</td>
 		</tr>
 		<tr><td colspan="4">
 			<c:if test="${detail.cid eq member.cid || detail.aid eq admin.aId }">
-						<button onclick="location.href='${conPath}/customerQna.do?method=modifyForm&pageNum=${param.pageNum }&cqcode=${detail.cqcode}'">수정하기</button>			
-						<button onclick="location.href='${conPath}/customerQna.do?method=delete&pageNum=${param.pageNum }&cqcode=${detail.cqcode}'">삭제하기</button>			
+						<button onclick="location.href='${conPath}/customerQna.do?method=modifyForm&pageNum=${param.pageNum }&cqcode=${detail.cqcode}'" class="btn1">수정하기</button>			
+						<button onclick="location.href='${conPath}/customerQna.do?method=delete&pageNum=${param.pageNum }&cqcode=${detail.cqcode}'" class="btn2">삭제하기</button>			
 			</c:if>
-			<button onclick="location.href='${conPath}/customerQna.do?method=qnaList&pageNum=${param.pageNum }'">목록으로</button>
+			<button onclick="location.href='${conPath}/customerQna.do?method=qnaList&pageNum=${param.pageNum }'" class="btn2">목록으로</button>
 			<%-- <c:if test="${not empty admin }"> --%>
-				<button onclick="location.href='${conPath}/customerQna.do?method=replyForm&cqcode=${detail.cqcode }&pageNum=${param.pageNum }'">답변작성</button>
+				<button onclick="location.href='${conPath}/customerQna.do?method=replyForm&cqcode=${detail.cqcode }&pageNum=${param.pageNum }'" class="btn1">답변작성</button>
 			<%-- </c:if> --%>
 			</td>
 		</tr>
