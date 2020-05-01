@@ -48,11 +48,7 @@ public class ProductController {
 	}
 	@RequestMapping(params = "method=joinList")
 	public String joinList(String pagenum, Model model, Product_Product_option ppo) {
-<<<<<<< HEAD
 		Paging paging = new Paging(productService.cntProduct(), pagenum, 6, 3);
-=======
-		Paging paging = new Paging(productService.cntProduct(), pagenum, 9, 5);
->>>>>>> refs/remotes/origin/taehun7737
 		model.addAttribute("paging", paging);
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
 		return "product/joinList";
@@ -62,22 +58,10 @@ public class ProductController {
 		model.addAttribute("type",product_typeService.getListProduct_type());
 		return "product/productRegister";
 	}
-<<<<<<< HEAD
 	@RequestMapping(params = "method=pRegister", method=RequestMethod.POST)
 	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model) {
 		model.addAttribute("result", product_optionService.registerProduct_option(mRequest));
 		model.addAttribute("type",product_typeService.getListProduct_type());
 		return "product/productRegister";
-=======
-	@RequestMapping(params = "method=pRegister")
-	public String pRegister(MultipartHttpServletRequest mRequest, Product_Product_option ppo, Model model, String pcode, String pagenum) {
-		productService.registerProduct(mRequest, ppo);
-		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, ppo));
-		Paging paging = new Paging(productService.cntProduct(), pagenum, 9, 5);
-		ppo.setStartrow(paging.getStartrow());
-		ppo.setEndrow(paging.getEndrow());
-		model.addAttribute("paging", paging);
-		return "product/joinList";
->>>>>>> refs/remotes/origin/taehun7737
 	}
 }

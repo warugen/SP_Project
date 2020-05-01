@@ -40,15 +40,15 @@ $(document).ready(function(){
 #market_tel{
 	float: right;
 }
-#market_header > a > input[type=image]{
-	left: 40px;
+#market_header > input[type=image]{
+	left: 0%;
 }
 </style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="market_header">
-			<a href="main.do"><input type="image" name="logo" src="${conPath }/img/SP_Logo.png" width="65"></a>
+		<input type="image" name="logo" src="${conPath }/img/LOGO.png" width="100">
 		<div id="market_header_nameArea">
 			<span id="market_name">${market_header.mname }</span>
 			<input type="hidden" name="mid" value="${market_header.mid }">
