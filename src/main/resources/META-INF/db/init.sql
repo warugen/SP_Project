@@ -225,7 +225,7 @@ ALTER TABLE MARKET
 /* 상품 테이블 */
 CREATE TABLE PRODUCT (
 	PCODE VARCHAR2(20) NOT NULL, /* 상품코드 */
-	PTITLE VARCHAR2(30) NOT NULL, /* 상품제목 */
+	PTITLE VARCHAR2(200) NOT NULL, /* 상품제목 */
 	PCONTENT CLOB NOT NULL, /* 상품 내용 */
 	PIMAGE1 VARCHAR2(300) NOT NULL, /* 대표이미지1 */
 	PIMAGE2 VARCHAR2(300), /* 대표이미지2 */
@@ -275,7 +275,7 @@ ALTER TABLE REVIEW
 /* 상품정보 Q&A 테이블 */
 CREATE TABLE PRODUCT_QNA (
 	PQCODE      VARCHAR2(20)    NOT NULL,        /* QNA코드 */
-	PQTITLE     VARCHAR2(100)   NOT NULL,        /* Q제목 */
+	PQTITLE     VARCHAR2(200)   NOT NULL,        /* Q제목 */
 	PQCONTENT   VARCHAR2(3000)  NOT NULL,        /* Q내용 */
 	PQANSWER    VARCHAR2(3000),                  /* Q답글 */
 	PQSECRET    VARCHAR2(5)     NOT NULL,        /* 비밀글여부 */
@@ -359,7 +359,7 @@ CREATE TABLE EMAIL_INQUIRY (
 	CID         VARCHAR2(20)    NOT NULL,  /* 고객아이디 */
 	EITYPE      VARCHAR2(20)    NOT NULL,  /* 상담분류 */
 	EIMAUL      VARCHAR2(30)    NOT NULL,  /* 답변받을메일 */
-	EITITLE     VARCHAR2(20)    NOT NULL,  /* 제목 */
+	EITITLE     VARCHAR2(200)    NOT NULL,  /* 제목 */
 	EICONTENT   VARCHAR2(3000)  NOT NULL,  /* 내용 */
 	EIFILE      VARCHAR2(30)               /* 첨부파일 */
 );
@@ -374,7 +374,7 @@ ALTER TABLE EMAIL_INQUIRY
 /* 공지사항 게시판 테이블 */
 CREATE TABLE NOTICE (
 	NCODE    VARCHAR2(20)   NOT NULL,        /* 공지사항글번호 */
-	NTITLE   VARCHAR2(100)  NOT NULL,        /* 제목 */
+	NTITLE   VARCHAR2(200)  NOT NULL,        /* 제목 */
 	NCONTENT CLOB           NOT NULL,        /* 내용 */
 	NRDATE   DATE           DEFAULT SYSDATE, /* 작성시간 */
 	NGROUP   NUMBER(7),                      /* 원글 */
@@ -396,7 +396,7 @@ ALTER TABLE NOTICE
 /* 고객-관리자간 문의 게시판 테이블 */
 CREATE TABLE CUSTOMER_QNA (
 	CQCODE      VARCHAR2(20)    NOT NULL,        /* 글번호 */
-	CQTITLE     VARCHAR2(100)   NOT NULL,        /* 제목 */
+	CQTITLE     VARCHAR2(200)   NOT NULL,        /* 제목 */
 	CQCONTENT   CLOB            NOT NULL,        /* 내용 */
 	CQRDATE     DATE            DEFAULT SYSDATE, /* 작성시간 */
 	CQGROUP     NUMBER(7)       NOT NULL,        /* 원글 */
@@ -417,7 +417,7 @@ ALTER TABLE CUSTOMER_QNA
 /* 상점-회원간 문의 게시판 테이블 */
 CREATE TABLE STORE_QNA (
 	SQCODE      VARCHAR2(20)  NOT NULL,         /* 글번호 */
-	SQTITLE     VARCHAR2(100) NOT NULL,         /* 제목 */
+	SQTITLE     VARCHAR2(200) NOT NULL,         /* 제목 */
 	SQCONTENT   CLOB          NOT NULL,         /* 내용 */
 	SQRDATE     DATE          DEFAULT SYSDATE,  /* 작성시간 */
 	SQGROUP     NUMBER(7)     NOT NULL,         /* 원글 */
@@ -438,7 +438,7 @@ ALTER TABLE STORE_QNA
 /* 상점-관리자간 문의 테이블22 */
 CREATE TABLE MARKET_QNA (
 	MQCODE      VARCHAR2(20)    NOT NULL,        /* 글번호 */
-	MQTITLE     VARCHAR2(100)   NOT NULL,        /* 제목 */
+	MQTITLE     VARCHAR2(200)   NOT NULL,        /* 제목 */
 	MQCONTENT   CLOB            NOT NULL,        /* 내용 */
 	MQRDATE     DATE            DEFAULT SYSDATE, /* 작성시간 */
 	MQGROUP     NUMBER(7)       NOT NULL,        /* 원글 */
