@@ -40,6 +40,7 @@
 	<input type="hidden" name="method" value="grade">
 	<input type="submit" class="btn2" value="aaa고객등급조회">
 	</form>
+<<<<<<< HEAD
 	<div>
 	
 		<p>리뷰작성 TEST</p>
@@ -61,6 +62,15 @@
 	<a href="storeQna.do?method=qnaList" class="btn1">고객-마켓 게시판</a>
 	<a href="marketQna.do?method=qnaList" class="btn2">마켓-관리자 게시판</a>
 
+=======
+	<form action="review.do">
+		<input type="hidden" name="cid" value="aaa">
+		<input type="hidden" name="pcode" value="1">
+		<input type="hidden" name="method" value="review">
+		<input type="submit" class="btn2" value="리뷰">
+	</form>
+</body>
+>>>>>>> refs/remotes/origin/taehun7737
 </body>
 
 </html>

@@ -57,7 +57,7 @@ select[name="option"]{
 }
 input[name="logo"]{
 	position: absolute;
-	top:5%;
+	top:4%;
 	left:22%;
 	outline:0;
 }

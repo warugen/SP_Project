@@ -39,11 +39,15 @@ public class ProductServiceimpl implements ProductService{
 
 	@Override
 	public List<Product_Product_option> product_Product_optionList(String pagenum, Product_Product_option ppo) {
+<<<<<<< HEAD
 		String typecode = ppo.getTypecode();
 		if(typecode == null) {
 			ppo.setTypecode("");
 		}
 		Paging paging = new Paging(productDao.cntProduct_Product_optionList(ppo), pagenum, 6, 3);
+=======
+		Paging paging = new Paging(productDao.cntProduct(), pagenum, 9, 5);
+>>>>>>> refs/remotes/origin/taehun7737
 		ppo.setStartrow(paging.getStartrow());
 		ppo.setEndrow(paging.getEndrow());
 		return productDao.product_Product_optionList(ppo);
