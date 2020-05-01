@@ -17,7 +17,7 @@
 	</select>
 	<select id="listReview" parameterType="Review" resultMap="ReviewResult">
 		SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
-			(SELECT * FROM REVIEW WHERE PCODE=#{pcode} ORDER BY RCODE DESC)A) 
+			(SELECT * FROM REVIEW WHERE PCODE=#{pcode} ORDER BY TO_NUMBER(RCODE) DESC)A) 
 			WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
 	<insert id="insertReview" parameterType="Review">

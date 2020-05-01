@@ -101,7 +101,7 @@ public class ProductServiceimpl implements ProductService{
 
 	@Override
 	public int modifyProduct(MultipartHttpServletRequest mRequest) {
-		String uploadPath = mRequest.getRealPath("productUpload/");
+		String uploadPath = mRequest.getRealPath("product_img/");
 		Iterator<String> params = mRequest.getFileNames();
 		String[] pimage = { "", "", "" };
 		int idx = 0;

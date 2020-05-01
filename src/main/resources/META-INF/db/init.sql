@@ -227,9 +227,9 @@ CREATE TABLE PRODUCT (
 	PCODE VARCHAR2(20) NOT NULL, /* 상품코드 */
 	PTITLE VARCHAR2(30) NOT NULL, /* 상품제목 */
 	PCONTENT CLOB NOT NULL, /* 상품 내용 */
-	PIMAGE1 VARCHAR2(30) NOT NULL, /* 대표이미지1 */
-	PIMAGE2 VARCHAR2(30), /* 대표이미지2 */
-	PIMAGE3 VARCHAR2(30), /* 대표이미지3 */
+	PIMAGE1 VARCHAR2(300) NOT NULL, /* 대표이미지1 */
+	PIMAGE2 VARCHAR2(300), /* 대표이미지2 */
+	PIMAGE3 VARCHAR2(300), /* 대표이미지3 */
 	MID VARCHAR2(20) NOT NULL /* 마켓아이디 */
 );
 
@@ -260,7 +260,7 @@ CREATE TABLE REVIEW (
 	RCONTENT    CLOB         NOT NULL,        /* 내용 */
 	RSTAR       NUMBER(5)    NOT NULL,        /* 별점 */
 	RRDATE      DATE         DEFAULT SYSDATE, /* 리뷰날짜 */
-	RIMAGE      VARCHAR2(20),                 /* 리뷰이미지 */
+	RIMAGE      VARCHAR2(300),                 /* 리뷰이미지 */
 	CID         VARCHAR2(20) NOT NULL,        /* 고객아이디 */
 	PCODE       VARCHAR2(20) NOT NULL         /* 상품코드 */
 );

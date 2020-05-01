@@ -27,14 +27,14 @@ public class MainController {
 	}
 	@RequestMapping(value="myPage")
 	public String myPage() {
-		return "myPage";
+		return "member/myPage";
 	}
 	@RequestMapping(value="myAddressList")
 	public String myAddressList() {
-		return "myAddressList";
+		return "member/myAddressList";
 	}
 	@RequestMapping(value="myCoupon")
 	public  String myCoupon() {
-		return "myCoupon";
+		return "member/myCoupon";
 	}
 }

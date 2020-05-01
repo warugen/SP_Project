@@ -9,17 +9,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${conPath }/css/style.css" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-	$(document).ready(function() {
-		
-	})
-</script>
 <style>
 #content #mypagewrap{
 	width: 1000px;
 	height: 60px;
 	display:block;
+	margin-top: 20px;
 }
 #content #mypagewrap .menu_list{
 width: 1000px;
@@ -28,7 +23,7 @@ font-size: 12px;
 color: #676767;
 vertical-align: top;
 border: 0;
-margin: 0;
+margin:160px 0 0 0;
 padding: 0;
 position: absolute;
 top: 0;
@@ -64,6 +59,7 @@ margin: 0 auto;
  display: block;
 }
 #content  #addresstitle{
+display: block;
 color: #444;
 vertical-align: top;
 border: 0;
@@ -83,8 +79,8 @@ float: left;
 margin-left: 60px;
 } 
 #content #myaddresslist{
-margin: 0;
 color: #444;
+display: block;
 }
 #content #myaddresslist table{
 border-collapse: collapse;
@@ -179,7 +175,8 @@ border: 1px solid #cccccc;
 }
 </style>
 </head>
-<body>
+<body>	
+	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<div id="mypagewrap">
 			<div id="mainmenu">
@@ -203,7 +200,6 @@ border: 1px solid #cccccc;
 		<div id="myaddresslist">
 			<table>
 				<tr class="fieldname">
-				<!-- #content #myaddresslist fieldname th:nth-child(2) -->
 					<th>배송지명</th><th>이름</th><th>주소</th><th>연락처</th><th>선택</th>
 				</tr>
 				<tr class="fieldvalue">
@@ -212,5 +208,6 @@ border: 1px solid #cccccc;
 			</table>
 		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
