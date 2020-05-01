@@ -11,7 +11,7 @@
 <link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
-
+	<jsp:forward page="main.do"/>
 	<a href="main.do" class="btn2">메인화면</a>
 	<a href="cart.do?method=cart" class="btn1">카트</a>
 	<a href="notice.do?method=noticeList" class="btn2">공지사항</a>
@@ -20,7 +20,8 @@
 	<a href="product.do?method=joinList" class="btn1">제품리스트</a>
 	<a href="writeForm.do?" class="btn2">썸머</a>
 	<a href="coupon.do?method=adminCoupon" class="btn1">관리자용 쿠폰주기</a>
-	<a href="myPage.do">마이 페이지</a>
+	<a href="myPage.do" class="btn2">마이 페이지</a>
+	<a href="product.do?method=productRegister" class="btn1">제품 등록</a>
 	
 
 	<form action="market.do">
