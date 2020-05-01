@@ -20,9 +20,11 @@
 	</resultMap>
 	<!-- Join리스트 -->
 	<select id="product_Product_optionList" parameterType="Product_Product_option" resultMap="Product_Product_optionResult">
-		SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT p.*,
+    	SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT p.*,
 			(SELECT MIN(POPRICE) FROM PRODUCT_OPTION WHERE PCODE = P.PCODE) POPRICE 
-				FROM PRODUCT P ORDER BY TO_NUMBER(PCODE) DESC) A)
+				FROM PRODUCT P  WHERE PCODE IN 
+                    (SELECT DISTINCT PO.PCODE FROM PRODUCT_OPTION PO,PRODUCT PP WHERE PO.PCODE=PP.PCODE AND TYPECODE LIKE '%'||#{typecode}||'%')
+                ORDER BY TO_NUMBER(PCODE) DESC) A)
     		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
 	<!-- 마켓용 메인 리스트-->

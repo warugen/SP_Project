@@ -101,36 +101,36 @@ function logout() {
 		</label>
 		<div class="sidebar">
 			<ul>
-				<li><a href="">의류/잡화</a>
+				<li><a href="main.do?typecode=1-">의류/잡화</a>
 					<ul>
-						<li><a href=""> 여성의류</a></li>
-						<li><a href=""> 남성의류</a></li>
-						<li><a href=""> 유아의류</a></li>
-						<li><a href=""> 패션잡화</a></li>
+						<li><a href="main.do?typecode=1-1"> 여성의류</a></li>
+						<li><a href="main.do?typecode=1-2"> 남성의류</a></li>
+						<li><a href="main.do?typecode=1-3"> 유아의류</a></li>
+						<li><a href="main.do?typecode=1-4"> 패션잡화</a></li>
 					</ul>
 				</li>
-				<li><a href="">식품</a>
+				<li><a href="main.do?typecode=2-">식품</a>
 					<ul>
-						<li><a href=""> 농산</a></li>
-						<li><a href=""> 수산</a></li>
-						<li><a href=""> 축산</a></li>
-						<li><a href=""> 가공식품</a></li>
+						<li><a href="main.do?typecode=2-1"> 농산</a></li>
+						<li><a href="main.do?typecode=2-2"> 수산</a></li>
+						<li><a href="main.do?typecode=2-3"> 축산</a></li>
+						<li><a href="main.do?typecode=2-4"> 가공식품</a></li>
 					</ul>
 				</li>
-				<li><a href="">디지털/가전/컴퓨터</a>
+				<li><a href="main.do?typecode=3-">디지털/가전/컴퓨터</a>
 					<ul>
-						<li><a href=""> TV</a></li>
-						<li><a href=""> 컴퓨터</a></li>
-						<li><a href=""> 냉장고</a></li>
-						<li><a href=""> 휴대폰</a></li>
+						<li><a href="main.do?typecode=3-1"> TV</a></li>
+						<li><a href="main.do?typecode=3-2"> 컴퓨터</a></li>
+						<li><a href="main.do?typecode=3-3"> 냉장고</a></li>
+						<li><a href="main.do?typecode=3-4"> 휴대폰</a></li>
 					</ul>
 				</li>
-				<li><a href="">가구/인테리어</a>
+				<li><a href="main.do?typecode=4-">가구/인테리어</a>
 					<ul>
-						<li><a href=""> 침실가구</a></li>
-						<li><a href=""> 거실가구</a></li>
-						<li><a href=""> 수납가구</a></li>
-						<li><a href=""> 주방가구</a></li>
+						<li><a href="main.do?typecode=4-1"> 침실가구</a></li>
+						<li><a href="main.do?typecode=4-2"> 거실가구</a></li>
+						<li><a href="main.do?typecode=4-3"> 수납가구</a></li>
+						<li><a href="main.do?typecode=4-4"> 주방가구</a></li>
 					</ul>
 				</li>
 			</ul>
