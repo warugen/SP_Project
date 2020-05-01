@@ -48,14 +48,14 @@ function logout() {
 		</c:if>
 		<c:if test="${not empty member}">
 			<ul>
-				<li><a href="">마이페이지</a></li>
+				<li><a href="myPage.do">마이페이지</a></li>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
 				<li><a>${member.cname }님</a></li>
 			</ul>
 		</c:if>
 		<c:if test="${not empty market}">
 			<ul>
-				<li><a href="">마이페이지</a></li>
+				<li><a href="market.do?method=marketmain&mid=${market.mid }&schword=">상점페이지</a></li>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
 				<li><a>${market.mname }님</a></li>
 			</ul>

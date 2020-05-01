@@ -22,7 +22,7 @@ public class CouponController {
 	@Autowired
 	private GradeService gradeService;
 	@RequestMapping(params="method=listMycoupon", method =RequestMethod.GET)
-	public String listMycoupon(Model model) {
+	public String listMycoupon(String cid, Model model) {
 		model.addAttribute("list",mycouponService.listMycoupon("aaa"));
 		return "coupontest";
 	}
@@ -41,6 +41,13 @@ public class CouponController {
 	public String giveCoupon(Model model, Mycoupon mycoupon, String gcode) {
 		model.addAttribute("giveResult", mycouponService.givecoupon(mycoupon, gcode));
 		return "forward: coupon.do?method=adminCoupon";
+	}
+	
+	@RequestMapping(params="method=myCoupon", method =RequestMethod.GET)
+	public String myCoupon(String cid, Model model) {
+		System.out.println("cid : "+cid);
+		model.addAttribute("couponList", mycouponService.listMycoupon(cid));
+		return "member/myCoupon";
 	}
 	
 }
