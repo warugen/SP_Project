@@ -58,6 +58,23 @@ text-align: center;
 margin: 10px auto;
 padding-top: 10px;
 }
+
+.qna_list {
+    margin: 0 auto 160px;
+    padding-top : 50px;
+    width: 1000px;
+    text-align: center;
+}
+h2{
+	text-align: center;
+}
+table {
+	margin: auto;
+}
+.paging{
+	width:100%;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -133,7 +150,7 @@ padding-top: 10px;
 </div>
 	<div class="btnwrite">
 	<c:if test="${not empty member || not empty admin }">
-		<button onclick="location.href='${conPath}/customerQna.do?method=writeForm'">문의하기</button>
+		<button onclick="location.href='${conPath}/customerQna.do?method=writeForm'" class="btn1">문의하기</button>
 	</c:if>
 	</div>
 </div>

@@ -10,6 +10,7 @@
 #qna_list table{
 	width: 1000px;
 	border-collapse: collapse;
+	margin: auto;
 }
 #qna_list .list_Menu{
 font-size: 12px;

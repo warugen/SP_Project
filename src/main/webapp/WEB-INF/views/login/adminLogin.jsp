@@ -13,7 +13,9 @@
 <script src="${conPath }/js/login.js" type="text/javascript"></script>
 <link href="${conPath }/css/login/login.css" rel="stylesheet">
 <style>
-
+h2 {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -22,7 +24,7 @@
 			<h1 class="logo">
 				<a href="main.do">G9</a>
 			</h1>
-			<h3>관리자 로그인</h3>
+			<h2>관리자 로그인</h2>
 <form action="login.do" id="frm" method="post">
 	
 	<input type="hidden" name="method" value="adminLogin">
@@ -39,7 +41,7 @@
   	</div>
   	
 	<div class="link_group">
-		<a href="main.do" class="alink">쇼핑홈으로</a> <span class="bar">|</span>
+		<a href="main.do" class="alink">쇼핑홈으로</a>
 	</div>
   
 </form>

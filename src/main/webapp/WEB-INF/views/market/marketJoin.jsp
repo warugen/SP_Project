@@ -19,13 +19,23 @@
 		/* 아이디 중복 체크 ajax */
 		$('.confirmKeyUp').keyup(function(){
 			$.ajax({
-				url : '${conPath}/idConfirm.do',
+				url : 'market.do?method=idConfirm',
 				datatype : 'html',
-				data : "userId="+$(this).val()+"&companyId="+$(this).val(),
+				data : "mid="+$(this).val(),
 				success : function(data, status){
 					$('.idConfirm').html(data);
 				}
 			});
+		});
+		
+		/* 이메일 체크 ajax+ 정규표현식 */
+		$('.confirmMailKeyUp').keyup(function(){
+		      var idPattern = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+		      if(idPattern.test($(this).val()) == false){
+		    	  $('.emailConfirm').html("<span style='color:red;'>이메일 형식에 맞게 입력하세요.</span>");
+		      }else{
+		    	  $('.emailConfirm').html("<span style='color:blue;'>적합한 형식입니다.</span>");
+		      }
 		});
 		
 		/* 비밀번호 체크 정규표현식 */
@@ -40,7 +50,7 @@
 			var pw = $('.pw').val();
 			var pwchk = $('.pwchk').val();
 			if(pw != pwchk){
-				$('.passwordConfirm').html('<span class="danger">불일치</span>');	
+				$('.passwordConfirm').html('<span style="color:red;">불일치</span>');	
 				$('.passWordSafety').html('');
 			}else{
 				if(pwPatternNumber.test($(this).val())){
@@ -144,7 +154,7 @@
 							<th id="buttonWrap">
 								<input type="submit" value="회원가입" class="btn1">
 								<input type="reset" value="RESET" class="btn2">
-								<input type="button" value="홈화면으로" class="btn2" onclick="main.do">
+								<input type="button" value="홈화면으로" class="btn2" onclick="location.href='${conPath}/main.do'">
 							</th>
 						</tr>
 					</table>

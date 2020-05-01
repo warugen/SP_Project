@@ -17,7 +17,22 @@ function trClicked(mqcode){
 }
 </script>
 <style>
-
+.qna_list {
+    margin: 0 auto 160px;
+    padding-top : 50px;
+    width: 1000px;
+    text-align: center;
+}
+h2{
+	text-align: center;
+}
+table {
+	margin: auto;
+}
+.paging{
+	width:100%;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -29,7 +44,8 @@ function trClicked(mqcode){
 <jsp:include page="../main/header.jsp"/>
 
 <div id="qna_list">
-	<h2>고객문의 게시판</h2>
+	<h2>상점 - 관리자 문의 게시판</h2>
+	<p></p>
 	<table>
 		<tr class="list_Menu">
 			<th>번호</th>
@@ -93,7 +109,7 @@ function trClicked(mqcode){
 </div>
 	<div class="btnwrite">
 	<c:if test="${not empty market || not empty admin }">
-		<button onclick="location.href='${conPath}/marketQna.do?method=writeForm'">문의하기</button>
+		<button onclick="location.href='${conPath}/marketQna.do?method=writeForm'" class="btn1">문의하기</button>
 	</c:if>
 	</div>
 </div>

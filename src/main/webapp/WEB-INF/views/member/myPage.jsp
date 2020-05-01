@@ -346,7 +346,7 @@ font-weight: 500;
 						<a href="">정보수정</a>
 					</li>
 					<li class="menu3">
-						<a href="${conPath }/myCoupon.do">쿠폰</a>
+						<a href="${conPath }/coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a>
 					</li>
 					<li class="menu4">
 						<a href="${conPath }/myAddressList.do">주소지 설정</a>

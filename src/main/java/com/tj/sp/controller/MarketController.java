@@ -58,6 +58,23 @@ public class MarketController {
 		return "market/login";
 	}
 	
+	@RequestMapping(params="method=idConfirm")
+	public String marketIdConfirm(String mid, Model model) {
+		
+		boolean idResult = true; // 사용가능
+		if (marketService.getMarket(mid) != null) {
+			idResult = false;
+		}
+
+		if (idResult) {
+			model.addAttribute("idConfirmResult", "가입가능");
+		} else {
+			model.addAttribute("idConfirmResult", "중복");
+		}
+
+		return "market/idConfirm";
+	}
+	
 	@RequestMapping(params ="method=marketJoin")
 	public String marketJoin() {
 		return "market/marketJoin";

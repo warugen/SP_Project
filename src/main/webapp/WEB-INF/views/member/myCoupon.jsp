@@ -254,7 +254,7 @@ border: 1px solid #cccccc;
 				<ul class="menu_list">
 					<li class="menu1"><a href="${conPath }/myPage.do">전체 주문 내역</a></li>
 					<li class="menu2"><a href="">정보수정</a>
-					<li class="menu3"><a href="${conPath }/myCoupon.do">쿠폰</a></li>
+					<li class="menu3"><a href="${conPath }/coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a></li>
 					<li class="menu4"><a href="${conPath }/myAddressList.do">주소지 설정</a>
 					</li>
 				</ul>
@@ -299,13 +299,33 @@ border: 1px solid #cccccc;
 					<tr>
 						<th>쿠폰명</th>
 						<th>혜택</th>
-						<th>발급일</th>
+						
 					</tr>
-					<tr>
+					<c:if test="${not empty couponList }">
+						<script>
+						console.log('not empty!!');
+						</script>
+					</c:if>
+					<c:if test="${empty couponList }">
+						<script>
+						console.log('empty!!');
+						</script>
+					</c:if>
+					<c:forEach var="list" items="${couponList }">
+					<script>
+					console.log(${list.cuname});
+					</script>
+						<tr>
+						<td>${list.cuname }</td>
+						<td>${list.cusale }% 할인</td>
+						
+						</tr>
+					</c:forEach>
+					<!-- <tr>
 						<td>신규회원가입 축하 10% 쿠폰</td>
 						<td>10%상품할인</td>
 						<td>2020-04-29</td>
-					</tr>
+					</tr> -->
 				</table>
 			</div>
 		</div>

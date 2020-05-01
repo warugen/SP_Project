@@ -19,9 +19,9 @@
 		/* 아이디 중복 체크 ajax */
 		$('.confirmKeyUp').keyup(function(){
 			$.ajax({
-				url : '${conPath}/idConfirm.do',
+				url : 'member.do?method=idConfirm',
 				datatype : 'html',
-				data : "cid="+$(this).val()+"&mid="+$(this).val(),
+				data : "cid="+$(this).val(),
 				success : function(data, status){
 					$('.idConfirm').html(data);
 				}
@@ -33,6 +33,8 @@
 		      var idPattern = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 		      if(idPattern.test($(this).val()) == false){
 		    	  $('.emailConfirm').html("<span style='color:red;'>이메일 형식에 맞게 입력하세요.</span>");
+		      }else{
+		    	  $('.emailConfirm').html("<span style='color:blue;'>적합한 형식입니다.</span>");
 		      }
 		});
 		
