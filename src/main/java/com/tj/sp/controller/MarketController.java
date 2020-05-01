@@ -30,7 +30,7 @@ public class MarketController {
 		//마켓정보 불러오기
 		model.addAttribute("market_header",marketService.getMarket(mid));		
 		//마켓메인용 제품 리스트 뿌리기
-		Paging paging = new Paging(productService.cntMarketMain(product), pagenum, 8, 3);
+		Paging paging = new Paging(productService.cntMarketMain(product), pagenum, 6, 3);
 		model.addAttribute("paging", paging);
 		model.addAttribute("marketmain", productService.marketMain(product, pagenum, schword));
 		return "market/marketmain";

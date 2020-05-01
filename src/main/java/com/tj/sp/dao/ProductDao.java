@@ -7,6 +7,7 @@ import com.tj.sp.dto.Product_Product_option;
 
 public interface ProductDao {
 	public List<Product_Product_option> product_Product_optionList(Product_Product_option ppo);
+	public int cntProduct_Product_optionList(Product_Product_option ppo);
 	public List<Product> marketList(Product product);
 	public Product getProduct(String pcode);
 	public int registerProduct(Product_Product_option ppo);

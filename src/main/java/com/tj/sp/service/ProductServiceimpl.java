@@ -43,7 +43,7 @@ public class ProductServiceimpl implements ProductService{
 		if(typecode == null) {
 			ppo.setTypecode("");
 		}
-		Paging paging = new Paging(productDao.cntProduct(), pagenum, 8, 3);
+		Paging paging = new Paging(productDao.cntProduct_Product_optionList(ppo), pagenum, 6, 3);
 		ppo.setStartrow(paging.getStartrow());
 		ppo.setEndrow(paging.getEndrow());
 		return productDao.product_Product_optionList(ppo);
@@ -189,7 +189,7 @@ public class ProductServiceimpl implements ProductService{
 		if(schword==null) {
 			schword="";
 		}
-		Paging paging = new Paging(productDao.cntMarketMain(product), pagenum, 8, 3);
+		Paging paging = new Paging(productDao.cntMarketMain(product), pagenum, 6, 3);
 		product.setStartrow(paging.getStartrow());
 		product.setEndrow(paging.getEndrow());
 		return productDao.marketMain(product, schword);
@@ -198,6 +198,15 @@ public class ProductServiceimpl implements ProductService{
 	@Override
 	public int cntMarketMain(Product product) {
 		return productDao.cntMarketMain(product);
+	}
+
+	@Override
+	public int cntProduct_Product_optionList(Product_Product_option ppo) {
+		String typecode = ppo.getTypecode();
+		if(typecode == null) {
+			ppo.setTypecode("");
+		}
+		return productDao.cntProduct_Product_optionList(ppo);
 	}
 	
 }

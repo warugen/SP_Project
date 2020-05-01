@@ -69,7 +69,6 @@ function logout() {
 		</c:if>
 		</div>
 		<div class="logo">
-			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;🆂-🅿🅻🅰🅲🅴
 			<a href="main.do"><input type="image" name="logo" src="${conPath }/img/SP_Logo.png" width="65"></a>
 			<div class="search">
 				<select name="option">

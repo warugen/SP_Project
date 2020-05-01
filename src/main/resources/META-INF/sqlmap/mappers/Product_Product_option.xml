@@ -18,6 +18,12 @@
 		<result property="typecode" column="typecode" />
 		<result property="postock" column="postock" />
 	</resultMap>
+	<!-- 검색 리스트 갯수 -->
+	<select id="cntProduct_Product_optionList" parameterType="Product_Product_option" resultType="int" >
+		SELECT COUNT(*)	FROM PRODUCT P  WHERE PCODE IN 
+                    (SELECT DISTINCT PO.PCODE FROM PRODUCT_OPTION PO,PRODUCT PP WHERE PO.PCODE=PP.PCODE AND 
+                    	TYPECODE LIKE '%'||NVL(#{typecode},'')||'%')
+	</select>
 	<!-- Join리스트 -->
 	<select id="product_Product_optionList" parameterType="Product_Product_option" resultMap="Product_Product_optionResult">
     	SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT p.*,

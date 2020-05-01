@@ -9,6 +9,7 @@ import com.tj.sp.dto.Product_Product_option;
 
 public interface ProductService {
 	public List<Product_Product_option> product_Product_optionList(String pagenum, Product_Product_option ppo);
+	public int cntProduct_Product_optionList(Product_Product_option ppo);
 	public List<Product> getProductList(Product product);
 	public List<Product> marketList(Product product);
 	public Product getProduct(String pcode);
