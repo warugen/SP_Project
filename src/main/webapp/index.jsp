@@ -59,8 +59,6 @@
 	<a href="customerQna.do?method=qnaList" class="btn2">고객-관리자 게시판</a>
 	<a href="storeQna.do?method=qnaList" class="btn1">고객-마켓 게시판</a>
 	<a href="marketQna.do?method=qnaList" class="btn2">마켓-관리자 게시판</a>
-
-
 </body>
 
 </html>
