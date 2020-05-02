@@ -34,8 +34,9 @@
 					<td>
 						<span>${order.odelivery }</span><br>
 						<form action="Order_detail_product.do">
-							<input type="hidden" name="ocode" value="${order.ocode }">
 							<input type="hidden" name="method" value="updateSp_order">
+							<input type="hidden" name="ocode" value="${order.ocode }">
+							<input type="hidden" name="cid" value="${member.cid }">
 							<c:if test="${order.ostatus != '구매확정'}">
 								<input type="submit" value="구매확정">
 							</c:if>

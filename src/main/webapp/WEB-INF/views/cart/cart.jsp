@@ -31,6 +31,7 @@
 		<hr>
 		<form action="cart.do">
 			<input type="hidden" name="method" value="orderView">
+			<input type="hidden" name="cid" value="${member.cid }">
 			<table>
 				<tr>
 					<th>
@@ -72,8 +73,8 @@
 							<fmt:formatNumber value="3000" groupingUsed="true"/>원
 						</td>
 						<td>
-							<a href="cart.do?method=orderView&cartno=${cart.cartno }">주문하기</a>
-							<a href="cart.do?method=deleteCart&cartno=${cart.cartno }" onclick="return confirm('선택한 상품을 삭제 하시겠습니까?');">삭제하기</a>
+							<a href="cart.do?method=orderView&cartno=${cart.cartno }&cid=${member.cid}">주문하기</a>
+							<a href="cart.do?method=deleteCart&cartno=${cart.cartno }&cid=${member.cid}" onclick="return confirm('선택한 상품을 삭제 하시겠습니까?');">삭제하기</a>
 						</td>
 					</tr>
 					<tr class="price">

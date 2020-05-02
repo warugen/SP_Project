@@ -34,7 +34,7 @@ public class CartController {
 	private Order_detailService order_detailService;
 	@Autowired
 	private CustomerService customerService;
-	//장바구니 답기
+	//장바구니 담기
 	@RequestMapping(params="method=insert", method =RequestMethod.GET)
 	public String insertCart(Model model, String cid, String[] pocode, String[] cartcount ) {
 		cartservice.insertCart(cid, pocode, cartcount);
@@ -43,8 +43,8 @@ public class CartController {
 	
 	//장바구니 호출
 	@RequestMapping(params="method=cart", method =RequestMethod.GET)
-	public String cart(Model model) {
-		model.addAttribute("list",cartservice.listCartByCid("aaa"));
+	public String cart(Model model, String cid) {
+		model.addAttribute("list",cartservice.listCartByCid(cid));
 		return "cart/cart";
 	}
 	
@@ -63,9 +63,9 @@ public class CartController {
 	
 	//장바구니 물품 제거
 	@RequestMapping(params="method=deleteCart", method =RequestMethod.GET)
-	public String deleteCart(Model model, String cartno) {
+	public String deleteCart(Model model, String cartno, String cid) {
 		model.addAttribute("cart",cartservice.deleteCart(cartno));
-		return "forward:cart.do?method=cart";
+		return "redirect:cart.do?method=cart&cid="+cid;
 	}
 	
 	//주문 페이지 호출

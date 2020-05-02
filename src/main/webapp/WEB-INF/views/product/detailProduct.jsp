@@ -385,8 +385,12 @@ border: 1px solid #cccccc;
 											비밀글 입니다.
 									</c:if>
 									<span style="float: right;">
-										<button id="btnA" onclick="replyQnaForm('${pq.pqcode }')">답변하기</button>
-										<button id="btnQ" onclick="modifyQnaForm('${pq.pqcode }')">수정</button>
+										<c:if test="${market.mid eq detail.mid }">
+											<button id="btnA" onclick="replyQnaForm('${pq.pqcode }')">답변하기</button>
+										</c:if>
+										<c:if test="${member.cid eq pq.cid }">
+											<button id="btnQ" onclick="modifyQnaForm('${pq.pqcode }')">수정</button>
+										</c:if>
 									</span>
 								</div> 
 								<c:if test="${pq.pqanswer != null }">
@@ -408,7 +412,6 @@ border: 1px solid #cccccc;
 						<c:set var="i" value="${i+1 }"/>
 					</c:forEach>
 				</table>
-
 				<div class="paging">
 					<c:if test="${qna_paging.startpage>qna_paging.blocksize }">
 						[<a href="${conPath }/product.do?method=detailProduct

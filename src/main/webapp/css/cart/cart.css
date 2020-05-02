@@ -6,6 +6,7 @@ body{
 	position: relative;
 	width: 1000px;
 	height: 75px;
+	margin: 0 auto;
 }
 #cart_head_left{
 	margin-left: 20px;
