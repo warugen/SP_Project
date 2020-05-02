@@ -122,11 +122,12 @@ border: 1px solid #cccccc;
 		
 
 		//favorite
+		var cid= $('#cid').val();
 		var pcode = $('input[name=pcode]').val();
 		$.ajax({
 			url : 'favorite.do',
 			type : 'get',
-			data : 'method=check&cid=aaa&pcode='+pcode,
+			data : 'method=check&cid='+cid+'&pcode='+pcode,
 			success : function(data,status){
 				$('#favoriteClick').html(data);
 			}
@@ -135,7 +136,7 @@ border: 1px solid #cccccc;
 			$.ajax({
 				url : 'favorite.do',
 				type : 'get',
-				data : 'method=click&cid=aaa&pcode='+pcode,
+				data : 'method=click&cid='+cid+'&pcode='+pcode,
 				success : function(data,status){
 					$('#favoriteClick').html(data);
 				}
@@ -252,7 +253,9 @@ border: 1px solid #cccccc;
 		}
 	}
    function writeQnaForm() {
-      window.open('product_qna.do?method=writeQnaForm', '',
+	  var cid = $('input[name=cid]').val();
+	  var pcode = $('input[name=pcode]').val();
+      window.open('product_qna.do?method=writeQnaForm&cid='+cid+'&pcode='+pcode, '',
             'width=650,height=530,left=100,top=100')
    }
    function modifyQnaForm(pqcode) {
@@ -266,6 +269,7 @@ border: 1px solid #cccccc;
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<input type="hidden" name="pcode" value="${detail.pcode }">
+	<input type="hidden" id="cid" name="cid" value="${member.cid }">
 	<div id="content">
 		<div id="content_top">
 			<div id="product_img">
@@ -301,8 +305,7 @@ border: 1px solid #cccccc;
 				</div>
 				<form action="cart.do?">
 					<input type="hidden" name="method" value="orderDirect">
-					<%-- <input type="hidden" name="cid" value="${customer.cid}"> --%>
-					<input type="hidden" name="cid" value="aaa">
+					<input type="hidden" name="cid" value="cccc">
 					<div id="items_option_box">
 						<select id="iobCart">
 							<option selected="selected" value="-1">선택하세요.</option>
@@ -332,6 +335,7 @@ border: 1px solid #cccccc;
 				</form>
 			</div>
 		</div>
+		<pre>${detail.pcontent }</pre>
 		<div id="content_bottom">
 			<div id="product_qna">
 				<table>
@@ -348,14 +352,17 @@ border: 1px solid #cccccc;
 							<td>${pq.pqcode }</td>
 							<td>
 								<c:if test="${pq.pqcomplete==0 }">
-									<span style="border: 1px solid black;">검토중</span>
+									<span style="border: 1px solid red; color: red">검토중</span>
 								</c:if>
 								<c:if test="${pq.pqcomplete==1 }">
-									<span style="border: 1px solid black;">답변완료</span>
+									<span style="border: 1px solid blue; color: blue">답변완료</span>
 								</c:if>
 							</td>
 							<td class="left">
 								<c:if test="${pq.pqsecret==0 }">
+									${pq.pqtitle }
+								</c:if>
+								<c:if test="${pq.pqsecret==1 && not empty admin }">
 									${pq.pqtitle }
 								</c:if>
 								<c:if test="${pq.pqsecret==1 }">
@@ -366,22 +373,36 @@ border: 1px solid #cccccc;
 							<td>${pq.pqdate }</td>
 						</tr>
 						<tr class="qnaReplyContent" id="qnaReplyContent${i }">
-							<td colspan="4">
-								<div>
-									<span> 
-										<img src="${conPath }/img/Q.PNG" width="35" height="35">질문
-									</span> 
+							<td colspan="5">
+								<div style="width: 1000px; overflow: hidden;">
+									<span> <img src="${conPath }/img/Q.PNG" width="35"
+										height="35">질문
+									</span>
 									<c:if test="${pq.pqsecret==0 }">
 										${pq.pqcontent }
 									</c:if>
 									<c:if test="${pq.pqsecret==1 }">
 											비밀글 입니다.
-									</c:if>	
-								</div>
-							</td>
-							<td>
-								<button onclick="modifyQnaForm('${pq.pqcode }')">수정</button>
-								<button onclick="location.href='${conPath}/product_qna.do?method=deleteQna'">삭제</button>
+									</c:if>
+									<span style="float: right;">
+										<button id="btnA" onclick="replyQnaForm('${pq.pqcode }')">답변하기</button>
+										<button id="btnQ" onclick="modifyQnaForm('${pq.pqcode }')">수정</button>
+									</span>
+								</div> 
+								<c:if test="${pq.pqanswer != null }">
+									<div style="width: 1000px;">
+										<span> <img src="${conPath }/img/A.PNG" width="35"
+											height="35">답변
+										</span> ${pq.pqanswer }
+									</div>
+								</c:if> 
+								<c:if test="${pq.pqanswer eq null }">
+									<div style="display: none;">
+										<span> 
+										<img src="${conPath }/img/A.PNG" width="35" height="35">답변
+										</span>
+									</div>
+								</c:if>
 							</td>
 						</tr>
 						<c:set var="i" value="${i+1 }"/>

@@ -10,13 +10,8 @@
 <title>Insert title here</title>
 <link href="${conPath }/css/style.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-	function reset() {
-		window.close();
-	}
-</script>
 <style>
-#questionForm {
+#answerForm {
 	margin: 0;
 	padding: 0;
 	position: fixed;
@@ -48,13 +43,13 @@ h2 {
 	font-size: 16px;
 }
 
-#questionForm .question_content {
+#answerForm .answer_content {
 	font-size: 12px;
 	margin: 0;
 	padding: 30px 20px 0;
 }
 
-#questionForm .question_content table {
+#answerForm .answer_content table {
 	font-size: 100%;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -62,23 +57,23 @@ h2 {
 	border-top: 2px solid #707070;
 }
 
-#questionForm .question_content table tbody {
+#answerForm .answer_content table tbody {
 	font-size: 100%;
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
-#questionForm .question_content table tbody tr {
+#answerForm .answer_content table tbody tr {
 	font-size: 100%;
 	border-collapse: collapse;
 	border-spacing: 0;
 } 
-#questionForm .question_content .question_info{
+#answerForm .answer_content .question_info{
 	font-size : 12px;
 	padding: 0;
 	margin: 20px 0;
 }
-#questionForm .question_content_footer {
+#answerForm .answer_content_footer {
 font-size: 12px;
 text-align: center;
 margin-bottom: 20px;
@@ -86,44 +81,32 @@ margin-bottom: 20px;
 </style>
 </head>
 <body>
-	<c:if test="${not empty writeQnaResult }">
+	<c:if test="${not empty replyQnaResult }">
 		<script>
-			var writeQnaResult = "문의가 등록 되었습니다."
-			alert(writeQnaResult);
-			opener.location.href = 'product.do?method=detailProduct&pcode='+1;
+			opener.location.href = 'product.do?method=detailProduct';
 			window.close();
 		</script>
 	</c:if>
-	<div id="questionForm">
-		<form action="${conPath }/product_qna.do?method=writeQna">
-			<input type="hidden" name="method" value="writeQna">
-			<input type="hidden" name="pqcomplate" value="0"> 
+	<div id="answerForm">
+		<form action="${conPath }/product_qna.do?method=replyQna">
+			<input type="hidden" name="method" value="replyQna">
+			<input type="hidden" name="pqcode" value="${replyQnaForm.pqcode }">
 			<div class="question_content">
 				<h2>상품 문의</h2>
 				<table>
 					<tbody>
 						<tr>
-							<th>제목</th>
-							<td><input type="text" name="pqtitle" style="width: 300px;"></td>
-						<tr>
-							<th>문의내용</th>
-							<td><textarea name="pqcontent" cols="40" rows="10" style="resize: none"></textarea></td>
-						</tr>
-						<tr>
-							<th>비밀글 여부</th>
-							<td><input type="radio" name="pqsecret" value="1">YES
-								<input type="radio" name="pqsecret" value="0" checked="checked">NO
+							<th>답변</th>
+							<td>
+								<textarea name="pqanswer" cols="40" rows="10" style="resize: none"></textarea>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<div class="question_info">
-					* 개인정보(주민번호, 연락처, 주소, 계좌번호, 카드번호등)가 포함되지 않도록 유의해주세요.
-				</div>
 			</div>
-			<div class="question_content_footer">
+			<div class="answer_content_footer">
 					<input type="submit" class="btn2" value="확인" style="width: 100px;"> 
-					<input type="button" class="btn1" value="취소" style="width: 100px;" onclick="reset()">
+					<input type="button" class="btn1" value="취소" style="width: 100px;" onclick="window.close();">
 			</div>
 		</form>
 	</div>

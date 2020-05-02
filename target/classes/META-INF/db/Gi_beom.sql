@@ -135,6 +135,7 @@ SELECT * FROM SP_ORDER;
 SELECT * FROM order_detail;
 delete from sp_order where ocode>15;
 delete from order_detail where odcode>7;
+
 commit;
 --구매 확정 하기--
 UPDATE SP_ORDER SET OSTATUS = '구매확정' WHERE OCODE=1;
@@ -150,4 +151,27 @@ SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT p.*,
                 ORDER BY TO_NUMBER(PCODE) DESC) A)
     		WHERE RN BETWEEN 1 AND 10;
 SELECT * FROM PRODUCT_OPTION;
+SELECT * FROM PRODUCT;
 COMMIT;
+
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '좋은 제품이에요~ 잘 썼습니다.',4,				to_date('2016-11-01', 'yyyy-mm-dd') ,NULL,'aaaa',9);
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '가성비 최고 입니다',5,						to_date('2017-12-02', 'yyyy-mm-dd') ,NULL,'bbbb',9);
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '배송이 조금 느렸지만 제품은 괜찮은것 같네요.',3,		to_date('2018-08-03', 'yyyy-mm-dd')	,NULL,'cccc',9);
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '좀 더 써봐야 알겠지만 일단 좋을것 같아요.',4,		to_date('2019-09-05', 'yyyy-mm-dd')	,NULL,'dddd',9);
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '배송상태가 엉망이네요. 배송사좀 바꾸세요.',1,		to_date('2020-03-05', 'yyyy-mm-dd')	,NULL,'eeee',9);
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '좋은 제품이에요~ 잘 썼습니다.',5,				to_date('2020-03-16', 'yyyy-mm-dd') ,NULL,'ffff',9);
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '가성비 최고 입니다',4,						to_date('2020-03-17', 'yyyy-mm-dd') ,NULL,'gggg',9);
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '배송이 조금 느렸지만 제품은 괜찮은것 같네요.',3,		to_date('2020-03-28', 'yyyy-mm-dd')	,NULL,'hhhh',9);
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '좀 더 써봐야 알겠지만 일단 좋을것 같아요.',4,		to_date('2020-03-29', 'yyyy-mm-dd')	,NULL,'iiii',9);
+INSERT INTO REVIEW VALUES(REVIEW_SEQ.nextval, '배송상태가 엉망이네요. 배송사좀 바꾸세요.',1,		to_date('2020-03-31', 'yyyy-mm-dd')	,NULL,'jjjj',9);
+
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'상품문의입니다','배송시간이 얼마나 걸리나요?','3~4일 정도입니다.','1','1',to_date('2016-11-01', 'yyyy-mm-dd'),9,'aaaa');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'사진으로 봤을땐 괜찮은데','흠집검수해서 받을수 있나요?','네 가능합니다. 담당 문의전화로 연락주세요.','0','1',to_date('2017-12-02', 'yyyy-mm-dd'),9,'bbbb');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'상품괜찮네요','그거에대한 내용이요','답변입니다.','1','1',to_date('2018-08-03', 'yyyy-mm-dd'),9,'cccc');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'제품 디테일 관련 질문입니다.','다른 원하는 색깔로 가능한가요?','옵션 외의 제품은 품절입니다.죄송합니다.','0','1',to_date('2019-09-05', 'yyyy-mm-dd'),9,'dddd');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'택배 회사 관련 문의','그거에대한 내용이요','답변입니다.','1','1',to_date('2020-03-05', 'yyyy-mm-dd'),9,'eeee');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'택배비 문의 입니다.','택배비 할인 가능한가요','택배비는 저희측에서 처리해드릴수 없습니다.','0','1',to_date('2020-03-16', 'yyyy-mm-dd'),9,'ffff');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'상품문의요','그거에대한 내용이요','답변입니다.','1','1',to_date('2020-03-17', 'yyyy-mm-dd'),9,'gggg');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'배송 얼마나 걸리나요','답변해 주세요',Null,'0','0',to_date('2020-03-28', 'yyyy-mm-dd'),9,'hhhh');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'전에 봤던 다른제품이 있는데','어디로 문의 할 수 있나요',Null,'0','0',to_date('2020-03-29', 'yyyy-mm-dd'),9,'iiii');
+INSERT INTO PRODUCT_QNA VALUES(PRODUCT_QNA_SEQ.nextval,'환불 가능한 범위가 어떻게 되나요?','구입전에 고민되서 남깁니다.',Null,'0','0',to_date('2020-03-31', 'yyyy-mm-dd'),9,'jjjj');

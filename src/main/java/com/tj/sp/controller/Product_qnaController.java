@@ -19,13 +19,16 @@ public class Product_qnaController {
 	      return "product_qna/writeQnaForm";
 	}
 	@RequestMapping(params="method=writeQna")
-	public String writeQna(Product_qna product_qna, Model model) {
+	public String writeQna(Product_qna product_qna, Model model, String cid, String pcode) {
+		product_qna.setCid(cid);
+		product_qna.setPcode(pcode);
+		System.out.println(product_qna.toString());
 	   model.addAttribute("writeQnaResult",product_qnaService.writeQna(product_qna));
 	   return "product_qna/writeQnaForm";
 	   //return "forward:product.do?method=detailProduct";
 	}
 	@RequestMapping(params="method=modifyQnaForm")
-	public String modifyQnaForm(Product_qna product_qna, Model model) {
+	public String modifyQnaForm(Product_qna product_qna, Model model, String cid, String pcode) {
 	   model.addAttribute("modifyQnaForm",product_qnaService.getQna(product_qna));
 	   return "product_qna/modifyQnaForm";
 	}

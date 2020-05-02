@@ -60,10 +60,14 @@ text-align: center;
 margin: 10px auto;
 padding-top: 10px;
 }
+#content > h2{
+	text-align: center;
+}
 
 </style>
 </head>
 <body>
+	<jsp:include page="../main/header.jsp" />
 	<c:if test="${not empty deleteResult }">
 		<script>
 			alert('${deleteResult}');
@@ -95,6 +99,7 @@ padding-top: 10px;
 		</script>
 	</c:if>
 	<div id="content">
+		<h2>공지사항</h2>
 		<table>
 			<tr class="noticeMenu">
 				<th>번호</th><th>제목</th><th>등록일</th><th>조회수</th>
@@ -140,5 +145,6 @@ padding-top: 10px;
 			<button class="btn2" onclick="location.href='${conPath}/notice.do?method=noticeReplyForm'">답변 등록</button>
 		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

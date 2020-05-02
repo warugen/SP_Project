@@ -63,7 +63,7 @@ public class Product_qnaServiceimpl implements Product_qnaService {
 	}
 	@Override
 	public int replyQna(Product_qna product_qna) {
-		product_qna.setPqcomplete("1");
+//		product_qna.setPqcomplete("1");
 		return product_qnaDao.replyQna(product_qna);
 	}
 }

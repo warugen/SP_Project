@@ -84,10 +84,10 @@ function logout() {
 		<div class="lnb">
 			<div class="menu">
 				<ul>
-					<li><a href="">정기배송</a></li>
-					<li><a href="">여행/티켓</a></li>
-					<li><a href="">해외직구</a></li>
-					<li><a href="">이벤트/쿠폰</a></li>
+					<li><a href="notice.do?method=noticeList">공지사항</a></li>
+					<li><a href="customerQna.do?method=qnaList" >고객-관리자 게시판</a></li>
+					<li><a href="storeQna.do?method=qnaList">고객-마켓 게시판</a></li>
+					<li><a href="marketQna.do?method=qnaList" >마켓-관리자 게시판</a>	</li>
 				</ul>
 			</div>
 		</div>

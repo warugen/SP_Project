@@ -17,7 +17,7 @@
 	<insert id="writeQna" parameterType="Product_qna">
 		INSERT INTO PRODUCT_QNA
 		(PQCODE,PQTITLE,PQCONTENT,PQSECRET,PQCOMPLETE,PCODE,CID)
-		VALUES(PRODUCT_QNA_SEQ.nextval,#{pqtitle},#{pqcontent},#{pqsecret},#{pqcomplete},'2','bbb')
+		VALUES(PRODUCT_QNA_SEQ.nextval,#{pqtitle},#{pqcontent},#{pqsecret},#{pqcomplete},'1','cccc')
 	</insert>
 	<update id="replyQna" parameterType="Product_qna">
 		UPDATE PRODUCT_QNA SET

@@ -6,9 +6,6 @@
 h2, p{
 	text-align: center;
 }
-#test {
-	overflow:hidden;
-}
 #content table{
 	width:1000px;
 	height:700px;

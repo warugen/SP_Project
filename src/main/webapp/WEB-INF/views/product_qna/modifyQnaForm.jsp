@@ -88,8 +88,16 @@ margin-bottom: 20px;
 <body>
 	<c:if test="${not empty modifyQnaResult }">
 		<script>
-			/* var modifyQnaResult = "문의가 수정 되었습니다." */
-			alert('${modifyQnaResult}');
+			var modifyQnaResult = "문의가 수정 되었습니다."
+			alert(modifyQnaResult);
+			opener.location.href = 'product.do?method=detailProduct';
+			window.close();
+		</script>
+	</c:if>
+	<c:if test="${not empty deleteQnaResult }">
+	<script>
+			var deleteQnaResult = "문의가 삭제 되었습니다."
+			alert(deleteQnaResult);
 			opener.location.href = 'product.do?method=detailProduct';
 			window.close();
 		</script>
@@ -126,7 +134,8 @@ margin-bottom: 20px;
 			</div>
 			<div class="question_content_footer">
 					<input type="submit" class="btn2" value="확인" style="width: 100px;"> 
-					<input type="button" class="btn1" value="취소" style="width: 100px;" onclick="reset()">
+					<input type="button" class="btn1" value="삭제" style="width: 100px;" 
+								onclick="location.href='${conPath}/product_qna.do?method=deleteQna&pqcode=${modifyQnaForm.pqcode }'">
 			</div>
 		</form>
 	</div>

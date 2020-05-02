@@ -68,7 +68,7 @@
 	<hr width="500" color="#3a5485">
 	<h2>상품등록</h2>
 		<hr width="500" color="#3a5485">
-		<input type="hidden" name="mid" value="aaa">
+		<input type="text" name="mid" value="${market.mid }">
 		<input type="hidden" name="typecode" value="1-1">
 	<table>
 		<tr><th>상품명 : </th><td colspan="3"><input type="text" name="ptitle" required="required"></td></tr>
