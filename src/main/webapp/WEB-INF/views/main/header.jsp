@@ -68,7 +68,8 @@ function logout() {
 		</c:if>
 		</div>
 		<div class="logo">
-			<a href="main.do"><input type="image" name="logo" src="${conPath }/img/LOGO.png" width="100"></a>
+			<%-- <a href="main.do"><input type="image" name="logo" src="${conPath }/img/LOGO.png" width="100"></a> --%>
+			<a href="main.do"><input type="image" name="logo" src="${conPath }/img/SP-LOGO.png" width="100"></a>
 			<div class="search">
 				<select name="option">
 					<option>전체</option>

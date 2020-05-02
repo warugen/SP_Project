@@ -119,7 +119,7 @@ table {
 				</td>
 				<td class="center">
 					<c:if test="${not empty qna.cid }">
-					${qna.cid }
+					${qna.cname }
 					</c:if>
 					<c:if test="${not empty qna.aid }">
 					관리자

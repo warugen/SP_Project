@@ -78,7 +78,7 @@ table {
 				</td>
 				<td class="center">
 					<c:if test="${not empty qna.mid }">
-					${qna.mid }
+					${qna.mname }
 					</c:if>
 					<c:if test="${not empty qna.aid }">
 					관리자

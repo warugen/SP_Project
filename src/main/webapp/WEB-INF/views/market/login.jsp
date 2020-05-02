@@ -24,6 +24,11 @@ h2{
 		alert('${joinResult}');
 		</script>
 	</c:if>
+	<c:if test="${not empty errMsg }">
+		<script>
+			alert('${errMsg}');
+		</script>
+	</c:if>
 	
 	<div class="contaner">
 		<div class="login_content">
@@ -39,10 +44,10 @@ h2{
 	<input type="hidden" name="snsemail"  value="">
 
 	<div class="group">
-	<c:if test="${not empty market }">
-		<input type="text" name="id" value="${market.mid }" ><span class="highlight"></span><span class="bar"></span>
+	<c:if test="${not empty mid }">
+		<input type="text" name="id" value="${mid }" class="used" ><span class="highlight"></span><span class="bar"></span>
 	</c:if>
-	<c:if test="${empty market }">
+	<c:if test="${empty mid }">
 		<input type="text" name="id"><span class="highlight"></span><span class="bar"></span>
 	</c:if>
 	  <label>아이디</label>

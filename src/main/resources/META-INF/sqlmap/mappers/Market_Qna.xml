@@ -14,6 +14,7 @@
 		<result property="mqhit"			column="mqhit"/>
 		<result property="mid"				column="mid"/>
 		<result property="aid"				column="aid"/>
+		<result property="mname"				column="mname"/>
 	</resultMap>
 	
 	<!-- 글 전체 갯수 가져오기 -->
@@ -22,15 +23,25 @@
 	</select>
 	
 	<!-- 글 목록 가져오기 (startrow, endrow) -->
-	<select id="marketQnaList" parameterType="Market_qna" resultMap="Market_qna_Result" >
+<!-- 	<select id="marketQnaList" parameterType="Market_qna" resultMap="Market_qna_Result" >
 		SELECT * FROM (SELECT ROWNUM RN, A.* 
     		FROM (SELECT * FROM MARKET_QNA ORDER BY MQGROUP DESC, MQSTEP) A)
+		WHERE RN BETWEEN #{startrow} AND #{endrow}
+	</select> -->
+	<select id="marketQnaList" parameterType="Market_qna" resultMap="Market_qna_Result" >
+		SELECT * FROM (SELECT ROWNUM RN, A.* 
+    		FROM (SELECT Q.*, M.MNAME FROM MARKET_QNA Q 
+    				LEFT OUTER JOIN MARKET M ON ( Q.MID = M.MID) 
+    			ORDER BY MQGROUP DESC, MQSTEP) A)
 		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
 	
 	<!-- 상세글 보기 (cqcode로 dto 가져오기) -->
-	<select id="getMarketQnaDetail" parameterType="String" resultType="Market_qna">
+	<!-- <select id="getMarketQnaDetail" parameterType="String" resultType="Market_qna">
 		SELECT * FROM MARKET_QNA WHERE MQCODE =  #{mqcode}
+	</select> -->
+	<select id="getMarketQnaDetail" parameterType="String" resultType="Market_qna">
+		SELECT Q.*, M.MNAME FROM MARKET_QNA Q LEFT OUTER JOIN MARKET M ON ( Q.MID = M.MID) WHERE MQCODE =  #{mqcode}
 	</select>
 	
 	<!-- 원글 쓰기 -->

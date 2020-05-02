@@ -51,11 +51,11 @@ public class LoginController {
 				session.setAttribute("aid", admin.getAid());
 				model.addAttribute("admin", admin);
 				model.addAttribute("result", "관리자 로그인 성공");
-				System.out.println("로그인 성공");
+				System.out.println("관리자 로그인 성공");
 			} else {
 				// 비밀번호 불일치
 				model.addAttribute("errMsg", "비밀번호를 확인해주세요");
-				System.out.println("로그인 실패");
+				System.out.println("관리자 로그인 실패");
 			}
 			
 		} else {
@@ -116,13 +116,16 @@ public class LoginController {
 				} else {
 					// 비밀번호 불일치
 					model.addAttribute("errMsg", "비밀번호를 확인해주세요");
+					model.addAttribute("cid", cid);
 					System.out.println("로그인 실패");
+					return "forward:login.do?method=memberLogin";
 				}
 				
 			} else {
 				// 아이디 불일치
 				model.addAttribute("errMsg", "아이디를 확인해주세요");
 				System.out.println("로그인 실패 아이디부터 없음");
+				return "forward:login.do?method=memberLogin";
 			}
 		}
 				

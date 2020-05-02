@@ -299,18 +299,7 @@ border: 1px solid #cccccc;
 					<tr>
 						<th>쿠폰명</th>
 						<th>혜택</th>
-						
 					</tr>
-					<c:if test="${not empty couponList }">
-						<script>
-						console.log('not empty!!');
-						</script>
-					</c:if>
-					<c:if test="${empty couponList }">
-						<script>
-						console.log('empty!!');
-						</script>
-					</c:if>
 					<c:forEach var="list" items="${couponList }">
 					<script>
 					console.log(${list.cuname});
@@ -318,14 +307,9 @@ border: 1px solid #cccccc;
 						<tr>
 						<td>${list.cuname }</td>
 						<td>${list.cusale }% 할인</td>
-						
 						</tr>
 					</c:forEach>
-					<!-- <tr>
-						<td>신규회원가입 축하 10% 쿠폰</td>
-						<td>10%상품할인</td>
-						<td>2020-04-29</td>
-					</tr> -->
+
 				</table>
 			</div>
 		</div>

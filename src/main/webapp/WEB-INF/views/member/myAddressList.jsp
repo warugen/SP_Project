@@ -84,6 +84,7 @@ display: block;
 }
 #content #myaddresslist table{
 border-collapse: collapse;
+margin: 0 auto;
 }
 #content #myaddresslist .fieldname{
 color: #676767;
@@ -206,7 +207,7 @@ padding-top: 10px;
 					</li>
 					<li class="menu2">
 						<a href="">정보수정</a>
-					<li class="menu3"><a href="${conPath }/myCoupon.do">쿠폰</a></li>
+					<li class="menu3"><a href="${conPath }/coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a></li>
 					<li class="menu4">
 						<a href="${conPath }/myAddressList.do">주소지 설정</a>
 					</li>
@@ -219,10 +220,12 @@ padding-top: 10px;
 		<div id="myaddresslist">
 			<table>
 				<tr class="fieldname">
-					<th>배송지명</th><th>이름</th><th>주소</th><th>연락처</th><th>선택</th>
+					<th>선택</th><th>배송지명</th><th>주소</th>
 				</tr>
 				<tr class="fieldvalue">
-					<td>(주)호성테크닉스</td><td>김호성</td><td>서울시 종로구 수표로 256-3 호성빌딩 4층</td><td>032-123-4567</td><td>?????</td>
+					<td><input type="checkbox" name="cartno" value="" id="" class="check" checked="checked"></td>
+					<td>(주)호성테크닉스</td>
+					<td>서울시 종로구 수표로 256-3 호성빌딩 4층</td>
 				</tr>
 			</table>
 			<div class="btnwrite">
