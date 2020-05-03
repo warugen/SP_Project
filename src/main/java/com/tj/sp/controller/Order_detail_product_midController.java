@@ -41,8 +41,8 @@ public class Order_detail_product_midController {
 	}
 	//구매 확정
 	@RequestMapping(params="method=updateSp_order", method=RequestMethod.GET)
-	public String updateSp_order(Model model, String ocode, String cid) {
+	public String updateSp_order(Model model, String ocode, String cid, String pagenum) {
 		sp_orderService.updateSp_order(ocode);
-		return "redirect: Order_detail_product.do?method=listOrder_detailByCid&cid="+cid;
+		return "redirect: Order_detail_product.do?method=listOrder_detailByCid&cid="+cid+"&pagenum="+pagenum;
 	}
 }

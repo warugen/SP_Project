@@ -222,7 +222,7 @@ font-weight: 500;
 			<div id="mainmenu">
 				<ul class="menu_list">
 					<li class="menu1">
-						<a href="${conPath }/myPage.do">전체 주문 내역</a>
+						<a href="Order_detail_product.do?method=listOrder_detailByCid&cid=${member.cid }">전체 주문 내역</a>
 					</li>
 					<li class="menu2">
 						<a href="">정보수정</a>
@@ -263,6 +263,7 @@ font-weight: 500;
 							<input type="hidden" name="method" value="updateSp_order">
 							<input type="hidden" name="ocode" value="${order.ocode }">
 							<input type="hidden" name="cid" value="${member.cid }">
+							<input type="hidden" name="pagenum" value="${paging.currentpage }">
 							<c:if test="${order.ostatus != '구매확정'}">
 								<input type="submit" value="구매확정">
 							</c:if>

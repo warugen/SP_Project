@@ -202,11 +202,11 @@ padding-top: 10px;
 			<div id="mainmenu">
 				<ul class="menu_list">
 					<li class="menu1">
-						<a href="${conPath }/myPage.do">전체 주문 내역</a>
+						<a href="Order_detail_product.do?method=listOrder_detailByCid&cid=${member.cid }">전체 주문 내역</a>
 					</li>
 					<li class="menu2">
 						<a href="">정보수정</a>
-					<li class="menu3"><a href="${conPath }/myCoupon.do">쿠폰</a></li>
+					<li class="menu3"><a href="coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a></li>
 					<li class="menu4">
 						<a href="${conPath }/myAddressList.do">주소지 설정</a>
 					</li>
