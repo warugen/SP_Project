@@ -37,4 +37,14 @@ public class AddrlistDaoImpl implements AddrlistDao {
 		return sessionTemplate.selectOne("getFirstAddrCode");
 	}
 
+	@Override
+	public int cntAddrlist(String cid) {
+		return sessionTemplate.selectOne("cntAddrlist", cid);
+	}
+
+	@Override
+	public Addrlist getAddrcode(String addrcode) {
+		return sessionTemplate.selectOne("getAddrcode",addrcode);
+	}
+
 }

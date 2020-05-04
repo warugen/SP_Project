@@ -29,7 +29,7 @@
 	<table>
 		<tr><th>작성자 : </th><td colspan="3">
 		<c:if test="${not empty detail.mid }">
-			${detail.mid }						
+			${detail.mname }						
 		</c:if>
 		<c:if test="${not empty detail.aid }">
 			관리자						
@@ -50,7 +50,7 @@
 		 	</td>
 		</tr>
 		<tr><td colspan="4">
-			<c:if test="${detail.mid eq market.mid || detail.aid eq admin.aId }">
+			<c:if test="${detail.mid eq market.mid || detail.aid eq admin.aid }">
 				<button onclick="location.href='${conPath}/marketQna.do?method=modifyForm&pageNum=${param.pageNum }&mqcode=${detail.mqcode}'" class="btn1">수정하기</button>
 				<button onclick="location.href='${conPath}/marketQna.do?method=delete&pageNum=${param.pageNum }&mqcode=${detail.mqcode}'" class="btn2">삭제하기</button>			
 			</c:if>

@@ -13,6 +13,7 @@ public class Market_qna {
 	private int    mqhit	 ;         
 	private String mid       ;         
 	private String aid       ;
+	private String mname     ;
 	private int    startrow	 ;
 	private int    endrow	 ;
 	private String schitem	 ;
@@ -102,14 +103,24 @@ public class Market_qna {
 	public void setSchword(String schword) {
 		this.schword = schword;
 	}
+	
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
 	@Override
 	public String toString() {
 		return "Market_qna [mqcode=" + mqcode + ", mqtitle=" + mqtitle + ", mqcontent=" + mqcontent + ", mqrdate="
 				+ mqrdate + ", mqgroup=" + mqgroup + ", mqstep=" + mqstep + ", mqindent=" + mqindent + ", mqhit="
-				+ mqhit + ", mid=" + mid + ", aid=" + aid + ", startrow=" + startrow + ", endrow=" + endrow
-				+ ", schitem=" + schitem + ", schword=" + schword + "]";
+				+ mqhit + ", mid=" + mid + ", aid=" + aid + ", mname=" + mname + ", startrow=" + startrow + ", endrow="
+				+ endrow + ", schitem=" + schitem + ", schword=" + schword + ", getMqcode()=" + getMqcode()
+				+ ", getMqtitle()=" + getMqtitle() + ", getMqcontent()=" + getMqcontent() + ", getMqrdate()="
+				+ getMqrdate() + ", getMqgroup()=" + getMqgroup() + ", getMqstep()=" + getMqstep() + ", getMqindent()="
+				+ getMqindent() + ", getMqhit()=" + getMqhit() + ", getMid()=" + getMid() + ", getAid()=" + getAid()
+				+ ", getStartrow()=" + getStartrow() + ", getEndrow()=" + getEndrow() + ", getSchitem()=" + getSchitem()
+				+ ", getSchword()=" + getSchword() + ", getMname()=" + getMname() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-	
-	
-
 }

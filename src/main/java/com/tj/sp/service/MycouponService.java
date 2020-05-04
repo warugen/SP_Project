@@ -9,4 +9,5 @@ public interface MycouponService {
 	public Mycoupon getMycoupon(String chnum);
 	public int useMycoupon(String[] chnum);
 	public int givecoupon(Mycoupon mycoupon, String gcode);
+	public int countCoupon(String cid);
 }

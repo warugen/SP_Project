@@ -51,4 +51,9 @@ public class CartDaoImpl implements CartDao {
 	public List<Cart> getArrayCartno(int num) {
 		return sessionTemplate.selectList("getArrayCartno", num);
 	}
+
+	@Override
+	public int numberCart(String cid) {
+		return sessionTemplate.selectOne("numberCart", cid);
+	}
 }

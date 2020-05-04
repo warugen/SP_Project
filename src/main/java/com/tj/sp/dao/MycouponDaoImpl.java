@@ -30,5 +30,10 @@ public class MycouponDaoImpl implements MycouponDao {
 	public int givecoupon(Mycoupon mycoupon) {
 		return sessionTemplate.insert("givecoupon", mycoupon);
 	}
+
+	@Override
+	public int countCoupon(String cid) {
+		return sessionTemplate.selectOne("countCoupon", cid);
+	}
 	
 }

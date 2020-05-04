@@ -15,6 +15,7 @@
 <link href="${conPath }/css/cart/cart.css" rel="stylesheet">
 </head>
 <body>
+<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<div id="cart_head">
 			<div id="cart_head_left">
@@ -31,6 +32,7 @@
 		<hr>
 		<form action="cart.do">
 			<input type="hidden" name="method" value="orderView">
+			<input type="hidden" name="cid" value="${member.cid }">
 			<table>
 				<tr>
 					<th>
@@ -72,8 +74,8 @@
 							<fmt:formatNumber value="3000" groupingUsed="true"/>원
 						</td>
 						<td>
-							<a href="cart.do?method=orderView&cartno=${cart.cartno }">주문하기</a>
-							<a href="cart.do?method=deleteCart&cartno=${cart.cartno }" onclick="return confirm('선택한 상품을 삭제 하시겠습니까?');">삭제하기</a>
+							<a href="cart.do?method=orderView&cartno=${cart.cartno }&cid=${member.cid}">주문하기</a>
+							<a href="cart.do?method=deleteCart&cartno=${cart.cartno }&cid=${member.cid}" onclick="return confirm('선택한 상품을 삭제 하시겠습니까?');">삭제하기</a>
 						</td>
 					</tr>
 					<tr class="price">
@@ -90,7 +92,8 @@
 				총 상품가격 <b id="total_products"></b>원 + 총 배송비 <b id="shiping"></b>원 = 총 주문금액 <b id="result"></b>원
 			</div>
 			<div id="btns_order">
-				<button type="button" class="btn2" onclick=''>계속 쇼핑하기</button><input type="submit" value="주문하기" class="btn1">
+				<button type="button" class="btn2" onclick="location.href='main.do'">계속 쇼핑하기</button>
+				<input type="submit" value="주문하기" class="btn1">
 			</div>
 		</form>
 	</div>

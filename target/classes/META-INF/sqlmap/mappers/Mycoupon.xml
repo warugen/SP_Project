@@ -35,6 +35,9 @@
 		INSERT INTO COUPON_HOLD VALUES (COUPON_HOLD_SEQ.NEXTVAL, #{cuid}, #{cid})
 	</insert>
 	
+	<select id="countCoupon" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM COUPON_HOLD WHERE CID=#{cid}
+	</select>
 </mapper>
 
 

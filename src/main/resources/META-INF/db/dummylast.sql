@@ -23,15 +23,15 @@ INSERT INTO MARKET VALUES('aaa','111','fs마켓','02-123-4567','01321','서울�
 INSERT INTO MARKET VALUES('bbb','111','푸드몰','031-135-7913','10910','경기도 파주시 상지석동','551-154');
 INSERT INTO MARKET VALUES('ccc','111','디지마켓','02-112-3581','06352','서울 강남구 광평로39길','93');
 INSERT INTO MARKET VALUES('ddd','111','파로몰','031-050-0524','17092','경기 용인시 처인구 134','가구빌딩 1102');
-
-INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '봄신상/블라우스/44~110/빅사이즈/셔츠/프릴', '봄신상/블라우스/44~110/빅사이즈/셔츠/프릴', 'woman1.jpg',null,null, 'aaa');
-INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '봄/여름/여성원피스/롱/빅사이즈원피스/빅사이즈여성의류/쉬폰/임부복/홈웨어/통조', '봄/여름/여성원피스/롱/빅사이즈원피스/빅사이즈여성의류/쉬폰/임부복/홈웨어/통조', 'woman2.jpg','woman2-2.jpg','woman2-3.jpg', 'aaa');
-INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '캐주얼 스판 남성정장수프/넥타이증정/양복/하객정장', '캐주얼 스판 남성정장수프/넥타이증정/양복/하객정장', 'man1.jpg',null,null, 'aaa');
-INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '지오지아 外 인기 넥타이 50종 모음전', '지오지아 外 인기 넥타이 50종 모음전', 'man2.jpg',null,null, 'aaa');
-INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '아동복BEST/봄신상/아동복/맨투맨/상하복/데님/세트/주니어/유아동복', '아동복BEST/봄신상/아동복/맨투맨/상하복/데님/세트/주니어/유아동복', 'kid1.jpg',null,null, 'aaa');
-INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '초등학생/주니어 여름 스타일제안 반팔티/반바지/상하복', '초등학생/주니어 여름 스타일제안 반팔티/반바지/상하복', 'kid2.jpg',null,null, 'aaa');
-INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '균일가 10켤레 남자 여자 발목양말', '균일가 10켤레 남자 여자 발목양말', 'etc1.jpg',null,null, 'aaa');
-INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '드롭귀걸이/링/실버/코인목걸이/은팔찌', '드롭귀걸이/링/실버/코인목걸이/은팔찌', 'etc2.jpg','etc2-2.jpg',null, 'aaa');
+select * from product;
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '봄신상/블라우스/44~110/빅사이즈/셔츠/프릴', '<img src="product_img/woman1con.jpg">', 'woman1.jpg',null,null, 'aaa');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '봄/여름/여성원피스/롱/빅사이즈원피스/빅사이즈여성의류/쉬폰/임부복/홈웨어/통조', '<img src="product_img/woman2con.jpg">', 'woman2.jpg','woman2-2.jpg','woman2-3.jpg', 'aaa');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '캐주얼 스판 남성정장수프/넥타이증정/양복/하객정장', '<img src="product_img/man1con.jpg">', 'man1.jpg',null,null, 'aaa');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '지오지아 外 인기 넥타이 50종 모음전', '<img src="product_img/man2con.jpg">', 'man2.jpg',null,null, 'aaa');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '아동복BEST/봄신상/아동복/맨투맨/상하복/데님/세트/주니어/유아동복', '<img src="product_img/kid1con.jpg">', 'kid1.jpg',null,null, 'aaa');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '초등학생/주니어 여름 스타일제안 반팔티/반바지/상하복', '<img src="product_img/kid2con.jpg">', 'kid2.jpg',null,null, 'aaa');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '균일가 10켤레 남자 여자 발목양말', '<img src="product_img/etc1con.jpg">', 'etc1.jpg',null,null, 'aaa');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '드롭귀걸이/링/실버/코인목걸이/은팔찌', '<img src="product_img/etc2con.jpg">', 'etc2.jpg','etc2-2.jpg',null, 'aaa');
 
 INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'셔츠셔츠',3000,15500,555,'1-1',1);
 INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'블라우스',5000,20600,555,'1-1',1);
@@ -60,7 +60,54 @@ INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'심플 골드볼 �
 INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'심플 큐빅 목걸이',8000,16900,400,'1-4',8);
 INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'심플 은팔찌',15000,26900,400,'1-4',8);
 
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '제스프리 골드키위 특대과 24개입 뉴질랜드산', '<img src="product_img/농1-1.jpg">', '농1.jpg',null,null, 'bbb');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '썬키스트 고당도 오렌지 20과', '<img src="product_img/농2-1.jpg">', '농2.jpg',null,null, 'bbb');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '스타부르 노르웨이 명품 캔 고등어 통조림 오리지널 바질 살사 인생 고등어통조림', '<img src="product_img/수1-1.jpg">', '수1.jpg',null,null, 'bbb');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '모듬회 (참숭어, 광어, 우럭) 1.5kg, 모둠회, 숙성회', '<img src="product_img/수2-1.jpg">', '수2.jpg',null,null, 'bbb');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '딥치즈 폭립 바베큐맛 세트', '<img src="product_img/축1-1.jpg">', '축1.jpg',null,null, 'bbb');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '소고기 소갈비살 차돌박이 수입갈비살 살치살', '<img src="product_img/축2-1.jpg">', '축2.jpg','축2.1.jpg','축2.2.jpg', 'bbb');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '어묵장인 박경도의 어묵탕 X5봉/소스', '<img src="product_img/가1-1.jpg">', '가1.jpg',null,null, 'bbb');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '맛있는모밀소바/시원한육수/메밀소바500g+소스25gx3봉', '<img src="product_img/가2-1.jpg">', '가2.jpg',null,null, 'bbb');
 
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'특대과 24개입',20000,34500,555,'2-1',9);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'썬키스트 고당도 오렌지 20과',8000,12900,555,'2-1',10);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'썬키스트 고당도 오렌지 40과',18000,23900,555,'2-1',10);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'캔고등어 오리지널 110G 5개',7000,9900,555,'2-2',11);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'캔고등어 오리지널 170G 3개',7000,9900,555,'2-2',11);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'캔고등어 오리지널 110G 9개',14000,16900,555,'2-2',11);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'숙성 모듬회 1.5kg',30000,44000,555,'2-2',12);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'딥치즈 폭립 바베큐맛 세트',10000,12900,555,'2-3',13);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'블랙앵거스 냉장 부채살 400g',9000,11900,555,'2-3',14);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'소고기 앞다리살(불고기용) 500g',7000,8900,555,'2-3',14);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'블랙앵거스 냉장 소갈비살 350g',12000,14500,555,'2-3',14);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'상품 01. 어묵장인 박경도의 어묵탕 X5봉/소스/2세트시 당면만두',8000,13950,555,'2-4',15);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'상품 02. 온가족 푸짐하게 감자탕 10인분/2세트시 당면만두 증정',12000,24570,555,'2-4',15);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'모밀소바3인분',3000,5900,555,'2-4',16);
+
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, 'MAI TV MAI-550U 55인치 UHD TV/벽걸이TV/55인치TV/TV/티비/삼성패널', '<img src="product_img/티1-1.jpg">', '티1.jpg',null,null, 'ccc');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '[폴라로이드] 32인치 LEDTV POL32H 무결점 에너지효율 1등급', '<img src="product_img/티2-1.jpg">', '티2.jpg',null,null, 'ccc');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, 'DX5727SW/윈도우10/i7 9700F/RTX2070 SUPER/16G/500G/게이밍/데스크탑/조립/PC/본체', '<img src="product_img/컴1-1.jpg">', '컴1.jpg',null,null, 'ccc');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '가이드컴 i7R208S 조립컴퓨터 i7 9700F/RTX2080S/16G/삼성 SSD 250G/윈도우포함', '<img src="product_img/컴2-1.jpg">', '컴2.jpg',null,null, 'ccc');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, 'freece 프리쎄 10L 냉온장고 / 화장품냉장고 / 차량용 냉온장고 / 저소음 CWP-10L', '<img src="product_img/냉1-1.jpg">', '냉1.jpg',null,null, 'ccc');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '편의점 아이스크림냉동고 KIS-SD10F 업소용 제과제빵 과일보관', '<img src="product_img/냉2-1.jpg">', '냉2.jpg','축2.1.jpg','축2.2.jpg', 'ccc');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '애플 아이폰 SE 2세대 64GB ', '<img src="product_img/휴1-1.jpg">', '휴1.jpg',null,null, 'ccc');
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, '삼성전자 갤럭시 S20 128GB', '<img src="product_img/휴2-1.jpg">', '휴2.jpg',null,null, 'ccc');
+
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'당일택배발송(자가설치)',200000,305000,555,'3-1',17);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'당일택배발송(자가설치)',200000,305000,555,'3-1',17);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'스탠드방문설치(브라켓제외)',30000,40000,555,'3-1',18);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'벽걸이방문설치(브라켓제외)',50000,70000,555,'3-1',18);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'DLE21 블랙(무선마우스 랜덤발송)',1200000,1709000,555,'3-2',19);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'DLE21 화이트(무선마우스 랜덤발송)',1200000,1709000,555,'3-2',19);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'가이드컴 i7R208S 조립컴퓨터 i7 9700F/RTX2080S/16G/삼성 SSD 250G/윈도우포함',1500000,2033000,555,'3-2',20);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'골드 / 10L',120000,145000,555,'3-3',21);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'화이트 / 10L',120000,145000,555,'3-3',21);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'블랙 / 10L',120000,145000,555,'3-3',21);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'편의점 아이스크림냉동고 KIS-SD10F 업소용 제과제빵 과일보관',190000,236000,555,'3-3',22);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'애플 아이폰 SE 2세대 64GB',450000,539000,555,'3-4',23);
+INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.nextval,'삼성전자 갤럭시 S20 128GB',950000,1248500,555,'3-4',24);
+
+INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.nextval, 'MAI TV MAI-550U 55인치 UHD TV/벽걸이TV/55인치TV/TV/티비/삼성패널', '<img src="product_img/티1-1.jpg">', '티1.jpg',null,null, 'ddd');
 
 
 
@@ -115,9 +162,9 @@ INSERT INTO MARKET_QNA VALUES(MARKET_QNA_SEQ.nextval,'질문','냉무',SYSDATE,1
 INSERT INTO STORE_QNA VALUES(STORE_QNA_SEQ.nextval,'질문','냉무',SYSDATE,1,1,0,0,			'aaa',NULL);
 INSERT INTO CUSTOMER_QNA VALUES(CUSTOMER_QNA_SEQ.nextval,'질문','냉무',SYSDATE,1,1,0,0,	'aaaa',NULL);
 INSERT INTO NOTICE VALUES(NOTICE_SEQ.nextval,'질문','냉무',SYSDATE,1,1,0,0,				'aaaa',NULL);
-INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'aaaa');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'bbbb');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'cccc');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'dddd');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'eeee');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'ffff');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'gggg');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'hhhh');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'iiii');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'jjjj');
-INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'aaaa');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'bbbb');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'cccc');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'dddd');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'eeee');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'ffff');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'gggg');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'hhhh');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'iiii');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'jjjj');
-INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'aaaa');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'bbbb');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'cccc');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'dddd');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'eeee');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'ffff');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'gggg');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'hhhh');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'iiii');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'jjjj');
+INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'aaaa');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'aaaa');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'cccc');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'dddd');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'eeee');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'ffff');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'gggg');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'hhhh');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'iiii');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,1,'jjjj');
+INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'aaaa');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'aaaa');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'cccc');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'dddd');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'eeee');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'ffff');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'gggg');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'hhhh');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'iiii');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,2,'jjjj');
+INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'aaaa');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'aaaa');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'cccc');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'dddd');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'eeee');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'ffff');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'gggg');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'hhhh');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'iiii');INSERT INTO COUPON_HOLD VALUES(COUPON_HOLD_SEQ.nextval,3,'jjjj');
 INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval,1,'11111','서울시','햇님아파트 101동','aaaa');
 INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval,1,'11111','서울시','햇님아파트 102동','bbbb');
 INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval,1,'11111','서울시','햇님아파트 103동','cccc');

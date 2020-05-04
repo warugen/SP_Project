@@ -25,7 +25,9 @@
    border: 2px solid #3a5485;
    border-radius: 10px;
 }
-
+#iobCart{
+	padding: 5px;
+}
 #btnA {
    background: #3a5485;
    color: #fff;
@@ -288,16 +290,16 @@ border: 1px solid #cccccc;
 					<hr>
 					<br>
 					<div class="itemcase_basic">
-						<h1>[소다스쿨] 베이킹소다 대용량 3kg 2개</h1>
+						<h1>${detail.ptitle }</h1>
 						<p>
-							<span> <span>20,000원</span>
+							<span> <span></span>
 							</span><br>
 						</p>
 					</div>
 				</div>
 				<br>
 				<div id="product_datainfo">
-					<div id="product_nav">무료배송</div>
+					<div id="product_nav">배송비 3000원</div>
 					<div id="product_certification">
 						<span>인증정보</span> <br> <br> <span>본 상품은 국내배송만
 							가능합니다.</span>
@@ -385,8 +387,12 @@ border: 1px solid #cccccc;
 											비밀글 입니다.
 									</c:if>
 									<span style="float: right;">
-										<button id="btnA" onclick="replyQnaForm('${pq.pqcode }')">답변하기</button>
-										<button id="btnQ" onclick="modifyQnaForm('${pq.pqcode }')">수정</button>
+										<c:if test="${market.mid eq detail.mid }">
+											<button id="btnA" onclick="replyQnaForm('${pq.pqcode }')">답변하기</button>
+										</c:if>
+										<c:if test="${member.cid eq pq.cid }">
+											<button id="btnQ" onclick="modifyQnaForm('${pq.pqcode }')">수정</button>
+										</c:if>
 									</span>
 								</div> 
 								<c:if test="${pq.pqanswer != null }">
@@ -408,7 +414,6 @@ border: 1px solid #cccccc;
 						<c:set var="i" value="${i+1 }"/>
 					</c:forEach>
 				</table>
-
 				<div class="paging">
 					<c:if test="${qna_paging.startpage>qna_paging.blocksize }">
 						[<a href="${conPath }/product.do?method=detailProduct

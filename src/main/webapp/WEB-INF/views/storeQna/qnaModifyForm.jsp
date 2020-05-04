@@ -34,13 +34,12 @@
 		<tr><th>작성자 : </th><td colspan="3">
 		<c:if test="${not empty market }">
 			<input type="hidden" name="mid" readonly="readonly" value="${market.mid }">
-			<input type="text" readonly="readonly" value="${market.mid }">
+			<input type="text" readonly="readonly" value="${market.mname }">
 		</c:if>
 		<c:if test="${not empty member }">
 			<input type="hidden" name="cid" readonly="readonly" value="${member.cid }">
-			<input type="text" readonly="readonly" value="${member.cid }">
+			<input type="text" readonly="readonly" value="${member.cname }">
 		</c:if>
-		<input type="text" name="mid" readonly="readonly" value="aaa">
 		</td></tr>
 		<tr>
 			<th>제목</th>

@@ -13,6 +13,7 @@ public interface CartDao {
 	public int updateCart(Cart cart);
 	public int buyCart(String[] cartno);
 	public List<Cart> getArrayCartno(int num);
+	public int numberCart(String cid);
 	
 	public List<Cart_Product_option> listCartByCartno(List<String> cartnos);
 	public Cart_Product_option CartPrice(String cartno);

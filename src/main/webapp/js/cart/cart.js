@@ -2,6 +2,7 @@ $(document).ready(function(){
 	var total_products = 0;
 	var cartno, cartcount, poprice;
 	var allcheck = 0;
+	var cid = $('input[name=cid]').val();
 	$('.check').each(function(){
 		allcheck++;
 	});
@@ -10,7 +11,7 @@ $(document).ready(function(){
 	//전체선택 체크용 함수
 	$('.checkall').change(function(){
 		if($(this).is(':checked')){
-			document.location.href='cart.do?method=cart'
+			document.location.href='cart.do?method=cart&cid='+cid
 		}else{
 			$('.check').each(function(){
 				this.checked = false;

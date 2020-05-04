@@ -14,6 +14,7 @@
 		<result property="cqhit"			column="cqhit"/>
 		<result property="cid"				column="cid"/>
 		<result property="aid"				column="aid"/>
+		<result property="cname"			column="cname"/>
 	</resultMap>
 	
 	<!-- 전체 글 갯수 가져오기 -->
@@ -22,15 +23,25 @@
 	</select>
 	
 	<!-- 글 목록 가져오기 (startrow, endrow) -->
-	<select id="customerQnaList" parameterType="Customer_qna" resultMap="Customer_qna_Result" >
+	<!-- <select id="customerQnaList" parameterType="Customer_qna" resultMap="Customer_qna_Result" >
 		SELECT * FROM (SELECT ROWNUM RN, A.* 
     		FROM (SELECT * FROM CUSTOMER_QNA ORDER BY CQGROUP DESC, CQSTEP) A)
+		WHERE RN BETWEEN #{startrow} AND #{endrow}
+	</select> -->
+	<select id="customerQnaList" parameterType="Customer_qna" resultMap="Customer_qna_Result" >
+		SELECT * FROM (SELECT ROWNUM RN, A.* 
+    		FROM (SELECT Q.*, C.CNAME FROM CUSTOMER_QNA Q 
+    				LEFT OUTER JOIN CUSTOMER C ON ( Q.CID = C.CID) 
+    			ORDER BY CQGROUP DESC, CQSTEP) A)
 		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
 	
 	<!-- 상세글 보기 (cqcode로 dto 가져오기) -->
-	<select id="getCustomerQnaDetail" parameterType="String" resultType="Customer_qna">
+	<!-- <select id="getCustomerQnaDetail" parameterType="String" resultType="Customer_qna">
 		SELECT * FROM CUSTOMER_QNA WHERE CQCODE =  #{cqcode}
+	</select> -->
+	<select id="getCustomerQnaDetail" parameterType="String" resultType="Customer_qna">
+		SELECT Q.*, C.CNAME FROM CUSTOMER_QNA Q LEFT OUTER JOIN CUSTOMER C ON ( Q.CID = C.CID) WHERE CQCODE =  #{cqcode}
 	</select>
 	
 	<!-- 원글 쓰기 -->

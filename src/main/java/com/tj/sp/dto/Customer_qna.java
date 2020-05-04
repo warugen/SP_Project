@@ -13,6 +13,7 @@ public class Customer_qna {
 	private int    cqhit	;
 	private String cid		;
 	private String aid		;
+	private String cname	;
 	private int    startrow	;
 	private int    endrow	;
 	private String schitem	;
@@ -102,14 +103,19 @@ public class Customer_qna {
 	public void setSchword(String schword) {
 		this.schword = schword;
 	}
+	
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
 	@Override
 	public String toString() {
 		return "Customer_qna [cqcode=" + cqcode + ", cqtitle=" + cqtitle + ", cqcontent=" + cqcontent + ", cqrdate="
 				+ cqrdate + ", cqgroup=" + cqgroup + ", cqstep=" + cqstep + ", cqindent=" + cqindent + ", cqhit="
-				+ cqhit + ", cid=" + cid + ", aid=" + aid + ", startrow=" + startrow + ", endrow=" + endrow
-				+ ", schitem=" + schitem + ", schword=" + schword + "]";
+				+ cqhit + ", cid=" + cid + ", aid=" + aid + ", cname=" + cname + ", startrow=" + startrow + ", endrow="
+				+ endrow + ", schitem=" + schitem + ", schword=" + schword + "]";
 	}
-	
-	
-	
+		
 }

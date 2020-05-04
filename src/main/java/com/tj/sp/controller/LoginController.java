@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tj.sp.dao.AdminDao;
+import com.tj.sp.dao.CartDao;
 import com.tj.sp.dao.CustomerDao;
 import com.tj.sp.dto.Admin;
 import com.tj.sp.dto.Customer;
@@ -25,6 +26,9 @@ public class LoginController {
 	
 	@Autowired
 	private AdminDao adminDao;
+	
+	@Autowired
+	private CartDao cartDao;
 	
 	@RequestMapping(params="method=loginForm")
 	public String loginForm() {
@@ -51,11 +55,11 @@ public class LoginController {
 				session.setAttribute("aid", admin.getAid());
 				model.addAttribute("admin", admin);
 				model.addAttribute("result", "관리자 로그인 성공");
-				System.out.println("로그인 성공");
+				System.out.println("관리자 로그인 성공");
 			} else {
 				// 비밀번호 불일치
 				model.addAttribute("errMsg", "비밀번호를 확인해주세요");
-				System.out.println("로그인 실패");
+				System.out.println("관리자 로그인 실패");
 			}
 			
 		} else {
@@ -85,6 +89,8 @@ public class LoginController {
 				// 회원DB에 등록되있으면 회원정보 가져와서 메인화면으로 가기
 				model.addAttribute("member", customerDao.getSnsCustomer(csnsid));
 				session.setAttribute("member", customerDao.getSnsCustomer(csnsid));
+				String cid = customerDao.getSnsCustomer(csnsid).getCid();
+				session.setAttribute("numberCart", cartDao.numberCart(cid));
 				System.out.println("sns 로그인 성공");
 			} else {
 				// 회원DB에 등록 안되있으면 회원가입처리하기
@@ -112,17 +118,21 @@ public class LoginController {
 					session.setAttribute("cid", customer.getCid());
 					model.addAttribute("member", customer);
 					model.addAttribute("result", "로그인 성공");
+					session.setAttribute("numberCart", cartDao.numberCart(cid));
 					System.out.println("로그인 성공");
 				} else {
 					// 비밀번호 불일치
 					model.addAttribute("errMsg", "비밀번호를 확인해주세요");
+					model.addAttribute("cid", cid);
 					System.out.println("로그인 실패");
+					return "forward:login.do?method=memberLogin";
 				}
 				
 			} else {
 				// 아이디 불일치
 				model.addAttribute("errMsg", "아이디를 확인해주세요");
 				System.out.println("로그인 실패 아이디부터 없음");
+				return "forward:login.do?method=memberLogin";
 			}
 		}
 				

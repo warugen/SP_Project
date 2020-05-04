@@ -42,4 +42,16 @@ public class AddrlistServiceImpl implements AddrlistService {
 		return addrlistDao.getFirstAddrCode();
 	}
 
+	@Override
+	public int cntAddrlist(String cid) {
+		// 해당 회원에 등록된 주소록 숫자 가져오기
+		return addrlistDao.cntAddrlist(cid);
+	}
+
+	@Override
+	public Addrlist getAddrcode(String addrcode) {
+		// addrcode로 회원 주소록 가져오기
+		return addrlistDao.getAddrcode(addrcode);
+	}
+
 }

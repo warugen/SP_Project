@@ -3,6 +3,8 @@ package com.tj.sp.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +66,10 @@ public class CartServiceImpl implements CartService {
 			cartno[i] = cart.get(i).getCartno();
 		}
 		return cartno;
+	}
+	@Override
+	public int numberCart(String cid) {
+		return cartDao.numberCart(cid);
 	}
 	
 
