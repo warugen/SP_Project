@@ -15,6 +15,7 @@
 <link href="${conPath }/css/cart/cart.css" rel="stylesheet">
 </head>
 <body>
+<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<div id="cart_head">
 			<div id="cart_head_left">
@@ -91,7 +92,8 @@
 				총 상품가격 <b id="total_products"></b>원 + 총 배송비 <b id="shiping"></b>원 = 총 주문금액 <b id="result"></b>원
 			</div>
 			<div id="btns_order">
-				<button type="button" class="btn2" onclick=''>계속 쇼핑하기</button><input type="submit" value="주문하기" class="btn1">
+				<button type="button" class="btn2" onclick="location.href='main.do'">계속 쇼핑하기</button>
+				<input type="submit" value="주문하기" class="btn1">
 			</div>
 		</form>
 	</div>

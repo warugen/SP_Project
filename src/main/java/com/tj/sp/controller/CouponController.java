@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.tj.sp.dto.Coupon;
 import com.tj.sp.dto.Mycoupon;
 import com.tj.sp.service.CouponService;
+import com.tj.sp.service.Customer_gradeService;
 import com.tj.sp.service.GradeService;
 import com.tj.sp.service.MycouponService;
 
@@ -46,6 +47,7 @@ public class CouponController {
 	@RequestMapping(params="method=myCoupon", method =RequestMethod.GET)
 	public String myCoupon(String cid, Model model) {
 		model.addAttribute("couponList", mycouponService.listMycoupon(cid));
+		model.addAttribute("count", mycouponService.countCoupon(cid));
 		return "member/myCoupon";
 	}
 	

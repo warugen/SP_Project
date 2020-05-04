@@ -45,4 +45,9 @@ public class MycouponServiceImpl implements MycouponService {
 		return result;
 	}
 
+	@Override
+	public int countCoupon(String cid) {
+		return mycoupondao.countCoupon(cid);
+	}
+
 }

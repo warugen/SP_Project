@@ -225,7 +225,7 @@ font-weight: 500;
 						<a href="Order_detail_product.do?method=listOrder_detailByCid&cid=${member.cid }">전체 주문 내역</a>
 					</li>
 					<li class="menu2">
-						<a href="">정보수정</a>
+						<a href="cart.do?method=cart&cid=${member.cid }">장바구니</a>
 					</li>
 					<li class="menu3">
 						<a href="${conPath }/coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a>

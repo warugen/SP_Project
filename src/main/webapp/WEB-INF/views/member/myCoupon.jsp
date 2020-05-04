@@ -253,9 +253,9 @@ border: 1px solid #cccccc;
 			<div id="mainmenu">
 				<ul class="menu_list">
 					<li class="menu1"><a href="Order_detail_product.do?method=listOrder_detailByCid&cid=${member.cid }">전체 주문 내역</a></li>
-					<li class="menu2"><a href="">정보수정</a>
+					<li class="menu2"><a href="cart.do?method=cart&cid=${member.cid }">장바구니</a>
 					<li class="menu3"><a href="coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a></li>
-					<li class="menu4"><a href="${conPath }/myAddressList.do">주소지 설정</a>
+					<li class="menu4"><a href="${conPath }/myAddressList.do?method=myAddress&cid=${member.cid}">주소지 설정</a>
 					</li>
 				</ul>
 			</div>	
@@ -276,7 +276,7 @@ border: 1px solid #cccccc;
 							</span>
 							<span>
 								<em>쿠폰</em>
-								<strong>1</strong>장
+								<strong>${count }</strong>장
 							</span>
 						</li>
 						<li>
@@ -285,7 +285,7 @@ border: 1px solid #cccccc;
 							</span>
 							<span>
 								<em>적립금</em>
-								<strong>0</strong>원
+								<strong>${member.cpoint }</strong>원
 							</span>
 						</li>
 					</ul>

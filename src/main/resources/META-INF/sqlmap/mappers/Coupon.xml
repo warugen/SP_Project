@@ -14,4 +14,5 @@
 	<select id="getListCoupon" resultMap="CouponResult">
 		SELECT * FROM COUPON WHERE CUID!=0
 	</select>
+	
 </mapper>

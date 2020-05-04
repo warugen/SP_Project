@@ -176,7 +176,8 @@
 				</div>
 			</div>
 			<div id="btns_pay">
-				<button type="button" class="btn2">취소하기</button><input type="submit" class="btn1" value="결제하기">	
+				<button type="button" class="btn2" onclick="location.href='main.do'">취소하기</button>
+				<input type="submit" class="btn1" value="결제하기">	
 			</div>
 		</form>
 	</div>
