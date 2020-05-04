@@ -48,7 +48,7 @@ function logout() {
 		</c:if>
 		<c:if test="${not empty member}">
 			<ul>
-				<li><a href="myPage.do">마이페이지</a></li>
+				<li><a href="Order_detail_product.do?method=listOrder_detailByCid&cid=${member.cid }">마이페이지</a></li>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
 				<li><a>${member.cname }님</a></li>
 			</ul>

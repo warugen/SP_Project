@@ -53,18 +53,18 @@
 		</table>
 		<div class="paging">
 			<c:if test="${paging.startpage>paging.blocksize }">
-				[ <a href="${conPath }/Order_detail_product.do?method=listOrder_detailByCid&pagenum=${paging.startpage-1}">이전</a> ]
+				[ <a href="${conPath }/Order_detail_product.do?method=listOrder_detailByCid&pagenum=${paging.startpage-1}&cid=${member.cid}">이전</a> ]
 			</c:if>
 			<c:forEach var="i" begin="${paging.startpage }" end="${paging.endpage }">
 				<c:if test="${paging.currentpage==i }">
 					[ <b> ${i }</b> ]
 				</c:if>
 				<c:if test="${paging.currentpage!=i }">
-					[ <a href="${conPath }/Order_detail_product.do?method=listOrder_detailByCid&pagenum=${i }">${i }</a> ]
+					[ <a href="${conPath }/Order_detail_product.do?method=listOrder_detailByCid&pagenum=${i }&cid=${member.cid}">${i }</a> ]
 				</c:if>
 			</c:forEach>
 			<c:if test="${paging.endpage<paging.pagecnt }">
-				[ <a href="${conPath }/Order_detail_product.do?method=listOrder_detailByCid&pagenum=${paging.endpage+1}">다음</a> ]
+				[ <a href="${conPath }/Order_detail_product.do?method=listOrder_detailByCid&pagenum=${paging.endpage+1}&cid=${member.cid}">다음</a> ]
 			</c:if>
 		</div>
 	</div>

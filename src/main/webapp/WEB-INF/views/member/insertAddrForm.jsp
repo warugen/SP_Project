@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="${conPath }/js/address.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
 <link href="${conPath }/css/style.css" rel="stylesheet">
 <style>
@@ -194,37 +196,20 @@ text-align: center;
 margin: 10px auto;
 padding-top: 10px;
 }
-</style>
-<script>
-$(document).ready(function(){
-	// 기본주소 설정하기
-	$('#defaultSet').click(function() {
-		var addrcode = $('input[name="addrcode"]:checked').val();
-		var cid = $('input[name="cid"]').val();
-		var temp = confirm('기본주소로 설정하시겠습니까?');
-		if(temp){
-			location.href="${conPath }/myAddressList.do?method=defaultAddr&addrcode="+addrcode+"&cid="+cid;
-		}
-	});
-	
-	
-});
-function deleteAddress(addrcode, cid){
-	var selectCode = $('input[name="addrcode"]:checked').val();
-	if(addrcode == selectCode){
-		alert("기본설정주소는 삭제할수 없습니다.");
-	} else {
-		location.href="${conPath }/myAddressList.do?method=deleteAddr&addrcode="+selectCode+"&cid="+cid;
-	}
+form {
+	width: 380px;
+	margin: 4em auto;
+	padding: 3em 2em 2em 2em;
+	background: #fafafa;
+	border: 1px solid #ebebeb;
+	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
 }
-</script>
+table {
+	margin: 0 auto;
+}
+</style>
 </head>
-<body>
-<c:if test="${not empty addrMsg }">
-	<script>
-		alert('${addrMsg }');
-	</script>
-</c:if>
+<body>	
 	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<div id="mypagewrap">
@@ -242,46 +227,36 @@ function deleteAddress(addrcode, cid){
 				</ul>
 			</div>	
 		</div>
-		<div id="addresstitle">
-			<h3>주소설정</h3><h3>현재 ${addrCnt }개 주소목록 등록됨</h3>
-		</div>	
-		<div id="myaddresslist">
-		<form action="${conPath}/myAddressList.do?method=modifyAddrForm" method="post">
-		<input type="hidden" id="cid" name="cid" value="${member.cid }" />
+		<div>
+		<form action="${conPath}/myAddressList.do?method=insertAddr" method="post">
+			<input type="hidden" name="cid" value="${member.cid }" />
+				<h2>회원 주소 입력</h2>
 			<table>
-				<tr class="fieldname">
-					<th>선택</th><th>배송지명</th><th>주소</th>
+				<tr>
+					<td>
+						<input type="text" id="addrname" name="addrname" placeholder="배송지이름">
+					</td>
 				</tr>
-				<c:if test="${empty myAddrList }">
-				<tr class="fieldvalue">
-					<td colspan="3">현재 등록된 주소가 없습니다.</td>
+				<tr>
+					<td>
+						<input type="text" id="sample4_postcode" name="cpost" class="postBox"  placeholder="우편번호">
+						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn1">
+					</td>
 				</tr>
-				</c:if>
-				<c:if test="${not empty myAddrList }">
-					<c:forEach var="list" items="${myAddrList }">
-						<tr class="fieldvalue">
-						<c:if test="${member.addrcode eq list.addrcode }">
-							<td><input type="radio" name="addrcode" value="${list.addrcode }" id="${list.addrcode }" class="check" checked="checked"></td>
-						</c:if>
-						<c:if test="${member.addrcode != list.addrcode }">
-							<td><input type="radio" name="addrcode" value="${list.addrcode }" id="${list.addrcode }" class="check" ></td>
-						</c:if>
-						<td>${list.addrname }</td>
-						<td>${list.caddr1 } ${list.caddr2 } ${list.cpost }</td>
-						<td>
-						<%-- <a href="${conPath }/myAddressList.do?method=deleteAddr&addrcode=${list.addrcode}&cid=${member.cid }" onclick="deleteAddress(${member.addrcode}, ${member.cid });">삭제하기</a> --%>
-						<button type="button" name="button" class="btn2" onclick="deleteAddress('${member.addrcode}', '${member.cid }')">삭제하기</button>
-						</td>
-						</tr>
-					</c:forEach>
-				</c:if>
+				<tr>
+					<td>
+						<input type="text" id="sample4_roadAddress" name="caddr1"  placeholder="도로명주소">
+						<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
+						<span id="guide"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="text" name="caddr2" placeholder="상세주소를 입력하세요"></td>
+				</tr>
 			</table>
 			<div class="btnwrite">
-			<a href="${conPath }/myAddressList.do?method=insertAddrForm" class="btn1">주소 추가하기</a>
-			<input type="submit" value="주소 수정하기" class="btn1" />
-			<%-- <a href="${conPath }/myAddressList.do?method=modifyAddrForm" class="btn1">주소 수정하기</a> --%>
-			<!-- <a type="button" id="defaultSet" class="btn1">기본주소로 설정</a> -->
-			<button type="button" name="defaultSet" id="defaultSet" class="btn1">기본주소로 설정</button>
+			<input type="submit" value="주소 추가" class="btn1" />
+			<a href="${conPath }/myAddressList.do?method=myAddress&cid=${member.cid}" class="btn1">취소</a>
 			</div>
 			</form>
 		</div>

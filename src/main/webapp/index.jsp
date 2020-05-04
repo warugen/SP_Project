@@ -11,7 +11,7 @@
 <link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
-	<%-- <jsp:forward page="main.do"/> --%>
+	<jsp:forward page="main.do"/>
 	<a href="main.do" class="btn2">메인화면</a>
 	<a href="cart.do?method=cart" class="btn1">카트</a>
 	<a href="notice.do?method=noticeList" class="btn2">공지사항</a>

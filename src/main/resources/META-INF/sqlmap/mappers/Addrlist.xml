@@ -17,6 +17,16 @@
 		SELECT * FROM ADDRLIST WHERE CID=#{cid}
 	</select>
 	
+	<!-- addrcode로 주소 가져오기 -->
+	<select id="getAddrcode" parameterType="String" resultMap="AddrlistResult">
+		SELECT * FROM ADDRLIST WHERE ADDRCODE=#{addrcode}
+	</select>
+	
+	<!-- 해당 회원 등록된 주소록 숫자 불러오기 -->
+	<select id="cntAddrlist" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM ADDRLIST WHERE CID=#{cid}
+	</select>
+	
 	<!-- 회원 주소 등록하기 (회원가입시) -->
 	<insert id="firstAddrlist" parameterType="Addrlist">
 		INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval, ADDRLIST_SEQ.CURRVAL, #{cpost}, #{caddr1}, #{caddr2}, #{cid})
@@ -29,7 +39,7 @@
 
 	<!-- 회원 주소 등록하기 (주소 추가 할때) -->
 	<insert id="registAddrlist" parameterType="Addrlist">
-		INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval, ADDRLIST_SEQ.CURRVAL, #{cpost}, #{caddr1}, #{caddr2}, #{cid})
+		INSERT INTO ADDRLIST VALUES(ADDRLIST_SEQ.nextval, #{addrname}, #{cpost}, #{caddr1}, #{caddr2}, #{cid})
 	</insert>
 	
 	<!-- 회원 주소 수정 -->
