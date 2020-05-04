@@ -111,7 +111,6 @@ function logout() {
 		</c:if>
 		</div>
 		<div class="logo">
-			<%-- <a href="main.do"><input type="image" name="logo" src="${conPath }/img/LOGO.png" width="100"></a> --%>
 			<a href="main.do"><input type="image" name="logo" src="${conPath }/img/SP-LOGO.png" width="100"></a>
 			<div class="search">
 				<select name="option">
@@ -121,7 +120,7 @@ function logout() {
 					<option>디지털/가전/컴퓨터</option>
 					<option>가구/인테리어</option>
 				</select>
-				<input type="text" id="search" placeholder="찾고 싶은 상품을 검색하세요">
+				<input type="text" id="search" placeholder="찾고 싶은 상품을 검색하세요" autocomplete="off">
 				<input type="image" name="submit" src="${conPath }/img/loupe.png" alt="검색" width="25" />
 			</div>
 			<c:if test="${not empty member }">
