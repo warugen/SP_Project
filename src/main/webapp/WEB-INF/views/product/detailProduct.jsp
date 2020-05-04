@@ -25,7 +25,9 @@
    border: 2px solid #3a5485;
    border-radius: 10px;
 }
-
+#iobCart{
+	padding: 5px;
+}
 #btnA {
    background: #3a5485;
    color: #fff;
@@ -288,16 +290,16 @@ border: 1px solid #cccccc;
 					<hr>
 					<br>
 					<div class="itemcase_basic">
-						<h1>[소다스쿨] 베이킹소다 대용량 3kg 2개</h1>
+						<h1>${detail.ptitle }</h1>
 						<p>
-							<span> <span>20,000원</span>
+							<span> <span></span>
 							</span><br>
 						</p>
 					</div>
 				</div>
 				<br>
 				<div id="product_datainfo">
-					<div id="product_nav">무료배송</div>
+					<div id="product_nav">배송비 3000원</div>
 					<div id="product_certification">
 						<span>인증정보</span> <br> <br> <span>본 상품은 국내배송만
 							가능합니다.</span>

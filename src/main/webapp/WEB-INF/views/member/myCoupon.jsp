@@ -285,7 +285,7 @@ border: 1px solid #cccccc;
 							</span>
 							<span>
 								<em>적립금</em>
-								<strong>0</strong>원
+								<strong>${member.cpoint }</strong>원
 							</span>
 						</li>
 					</ul>
