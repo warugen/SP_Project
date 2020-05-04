@@ -36,6 +36,10 @@
 		(SELECT CARTNO FROM CART ORDER BY TO_NUMBER(CARTNO) DESC) A) 
 		WHERE RN BETWEEN 1 AND #{result}
 	</select>
+	<!-- 카트 갯수 -->
+	<select id="numberCart" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM CART WHERE CID=#{cid}
+	</select>
 </mapper>
 
 

@@ -35,6 +35,49 @@ function logout() {
     }); */
   }
 </script>
+<style>
+#cartArea{
+	width: 1000px;
+    margin: 0 auto;
+    height: 70px;
+}
+#cartArea > a > img{
+	width: 50px;
+    float: right;
+    position: relative;
+    top: 10px;
+}
+#myorderlist > table > tbody > tr > td:nth-child(5) > form {
+	font-weight: bold;
+    color: #3a5485;
+    margin: 5px 0;
+}
+#myorderlist > table > tbody > tr > td:nth-child(5) > form > input[type=submit]{
+	background: #3a5485;
+    border: 2px solid #3a5485;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+}
+#myorderlist > table > tbody > tr > td:nth-child(5) > form > input[type=submit]:hover{cursor: pointer;}
+#numberCart{
+	position: relative;
+    left: 984px;
+    bottom: 14px;
+    font-size: 0.8em;
+    font-weight: bold;
+	display:inline-block;
+    width: 19px;
+    height: 19px;
+    line-height: 19px;
+    margin: -5px 0 0 4px;
+    color: #fff;
+    text-align: center;
+    vertical-align: center;
+    border-radius: 19px;
+    background: #3a5485;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -80,6 +123,14 @@ function logout() {
 				<input type="text" id="search" placeholder="찾고 싶은 상품을 검색하세요">
 				<input type="image" name="submit" src="${conPath }/img/loupe.png" alt="검색" width="25" />
 			</div>
+			<c:if test="${not empty member }">
+				<div id="cartArea">
+					<a href="cart.do?method=cart&cid=${member.cid }">
+					<img src="${conPath }/cart_img/cart.png">
+					<span id="numberCart">${numberCart }</span>
+					</a>
+				</div>
+			</c:if>
 		</div>
 		<div class="lnb">
 			<div class="menu">
