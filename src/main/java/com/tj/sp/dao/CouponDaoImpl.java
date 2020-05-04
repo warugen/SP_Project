@@ -20,5 +20,6 @@ public class CouponDaoImpl implements CouponDao {
 	public List<Coupon> getListCoupon() {
 		return sessionTemplate.selectList("getListCoupon");
 	}
+	
 
 }

@@ -276,7 +276,7 @@ border: 1px solid #cccccc;
 							</span>
 							<span>
 								<em>쿠폰</em>
-								<strong>1</strong>장
+								<strong>${count }</strong>장
 							</span>
 						</li>
 						<li>

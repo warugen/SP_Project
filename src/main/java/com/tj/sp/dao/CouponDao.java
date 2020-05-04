@@ -7,4 +7,5 @@ import com.tj.sp.dto.Coupon;
 public interface CouponDao {
 	public int insertCoupon(Coupon coupon);
 	public List<Coupon> getListCoupon();
+	
 }

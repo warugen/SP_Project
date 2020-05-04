@@ -9,4 +9,5 @@ public interface MycouponDao {
 	public Mycoupon getMycoupon(String chnum);
 	public int useMycoupon(String[] chnum);
 	public int givecoupon(Mycoupon mycoupon);
+	public int countCoupon(String cid);
 }	

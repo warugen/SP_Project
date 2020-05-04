@@ -46,6 +46,7 @@ public class CouponController {
 	@RequestMapping(params="method=myCoupon", method =RequestMethod.GET)
 	public String myCoupon(String cid, Model model) {
 		model.addAttribute("couponList", mycouponService.listMycoupon(cid));
+		model.addAttribute("count", mycouponService.countCoupon(cid));
 		return "member/myCoupon";
 	}
 	
