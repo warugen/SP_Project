@@ -253,7 +253,7 @@ border: 1px solid #cccccc;
 			<div id="mainmenu">
 				<ul class="menu_list">
 					<li class="menu1"><a href="${conPath }/myPage.do">전체 주문 내역</a></li>
-					<li class="menu2"><a href="">정보수정</a>
+					<li class="menu2"><a href="">장바구니</a>
 					<li class="menu3"><a href="${conPath }/coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a></li>
 					<li class="menu4"><a href="${conPath }/myAddressList.do">주소지 설정</a>
 					</li>

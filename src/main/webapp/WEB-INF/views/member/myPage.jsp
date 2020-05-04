@@ -343,7 +343,7 @@ font-weight: 500;
 						<a href="${conPath }/myPage.do">전체 주문 내역</a>
 					</li>
 					<li class="menu2">
-						<a href="">정보수정</a>
+						<a href="">장바구니</a>
 					</li>
 					<li class="menu3">
 						<a href="${conPath }/coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a>
