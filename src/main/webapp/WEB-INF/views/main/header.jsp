@@ -111,8 +111,12 @@ function logout() {
 		</c:if>
 		</div>
 		<div class="logo">
+<<<<<<< HEAD
 			<form action="main.do?typecode=${typecode }&schword=${schword}">
 			<a href="main.do"><input type="image" name="logo" src="${conPath }/img/LOGO.png" width="100"></a>
+=======
+			<a href="main.do"><input type="image" name="logo" src="${conPath }/img/SP-LOGO.png" width="100"></a>
+>>>>>>> refs/heads/master
 			<div class="search">
 				<select name="option">
 					<option>전체</option>
@@ -121,8 +125,12 @@ function logout() {
 					<option>디지털/가전/컴퓨터</option>
 					<option>가구/인테리어</option>
 				</select>
+<<<<<<< HEAD
 				<input type="text" id="search" name="schword" placeholder="찾고 싶은 상품을 검색하세요">
 				<input type="hidden" name="typecode" value="${typecode }">
+=======
+				<input type="text" id="search" placeholder="찾고 싶은 상품을 검색하세요" autocomplete="off">
+>>>>>>> refs/heads/master
 				<input type="image" name="submit" src="${conPath }/img/loupe.png" alt="검색" width="25" />
 			</div>
 			</form>

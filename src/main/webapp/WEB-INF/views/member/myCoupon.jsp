@@ -255,7 +255,7 @@ border: 1px solid #cccccc;
 					<li class="menu1"><a href="Order_detail_product.do?method=listOrder_detailByCid&cid=${member.cid }">전체 주문 내역</a></li>
 					<li class="menu2"><a href="cart.do?method=cart&cid=${member.cid }">장바구니</a>
 					<li class="menu3"><a href="coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a></li>
-					<li class="menu4"><a href="${conPath }/myAddressList.do">주소지 설정</a>
+					<li class="menu4"><a href="${conPath }/myAddressList.do?method=myAddress&cid=${member.cid}">주소지 설정</a>
 					</li>
 				</ul>
 			</div>	
@@ -299,30 +299,14 @@ border: 1px solid #cccccc;
 					<tr>
 						<th>쿠폰명</th>
 						<th>혜택</th>
-						
 					</tr>
-					<c:if test="${not empty couponList }">
-						<script>
-						console.log('not empty!!');
-						</script>
-					</c:if>
-					<c:if test="${empty couponList }">
-						<script>
-						console.log('empty!!');
-						</script>
-					</c:if>
 					<c:forEach var="list" items="${couponList }">
 						<tr>
 						<td>${list.cuname }</td>
 						<td>${list.cusale }% 할인</td>
-						
 						</tr>
 					</c:forEach>
-					<!-- <tr>
-						<td>신규회원가입 축하 10% 쿠폰</td>
-						<td>10%상품할인</td>
-						<td>2020-04-29</td>
-					</tr> -->
+
 				</table>
 			</div>
 		</div>

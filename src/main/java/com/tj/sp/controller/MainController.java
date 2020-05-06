@@ -31,10 +31,11 @@ public class MainController {
 	public String myPage() {
 		return "member/myPage";
 	}
-	@RequestMapping(value="myAddressList")
-	public String myAddressList() {
-		return "member/myAddressList";
-	}
+
+	/*
+	 * @RequestMapping(value="myAddressList") public String myAddressList() { return
+	 * "member/myAddressList"; }
+	 */
 	@RequestMapping(value="myCoupon")
 	public  String myCoupon() {
 		return "member/myCoupon";

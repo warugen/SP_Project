@@ -44,7 +44,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public int modifyCustomerAddrcode(Customer customer) {
 		// 회원주소코드 수정
-		return sessionTemplate.update("modifyCustomer", customer);
+		return sessionTemplate.update("modifyCustomerAddrcode", customer);
 	}
 	@Override
 	public int emailConfirm(String cemail) {

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="conPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
@@ -8,6 +9,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${conPath }/css/style.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+	})
+</script>
 <style>
 * {
 	margin: 0;
@@ -209,7 +215,6 @@ font-style: normal;
 font-size: 24px;
 font-weight: bold;
 display: block;
-margin: 9px 0 11px 0;
 }
 #footer #footer_2 .content-info a span{
 line-height: 150%;
@@ -256,11 +261,11 @@ font-size: 11px;
 </head>
 <body>
 	<footer id="footer">
-		<!-- <div id="footer_1">
+		<div id="footer_1">
 			<a href="#">인재채용</a> <a href="#">입점 / 제휴문의</a> <a href="#">공지사항</a> <a
 				href="#">고객의 소리</a> <a href="#">이용약관</a> <a href="#"><b>개인정보
 					처리 방침</b></a> <a href="#">신뢰관리센터</a> <a href="#">제휴마케팅</a> <a href="#">광고정책</a>
-		</div> -->
+		</div>
 		<div id="footer_2">
 			<h1>
 				<a href="#" title="S-Place">S-Place</a>
@@ -271,13 +276,13 @@ font-size: 11px;
 					120-00-01011<br> 통신판매업신고 : 2017-서울종로-0680
 				</address>
 				<div class="content-info">
-					
+					<a href="#"> 
 						<strong>365고객센터</strong> 
 						| 전자금융거래분쟁처리담당<br> 
 						<em>1212-1212</em><br>
 						서울시 종로구 수표로 670<br> 
 						<span class="fax">email : hong@s-place.com</span>
-					<a href="login.do?method=adminLoginForm">관리자로그인</a>
+					</a>
 				</div>
 				<p>
 					<strong>미래은행 채무지급보증 안내</strong><br> <span> 당사는 고객님이 현금

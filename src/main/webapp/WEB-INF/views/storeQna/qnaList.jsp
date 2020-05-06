@@ -77,10 +77,12 @@ table {
 				</td>
 				<td class="center">
 					<c:if test="${not empty qna.mid }">
-					${qna.mid }
+<%-- 					${qna.mid } --%>
+					${qna.mname }
 					</c:if>
 					<c:if test="${not empty qna.cid }">
-					${qna.cid }
+<%-- 					${qna.cid } --%>
+					${qna.cname }
 					</c:if>
 				</td>
 				<td class="center"><fmt:formatDate value="${qna.sqrdate }" pattern="YY/MM/dd(E)"/></td>

@@ -15,6 +15,7 @@
 <link href="${conPath }/css/cart/cart.css" rel="stylesheet">
 </head>
 <body>
+<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<div id="cart_head">
 			<div id="cart_head_left">

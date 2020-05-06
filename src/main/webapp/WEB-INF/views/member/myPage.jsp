@@ -231,7 +231,7 @@ font-weight: 500;
 						<a href="${conPath }/coupon.do?method=myCoupon&cid=${member.cid}">쿠폰</a>
 					</li>
 					<li class="menu4">
-						<a href="${conPath }/myAddressList.do">주소지 설정</a>
+						<a href="${conPath }/myAddressList.do?method=myAddress&cid=${member.cid}">주소지 설정</a>
 					</li>
 				</ul>
 			</div>	

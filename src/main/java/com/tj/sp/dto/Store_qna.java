@@ -13,6 +13,8 @@ public class Store_qna {
 	private int    sqhit	 ;
 	private String mid	     ;
 	private String cid	     ;
+	private String mname     ;
+	private String cname     ;
 	private int    startrow	 ;
 	private int    endrow	 ;
 	private String schitem	 ;
@@ -102,13 +104,24 @@ public class Store_qna {
 	public void setSchword(String schword) {
 		this.schword = schword;
 	}
+	
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
 	@Override
 	public String toString() {
 		return "Store_qna [sqcode=" + sqcode + ", sqtitle=" + sqtitle + ", sqcontent=" + sqcontent + ", sqrdate="
 				+ sqrdate + ", sqgroup=" + sqgroup + ", sqstep=" + sqstep + ", sqindent=" + sqindent + ", sqhit="
-				+ sqhit + ", mid=" + mid + ", cid=" + cid + ", startrow=" + startrow + ", endrow=" + endrow
-				+ ", schitem=" + schitem + ", schword=" + schword + "]";
+				+ sqhit + ", mid=" + mid + ", cid=" + cid + ", mname=" + mname + ", cname=" + cname + ", startrow="
+				+ startrow + ", endrow=" + endrow + ", schitem=" + schitem + ", schword=" + schword + "]";
 	}
-	
-
 }

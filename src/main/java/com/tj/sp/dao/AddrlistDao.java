@@ -10,4 +10,6 @@ public interface AddrlistDao {
 	public int modifyAddrlist(Addrlist addrlist);
 	public int deleteAddrlist(String addrcode);
 	public String getFirstAddrCode();
+	public int cntAddrlist(String cid);
+	public Addrlist getAddrcode(String addrcode);
 }

@@ -88,18 +88,14 @@ public class MarketController {
 	@RequestMapping(params="method=login")
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
 		System.out.println("===============method=login===============");
-		
-		String csnsid = request.getParameter("snsid");
-		String provider = request.getParameter("provider");
-		String snsemail = request.getParameter("snsemail");
-		
-		// 일반 로그인한경우
+			
+		// 상점 로그인한경우
 		System.out.println("marketLogin!!!!!!");
 		String mid = request.getParameter("id");
 		String mpw = request.getParameter("pw");
 		
-		System.out.println("id : " + mid);
-		System.out.println("pw : " + mpw);
+		System.out.println("mid : " + mid);
+		System.out.println("mpw : " + mpw);
 		Market market = marketService.getMarket(mid);
 		if (market != null) {
 			if(market.getMpw().equals(mpw)) {
@@ -112,13 +108,16 @@ public class MarketController {
 			} else {
 				// 비밀번호 불일치
 				model.addAttribute("errMsg", "비밀번호를 확인해주세요");
+				model.addAttribute("mid", mid);
 				System.out.println("로그인 실패");
+				return "forward:market.do?method=marketLogin";
 			}
 			
 		} else {
 			// 아이디 불일치
 			model.addAttribute("errMsg", "아이디를 확인해주세요");
 			System.out.println("로그인 실패 아이디부터 없음");
+			return "forward:market.do?method=marketLogin";
 		}
 		
 				
