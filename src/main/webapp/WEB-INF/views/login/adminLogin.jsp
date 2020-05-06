@@ -29,7 +29,7 @@ h2 {
 	
 	<input type="hidden" name="method" value="adminLogin">
 	<div class="group">
-		<input type="text" name="id"><span class="highlight"></span><span class="bar"></span>
+		<input type="text" name="id" autocomplete="off"><span class="highlight"></span><span class="bar"></span>
 		<label>아이디</label>
 	</div>
 	<div class="group">

@@ -121,7 +121,7 @@ function logout() {
 					<option>디지털/가전/컴퓨터</option>
 					<option>가구/인테리어</option>
 				</select>
-				<input type="text" id="search" name="schword" placeholder="찾고 싶은 상품을 검색하세요">
+				<input type="text" id="search" autocomplete="off" name="schword" placeholder="찾고 싶은 상품을 검색하세요">
 				<input type="hidden" name="typecode" value="${typecode }">
 				<input type="image" name="submit" src="${conPath }/img/loupe.png" alt="검색" width="25" />
 			</div>
