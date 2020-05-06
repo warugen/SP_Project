@@ -38,19 +38,21 @@
 	<br>
 	<br>
 	<div class="paging">
+		<input type="hidden" name="typecode" value="${typecode }">
+		<input type="hidden" name="schword" value="${schword }">
 		<c:if test="${paging.startpage>paging.blocksize }">
-			[ <a href="${conPath }/main.do?pagenum=${paging.startpage-1}">이전</a> ]
+			[ <a href="${conPath }/main.do?pagenum=${paging.startpage-1}&typecode=${typecode }&schword=${schword}">이전</a> ]
 		</c:if>
 		<c:forEach var="i" begin="${paging.startpage }" end="${paging.endpage }">
 			<c:if test="${paging.currentpage==i }">
 				[ <b> ${i }</b> ]
 			</c:if>
 			<c:if test="${paging.currentpage!=i }">
-				[ <a href="${conPath }/main.do?pagenum=${i }">${i }</a> ]
+				[ <a href="${conPath }/main.do?pagenum=${i }&typecode=${typecode }&schword=${schword}">${i }</a> ]
 			</c:if>
 		</c:forEach>
 		<c:if test="${paging.endpage<paging.pagecnt }">
-			[ <a href="${conPath }/main.do?pagenum=${paging.endpage+1}">다음</a> ]
+			[ <a href="${conPath }/main.do?pagenum=${paging.endpage+1}&typecode=${typecode }&schword=${schword}">다음</a> ]
 		</c:if>
 	</div>
 	<jsp:include page="footer.jsp" />

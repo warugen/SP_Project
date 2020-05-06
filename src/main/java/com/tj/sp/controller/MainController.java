@@ -15,10 +15,12 @@ public class MainController {
 	@Autowired
 	private ProductService productService;
 	@RequestMapping(value="main")
-	public String main(String pagenum, Model model, Product_Product_option product_Product_option) {
+	public String main(String pagenum, Model model, Product_Product_option product_Product_option, String typecode, String schword) {
 		Paging paging = new Paging(productService.cntProduct_Product_optionList(product_Product_option), pagenum, 6, 3);
 		model.addAttribute("paging", paging);
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, product_Product_option));
+		model.addAttribute("typecode", typecode);
+		model.addAttribute("schword", schword);
 		return "main/main";
 	}
 	@RequestMapping(value="writeForm", method = RequestMethod.GET)

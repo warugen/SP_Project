@@ -22,14 +22,15 @@
 	<select id="cntProduct_Product_optionList" parameterType="Product_Product_option" resultType="int" >
 		SELECT COUNT(*)	FROM PRODUCT P  WHERE PCODE IN 
                     (SELECT DISTINCT PO.PCODE FROM PRODUCT_OPTION PO,PRODUCT PP WHERE PO.PCODE=PP.PCODE AND 
-                    	TYPECODE LIKE '%'||NVL(#{typecode},'')||'%')
+                    	TYPECODE LIKE '%'||NVL(#{typecode},'')||'%' AND PTITLE LIKE '%'||#{schword, jdbcType=VARCHAR}||'%')
 	</select>
 	<!-- Join리스트 -->
 	<select id="product_Product_optionList" parameterType="Product_Product_option" resultMap="Product_Product_optionResult">
     	SELECT * FROM (SELECT ROWNUM RN, A.* FROM(SELECT p.*,
 			(SELECT MIN(POPRICE) FROM PRODUCT_OPTION WHERE PCODE = P.PCODE) POPRICE 
 				FROM PRODUCT P  WHERE PCODE IN 
-                    (SELECT DISTINCT PO.PCODE FROM PRODUCT_OPTION PO,PRODUCT PP WHERE PO.PCODE=PP.PCODE AND TYPECODE LIKE '%'||#{typecode}||'%')
+                    (SELECT DISTINCT PO.PCODE FROM PRODUCT_OPTION PO,PRODUCT PP WHERE PO.PCODE=PP.PCODE AND TYPECODE LIKE '%'||#{typecode}||'%'
+                    	AND PTITLE LIKE '%'||#{schword, jdbcType=VARCHAR}||'%')
                 ORDER BY TO_NUMBER(PCODE) DESC) A)
     		WHERE RN BETWEEN #{startrow} AND #{endrow}
 	</select>
