@@ -154,7 +154,7 @@ ALTER TABLE PRODUCT_TYPE
 /* 쿠폰 테이블 */
 CREATE TABLE COUPON (
 	CUID    VARCHAR2(20)    NOT NULL, /* 쿠폰아이디 */
-	CUNAME  VARCHAR2(20)    NOT NULL, /* 쿠폰명 */
+	CUNAME  VARCHAR2(300)    NOT NULL, /* 쿠폰명 */
 	CUSALE  NUMBER(4)       NOT NULL  /* 할인율 */
 );
 
