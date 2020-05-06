@@ -106,7 +106,7 @@ function logout() {
 		<c:if test="${not empty admin}">
 			<ul>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
-				<li><a>관리자님</a></li>
+				<li><a href="coupon.do?method=adminCoupon">관리자님</a></li>
 			</ul>
 		</c:if>
 		</div>

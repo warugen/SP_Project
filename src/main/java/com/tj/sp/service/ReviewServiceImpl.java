@@ -23,7 +23,7 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<Review> listReview(Review review, String pagenum) {
 		String pcode = review.getPcode();
-		Paging paging = new Paging(reviewDao.cntReview(pcode),pagenum, 5, 10);
+		Paging paging = new Paging(reviewDao.cntReview(pcode),pagenum, 5, 3);
 		review.setStartrow(paging.getStartrow());
 		review.setEndrow(paging.getEndrow());
 		return reviewDao.listReview(review);

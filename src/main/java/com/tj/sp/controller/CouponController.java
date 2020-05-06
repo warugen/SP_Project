@@ -36,7 +36,7 @@ public class CouponController {
 	@RequestMapping(params="method=insertCoupon", method =RequestMethod.GET)
 	public String insertCoupon(Model model, Coupon coupon) {
 		model.addAttribute("insertResult", couponService.insertCoupon(coupon));
-		return "admin/coupon";
+		return "forward: coupon.do?method=adminCoupon";
 	}
 	@RequestMapping(params="method=giveCoupon", method =RequestMethod.GET)
 	public String giveCoupon(Model model, Mycoupon mycoupon, String gcode) {
