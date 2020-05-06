@@ -22,6 +22,8 @@ public class CouponController {
 	private CouponService couponService;
 	@Autowired
 	private GradeService gradeService;
+	@Autowired
+	private Customer_gradeService customer_gradeService;
 	@RequestMapping(params="method=listMycoupon", method =RequestMethod.GET)
 	public String listMycoupon(String cid, Model model) {
 		model.addAttribute("list",mycouponService.listMycoupon("aaa"));
@@ -46,6 +48,7 @@ public class CouponController {
 	
 	@RequestMapping(params="method=myCoupon", method =RequestMethod.GET)
 	public String myCoupon(String cid, Model model) {
+		model.addAttribute("member", customer_gradeService.getCustomer_grade(cid));
 		model.addAttribute("couponList", mycouponService.listMycoupon(cid));
 		model.addAttribute("count", mycouponService.countCoupon(cid));
 		return "member/myCoupon";

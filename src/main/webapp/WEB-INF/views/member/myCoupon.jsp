@@ -264,8 +264,8 @@ border: 1px solid #cccccc;
 			<div id="top_info">
 				<div class="mygrade">
 					<div class="grade_txt">
-						<p>XXX님의</p>
-						<p>회원등급은<span>'일반회원'</span>입니다.</p>
+						<p>${member.cname}</p>
+						<p>회원등급은<span>${member.grade }</span>입니다.</p>
 					</div>
 				</div>
 				<div class="myCouponCount">

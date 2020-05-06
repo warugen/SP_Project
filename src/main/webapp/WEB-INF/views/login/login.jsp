@@ -49,12 +49,12 @@
 	<%-- <c:if test="${not empty customer }">
 		<input type="text" name="id" value="${customer.cid }" ><span class="highlight"></span><span class="bar"></span>
 	</c:if> --%>
-	<c:if test="${not empty cid }">
-		<input type="text" name="id" value="${cid }" class="used"><span class="highlight"></span><span class="bar"></span>
-	</c:if>
-	<c:if test="${empty cid}">
-		<input type="text" name="id" autocomplete="off"><span class="highlight"></span><span class="bar"></span>
-	</c:if>
+	<c:if test="${not empty customer }">
+      <input type="text" name="id" value="${customer.cid }" autocomplete="off" class="used"><span class="highlight"></span><span class="bar"></span>
+   	</c:if>
+   	<c:if test="${empty customer}">
+      <input type="text" name="id" autocomplete="off"><span class="highlight"></span><span class="bar"></span>
+   	</c:if>
 	  <label>아이디</label>
 	</div>
 	<div class="group">

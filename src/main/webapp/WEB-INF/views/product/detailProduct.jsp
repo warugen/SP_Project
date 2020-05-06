@@ -441,7 +441,6 @@ border: 1px solid #cccccc;
 				<table>
 					<tr>
 						<th>번호</th>
-						<th>이미지</th>
 						<th>내용</th>
 						<th>별점</th>
 						<th>작성자</th>
@@ -450,7 +449,6 @@ border: 1px solid #cccccc;
 					<c:forEach var="review" items="${review }">
 					<tr>
 						<td>${review.rcode }</td>
-						<td>${review.rimage }</td>
 						<td class="left">${review.rcontent }</td>
 						<td>${review.rstar }</td>
 						<td>${review.cid }</td>

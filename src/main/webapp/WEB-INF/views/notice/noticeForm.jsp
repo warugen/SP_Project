@@ -140,9 +140,11 @@ padding-top: 10px;
 			</c:if>
 		</div>
 		<div class="btnwrite">
-			<button class="btn1"  onclick="writeBtn()">공지사항 등록</button>
+			<c:if test="${not empty admin}">
+				<button class="btn1"  onclick="writeBtn()">공지사항 등록</button>
 <%-- 			location.href='${conPath}/notice.do?method=noticeWriteForm' --%>
-			<button class="btn2" onclick="location.href='${conPath}/notice.do?method=noticeReplyForm'">답변 등록</button>
+				<button class="btn2" onclick="location.href='${conPath}/notice.do?method=noticeReplyForm'">답변 등록</button>
+			</c:if>
 		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp" />

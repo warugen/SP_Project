@@ -44,12 +44,12 @@ h2{
 	<input type="hidden" name="snsemail"  value="">
 
 	<div class="group">
-	<c:if test="${not empty mid }">
-		<input type="text" name="id" value="${mid }" class="used" ><span class="highlight"></span><span class="bar"></span>
-	</c:if>
-	<c:if test="${empty mid }">
-		<input type="text" name="id" autocomplete="off"><span class="highlight"></span><span class="bar"></span>
-	</c:if>
+	<c:if test="${not empty market }">
+      <input type="text" name="id" value="${market.mid }" autocomplete="off" class="used" ><span class="highlight"></span><span class="bar"></span>
+   	</c:if>
+   	<c:if test="${empty market }">
+      <input type="text" name="id"><span class="highlight"></span><span class="bar"></span>
+   	</c:if>
 	  <label>아이디</label>
 	</div>
 	<div class="group">

@@ -35,6 +35,7 @@ public class MycouponServiceImpl implements MycouponService {
 
 	@Override
 	public int givecoupon(Mycoupon mycoupon, String gcode) {
+		System.out.println(gcode);
 		List<Customer> customer = customerdao.getListCidByGrade(gcode);
 		int result = 0;
 		for(Customer c: customer) {

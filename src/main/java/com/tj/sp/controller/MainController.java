@@ -17,6 +17,9 @@ public class MainController {
 	@RequestMapping(value="main")
 	public String main(String pagenum, Model model, Product_Product_option product_Product_option, String typecode, String schword) {
 		Paging paging = new Paging(productService.cntProduct_Product_optionList(product_Product_option), pagenum, 6, 3);
+		if(schword==null) {
+			schword = "";
+		}
 		model.addAttribute("paging", paging);
 		model.addAttribute("joinList", productService.product_Product_optionList(pagenum, product_Product_option));
 		model.addAttribute("typecode", typecode);

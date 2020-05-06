@@ -58,6 +58,7 @@ public class MemberController {
 		int result = customerService.registCustomer(customer);
 		if (result == 1) {
 			// 고객 주소 등록
+			addrlist.setAddrname(customer.getCid());
 			result = addrListService.registAddrlist(addrlist);
 			if(result == 1) {
 				// addrname 가져오기
