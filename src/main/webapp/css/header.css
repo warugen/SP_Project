@@ -46,7 +46,7 @@ li {
 	float:left;
 	margin: 0 30px;
 }
-select[name="option"]{
+select[name="typecode"]{
 	border:0;
 	outline:0;
 	margin-left:5px;
@@ -63,7 +63,6 @@ input[name="logo"]{
 }
 .search {
 	width:620px;
-	height:30px;
 	line-height:30px;
 	border: 2px solid skyblue;
 	border-radius: 30px;

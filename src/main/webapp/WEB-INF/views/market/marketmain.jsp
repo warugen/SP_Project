@@ -32,6 +32,7 @@ $(document).ready(function(){
 	margin:0 auto;
 	height: 70px;
     line-height: 70px;
+    text-align: center;
 }
 #market_name {
 	font-size: 28px;
@@ -40,26 +41,24 @@ $(document).ready(function(){
 #market_tel{
 	float: right;
 }
-#market_header > input[type=image]{
-	left: 0%;
-}
 </style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="market_header">
-		<input type="image" name="logo" src="${conPath }/img/LOGO.png" width="100">
+		<a href="main.do">
+			<input type="image" name="logo" src="${conPath }/img/SP-LOGO.png" width="100">
+		</a>
 		<div id="market_header_nameArea">
-			<span id="market_name">${market_header.mname }</span>
+			<a href="market.do?method=marketmain&schword=&mid=${market.mid}">
+				<span id="market_name">${market_header.mname }</span>
+			</a>
 			<input type="hidden" name="mid" value="${market_header.mid }">
 			<span id="market_tel">${market_header.mtel}</span>
 		</div>
 	</div>
 	<div id="content">
 		<div id="content">
-		<c:if test="${market.mid eq market_header.mid}">
-			<p><a href="${conPath }/product.do?method=productRegister">상품 등록</a></p>
-		</c:if>
 			<div id="test">
 				<table>
 					<c:forEach var="product_product_option" items="${marketmain }">

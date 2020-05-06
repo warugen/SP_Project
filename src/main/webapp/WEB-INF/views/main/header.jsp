@@ -98,7 +98,8 @@ function logout() {
 		</c:if>
 		<c:if test="${not empty market}">
 			<ul>
-				<li><a href="market.do?method=marketmain&mid=${market.mid }&schword=">상점페이지</a></li>
+				<li><a href="market.do?method=marketmain&schword=&mid=${market.mid}">상점페이지</a></li>
+				<li><a href="${conPath }/product.do?method=productRegister" >상품 등록</a></li>
 				<li><a href="javascript:logout(this);">로그아웃</a></li>
 				<li><a>${market.mname }님</a></li>
 			</ul>
@@ -114,18 +115,18 @@ function logout() {
 			<form action="main.do?typecode=${typecode }&schword=${schword}">
 			<a href="main.do"><input type="image" name="logo" src="${conPath }/img/SP-LOGO.png" width="100"></a>
 			<div class="search">
-				<select name="option">
-					<option>전체</option>
-					<option>의류/잡화</option>
-					<option>식품</option>
-					<option>디지털/가전/컴퓨터</option>
-					<option>가구/인테리어</option>
+				<select name="typecode">
+					<option value="">전체</option>
+					<option value="1-">의류/잡화</option>
+					<option value="2-">식품</option>
+					<option value="3-">디지털/가전/컴퓨터</option>
+					<option value="4-">가구/인테리어</option>
 				</select>
 				<input type="text" id="search" autocomplete="off" name="schword" placeholder="찾고 싶은 상품을 검색하세요">
-				<input type="hidden" name="typecode" value="${typecode }">
 				<input type="image" name="submit" src="${conPath }/img/loupe.png" alt="검색" width="25" />
 			</div>
 			</form>
+				<input type="hidden" name="typecode" value="${typecode }">
 			<c:if test="${not empty member }">
 				<div id="cartArea">
 					<a href="cart.do?method=cart&cid=${member.cid }">

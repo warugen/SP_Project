@@ -38,8 +38,8 @@
     <select id="marketMain" parameterType="Product" resultMap="Product_Product_optionResult">
     	SELECT * FROM (SELECT ROWNUM RN, A.* FROM(
     		SELECT P.*,(SELECT MIN(POPRICE) FROM PRODUCT_OPTION WHERE PCODE = P.PCODE) POPRICE 
-    			FROM PRODUCT P ORDER BY TO_NUMBER(PCODE) DESC) A)
-    				WHERE  MID= #{mid} AND RN BETWEEN #{startrow} AND #{endrow} AND 
+    			FROM PRODUCT P WHERE  MID=#{mid} ORDER BY TO_NUMBER(PCODE) DESC) A)
+    				WHERE RN BETWEEN #{startrow} AND #{endrow} AND 
     				(PTITLE LIKE '%'||#{schword}||'%' OR PCONTENT LIKE '%'||#{schword}||'%')
     </select>
     
